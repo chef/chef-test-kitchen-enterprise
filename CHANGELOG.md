@@ -1,20 +1,27 @@
 # Test Kitchen Change Log
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
 <!-- latest_release 3.7.1 -->
+
 ## [v3.7.1](https://github.com/chef/test-kitchen/tree/v3.7.1) (2024-10-21)
 
-#### Merged Pull Requests
+### Merged Pull Requests
+
 - Updated version and added release tag [#8](https://github.com/chef/test-kitchen/pull/8) ([nikhil2611](https://github.com/nikhil2611))
+
 <!-- latest_release -->
 
 <!-- release_rollup -->
+
 ### Changes not yet released to rubygems.org
 
-#### Merged Pull Requests
+### Merged Pull Requests
+
 - Updated version and added release tag [#8](https://github.com/chef/test-kitchen/pull/8) ([nikhil2611](https://github.com/nikhil2611)) <!-- 3.7.1 -->
+
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+
 ## [3.7.0](https://github.com/test-kitchen/test-kitchen/compare/v3.6.0...v3.7.0) (2024-08-27)
 
 
