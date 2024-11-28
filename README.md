@@ -1,7 +1,9 @@
-# Test Kitchen
+# Chef Test Kitchen Enterprise
 
 [![Gem Version](https://badge.fury.io/rb/test-kitchen.svg)](http://badge.fury.io/rb/test-kitchen)
 [![Build Status](https://dev.azure.com/test-kitchen/test-kitchen/_apis/build/status/test-kitchen.test-kitchen?branchName=main)](https://dev.azure.com/test-kitchen/test-kitchen/_build/latest?definitionId=6&branchName=main)
+
+This is the fork of [test-kitchen/test-kitchen](https://github.com/test-kitchen/test-kitchen/) repository and rebranded into Chef Test Kitchen Enterprise.
 
 |             |                                                                                 |
 | ----------- | --------------------------------------------------------------------------------|
@@ -9,7 +11,7 @@
 | Source Code | [https://kitchen.ci/docs/getting-started/introduction/][guide]                  |
 | Slack       | [#test-kitchen][slack] channel on Chef Community Slack                          |
 
-**Test Kitchen is an integration tool for developing and testing infrastructure code and software on isolated target platforms.**
+**Chef Test Kitchen Enterprise is an integration tool for developing and testing infrastructure code and software on isolated target platforms.**
 
 ## Getting Started Guide
 
@@ -20,14 +22,12 @@ If you want to get going super fast, then try the Quick Start next...
 
 ## Quick Start
 
-Test Kitchen is a RubyGem and can be installed with:
-
+To install the new Chef Test Kitchen Enterprise, first ensure you have the latest Habitat installer. You can then run the `hab pkg install` command to install it.
 ```shell
-gem install test-kitchen
+hab pkg install chef/chef-test-kitchen-enterprise --binlink --force
 ```
-
-If you use Bundler, you can add `gem "test-kitchen"` to your Gemfile and make
-sure to run `bundle install`.
+The option `--binlink` can be used to create a symlink to the binary in a directory that is in your PATH.
+The option `--force` can be used to overwrite the existing binaries.
 
 Next add support to your library, Chef cookbook, or empty project with `kitchen
 init`:
