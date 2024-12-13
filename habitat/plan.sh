@@ -55,7 +55,6 @@ do_install() {
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
   gem install chef-test-kitchen-enterprise-*.gem --no-document
-  gem install chef-cli
   wrap_ruby_kitchen
   wrap_ruby_chef_cli
   set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor/gems"
