@@ -36,7 +36,7 @@ do_unpack() {
 
 do_build() {
   echo $(pkg_path_for $_chef_client_ruby)
-  export GEM_HOME="$pkg_prefix/vendor/gems"
+  export GEM_HOME="$pkg_prefix/vendor"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
@@ -50,6 +50,7 @@ do_build() {
 }
 
 do_install() {
+  mkdir -p /hab/kitchen
   export GEM_HOME="$pkg_prefix/vendor/gems"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
@@ -58,7 +59,7 @@ do_install() {
   gem install chef-cli
   wrap_ruby_kitchen
   wrap_ruby_chef_cli
-  set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor/gems"
+  set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor/gems;/hab/kitchen"
 }
 
 wrap_ruby_kitchen() {
