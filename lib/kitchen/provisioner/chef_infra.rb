@@ -108,6 +108,8 @@ module Kitchen
         end
 
         args << "--logfile #{config[:log_file]}" if config[:log_file]
+        # Added for Chef-Client 19+
+        args << "--chef-license-key=#{config[:chef_license_key]}" if config[:chef_license_key]
 
         # these flags are chef-client local mode only and will not work
         # on older versions of chef-client
