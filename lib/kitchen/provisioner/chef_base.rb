@@ -746,10 +746,11 @@ module Kitchen
         # If no binlinked chef-client binary is found then check for habiatat installed chef-client
         # If no habitat installed chef-client is found then check for omnibus installed chef-client
         # all fails raise an error
+        hab_pkg_cmd = "HAB_LICENSE='accept-no-persist' #{config[:hab_binary]} pkg"
         if which("chef-client")
           windows_os? ? File.dirname(which("chef-client")) : File.dirname(File.readlink(which("chef-client")))
-        elsif File.exist?(config[:hab_binary]) && ShellOut.run_command("#{config[:hab_binary]} pkg list chef/chef-infra-client").include?("chef/chef-infra-client")
-          remote_path_join(%W{#{ShellOut.run_command("#{config[:hab_binary]} pkg path chef/chef-infra-client").split("\n").first} bin})
+        elsif File.exist?(config[:hab_binary]) && ShellOut.run_command("#{hab_pkg_cmd} list chef/chef-infra-client").include?("chef/chef-infra-client")
+          remote_path_join(%W{#{ShellOut.run_command("#{hab_pkg_cmd} path chef/chef-infra-client").split("\n").first} bin})
         elsif Dir.exist?(config[:chef_omnibus_root])
           remote_path_join(%W{#{config[:chef_omnibus_root]} bin})
         else
