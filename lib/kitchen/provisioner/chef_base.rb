@@ -737,8 +737,8 @@ module Kitchen
 
       # Determine chef binaries location
       def chef_bin_path
-        require_relative '../which'
-        require_relative '../shell_out'
+        require_relative "../which"
+        require_relative "../shell_out"
         include ShellOut
         include Which
 
@@ -746,7 +746,7 @@ module Kitchen
         # If no binlinked chef-client binary is found then check for habiatat installed chef-client
         # If no habitat installed chef-client is found then check for omnibus installed chef-client
         # all fails raise an error
-        if which('chef-client')
+        if which("chef-client")
           windows_os? ? File.dirname(which("chef-client")) : File.dirname(File.readlink(which("chef-client")))
         elsif File.exist?(config[:hab_binary]) && ShellOut.run_command("#{config[:hab_binary]} pkg list chef/chef-infra-client").include?("chef/chef-infra-client")
           remote_path_join(%W{#{ShellOut.run_command("#{config[:hab_binary]} pkg path chef/chef-infra-client").split("\n").first} bin})

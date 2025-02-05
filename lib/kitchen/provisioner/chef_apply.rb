@@ -57,9 +57,7 @@ module Kitchen
       plugin_version Kitchen::VERSION
 
       default_config :chef_apply_path do |provisioner|
-        provisioner
-          .remote_path_join(%W{#{chef_bin_path} chef-apply})
-          .tap { |path| path.concat(".bat") if provisioner.windows_os? }
+        provisioner.remote_path_join(%W{#{chef_bin_path} chef-apply}).tap { |path| path.concat(".bat") if provisioner.windows_os? }
       end
 
       default_config :apply_path do |provisioner|
