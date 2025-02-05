@@ -34,9 +34,7 @@ module Kitchen
       default_config :solo_rb, {}
 
       default_config :chef_solo_path do |provisioner|
-        provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} bin chef-solo})
-          .tap { |path| path.concat(".bat") if provisioner.windows_os? }
+        provisioner.remote_path_join(%W{#{chef_bin_path} chef-solo}).tap { |path| path.concat(".bat") if provisioner.windows_os? }
       end
 
       # (see Base#config_filename)
@@ -75,6 +73,9 @@ module Kitchen
         args << "--logfile #{config[:log_file]}" if config[:log_file]
         args << "--profile-ruby" if config[:profile_ruby]
         args << "--legacy-mode" if config[:legacy_mode]
+        # Added for Chef-Client 19+
+        args << "--chef-license-key=#{config[:chef_license_key]}" if config[:chef_license_key]
+        args << "--chef-license-server=#{config[:chef_license_server]}" unless config[:chef_license_server].empty?
         args
       end
     end

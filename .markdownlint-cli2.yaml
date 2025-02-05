@@ -1,0 +1,8 @@
+config:
+  heading-increment: false # MD001
+  line-length: false # MD013
+  blanks-around-headings: false # MD022
+  no-duplicate-heading: false # MD024
+  blanks-around-lists: false # MD032
+ignores:
+  - .github/copilot-instructions.md

@@ -58,7 +58,7 @@ module Kitchen
 
       default_config :chef_apply_path do |provisioner|
         provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} bin chef-apply})
+          .remote_path_join(%W{#{chef_bin_path} chef-apply})
           .tap { |path| path.concat(".bat") if provisioner.windows_os? }
       end
 
@@ -107,6 +107,9 @@ module Kitchen
           ]
           args << "--logfile #{config[:log_file]}" if config[:log_file]
           args << "--chef-license #{config[:chef_license]}" if config[:chef_license]
+          # Added for Chef-Client 19+
+          args << "--chef-license-key=#{config[:chef_license_key]}" if config[:chef_license_key]
+          args << "--chef-license-server=#{config[:chef_license_server]}" unless config[:chef_license_server].empty?
 
           lines << wrap_shell_code(
             [cmd, *args].join(" ")

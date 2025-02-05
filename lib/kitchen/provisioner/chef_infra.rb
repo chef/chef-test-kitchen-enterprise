@@ -35,18 +35,13 @@ module Kitchen
       default_config :json_attributes, true
       default_config :chef_zero_host, nil
       default_config :chef_zero_port, 8889
-      default_config :chef_license_key, nil
-      default_config :chef_license_server, []
 
       default_config :chef_client_path do |provisioner|
-        provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} bin chef-client})
-          .tap { |path| path.concat(".bat") if provisioner.windows_os? }
+        provisioner.remote_path_join(%W{#{chef_bin_path} chef-client}).tap { |path| path.concat(".bat") if provisioner.windows_os? }
       end
 
       default_config :ruby_bindir do |provisioner|
-        provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} embedded bin})
+        provisioner.remote_path_join(%W{#{provisioner[:chef_omnibus_root]} embedded bin})
       end
 
       # (see Base#create_sandbox)
@@ -110,6 +105,7 @@ module Kitchen
         args << "--logfile #{config[:log_file]}" if config[:log_file]
         # Added for Chef-Client 19+
         args << "--chef-license-key=#{config[:chef_license_key]}" if config[:chef_license_key]
+        args << "--chef-license-server=#{config[:chef_license_server]}" unless config[:chef_license_server].empty?
 
         # these flags are chef-client local mode only and will not work
         # on older versions of chef-client

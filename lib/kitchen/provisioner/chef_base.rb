@@ -45,6 +45,11 @@ module Kitchen
       default_config :chef_omnibus_url, "https://omnitruck.chef.io/install.sh"
       default_config :chef_omnibus_install_options, nil
       default_config :chef_license, nil
+      default_config :chef_license_key, nil
+      default_config :chef_license_server, []
+      default_config :hab_binary do
+        windows_os? ? "C:\\hab\\bin\\hab" : "/hab/bin/hab"
+      end
       default_config :run_list, []
       default_config :policy_group, nil
       default_config :attributes, {}
@@ -728,6 +733,28 @@ module Kitchen
         shell_cmd = shell_cmd.prepend(reload_ps1_path) if windows_os?
 
         prefix_command(wrap_shell_code(shell_cmd))
+      end
+
+      # Determine chef binaries location
+      def chef_bin_path
+        require_relative '../which'
+        require_relative '../shell_out'
+        include ShellOut
+        include Which
+
+        # Check for binlinked chef-client binary and use that first
+        # If no binlinked chef-client binary is found then check for habiatat installed chef-client
+        # If no habitat installed chef-client is found then check for omnibus installed chef-client
+        # all fails raise an error
+        if which('chef-client')
+          windows_os? ? File.dirname(which("chef-client")) : File.dirname(File.readlink(which("chef-client")))
+        elsif File.exist?(config[:hab_binary]) && ShellOut.run_command("#{config[:hab_binary]} pkg list chef/chef-infra-client").include?("chef/chef-infra-client")
+          remote_path_join(%W{#{ShellOut.run_command("#{config[:hab_binary]} pkg path chef/chef-infra-client").split("\n").first} bin})
+        elsif Dir.exist?(config[:chef_omnibus_root])
+          remote_path_join(%W{#{config[:chef_omnibus_root]} bin})
+        else
+          raise "Unable to determine chef binaries path"
+        end
       end
     end
   end
