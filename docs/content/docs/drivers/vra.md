@@ -132,7 +132,6 @@ Defaults to `nil`.  Set to your domain suffix, for example 'mydomain.com'.  This
 
 a hash of other data to set on a catalog request, most notably custom properties. Allows updates to existing properties on the blueprint as well as the addition of new properties. Each key in the hash is the property name, and the value is a another hash containing the value data type and the value itself. It is possible to use a `~` to add nested parameters.
 
-
 Example **kitchen.yml**:
 
 ```yaml
