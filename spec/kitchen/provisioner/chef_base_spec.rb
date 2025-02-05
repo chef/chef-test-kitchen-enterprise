@@ -1827,6 +1827,51 @@ describe Kitchen::Provisioner::ChefBase do
     end
   end
 
+  describe "#chef_bin_path" do
+    let(:provisioner) do
+      Class.new(Kitchen::Provisioner::ChefBase) do
+        def config
+          { chef_omnibus_root: "/opt/chef" }
+        end
+      end.new(config).finalize_config!(instance)
+    end
+
+    context "when chef-client is a symlink" do
+      before do
+        provisioner.stubs(:which).with("chef-client").returns("/usr/bin/chef-client")
+        File.stubs(:readlink).with("/usr/bin/chef-client").returns("/opt/chef/bin/chef-client")
+      end
+
+      it "returns the directory of the actual chef-client binary" do
+        expect(provisioner.chef_bin_path).to eq("/opt/chef/bin")
+      end
+    end
+    context "when chef-client is installed as a habitat package" do
+      before do
+        config[:hab_binary] = "/hab/bin/hab"
+        provisioner.stubs(:run_command).with("#{config[:hab_binary]} pkg list chef/chef-infra-client").returns("chef/chef-infra-client")
+        provisioner.stubs(:run_command).with("#{config[:hab_binary]} pkg path chef/chef-infra-client").returns("/hab/pkg/chef/chef-infra-client/19.0.54/20241121145703")
+      end
+
+      it "returns the correct path to the chef-client binary" do
+        expected_path = "/hab/pkg/chef/chef-infra-client/19.0.54/20241121145703/bin"
+        _(provisioner.chef_bin_path).must_equal expected_path
+      end
+    end
+
+    context "when it can't find the bin path" do
+      before do
+        provisioner.stubs(:which).with("chef-client").returns(nil)
+        File.stubs(:exist?).with("/hab/bin/hab").returns(false)
+        Dir.stubs(:exist?).with("/opt/chef").returns(false)
+      end
+
+      it "raises an error" do
+        expect { provisioner.chef_bin_path }.to raise_error(RuntimeError, "Unable to determine chef binaries path")
+      end
+    end
+  end
+
   def regexify(str, line = :whole_line)
     r = Regexp.escape(str)
     r = "^\s*#{r}$" if line == :whole_line
