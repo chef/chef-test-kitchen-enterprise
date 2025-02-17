@@ -6,6 +6,7 @@
 
 set -evx
 
+
 sed -i -r "s/^(\s*)VERSION = \".+\"/\1VERSION = \"$(cat VERSION)\"/" lib/kitchen/version.rb
 
 # Once Expeditor finshes executing this script, it will commit the changes and push
