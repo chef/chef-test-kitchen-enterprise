@@ -51,7 +51,7 @@ do_build() {
 
 do_install() {
   mkdir -p /hab/kitchen
-  export GEM_HOME="$pkg_prefix/vendor/gems"
+  export GEM_HOME="$pkg_prefix/vendor"
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
