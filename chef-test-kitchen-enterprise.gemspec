@@ -31,9 +31,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency "net-ssh",            ">= 2.9", "< 8.0" # pinning until we can confirm 8+ works
   gem.add_dependency "net-ssh-gateway",    ">= 1.2", "< 3.0" # pinning until we can confirm 3+ works
   gem.add_dependency "thor",               ">= 0.19", "< 1.3.0" # downgrading thor bec inspec-core depends on < 1.3.0
-  gem.add_dependency "winrm",              "~> 2.0"
-  gem.add_dependency "winrm-elevated",     "~> 1.0"
-  gem.add_dependency "winrm-fs",           "~> 1.1"
+  gem.add_dependency "chef-winrm",              "~> 2.3"
+  gem.add_dependency "chef-winrm-elevated",     "~> 1.2"
+  gem.add_dependency "chef-winrm-fs",           "~> 1.3"
   # Required to run the Chef provisioner local license check for remote systems
   # TK is not under Chef EULA
   gem.add_dependency "license-acceptance", ">= 1.0.11", "< 3.0" # pinning until we can confirm 3+ works
