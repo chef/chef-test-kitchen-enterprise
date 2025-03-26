@@ -4,7 +4,7 @@ gemspec
 gem "appbundler"
 gem "pry"
 gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent"
+gem "kitchen-inspec", git: "https://github.com/sanjain-progress/kitchen-inspec", branch: "sanjain/fix/update_dependency"
 
 group :test do
   gem "rake"
