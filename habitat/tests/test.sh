@@ -10,7 +10,7 @@ export HAB_BLDR_CHANNEL="LTS-2024"
 project_root="$(git rev-parse --show-toplevel)"
 pkg_ident="$1"
 
-# print error message followed by usage and exit
+# Display an error message, show usage instructions, and exit
 error () {
   local message="$1"
 
