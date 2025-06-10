@@ -36,7 +36,7 @@ module Kitchen
       default_config :chef_zero_host, nil
       default_config :chef_zero_port, 8889
       default_config :chef_license_key, nil
-      default_config :chef_license_server, []
+      # default_config :chef_license_server, []
 
       default_config :chef_client_path do |provisioner|
         provisioner
@@ -62,36 +62,36 @@ module Kitchen
         chef_cmd(cmd)
       end
 
-      def check_license
-        super
-
-        info("Fetching the Chef license key")
-        unless config[:chef_license_server].nil? || config[:chef_license_server].empty?
-          ENV["CHEF_LICENSE_SERVER"] = config[:chef_license_server].join(",")
-        end
-
-        key, type, install_sh_url = if config[:chef_license_key].nil?
-                                      Licensing::Base.get_license_keys
-                                    else
-                                      key = config[:chef_license_key]
-                                      client = Licensing::Base.get_license_client([key])
-
-                                      [key, client.license_type, Licensing::Base.install_sh_url(client.license_type, [key])]
-                                    end
-
-        info("Chef license key: #{key}")
-        config[:chef_license_key] = key
-        config[:install_sh_url] = install_sh_url
-        config[:chef_license_type] = type
-      end
-
-      def chef_license_key
-        config[:chef_license_key]
-      end
-
-      def chef_license_server
-        config[:chef_license_server]
-      end
+      # def check_license
+      #   super
+      #
+      #   info("Fetching the Chef license key")
+      #   unless config[:chef_license_server].nil? || config[:chef_license_server].empty?
+      #     ENV["CHEF_LICENSE_SERVER"] = config[:chef_license_server].join(",")
+      #   end
+      #
+      #   key, type, install_sh_url = if config[:chef_license_key].nil?
+      #                                 Licensing::Base.get_license_keys
+      #                               else
+      #                                 key = config[:chef_license_key]
+      #                                 client = Licensing::Base.get_license_client([key])
+      #
+      #                                 [key, client.license_type, Licensing::Base.install_sh_url(client.license_type, [key])]
+      #                               end
+      #
+      #   info("Chef license key: #{key}")
+      #   config[:chef_license_key] = key
+      #   config[:install_sh_url] = install_sh_url
+      #   config[:chef_license_type] = type
+      # end
+      #
+      # def chef_license_key
+      #   config[:chef_license_key]
+      # end
+      #
+      # def chef_license_server
+      #   config[:chef_license_server]
+      # end
 
       private
 

@@ -16,38 +16,38 @@
 # limitations under the License.
 #
 
-require_relative "config"
-require "chef-licensing"
-require "faraday_middleware"
-
-module Kitchen
-  module Licensing
-    class Base
-
-      OMNITRUCK_URLS = {
-        "free"       => "https://chefdownload-trial.chef.io",
-        "trial"      => "https://chefdownload-trial.chef.io",
-        "commercial" => "https://chefdownload-commerical.chef.io",
-      }.freeze
-
-      class << self
-        def get_license_keys
-          keys = ChefLicensing.license_keys
-          raise ChefLicensing::InvalidLicense, "A valid license is required to perform this action. Run <kitchen license> command to generate/activate the license." if keys.blank?
-
-          client = get_license_client(keys)
-
-          [keys.last, client.license_type, install_sh_url(client.license_type, keys)]
-        end
-
-        def get_license_client(keys)
-          ChefLicensing::Api::Client.info(license_keys: keys)
-        end
-
-        def install_sh_url(type, keys, ext = "sh")
-          OMNITRUCK_URLS[type] + "/install.#{ext}?license_id=#{keys.join(",")}"
-        end
-      end
-    end
-  end
-end
+# require_relative "config"
+# require "chef-licensing"
+# require "faraday_middleware"
+#
+# module Kitchen
+#   module Licensing
+#     class Base
+#
+#       OMNITRUCK_URLS = {
+#         "free"       => "https://chefdownload-trial.chef.io",
+#         "trial"      => "https://chefdownload-trial.chef.io",
+#         "commercial" => "https://chefdownload-commerical.chef.io",
+#       }.freeze
+#
+#       class << self
+#         def get_license_keys
+#           keys = ChefLicensing.license_keys
+#           raise ChefLicensing::InvalidLicense, "A valid license is required to perform this action. Run <kitchen license> command to generate/activate the license." if keys.blank?
+#
+#           client = get_license_client(keys)
+#
+#           [keys.last, client.license_type, install_sh_url(client.license_type, keys)]
+#         end
+#
+#         def get_license_client(keys)
+#           ChefLicensing::Api::Client.info(license_keys: keys)
+#         end
+#
+#         def install_sh_url(type, keys, ext = "sh")
+#           OMNITRUCK_URLS[type] + "/install.#{ext}?license_id=#{keys.join(",")}"
+#         end
+#       end
+#     end
+#   end
+# end
