@@ -54,7 +54,7 @@ module Kitchen
                         " in your Gemfile if using Bundler."
                       end
       raise ClientError, "Could not load the '#{plugin}' #{type_name} from the load path." + error_message
-    # ensure
+      # ensure
       # If any of the plugins has a different licensing configuration, after loading it,
       # it might override the kitchen licensing configuration. To fix this issue we will reconfigure it again.
       # if ChefLicensing::Config.chef_entitlement_id != Kitchen::Licensing::ENTITLEMENT_ID
