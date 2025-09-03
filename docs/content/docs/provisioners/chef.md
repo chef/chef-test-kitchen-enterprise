@@ -31,6 +31,9 @@ provisioner:
     - recipes/install.rb:22 # specific line in a file
   product_name: chef # which package to install chef || chef-workstation
   chef_license: nil # to accept the Chef Infra license automatically in Test Kitchen. Valid values: `accept`, `accept-no-persist`, or `accept-silent`
+  chef_license_key: nil # License key for chef-client 19+
+  chef_license_server: [] # Array of license servers for chef-client 19+ to verify license key with
+  hab_binary: /hab/bin/hab # Path to the Habitat binary for habitat package installed chef-clients
   product_version: latest # 'latest', partial, or full version number
   root_path: /tmp # Directory to create and execute the chef installer from
   channel: stable # stable, current or unstable
@@ -74,6 +77,6 @@ Where `$KEY` corresponds to a folder named `data, data_bags, environments, nodes
 
 Additional Components for `chef_target`:
 
-* locally installed `chef-client` of version >= 19.0
-* [kitchen-transport-train >= 0.2](https://github.com/tecracer-chef/kitchen-transport-train)
-* [train >= 3.9](https://github.com/inspec/train)
+- locally installed `chef-client` of version >= 19.0
+- [kitchen-transport-train >= 0.2](https://github.com/tecracer-chef/kitchen-transport-train)
+- [train >= 3.9](https://github.com/inspec/train)
