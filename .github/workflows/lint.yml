@@ -19,8 +19,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.3"]
-    name: Cookstyle/Chefstyle on Ruby
+        ruby: ["3.4"]
+    name: Chefstyle on Ruby
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -62,7 +62,9 @@ jobs:
       - name: Markdown lint
         uses: DavidAnson/markdownlint-cli2-action@v16
         with:
-          globs: "**/*.md"
+          globs: |
+            *.md
+            !CHANGELOG.md
 
   markdown-link-check:
     runs-on: ubuntu-latest
