@@ -1,11 +1,11 @@
-export HAB_BLDR_CHANNEL="LTS-2024"
-export HAB_REFRESH_CHANNEL="LTS-2024"
+export HAB_BLDR_CHANNEL="base-2025"
+export HAB_REFRESH_CHANNEL="base-2025"
 pkg_name="chef-test-kitchen-enterprise"
 pkg_origin="chef"
 pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 pkg_description="The Chef Test Kitchen Enterprise"
 pkg_license=('Apache-2.0')
-_chef_client_ruby="core/ruby3_1"
+_chef_client_ruby="core/ruby3_4"
 pkg_bin_dirs=(
   bin
 )
@@ -62,21 +62,13 @@ do_install() {
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
   gem install chef-test-kitchen-enterprise-*.gem --no-document
-  gem install chef-cli
   wrap_ruby_kitchen
-  wrap_ruby_chef_cli
   set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor"
 }
 
 wrap_ruby_kitchen() {
   local bin="$pkg_prefix/bin/kitchen"
   local real_bin="$GEM_HOME/gems/chef-test-kitchen-enterprise-${pkg_version}/bin/kitchen"
-  wrap_bin_with_ruby "$bin" "$real_bin"
-}
-
-wrap_ruby_chef_cli() {
-  local bin="$pkg_prefix/bin/chef-cli"
-  local real_bin="$GEM_HOME/bin/chef-cli"
   wrap_bin_with_ruby "$bin" "$real_bin"
 }
 

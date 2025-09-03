@@ -1,22 +1,52 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 1.0.14 -->
-## [v1.0.14](https://github.com/chef/chef-test-kitchen-enterprise/tree/v1.0.14) (2025-02-04)
+<!-- latest_release 1.1.3 -->
+## [v1.1.3](https://github.com/chef/chef-test-kitchen-enterprise/tree/v1.1.3) (2025-07-16)
 
 #### Merged Pull Requests
-- Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611))
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
+### Merged Pull Requests
+
+#### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -24,11 +54,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -38,11 +86,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -50,11 +116,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -66,11 +150,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -78,11 +180,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -92,11 +212,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -104,11 +242,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -122,11 +278,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -134,11 +308,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -148,11 +340,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -160,11 +370,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -176,11 +404,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -188,11 +434,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -202,11 +466,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -214,11 +496,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -234,11 +534,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -246,11 +564,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -260,11 +596,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -272,11 +626,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -288,11 +660,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -300,11 +690,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -314,11 +722,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -326,11 +752,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -344,11 +788,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -356,11 +818,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -370,11 +850,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -382,11 +880,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -398,11 +914,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -410,11 +944,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -424,11 +976,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -436,11 +1006,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -465,11 +1053,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -477,11 +1083,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -491,11 +1115,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -503,11 +1145,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -519,11 +1179,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -531,11 +1209,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -545,11 +1241,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -557,11 +1271,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -575,11 +1307,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -587,11 +1337,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -601,11 +1369,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -613,11 +1399,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -629,11 +1433,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -641,11 +1463,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -655,11 +1495,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
@@ -667,11 +1525,29 @@
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Updating windows hab pkg to ruby 3.4 and fixing test pipeline [#47](https://github.com/chef/chef-test-kitchen-enterprise/pull/47) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.3 -->
+- Fixing habitat test builds by declaring HAB_ORIGIN after habitat install [#48](https://github.com/chef/chef-test-kitchen-enterprise/pull/48) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.2 -->
+- CHEF-21187- Ruby 3.4 update in chef-test-kitchen-enterprise hab package [#46](https://github.com/chef/chef-test-kitchen-enterprise/pull/46) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.1 -->
+- Ruby upgrade 3.4 change [#43](https://github.com/chef/chef-test-kitchen-enterprise/pull/43) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.1.0 -->
+- [CHEF-20238] Updated the kitchen license commands with usage info [#39](https://github.com/chef/chef-test-kitchen-enterprise/pull/39) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.18 -->
+- Rename the chef-dke to chef workstation [#40](https://github.com/chef/chef-test-kitchen-enterprise/pull/40) ([sanghinitin](https://github.com/sanghinitin)) <!-- 1.0.17 -->
+- [CHEF-18897] Add the berkshelf gem and use the chef-cli from the Chef-DKE [#36](https://github.com/chef/chef-test-kitchen-enterprise/pull/36) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.16 -->
+- Fixed the issue with loading the license config [#34](https://github.com/chef/chef-test-kitchen-enterprise/pull/34) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.0.15 -->
+
 - Added back the env var and update the promote workload [#28](https://github.com/chef/chef-test-kitchen-enterprise/pull/28) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.14 -->
 
 - CHEF-18535-Added back the env to the plan files to test the pipelines [#27](https://github.com/chef/chef-test-kitchen-enterprise/pull/27) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.0.13 -->
