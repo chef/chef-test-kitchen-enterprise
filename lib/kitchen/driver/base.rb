@@ -15,12 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../configurable'
-require_relative '../errors'
-require_relative '../lazy_hash'
-require_relative '../logging'
-require_relative '../plugin_base'
-require_relative '../shell_out'
+require_relative "../configurable"
+require_relative "../errors"
+require_relative "../lazy_hash"
+require_relative "../logging"
+require_relative "../plugin_base"
+require_relative "../shell_out"
 
 module Kitchen
   module Driver

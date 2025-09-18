@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../command'
+require_relative "../command"
 
 module Kitchen
   module Command
@@ -28,7 +28,7 @@ module Kitchen
         results = parse_subcommand(args.first)
         if results.size > 1
           die "Argument `#{args.first}' returned multiple results:\n" +
-              results.map { |i| "  * #{i.name}" }.join("\n")
+            results.map { |i| "  * #{i.name}" }.join("\n")
         end
         instance = results.pop
 

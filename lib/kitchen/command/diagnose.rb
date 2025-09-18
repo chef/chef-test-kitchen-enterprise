@@ -15,10 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../command'
-require_relative '../diagnostic'
+require_relative "../command"
+require_relative "../diagnostic"
 
-autoload :YAML, 'yaml'
+autoload :YAML, "yaml"
 
 module Kitchen
   module Command

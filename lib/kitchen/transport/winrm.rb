@@ -17,12 +17,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'rbconfig' unless defined?(RbConfig)
-require 'uri' unless defined?(URI)
-require_relative '../../kitchen'
-require_relative '../util'
-require 'winrm' unless defined?(WinRM::Connection)
-require 'winrm/exceptions' unless defined?(WinRM::WinRMHTTPTransportError)
+require "rbconfig" unless defined?(RbConfig)
+require "uri" unless defined?(URI)
+require_relative "../../kitchen"
+require_relative "../util"
+require "winrm" unless defined?(WinRM::Connection)
+require "winrm/exceptions" unless defined?(WinRM::WinRMHTTPTransportError)
 
 module Kitchen
   module Transport
@@ -41,7 +41,7 @@ module Kitchen
 
       plugin_version Kitchen::VERSION
 
-      default_config :username, 'administrator'
+      default_config :username, "administrator"
       default_config :password, nil
       default_config :elevated, false
       default_config :rdp_port, 3389
@@ -52,7 +52,7 @@ module Kitchen
       default_config :max_wait_until_ready, 600
       default_config :winrm_transport, :negotiate
       default_config :scheme do |transport|
-        transport[:winrm_transport] == :ssl ? 'https' : 'http'
+        transport[:winrm_transport] == :ssl ? "https" : "http"
       end
       default_config :port do |transport|
         transport[:winrm_transport] == :ssl ? 5986 : 5985
@@ -106,7 +106,7 @@ module Kitchen
           return if command.nil?
 
           string_to_mask = "[WinRM] #{self} (#{command})"
-          masked_string = Util.mask_values(string_to_mask, %w(password ssh_http_proxy_password))
+          masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
           logger.debug(masked_string)
 
           exit_code, stderr = execute_with_exit_code(command)
@@ -130,7 +130,7 @@ module Kitchen
           case exception
           when WinRM::WinRMHTTPTransportError
             return current_try <= max_retries &&
-                   [400, 500].include?(exception.status_code)
+                [400, 500].include?(exception.status_code)
           when WinRM::WinRMWSManFault
             return current_try <= max_retries
           end
@@ -140,7 +140,7 @@ module Kitchen
 
         # (see Base::Connection#login_command)
         def login_command
-          case RbConfig::CONFIG['host_os']
+          case RbConfig::CONFIG["host_os"]
           when /darwin/
             login_command_for_mac
           when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
@@ -149,7 +149,7 @@ module Kitchen
             login_command_for_linux
           else
             raise ActionFailed, "Remote login not supported in #{self.class} " \
-              "from host OS '#{RbConfig::CONFIG['host_os']}'."
+              "from host OS '#{RbConfig::CONFIG["host_os"]}'."
           end
         end
 
@@ -186,7 +186,7 @@ module Kitchen
           retries ||= connection_retries.to_i
           raise e if (retries -= 1) < 0
 
-          logger.debug('[WinRM] PING_COMMAND failed. Retrying...')
+          logger.debug("[WinRM] PING_COMMAND failed. Retrying...")
           logger.debug("#{e.class}::#{e.message}")
           sleep(connection_retry_sleep.to_i)
           retry
@@ -252,9 +252,9 @@ module Kitchen
 
           if logger.debug?
             debug("Creating RDP document for #{instance_name} (#{rdp_doc_path})")
-            debug('------------')
+            debug("------------")
             File.foreach(rdp_doc_path) { |line| debug(line.chomp) }
-            debug('------------')
+            debug("------------")
           end
         end
 
@@ -284,7 +284,7 @@ module Kitchen
         end
 
         def unelevated_temp_dir
-          @unelevated_temp_dir ||= unelevated_session.run('$env:temp').stdout.chomp
+          @unelevated_temp_dir ||= unelevated_session.run("$env:temp").stdout.chomp
         end
 
         # @return [Winrm::FileTransporter] a file transporter
@@ -317,7 +317,7 @@ module Kitchen
           if error_regexp.match(stderr)
             stderr
               .split(error_regexp)[1..-2]
-              .map! { |line| line.sub(%r{_x000D__x000A_</S>}, '').rstrip }
+              .map! { |line| line.sub(%r{_x000D__x000A_</S>}, "").rstrip }
               .each { |line| logger.warn(line) }
           else
             stderr
@@ -331,15 +331,15 @@ module Kitchen
         # @return [LoginCommand] a login command
         # @api private
         def login_command_for_linux
-          xfreerdp = Util.command_exists? 'xfreerdp'
+          xfreerdp = Util.command_exists? "xfreerdp"
           unless xfreerdp
-            raise WinrmFailed, 'xfreerdp binary not found. Please install freerdp2-x11 on Debian-based systems or freerdp on Redhat-based systems.'
+            raise WinrmFailed, "xfreerdp binary not found. Please install freerdp2-x11 on Debian-based systems or freerdp on Redhat-based systems."
           end
 
-          args  = %W(/u:#{options[:user]})
-          args += %W(/p:#{options[:password]}) if options.key?(:password)
-          args += %W(/v:#{URI.parse(options[:endpoint]).host}:#{rdp_port})
-          args += %w(/cert-tofu) # always accept certificate
+          args  = %W{/u:#{options[:user]}}
+          args += %W{/p:#{options[:password]}} if options.key?(:password)
+          args += %W{/v:#{URI.parse(options[:endpoint]).host}:#{rdp_port}}
+          args += %w{/cert-tofu} # always accept certificate
 
           LoginCommand.new(xfreerdp, args)
         end
@@ -351,7 +351,7 @@ module Kitchen
         def login_command_for_mac
           create_rdp_doc(mac: true)
 
-          LoginCommand.new('open', rdp_doc_path)
+          LoginCommand.new("open", rdp_doc_path)
         end
 
         # Builds a `LoginCommand` for use by Windows-based platforms.
@@ -361,13 +361,13 @@ module Kitchen
         def login_command_for_windows
           create_rdp_doc
 
-          LoginCommand.new('mstsc', rdp_doc_path)
+          LoginCommand.new("mstsc", rdp_doc_path)
         end
 
         # @return [String] path to the local RDP document
         # @api private
         def rdp_doc_path
-          File.join(kitchen_root, '.kitchen', "#{instance_name}.rdp")
+          File.join(kitchen_root, ".kitchen", "#{instance_name}.rdp")
         end
 
         # Establishes a remote shell session, or establishes one when invoked
@@ -420,9 +420,9 @@ module Kitchen
 
       private
 
-      WINRM_SPEC_VERSION = ['~> 2.0'].freeze
-      WINRM_FS_SPEC_VERSION = ['~> 1.0'].freeze
-      WINRM_ELEVATED_SPEC_VERSION = ['~> 1.0'].freeze
+      WINRM_SPEC_VERSION = ["~> 2.0"].freeze
+      WINRM_FS_SPEC_VERSION = ["~> 1.0"].freeze
+      WINRM_ELEVATED_SPEC_VERSION = ["~> 1.0"].freeze
 
       # Builds the hash of options needed by the Connection object on
       # construction.
@@ -435,7 +435,7 @@ module Kitchen
           scheme: data.fetch(:scheme),
           host: data.fetch(:hostname),
           port: data.fetch(:port),
-          path: '/wsman'
+          path: "/wsman"
         ).to_s
 
         elevated_password = data[:password]
@@ -503,7 +503,7 @@ module Kitchen
       def create_new_connection(options, &block)
         if @connection
           string_to_mask = "[WinRM] shutting previous connection #{@connection}"
-          masked_string = Util.mask_values(string_to_mask, %w(password ssh_http_proxy_password))
+          masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
           logger.debug(masked_string)
           @connection.close
         end
@@ -515,9 +515,9 @@ module Kitchen
       # (see Base#load_needed_dependencies!)
       def load_needed_dependencies!
         super
-        load_with_rescue!('winrm', WINRM_SPEC_VERSION.dup)
-        load_with_rescue!('winrm-fs', WINRM_FS_SPEC_VERSION.dup)
-        load_with_rescue!('winrm-elevated', WINRM_ELEVATED_SPEC_VERSION.dup) if config[:elevated]
+        load_with_rescue!("winrm", WINRM_SPEC_VERSION.dup)
+        load_with_rescue!("winrm-fs", WINRM_FS_SPEC_VERSION.dup)
+        load_with_rescue!("winrm-elevated", WINRM_ELEVATED_SPEC_VERSION.dup) if config[:elevated]
       end
 
       def load_with_rescue!(gem_name, spec_version)
@@ -544,14 +544,14 @@ module Kitchen
         version_file = "', '#{version}"
 
         "The `#{name}` gem is missing and must" \
-          ' be installed or cannot be properly activated. Run' \
+          " be installed or cannot be properly activated. Run" \
           " `gem install #{name} #{version_cmd}`" \
-          ' or add the following to your Gemfile if you are using Bundler:' \
+          " or add the following to your Gemfile if you are using Bundler:" \
           " `gem '#{name} #{version_file}'`."
       end
 
       def host_os_windows?
-        case RbConfig::CONFIG['host_os']
+        case RbConfig::CONFIG["host_os"]
         when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
           true
         else
@@ -565,7 +565,7 @@ module Kitchen
       # @api private
       def reuse_connection
         string_to_mask = "[WinRM] reusing existing connection #{@connection}"
-        masked_string = Util.mask_values(string_to_mask, %w(password ssh_http_proxy_password))
+        masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
         logger.debug(masked_string)
         yield @connection if block_given?
         @connection

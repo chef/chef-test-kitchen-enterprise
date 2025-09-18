@@ -15,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'errors'
-require 'thor/util'
+require_relative "errors"
+require "thor/util"
 
 module Kitchen
   # Stateless utility methods used in different contexts. Essentially a mini
@@ -32,7 +32,7 @@ module Kitchen
     # @return [Integer] Logger::Severity constant value or nil if input is not
     #   valid
     def self.to_logger_level(symbol)
-      return unless %i(debug info warn error fatal).include?(symbol)
+      return unless %i{debug info warn error fatal}.include?(symbol)
 
       Logger.const_get(symbol.to_s.upcase)
     end
@@ -104,7 +104,7 @@ module Kitchen
     def self.mask_values(string_to_mask, keys)
       masked_string = string_to_mask
       keys.each do |key|
-        masked_string.gsub!(/:#{key}=>"([^"]*)"/, %(:#{key}=>"******"))
+        masked_string.gsub!(/:#{key}=>"([^"]*)"/, %{:#{key}=>"******"})
       end
       masked_string
     end
@@ -117,7 +117,7 @@ module Kitchen
       total = 0 if total.nil?
       minutes = (total / 60).to_i
       seconds = (total - (minutes * 60))
-      format('(%dm%.2fs)', minutes, seconds)
+      format("(%dm%.2fs)", minutes, seconds)
     end
 
     # Generates a command (or series of commands) wrapped so that it can be
@@ -129,9 +129,9 @@ module Kitchen
     # @param [String] the command
     # @return [String] a wrapped command string
     def self.wrap_command(cmd)
-      cmd = 'false' if cmd.nil?
-      cmd = 'true' if cmd.to_s.empty?
-      cmd = cmd.sub(/\n\Z/, '') if /\n\Z/.match?(cmd)
+      cmd = "false" if cmd.nil?
+      cmd = "true" if cmd.to_s.empty?
+      cmd = cmd.sub(/\n\Z/, "") if /\n\Z/.match?(cmd)
 
       "sh -c '\n#{cmd}\n'"
     end
@@ -151,7 +151,7 @@ module Kitchen
     # @param string [String] the string that will be modified
     # @return [String] the modified string
     def self.outdent!(string)
-      string.gsub!(/^ {#{string.index(/[^ ]/)}}/, '')
+      string.gsub!(/^ {#{string.index(/[^ ]/)}}/, "")
     end
 
     # Returns a set of Bourne Shell (AKA /bin/sh) compatible helper
@@ -161,7 +161,7 @@ module Kitchen
     # @return [String] a string representation of useful helper functions
     def self.shell_helpers
       IO.read(File.join(
-        File.dirname(__FILE__), %w(.. .. support download_helpers.sh)
+        File.dirname(__FILE__), %w{.. .. support download_helpers.sh}
       ))
     end
 
@@ -189,9 +189,9 @@ module Kitchen
       Kitchen.mutex_chdir.synchronize do
         Dir.chdir(path) do
           glob_pattern = if recurse
-                           '**/*'
+                           "**/*"
                          else
-                           '*'
+                           "*"
                          end
           flags = if include_dot
                     [File::FNM_DOTMATCH]
@@ -199,8 +199,8 @@ module Kitchen
                     []
                   end
           Dir.glob(glob_pattern, *flags)
-             .reject { |f| ['.', '..'].include?(f) }
-             .map { |f| File.join(path, f) }
+            .reject { |f| [".", ".."].include?(f) }
+            .map { |f| File.join(path, f) }
         end
       end
     end
@@ -239,7 +239,7 @@ module Kitchen
 
     # Check if a cmd exists on the PATH
     def self.command_exists?(cmd)
-      paths = ENV['PATH'].split(File::PATH_SEPARATOR) + [ '/bin', '/usr/bin', '/sbin', '/usr/sbin' ]
+      paths = ENV["PATH"].split(File::PATH_SEPARATOR) + [ "/bin", "/usr/bin", "/sbin", "/usr/sbin" ]
       paths.each do |path|
         filename = File.join(path, cmd)
         return filename if File.executable?(filename)

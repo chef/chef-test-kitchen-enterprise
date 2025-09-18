@@ -1,4 +1,4 @@
-require_relative '../platform_filter'
+require_relative "../platform_filter"
 
 module Kitchen
   class LifecycleHook

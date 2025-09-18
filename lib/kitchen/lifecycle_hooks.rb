@@ -15,11 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'configurable'
-require_relative 'errors'
-require_relative 'lifecycle_hook/local'
-require_relative 'lifecycle_hook/remote'
-require_relative 'logging'
+require_relative "configurable"
+require_relative "errors"
+require_relative "lifecycle_hook/local"
+require_relative "lifecycle_hook/remote"
+require_relative "logging"
 
 module Kitchen
   # A helper object used by {Instance} to coordinate lifecycle hook calls from

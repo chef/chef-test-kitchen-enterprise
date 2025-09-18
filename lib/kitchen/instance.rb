@@ -15,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'benchmark' unless defined?(Benchmark)
-require 'fileutils' unless defined?(FileUtils)
+require "benchmark" unless defined?(Benchmark)
+require "fileutils" unless defined?(FileUtils)
 
 module Kitchen
   # An instance of a suite running on a platform. A created instance may be a
@@ -38,7 +38,7 @@ module Kitchen
       # @param platform [Platform,#name] a Platform
       # @return [String] a normalized, consistent name for an instance
       def name_for(suite, platform)
-        "#{suite.name}-#{platform.name}".gsub(%r{[_,/]}, '-').delete('.')
+        "#{suite.name}-#{platform.name}".gsub(%r{[_,/]}, "-").delete(".")
       end
     end
 
@@ -216,7 +216,7 @@ module Kitchen
              transport.connection(state).login_command
            end
 
-      debug(%(Login command: #{lc.command} #{lc.arguments.join(' ')} ) \
+      debug(%{Login command: #{lc.command} #{lc.arguments.join(" ")} } \
         "(Options: #{lc.options})")
       Kernel.exec(*lc.exec_args)
     end
@@ -233,14 +233,14 @@ module Kitchen
     # Perform package.
     #
     def package_action
-      banner 'Packaging remote instance'
+      banner "Packaging remote instance"
       driver.package(state_file.read)
     end
 
     # Check system and configuration for common errors.
     #
     def doctor_action
-      banner 'The doctor is in'
+      banner "The doctor is in"
       [driver, provisioner, transport, verifier].any? do |obj|
         obj.doctor(state_file.read)
       end
@@ -251,9 +251,9 @@ module Kitchen
     # @return [Hash] a diagnostic hash
     def diagnose
       result = {}
-      %i(
+      %i{
         platform state_file driver provisioner transport verifier lifecycle_hooks
-      ).each do |sym|
+      }.each do |sym|
         obj = send(sym)
         result[sym] = obj.respond_to?(:diagnose) ? obj.diagnose : :unknown
       end
@@ -266,7 +266,7 @@ module Kitchen
     # @return [Hash] a diagnostic hash
     def diagnose_plugins
       result = {}
-      %i(driver provisioner verifier transport).each do |sym|
+      %i{driver provisioner verifier transport}.each do |sym|
         obj = send(sym)
         result[sym] = if obj.respond_to?(:diagnose_plugin)
                         obj.diagnose_plugin
@@ -312,10 +312,10 @@ module Kitchen
     # @raise [ClientError] if any validations fail
     # @api private
     def validate_options(options)
-      %i(
+      %i{
         suite platform driver provisioner
         transport verifier state_file
-      ).each do |k|
+      }.each do |k|
         next if options.key?(k)
 
         raise ClientError, "Instance#new requires option :#{k}"
@@ -401,7 +401,7 @@ module Kitchen
     # @return [self] this instance, used to chain actions
     # @api private
     def create_action
-      perform_action(:create, 'Creating')
+      perform_action(:create, "Creating")
     end
 
     # Perform the converge action.
@@ -479,7 +479,7 @@ module Kitchen
     # @return [self] this instance, used to chain actions
     # @api private
     def destroy_action
-      perform_action(:destroy, 'Destroying') { state_file.destroy }
+      perform_action(:destroy, "Destroying") { state_file.destroy }
     end
 
     # Perform an arbitrary action and provide useful logging.
@@ -707,7 +707,7 @@ module Kitchen
         end
       end
 
-      TRANSITIONS = %i(destroy create converge setup verify).freeze
+      TRANSITIONS = %i{destroy create converge setup verify}.freeze
 
       # Determines the index of a state in the state lifecycle vector. Woah.
       #

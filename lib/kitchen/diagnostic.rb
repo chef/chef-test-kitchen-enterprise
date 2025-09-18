@@ -15,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'util'
-require_relative 'version'
+require_relative "util"
+require_relative "version"
 
 module Kitchen
   # Combines and compiles diagnostic information about a Test Kitchen

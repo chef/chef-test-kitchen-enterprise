@@ -15,11 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'thor/util'
+require "thor/util"
 
-require_relative '../lazy_hash'
-require_relative '../plugin_base'
-require 'benchmark' unless defined?(Benchmark)
+require_relative "../lazy_hash"
+require_relative "../plugin_base"
+require "benchmark" unless defined?(Benchmark)
 
 module Kitchen
   module Driver
@@ -77,15 +77,15 @@ module Kitchen
           conn.execute(env_cmd(provisioner.init_command))
           info("Transferring files to #{instance.to_str}")
           conn.upload(sandbox_dirs, provisioner[:root_path])
-          debug('Transfer complete')
+          debug("Transfer complete")
           conn.execute(env_cmd(provisioner.prepare_command))
           conn.execute(env_cmd(provisioner.run_command))
           info("Downloading files from #{instance.to_str}")
           provisioner[:downloads].to_h.each do |remotes, local|
-            debug("Downloading #{Array(remotes).join(', ')} to #{local}")
+            debug("Downloading #{Array(remotes).join(", ")} to #{local}")
             conn.download(remotes, local)
           end
-          debug('Download complete')
+          debug("Download complete")
         end
       rescue Kitchen::Transport::TransportFailed => ex
         raise ActionFailed, ex.message
@@ -114,7 +114,7 @@ module Kitchen
           conn.execute(env_cmd(verifier.init_command))
           info("Transferring files to #{instance.to_str}")
           conn.upload(sandbox_dirs, verifier[:root_path])
-          debug('Transfer complete')
+          debug("Transfer complete")
           conn.execute(env_cmd(verifier.prepare_command))
           conn.execute(env_cmd(verifier.run_command))
         end
@@ -141,7 +141,7 @@ module Kitchen
       # (see Base#login_command)
       def login_command(state)
         instance.transport.connection(backcompat_merged_state(state))
-                .login_command
+          .login_command
       end
 
       # Executes an arbitrary command on an instance over an SSH connection.
@@ -189,9 +189,9 @@ module Kitchen
       private
 
       def backcompat_merged_state(state)
-        driver_ssh_keys = %w(
+        driver_ssh_keys = %w{
           forward_agent hostname password port ssh_key username
-        ).map(&:to_sym)
+        }.map(&:to_sym)
         config.select { |key, _| driver_ssh_keys.include?(key) }.rmerge(state)
       end
 
@@ -204,7 +204,7 @@ module Kitchen
         combined = config.to_hash.merge(state)
 
         opts = {}
-        opts[:user_known_hosts_file] = '/dev/null'
+        opts[:user_known_hosts_file] = "/dev/null"
         opts[:verify_host_key] = false
         opts[:keys_only] = true if combined[:ssh_key]
         opts[:password] = combined[:password] if combined[:password]
@@ -225,24 +225,24 @@ module Kitchen
       def env_cmd(cmd)
         return if cmd.nil?
 
-        env = String.new('env')
-        http_proxy = config[:http_proxy] || ENV['http_proxy'] ||
-                     ENV['HTTP_PROXY']
-        https_proxy = config[:https_proxy] || ENV['https_proxy'] ||
-                      ENV['HTTPS_PROXY']
-        ftp_proxy = config[:ftp_proxy] || ENV['ftp_proxy'] ||
-                    ENV['FTP_PROXY']
+        env = String.new("env")
+        http_proxy = config[:http_proxy] || ENV["http_proxy"] ||
+          ENV["HTTP_PROXY"]
+        https_proxy = config[:https_proxy] || ENV["https_proxy"] ||
+          ENV["HTTPS_PROXY"]
+        ftp_proxy = config[:ftp_proxy] || ENV["ftp_proxy"] ||
+          ENV["FTP_PROXY"]
         no_proxy = if (!config[:http_proxy] && http_proxy) ||
-                      (!config[:https_proxy] && https_proxy) ||
-                      (!config[:ftp_proxy] && ftp_proxy)
-                     ENV['no_proxy'] || ENV['NO_PROXY']
+            (!config[:https_proxy] && https_proxy) ||
+            (!config[:ftp_proxy] && ftp_proxy)
+                     ENV["no_proxy"] || ENV["NO_PROXY"]
                    end
         env << " http_proxy=#{http_proxy}"   if http_proxy
         env << " https_proxy=#{https_proxy}" if https_proxy
         env << " ftp_proxy=#{ftp_proxy}"     if ftp_proxy
         env << " no_proxy=#{no_proxy}"       if no_proxy
 
-        env == 'env' ? cmd : "#{env} #{cmd}"
+        env == "env" ? cmd : "#{env} #{cmd}"
       end
 
       # Executes a remote command over SSH.
@@ -270,13 +270,13 @@ module Kitchen
         return if locals.nil? || Array(locals).empty?
 
         info("Transferring files to #{instance.to_str}")
-        debug('TIMING: scp asynch upload (Kitchen::Driver::SSHBase)')
+        debug("TIMING: scp asynch upload (Kitchen::Driver::SSHBase)")
         elapsed = Benchmark.measure do
           transfer_path_async(locals, remote, connection)
         end
         delta = Util.duration(elapsed.real)
         debug("TIMING: scp async upload (Kitchen::Driver::SSHBase) took #{delta}")
-        debug('Transfer complete')
+        debug("Transfer complete")
       rescue SSHFailed, Net::SSH::Exception => ex
         raise ActionFailed, ex.message
       end
@@ -303,7 +303,7 @@ module Kitchen
         pseudo_state.merge!(options)
 
         instance.transport.connection(backcompat_merged_state(pseudo_state))
-                .wait_until_ready
+          .wait_until_ready
       end
 
       # Intercepts any bare #puts calls in subclasses and issues an INFO log

@@ -15,10 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../errors'
-require_relative '../configurable'
-require_relative '../logging'
-require_relative '../plugin_base'
+require_relative "../errors"
+require_relative "../configurable"
+require_relative "../logging"
+require_relative "../plugin_base"
 
 module Kitchen
   module Verifier
@@ -34,17 +34,17 @@ module Kitchen
       default_config :ftp_proxy, nil
 
       default_config :root_path do |verifier|
-        verifier.windows_os? ? '$env:TEMP\\verifier' : '/tmp/verifier'
+        verifier.windows_os? ? '$env:TEMP\\verifier' : "/tmp/verifier"
       end
 
       default_config :sudo do |verifier|
         verifier.windows_os? ? nil : true
       end
 
-      default_config :chef_omnibus_root, '/opt/chef'
+      default_config :chef_omnibus_root, "/opt/chef"
 
       default_config :sudo_command do |verifier|
-        verifier.windows_os? ? nil : 'sudo -E'
+        verifier.windows_os? ? nil : "sudo -E"
       end
 
       default_config :command_prefix, nil
@@ -71,7 +71,7 @@ module Kitchen
           conn.execute(init_command)
           info("Transferring files to #{instance.to_str}")
           conn.upload(sandbox_dirs, config[:root_path])
-          debug('Transfer complete')
+          debug("Transfer complete")
           conn.execute(prepare_command)
 
           begin
@@ -79,10 +79,10 @@ module Kitchen
           ensure
             info("Downloading files from #{instance.to_str}")
             config[:downloads].to_h.each do |remotes, local|
-              debug("Downloading #{Array(remotes).join(', ')} to #{local}")
+              debug("Downloading #{Array(remotes).join(", ")} to #{local}")
               conn.download(remotes, local)
             end
-            debug('Download complete')
+            debug("Download complete")
           end
         end
       rescue Kitchen::Transport::TransportFailed => ex
@@ -130,7 +130,7 @@ module Kitchen
       def create_sandbox
         @sandbox_path = Dir.mktmpdir("#{instance.name}-sandbox-")
         File.chmod(0755, sandbox_path)
-        info('Preparing files for transfer')
+        info("Preparing files for transfer")
         debug("Creating local sandbox in #{sandbox_path}")
       end
 
@@ -171,9 +171,9 @@ module Kitchen
       # @raise [ClientError] if the sandbox directory has no yet been created
       #   by calling `#create_sandbox`
       def sandbox_path
-        @sandbox_path ||= raise ClientError, 'Sandbox directory has not yet ' \
+        @sandbox_path ||= raise ClientError, "Sandbox directory has not yet " \
            "been created. Please run #{self.class}#create_sandox before " \
-           'trying to access the path.'
+           "trying to access the path."
       end
 
       # Returns the list of items in the sandbox directory
@@ -219,11 +219,11 @@ module Kitchen
       def shell_code_from_file(vars, file)
         src_file = File.join(
           File.dirname(__FILE__),
-          %w(.. .. .. support),
-          file + (powershell_shell? ? '.ps1' : '.sh')
+          %w{.. .. .. support},
+          file + (powershell_shell? ? ".ps1" : ".sh")
         )
 
-        wrap_shell_code([vars, '', IO.read(src_file)].join("\n"))
+        wrap_shell_code([vars, "", IO.read(src_file)].join("\n"))
       end
 
       # Conditionally prefixes a command with a sudo command.

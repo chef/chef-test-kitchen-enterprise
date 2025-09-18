@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'base'
+require_relative "base"
 
 module Kitchen
   module Verifier

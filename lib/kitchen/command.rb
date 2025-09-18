@@ -39,7 +39,7 @@ module Kitchen
         @args = cmd_args
         @options = cmd_options
         @action = options.fetch(:action, nil)
-        @help = options.fetch(:help, -> { 'No help provided' })
+        @help = options.fetch(:help, -> { "No help provided" })
         @config = options.fetch(:config, nil)
         @loader = options.fetch(:loader, nil)
         @shell = options.fetch(:shell)
@@ -91,7 +91,7 @@ module Kitchen
         result = @config.instances
 
         if result.empty?
-          die 'No instances defined'
+          die "No instances defined"
         else
           result
         end
@@ -109,8 +109,8 @@ module Kitchen
           @config.instances.get(regexp) ||
             @config.instances.get_all(/#{regexp}/)
                  rescue RegexpError => e
-                   die 'Invalid Ruby regular expression, ' \
-                     'you may need to single quote the argument. ' \
+                   die "Invalid Ruby regular expression, " \
+                     "you may need to single quote the argument. " \
                      "Please try again or consult http://rubular.com/ (#{e.message})"
         end
         result = Array(result)
@@ -136,7 +136,7 @@ module Kitchen
       # @return [Array<Instance>] an array of instances
       # @api private
       def parse_subcommand(arg = nil)
-        arg == 'all' ? all_instances : filtered_instances(arg)
+        arg == "all" ? all_instances : filtered_instances(arg)
       end
     end
 

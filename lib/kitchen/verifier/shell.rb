@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'base'
+require_relative "base"
 
 module Kitchen
   module Verifier
@@ -23,14 +23,14 @@ module Kitchen
     #
     # @author SAWANOBORI Yukihiko (<sawanoboriyu@higanworks.com>)
     class Shell < Kitchen::Verifier::Base
-      require 'mixlib/shellout' unless defined?(Mixlib::ShellOut)
+      require "mixlib/shellout" unless defined?(Mixlib::ShellOut)
 
       kitchen_verifier_api_version 1
 
       plugin_version Kitchen::VERSION
 
       default_config :sleep, 0
-      default_config :command, 'true'
+      default_config :command, "true"
       default_config :shellout_opts, {}
       default_config :live_stream, $stdout
       default_config :remote_exec, false
@@ -67,7 +67,7 @@ module Kitchen
       # @api private
       def sleep_if_set
         config[:sleep].to_i.times do
-          info('.')
+          info(".")
           sleep 1
         end
       end
@@ -85,12 +85,12 @@ module Kitchen
 
       def merge_state_to_env(state)
         env_state = { environment: {} }
-        env_state[:environment]['KITCHEN_INSTANCE'] = instance.name
-        env_state[:environment]['KITCHEN_PLATFORM'] = instance.platform.name
-        env_state[:environment]['KITCHEN_SUITE'] = instance.suite.name
-        env_state[:environment]['KITCHEN_USERNAME'] = instance.transport[:username] if instance.respond_to?(:transport)
+        env_state[:environment]["KITCHEN_INSTANCE"] = instance.name
+        env_state[:environment]["KITCHEN_PLATFORM"] = instance.platform.name
+        env_state[:environment]["KITCHEN_SUITE"] = instance.suite.name
+        env_state[:environment]["KITCHEN_USERNAME"] = instance.transport[:username] if instance.respond_to?(:transport)
         state.each_pair do |key, value|
-          env_state[:environment]['KITCHEN_' + key.to_s.upcase] = value.to_s
+          env_state[:environment]["KITCHEN_" + key.to_s.upcase] = value.to_s
         end
         config[:shellout_opts].merge!(env_state)
       end

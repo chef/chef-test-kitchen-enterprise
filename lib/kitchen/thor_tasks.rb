@@ -15,9 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'thor' unless defined?(Thor)
+require "thor" unless defined?(Thor)
 
-require_relative '../kitchen'
+require_relative "../kitchen"
 
 module Kitchen
   # Kitchen Thor task generator.
@@ -49,14 +49,14 @@ module Kitchen
     def define
       config.instances.each do |instance|
         self.class.desc instance.name, "Run #{instance.name} test instance"
-        self.class.send(:define_method, instance.name.tr('-', '_')) do
+        self.class.send(:define_method, instance.name.tr("-", "_")) do
           instance.test(:always)
         end
       end
 
-      self.class.desc 'all', 'Run all test instances'
+      self.class.desc "all", "Run all test instances"
       self.class.send(:define_method, :all) do
-        config.instances.each { |i| invoke i.name.tr('-', '_') }
+        config.instances.each { |i| invoke i.name.tr("-", "_") }
       end
     end
   end

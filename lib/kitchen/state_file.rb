@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-autoload :YAML, 'yaml'
+autoload :YAML, "yaml"
 
 module Kitchen
   # Exception class for any exceptions raised when reading and parsing a state
@@ -32,7 +32,7 @@ module Kitchen
     # @param name [String] name of the instance representing this state
     def initialize(kitchen_root, name)
       @file_name = File.expand_path(
-        File.join(kitchen_root, '.kitchen', "#{name}.yml")
+        File.join(kitchen_root, ".kitchen", "#{name}.yml")
       )
     end
 

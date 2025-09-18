@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../../kitchen'
+require_relative "../../kitchen"
 
 module Kitchen
   module Transport
@@ -62,7 +62,7 @@ module Kitchen
         # @param action [Symbol] the action currently taking place
         # @param state [Hash] the state hash
         # @api private
-        def report(action, msg = '')
+        def report(action, msg = "")
           what = action.capitalize
           info("[Dummy] #{what} #{msg} on Transport=Dummy")
           sleep_if_set

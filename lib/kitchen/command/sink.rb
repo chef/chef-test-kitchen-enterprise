@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../command'
+require_relative "../command"
 
 module Kitchen
   module Command
@@ -26,23 +26,23 @@ module Kitchen
       # Invoke the command.
       def call
         puts [
-          '',
-          '                    ___              ',
+          "",
+          "                    ___              ",
           "                   ' _ '.            ",
           '                 / /` `\\ \\         ',
-          '                 | |   [__]          ',
-          '                 | |    {{           ',
-          '                 | |    }}           ',
-          '              _  | |  _ {{           ',
-          '  ___________<_>_| |_<_>}}________   ',
-          '      .=======^=(___)=^={{====.      ',
+          "                 | |   [__]          ",
+          "                 | |    {{           ",
+          "                 | |    }}           ",
+          "              _  | |  _ {{           ",
+          "  ___________<_>_| |_<_>}}________   ",
+          "      .=======^=(___)=^={{====.      ",
           '     / .----------------}}---. \\    ',
           '    / /                 {{    \\ \\  ',
           '   / /                  }}     \\ \\ ',
           "  (  '========================='  )  ",
           "   '-----------------------------'   ",
-          '                                     ', # necessary newline
-          '',
+          "                                     ", # necessary newline
+          "",
         ].map(&:rstrip).join("\n")
       end
     end

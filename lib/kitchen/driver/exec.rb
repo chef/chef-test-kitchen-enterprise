@@ -12,10 +12,10 @@
 # limitations under the License.
 #
 
-require_relative 'base'
-require_relative '../shell_out'
-require_relative '../transport/exec'
-require_relative '../version'
+require_relative "base"
+require_relative "../shell_out"
+require_relative "../transport/exec"
+require_relative "../version"
 
 module Kitchen
   module Driver

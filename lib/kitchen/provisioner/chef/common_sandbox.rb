@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'json' unless defined?(JSON)
+require "json" unless defined?(JSON)
 
 module Kitchen
   module Provisioner
@@ -54,7 +54,7 @@ module Kitchen
           prepare(
             :secret,
             type: :file,
-            dest_name: 'encrypted_data_bag_secret',
+            dest_name: "encrypted_data_bag_secret",
             key_name: :encrypted_data_bag_secret_key_path
           )
         end
@@ -84,14 +84,14 @@ module Kitchen
         # @api private
         def all_files_in_cookbooks
           Util.list_directory(tmpbooks_dir, include_dot: true, recurse: true)
-              .select { |fn| File.file?(fn) }
+            .select { |fn| File.file?(fn) }
         end
 
         # @return [String] an absolute path to a Policyfile, relative to the
         #   kitchen root
         # @api private
         def policyfile
-          basename = config[:policyfile_path] || config[:policyfile] || 'Policyfile.rb'
+          basename = config[:policyfile_path] || config[:policyfile] || "Policyfile.rb"
           File.expand_path(basename, config[:kitchen_root])
         end
 
@@ -99,7 +99,7 @@ module Kitchen
         #   kitchen root
         # @api private
         def berksfile
-          basename = config[:berksfile_path] || 'Berksfile'
+          basename = config[:berksfile_path] || "Berksfile"
           File.expand_path(basename, config[:kitchen_root])
         end
 
@@ -107,18 +107,18 @@ module Kitchen
         #   to the kitchen root
         # @api private
         def cookbooks_dir
-          File.join(config[:kitchen_root], 'cookbooks')
+          File.join(config[:kitchen_root], "cookbooks")
         end
 
         # Copies a cookbooks/ directory into the sandbox path.
         #
         # @api private
         def cp_cookbooks
-          info('Preparing cookbooks from project directory')
+          info("Preparing cookbooks from project directory")
           debug("Using cookbooks from #{cookbooks_dir}")
 
           FileUtils.mkdir_p(tmpbooks_dir)
-          FileUtils.cp_r(File.join(cookbooks_dir, '.'), tmpbooks_dir)
+          FileUtils.cp_r(File.join(cookbooks_dir, "."), tmpbooks_dir)
 
           cp_site_cookbooks if File.directory?(site_cookbooks_dir)
           cp_this_cookbook if File.exist?(metadata_rb)
@@ -128,11 +128,11 @@ module Kitchen
         #
         # @api private
         def cp_site_cookbooks
-          info('Preparing site-cookbooks from project directory')
+          info("Preparing site-cookbooks from project directory")
           debug("Using cookbooks from #{site_cookbooks_dir}")
 
           FileUtils.mkdir_p(tmpsitebooks_dir)
-          FileUtils.cp_r(File.join(site_cookbooks_dir, '.'), tmpsitebooks_dir)
+          FileUtils.cp_r(File.join(site_cookbooks_dir, "."), tmpsitebooks_dir)
         end
 
         # Copies the current project, assumed to be a Chef cookbook into the
@@ -140,7 +140,7 @@ module Kitchen
         #
         # @api private
         def cp_this_cookbook
-          info('Preparing current project directory as a cookbook')
+          info("Preparing current project directory as a cookbook")
           debug("Using metadata.rb from #{metadata_rb}")
 
           cb_name = MetadataChopper.extract(metadata_rb).first || raise(UserError,
@@ -159,10 +159,10 @@ module Kitchen
         #
         # @api private
         def filter_only_cookbook_files
-          info('Removing non-cookbook files before transfer')
+          info("Removing non-cookbook files before transfer")
           FileUtils.rm(all_files_in_cookbooks - only_cookbook_files)
           Util.list_directory(tmpbooks_dir, recurse: true)
-              .reverse_each { |fn| FileUtils.rmdir(fn) if File.directory?(fn) && Dir.empty?(fn) }
+            .reverse_each { |fn| FileUtils.rmdir(fn) if File.directory?(fn) && Dir.empty?(fn) }
         end
 
         # @return [Logger] the instance's logger or Test Kitchen's common
@@ -176,19 +176,19 @@ module Kitchen
         #
         # @api private
         def make_fake_cookbook
-          info('Policyfile, Berksfile, cookbooks/, or metadata.rb not found ' \
-            'so Chef Infra Client will run, but do nothing. Is this intended?')
+          info("Policyfile, Berksfile, cookbooks/, or metadata.rb not found " \
+            "so Chef Infra Client will run, but do nothing. Is this intended?")
           name = File.basename(config[:kitchen_root])
           fake_cb = File.join(tmpbooks_dir, name)
           FileUtils.mkdir_p(fake_cb)
-          File.binwrite(File.join(fake_cb, 'metadata.rb'), %(name "#{name}"\n))
+          File.binwrite(File.join(fake_cb, "metadata.rb"), %{name "#{name}"\n})
         end
 
         # @return [String] an absolute path to a metadata.rb, relative to the
         #   kitchen root
         # @api private
         def metadata_rb
-          File.join(config[:kitchen_root], 'metadata.rb')
+          File.join(config[:kitchen_root], "metadata.rb")
         end
 
         # Generates a list of all typical cookbook files needed in a Chef run,
@@ -197,9 +197,9 @@ module Kitchen
         # @return [Array<String>] an array of absolute paths to files
         # @api private
         def only_cookbook_files
-          glob = File.join('*', "{#{config[:cookbook_files_glob]}}")
+          glob = File.join("*", "{#{config[:cookbook_files_glob]}}")
           Util.safe_glob(tmpbooks_dir, glob, File::FNM_DOTMATCH)
-              .select { |fn| File.file?(fn) && !%w(. ..).include?(fn) }
+            .select { |fn| File.file?(fn) && !%w{. ..}.include?(fn) }
         end
 
         # Prepares a generic Chef component source directory or file for
@@ -240,7 +240,7 @@ module Kitchen
         #
         # @api private
         def prepare_cache
-          FileUtils.mkdir_p(File.join(sandbox_path, 'cache'))
+          FileUtils.mkdir_p(File.join(sandbox_path, "cache"))
         end
 
         # Prepares Chef cookbooks for inclusion in the sandbox path.
@@ -273,10 +273,10 @@ module Kitchen
                   config[:attributes].merge(run_list: config[:run_list])
                 end
 
-          info('Preparing dna.json')
+          info("Preparing dna.json")
           debug("Creating dna.json from #{dna.inspect}")
 
-          File.binwrite(File.join(sandbox_path, 'dna.json'), dna.to_json)
+          File.binwrite(File.join(sandbox_path, "dna.json"), dna.to_json)
         end
 
         def update_dna_for_policyfile
@@ -290,8 +290,8 @@ module Kitchen
           Kitchen.mutex.synchronize do
             policy.compile
           end
-          policy_name = JSON.parse(File.read(policy.lockfile))['name']
-          policy_group = config[:policy_group] || 'local'
+          policy_name = JSON.parse(File.read(policy.lockfile))["name"]
+          policy_group = config[:policy_group] || "local"
           config[:attributes].merge(policy_name:, policy_group:)
         end
 
@@ -325,21 +325,21 @@ module Kitchen
         #   relative to the kitchen root
         # @api private
         def site_cookbooks_dir
-          File.join(config[:kitchen_root], 'site-cookbooks')
+          File.join(config[:kitchen_root], "site-cookbooks")
         end
 
         # @return [String] an absolute path to a cookbooks/ directory in the
         #   sandbox path
         # @api private
         def tmpbooks_dir
-          File.join(sandbox_path, 'cookbooks')
+          File.join(sandbox_path, "cookbooks")
         end
 
         # @return [String] an absolute path to a site cookbooks directory in the
         #   sandbox path
         # @api private
         def tmpsitebooks_dir
-          File.join(sandbox_path, 'cookbooks')
+          File.join(sandbox_path, "cookbooks")
         end
       end
     end

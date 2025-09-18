@@ -1,5 +1,5 @@
-require_relative 'base'
-require_relative '../errors'
+require_relative "base"
+require_relative "../errors"
 
 module Kitchen
   class LifecycleHook
@@ -14,7 +14,7 @@ module Kitchen
             # Just not even trying.
             return
           else
-            raise UserError, 'Cannot use remote lifecycle hooks during phases when the instance is not available'
+            raise UserError, "Cannot use remote lifecycle hooks during phases when the instance is not available"
           end
         end
 

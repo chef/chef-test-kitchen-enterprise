@@ -30,10 +30,10 @@ module Kitchen
       bright_cyan: 96, bright_white: 97
     }.freeze
 
-    COLORS = %w(
+    COLORS = %w{
       cyan yellow green magenta blue bright_cyan bright_yellow
       bright_green bright_magenta bright_blue
-    ).freeze
+    }.freeze
 
     # Returns an ansi escaped string representing a color control sequence.
     #
@@ -42,8 +42,8 @@ module Kitchen
     # @return [String] an ansi escaped string if the color is valid and an
     #   empty string otherwise
     def self.escape(name)
-      return '' if name.nil?
-      return '' unless ANSI[name]
+      return "" if name.nil?
+      return "" unless ANSI[name]
 
       "\e[#{ANSI[name]}m"
     end

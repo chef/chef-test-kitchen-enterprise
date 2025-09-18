@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'plugin'
+require_relative "plugin"
 
 module Kitchen
   # A verifier is responsible for running tests post-converge to confirm that
@@ -24,7 +24,7 @@ module Kitchen
   # @author Fletcher Nichol <fnichol@nichol.ca>
   module Verifier
     # Default verifier to use
-    DEFAULT_PLUGIN = 'busser'.freeze
+    DEFAULT_PLUGIN = "busser".freeze
 
     # Returns an instance of a verifier given a plugin type string.
     #

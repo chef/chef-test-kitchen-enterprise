@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../command'
+require_relative "../command"
 
 module Kitchen
   module Command
@@ -25,11 +25,11 @@ module Kitchen
     class Console < Kitchen::Command::Base
       # Invoke the command.
       def call
-        require 'pry'
-        Pry.start(@config, prompt: [prompt('>'), prompt('*')])
+        require "pry"
+        Pry.start(@config, prompt: [prompt(">"), prompt("*")])
       rescue LoadError
-        warn %(Make sure you have the pry gem installed. You can install it with:)
-        warn %(`gem install pry` or including 'gem "pry"' in your Gemfile.)
+        warn %{Make sure you have the pry gem installed. You can install it with:}
+        warn %{`gem install pry` or including 'gem "pry"' in your Gemfile.}
         exit 1
       end
 
