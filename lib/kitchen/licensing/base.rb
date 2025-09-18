@@ -32,6 +32,7 @@ module Kitchen
 
       class << self
         def get_license_keys
+          puts "inside get_license_keys method-------"
           keys = ChefLicensing.license_keys
           raise ChefLicensing::InvalidLicense, "A valid license is required to perform this action. Run <kitchen license> command to generate/activate the license." if keys.empty?
 
@@ -41,10 +42,12 @@ module Kitchen
         end
 
         def get_license_client(keys)
+          puts "inside get_license_client method-------"
           ChefLicensing::Api::Client.info(license_keys: keys)
         end
 
         def install_sh_url(type, keys, ext = "sh")
+          puts "inside install_sh_url method-------"
           OMNITRUCK_URLS[type] + "/install.#{ext}?license_id=#{keys.join(",")}"
         end
       end

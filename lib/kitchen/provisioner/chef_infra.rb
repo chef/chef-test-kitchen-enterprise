@@ -63,26 +63,30 @@ module Kitchen
       end
 
       def check_license
+        puts "inside check_license method-------"
         super
 
-        info("Fetching the Chef license key")
-        unless config[:chef_license_server].nil? || config[:chef_license_server].empty?
-          ENV["CHEF_LICENSE_SERVER"] = config[:chef_license_server].join(",")
+        # Use require_license_for to enforce licensing for kitchen converge operations
+        ChefLicensing::Config.require_license_for do
+          info("Fetching the Chef license key")
+          unless config[:chef_license_server].nil? || config[:chef_license_server].empty?
+            ENV["CHEF_LICENSE_SERVER"] = config[:chef_license_server].join(",")
+          end
+
+          key, type, install_sh_url = if config[:chef_license_key].nil?
+                                        get_or_prompt_for_license
+                                      else
+                                        key = config[:chef_license_key]
+                                        client = Licensing::Base.get_license_client([key])
+
+                                        [key, client.license_type, Licensing::Base.install_sh_url(client.license_type, [key])]
+                                      end
+
+          info("Chef license key: #{key}")
+          config[:chef_license_key] = key
+          config[:install_sh_url] = install_sh_url
+          config[:chef_license_type] = type
         end
-
-        key, type, install_sh_url = if config[:chef_license_key].nil?
-                                      Licensing::Base.get_license_keys
-                                    else
-                                      key = config[:chef_license_key]
-                                      client = Licensing::Base.get_license_client([key])
-
-                                      [key, client.license_type, Licensing::Base.install_sh_url(client.license_type, [key])]
-                                    end
-
-        info("Chef license key: #{key}")
-        config[:chef_license_key] = key
-        config[:install_sh_url] = install_sh_url
-        config[:chef_license_type] = type
       end
 
       def chef_license_key
@@ -94,6 +98,30 @@ module Kitchen
       end
 
       private
+
+      # Gets or prompts for a license key when none is available.
+      # Uses ChefLicensing.fetch_and_persist to prompt user for license input.
+      #
+      # @return [Array<String, String, String>] array containing [license_key, license_type, install_sh_url]
+      # @api private
+      def get_or_prompt_for_license
+        begin
+          # Try to get existing license keys first
+          Licensing::Base.get_license_keys
+        rescue ChefLicensing::InvalidLicense
+          # No license available, prompt user to add one
+          info("No valid license found. Please provide a license key.")
+          
+          # Use ChefLicensing.fetch_and_persist to prompt for and persist license
+          keys = ChefLicensing.fetch_and_persist
+          raise ChefLicensing::InvalidLicense, "Failed to obtain a valid license" if keys.empty?
+          
+          # Get the license client information for the newly added license
+          client = Licensing::Base.get_license_client(keys)
+          
+          [keys.last, client.license_type, Licensing::Base.install_sh_url(client.license_type, keys)]
+        end
+      end
 
       # Adds optional flags to a chef-client command, depending on
       # configuration data. Note that this method mutates the incoming Array.

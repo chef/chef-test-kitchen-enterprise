@@ -7,8 +7,8 @@ gem "mutex_m"
 gem "benchmark"
 gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
 gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent"
-
-
+# Use chef-licensing branch that contains require_license_for method
+gem "chef-licensing", github: "chef/chef-licensing", branch: "nm/introducing-optional-mode", glob: "components/ruby/chef-licensing.gemspec"
 group :test do
   gem "rake"
   gem "rb-readline"
@@ -29,3 +29,4 @@ end
 group :chefstyle do
   gem "chefstyle", "2.2.3"
 end
+# gem "chef-test-kitchen-enterprise"
