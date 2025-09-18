@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, 2013, Fletcher Nichol
+# Copyright:: (C) 2012, 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,5 +16,5 @@
 # limitations under the License.
 
 module Kitchen
-  VERSION = "1.1.4".freeze
+  VERSION = '1.1.4'.freeze
 end

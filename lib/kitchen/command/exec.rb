@@ -1,7 +1,7 @@
 #
 # Author:: SAWANOBORI Yukihiko (<sawanoboriyu@higanworks.com>)
 #
-# Copyright (C) 2014, HiganWorks LLC
+# Copyright:: (C) 2014, HiganWorks LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "../command"
+require_relative '../command'
 
 module Kitchen
   module Command

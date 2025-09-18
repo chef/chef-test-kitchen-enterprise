@@ -12,10 +12,10 @@
 # limitations under the License.
 #
 
-require_relative "base"
-require_relative "../shell_out"
-require_relative "../transport/exec"
-require_relative "../version"
+require_relative 'base'
+require_relative '../shell_out'
+require_relative '../transport/exec'
+require_relative '../version'
 
 module Kitchen
   module Driver
@@ -59,7 +59,7 @@ module Kitchen
       #
       # @param state [Hash] the state hash
       # @api private
-      def reset_instance(state)
+      def reset_instance(_state)
         if (cmd = config[:reset_command])
           info("Resetting instance state with command: #{cmd}")
           run_command(cmd)

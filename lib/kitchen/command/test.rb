@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "../command"
+require_relative '../command'
 
-require "benchmark" unless defined?(Benchmark)
+require 'benchmark' unless defined?(Benchmark)
 
 module Kitchen
   module Command
@@ -29,14 +29,14 @@ module Kitchen
 
       # Invoke the command.
       def call
-        unless %w{passing always never}.include?(options[:destroy])
-          raise ArgumentError, "Destroy mode must be passing, always, or never."
+        unless %w(passing always never).include?(options[:destroy])
+          raise ArgumentError, 'Destroy mode must be passing, always, or never.'
         end
 
         banner "Starting Chef Test Kitchen Enterprise (v#{Kitchen::VERSION})"
         elapsed = Benchmark.measure do
           destroy_mode = options[:destroy].to_sym
-          results = parse_subcommand(args.join("|"))
+          results = parse_subcommand(args.join('|'))
 
           run_action(:test, results, destroy_mode)
         end

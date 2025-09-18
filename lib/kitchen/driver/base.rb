@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, Fletcher Nichol
+# Copyright:: (C) 2012, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "../configurable"
-require_relative "../errors"
-require_relative "../lazy_hash"
-require_relative "../logging"
-require_relative "../plugin_base"
-require_relative "../shell_out"
+require_relative '../configurable'
+require_relative '../errors'
+require_relative '../lazy_hash'
+require_relative '../logging'
+require_relative '../plugin_base'
+require_relative '../shell_out'
 
 module Kitchen
   module Driver
@@ -66,7 +66,7 @@ module Kitchen
       #
       # @param state [Hash] mutable instance and driver state
       # @returns [Boolean] Return true if a problem is found.
-      def doctor(state)
+      def doctor(_state)
         false
       end
 

@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,23 +15,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "fileutils" unless defined?(FileUtils)
-require "pathname" unless defined?(Pathname)
-require "json" unless defined?(JSON)
-require "cgi" unless defined?(CGI)
+require 'fileutils' unless defined?(FileUtils)
+require 'pathname' unless defined?(Pathname)
+require 'json' unless defined?(JSON)
+require 'cgi' unless defined?(CGI)
 
-require_relative "chef/policyfile"
-require_relative "chef/berkshelf"
-require_relative "chef/common_sandbox"
-require_relative "../util"
+require_relative 'chef/policyfile'
+require_relative 'chef/berkshelf'
+require_relative 'chef/common_sandbox'
+require_relative '../util'
 module LicenseAcceptance
-  autoload :Acceptor, "license_acceptance/acceptor"
+  autoload :Acceptor, 'license_acceptance/acceptor'
 end
 
 begin
-  require "chef-config/config"
-  require "chef-config/workstation_config_loader"
-rescue LoadError # rubocop:disable Lint/HandleExceptions
+  require 'chef-config/config'
+  require 'chef-config/workstation_config_loader'
+rescue LoadError
   # This space left intentionally blank.
 end
 
@@ -42,7 +42,7 @@ module Kitchen
     # @author Fletcher Nichol <fnichol@nichol.ca>
     class ChefBase < Base
       default_config :require_chef_omnibus, true
-      default_config :chef_omnibus_url, "https://omnitruck.chef.io/install.sh"
+      default_config :chef_omnibus_url, 'https://omnitruck.chef.io/install.sh'
       default_config :chef_omnibus_install_options, nil
       default_config :chef_license, nil
       default_config :run_list, []
@@ -51,7 +51,7 @@ module Kitchen
       default_config :config_path, nil
       default_config :log_file, nil
       default_config :log_level do |provisioner|
-        provisioner[:debug] ? "debug" : "auto"
+        provisioner[:debug] ? 'debug' : 'auto'
       end
       default_config :profile_ruby, false
       # The older policyfile_zero used `policyfile` so support it for compat.
@@ -70,7 +70,7 @@ module Kitchen
         attributes/**/* definitions/**/* files/**/* libraries/**/*
         providers/**/* recipes/**/* resources/**/* templates/**/*
         ohai/**/* compliance/**/*
-      ).join(",")
+      ).join(',')
       # to ease upgrades, allow the user to turn deprecation warnings into errors
       default_config :deprecations_as_errors, false
 
@@ -82,37 +82,37 @@ module Kitchen
       default_config :enforce_idempotency, false
 
       default_config :data_path do |provisioner|
-        provisioner.calculate_path("data")
+        provisioner.calculate_path('data')
       end
       expand_path_for :data_path
 
       default_config :data_bags_path do |provisioner|
-        provisioner.calculate_path("data_bags")
+        provisioner.calculate_path('data_bags')
       end
       expand_path_for :data_bags_path
 
       default_config :environments_path do |provisioner|
-        provisioner.calculate_path("environments")
+        provisioner.calculate_path('environments')
       end
       expand_path_for :environments_path
 
       default_config :nodes_path do |provisioner|
-        provisioner.calculate_path("nodes")
+        provisioner.calculate_path('nodes')
       end
       expand_path_for :nodes_path
 
       default_config :roles_path do |provisioner|
-        provisioner.calculate_path("roles")
+        provisioner.calculate_path('roles')
       end
       expand_path_for :roles_path
 
       default_config :clients_path do |provisioner|
-        provisioner.calculate_path("clients")
+        provisioner.calculate_path('clients')
       end
       expand_path_for :clients_path
 
       default_config :encrypted_data_bag_secret_key_path do |provisioner|
-        provisioner.calculate_path("encrypted_data_bag_secret_key", type: :file)
+        provisioner.calculate_path('encrypted_data_bag_secret_key', type: :file)
       end
       expand_path_for :encrypted_data_bag_secret_key_path
 
@@ -129,7 +129,7 @@ module Kitchen
 
       default_config :channel, :stable
 
-      default_config :install_strategy, "once"
+      default_config :install_strategy, 'once'
 
       default_config :platform
 
@@ -142,8 +142,7 @@ module Kitchen
       default_config :checksum
 
       deprecate_config_for :require_chef_omnibus do |provisioner|
-        case
-        when provisioner[:require_chef_omnibus] == false
+        if provisioner[:require_chef_omnibus] == false
           Util.outdent!(<<-MSG)
             The 'require_chef_omnibus' attribute with value of 'false' will
             change to use the new 'install_strategy' attribute with a value of 'skip'.
@@ -157,7 +156,7 @@ module Kitchen
               product_name: <chef or chef-workstation>
               install_strategy: skip
           MSG
-        when provisioner[:require_chef_omnibus].to_s.match?(/\d/)
+        elsif provisioner[:require_chef_omnibus].to_s.match?(/\d/)
           Util.outdent!(<<-MSG)
             The 'require_chef_omnibus' attribute with version values will change
             to use the new 'product_version' attribute.
@@ -170,7 +169,7 @@ module Kitchen
               product_name: <chef or chef-workstation>
               product_version: #{provisioner[:require_chef_omnibus]}
           MSG
-        when provisioner[:require_chef_omnibus] == "latest"
+        elsif provisioner[:require_chef_omnibus] == 'latest'
           Util.outdent!(<<-MSG)
             The 'require_chef_omnibus' attribute with value of 'latest' will change
             to use the new 'install_strategy' attribute with a value of 'always'.
@@ -243,7 +242,7 @@ module Kitchen
         ChefConfig::Config.export_proxies if defined?(ChefConfig::Config.export_proxies)
       end
 
-      def doctor(state)
+      def doctor(_state)
         deprecated_config = instance.driver.instance_variable_get(:@deprecated_config)
         deprecated_config.each do |attr, msg|
           info("**** #{attr} deprecated\n#{msg}")
@@ -272,13 +271,12 @@ module Kitchen
       #
       # @return [String] license id to prompt for acceptance
       def license_acceptance_id
-        case
-          when File.exist?(policyfile)
-            "chef-workstation"
-          when config[:product_name]
-            config[:product_name]
-          else
-            "chef"
+        if File.exist?(policyfile)
+          'chef-workstation'
+        elsif config[:product_name]
+          config[:product_name]
+        else
+          'chef'
         end
       end
 
@@ -311,10 +309,10 @@ module Kitchen
 
       # (see Base#init_command)
       def init_command
-        dirs = %w{
+        dirs = %w(
           cookbooks data data_bags environments roles clients
           encrypted_data_bag_secret
-        }.sort.map { |dir| remote_path_join(config[:root_path], dir) }
+        ).sort.map { |dir| remote_path_join(config[:root_path], dir) }
 
         vars = if powershell_shell?
                  init_command_vars_for_powershell(dirs)
@@ -322,13 +320,13 @@ module Kitchen
                  init_command_vars_for_bourne(dirs)
                end
 
-        prefix_command(shell_code_from_file(vars, "chef_base_init_command"))
+        prefix_command(shell_code_from_file(vars, 'chef_base_init_command'))
       end
 
       # (see Base#install_command)
       def install_command
         return unless config[:require_chef_omnibus] || config[:product_name]
-        return if config[:product_name] && config[:install_strategy] == "skip"
+        return if config[:product_name] && config[:install_strategy] == 'skip'
 
         prefix_command(install_script_contents)
       end
@@ -336,7 +334,7 @@ module Kitchen
       private
 
       def last_exit_code
-        "; exit $LastExitCode" if powershell_shell?
+        '; exit $LastExitCode' if powershell_shell?
       end
 
       # @return [Hash] an option hash for the install commands
@@ -351,7 +349,7 @@ module Kitchen
           sudo_command:,
         }.tap do |opts|
           opts[:root] = config[:chef_omnibus_root] if config.key? :chef_omnibus_root
-          %i{install_msi_url http_proxy https_proxy}.each do |key|
+          %i(install_msi_url http_proxy https_proxy).each do |key|
             opts[key] = config[key] if config.key? key
           end
         end
@@ -366,7 +364,7 @@ module Kitchen
         if config[:chef_omnibus_install_options].nil?
           config[:chef_omnibus_install_options] = cache_dir_option
         elsif config[:chef_omnibus_install_options].match(/\s*#{omnibus_dir_option}\s*/).nil?
-          config[:chef_omnibus_install_options] << " " << cache_dir_option
+          config[:chef_omnibus_install_options] << ' ' << cache_dir_option
         end
       end
 
@@ -374,7 +372,7 @@ module Kitchen
       #   kitchen root
       # @api private
       def policyfile
-        policyfile_basename = config[:policyfile_path] || config[:policyfile] || "Policyfile.rb"
+        policyfile_basename = config[:policyfile_path] || config[:policyfile] || 'Policyfile.rb'
         File.expand_path(policyfile_basename, config[:kitchen_root])
       end
 
@@ -382,7 +380,7 @@ module Kitchen
       #   kitchen root
       # @api private
       def berksfile
-        berksfile_basename = config[:berksfile_path] || config[:berksfile] || "Berksfile"
+        berksfile_basename = config[:berksfile_path] || config[:berksfile] || 'Berksfile'
         File.expand_path(berksfile_basename, config[:kitchen_root])
       end
 
@@ -391,29 +389,29 @@ module Kitchen
       #
       # @return [Hash] a configuration hash
       # @api private
-      def default_config_rb # rubocop:disable Metrics/MethodLength
-        root = config[:root_path].gsub("$env:TEMP", "\#{ENV['TEMP']\}")
+      def default_config_rb
+        root = config[:root_path].gsub('$env:TEMP', "\#{ENV['TEMP']}")
 
         config_rb = {
           node_name: instance.name,
-          checksum_path: remote_path_join(root, "checksums"),
-          file_cache_path: remote_path_join(root, "cache"),
-          file_backup_path: remote_path_join(root, "backup"),
+          checksum_path: remote_path_join(root, 'checksums'),
+          file_cache_path: remote_path_join(root, 'cache'),
+          file_backup_path: remote_path_join(root, 'backup'),
           cookbook_path: [
-            remote_path_join(root, "cookbooks"),
-            remote_path_join(root, "site-cookbooks"),
+            remote_path_join(root, 'cookbooks'),
+            remote_path_join(root, 'site-cookbooks'),
           ],
-          data_bag_path: remote_path_join(root, "data_bags"),
-          environment_path: remote_path_join(root, "environments"),
-          node_path: remote_path_join(root, "nodes"),
-          role_path: remote_path_join(root, "roles"),
-          client_path: remote_path_join(root, "clients"),
-          user_path: remote_path_join(root, "users"),
-          validation_key: remote_path_join(root, "validation.pem"),
-          client_key: remote_path_join(root, "client.pem"),
-          chef_server_url: "http://127.0.0.1:8889",
+          data_bag_path: remote_path_join(root, 'data_bags'),
+          environment_path: remote_path_join(root, 'environments'),
+          node_path: remote_path_join(root, 'nodes'),
+          role_path: remote_path_join(root, 'roles'),
+          client_path: remote_path_join(root, 'clients'),
+          user_path: remote_path_join(root, 'users'),
+          validation_key: remote_path_join(root, 'validation.pem'),
+          client_key: remote_path_join(root, 'client.pem'),
+          chef_server_url: 'http://127.0.0.1:8889',
           encrypted_data_bag_secret: remote_path_join(
-            root, "encrypted_data_bag_secret"
+            root, 'encrypted_data_bag_secret'
           ),
           treat_deprecation_warnings_as_errors: config[:deprecations_as_errors],
         }
@@ -429,7 +427,7 @@ module Kitchen
       # @api private
       def format_config_file(data)
         data.each.map do |attr, value|
-          [attr, format_value(value)].join(" ")
+          [attr, format_value(value)].join(' ')
         end.join("\n")
       end
 
@@ -443,9 +441,9 @@ module Kitchen
         if obj.is_a?(String) && obj =~ /^:/
           obj
         elsif obj.is_a?(String)
-          %{"#{obj.gsub(/\\/, "\\\\\\\\")}"}
+          %("#{obj.gsub('\\', '\\\\\\\\')}")
         elsif obj.is_a?(Array)
-          %{[#{obj.map { |i| format_value(i) }.join(", ")}]}
+          %([#{obj.map { |i| format_value(i) }.join(', ')}])
         else
           obj.inspect
         end
@@ -458,9 +456,9 @@ module Kitchen
       # @api private
       def init_command_vars_for_bourne(dirs)
         [
-          shell_var("sudo_rm", sudo("rm")),
-          shell_var("dirs", dirs.join(" ")),
-          shell_var("root_path", config[:root_path]),
+          shell_var('sudo_rm', sudo('rm')),
+          shell_var('dirs', dirs.join(' ')),
+          shell_var('root_path', config[:root_path]),
         ].join("\n")
       end
 
@@ -471,8 +469,8 @@ module Kitchen
       # @api private
       def init_command_vars_for_powershell(dirs)
         [
-          %{$dirs = @(#{dirs.map { |d| %{"#{d}"} }.join(", ")})},
-          shell_var("root_path", config[:root_path]),
+          %{$dirs = @(#{dirs.map { |d| %("#{d}") }.join(', ')})},
+          shell_var('root_path', config[:root_path]),
         ].join("\n")
       end
 
@@ -505,7 +503,7 @@ module Kitchen
       # @return [String] contents of product based install script
       # @api private
       def script_for_product
-        require "mixlib/install"
+        require 'mixlib/install'
         installer = Mixlib::Install.new({
           product_name: config[:product_name],
           product_version: config[:product_version],
@@ -515,14 +513,14 @@ module Kitchen
           },
         }.tap do |opts|
           opts[:shell_type] = :ps1 if powershell_shell?
-          %i{platform platform_version architecture}.each do |key|
+          %i(platform platform_version architecture).each do |key|
             opts[key] = config[key] if config[key]
           end
 
           unless windows_os?
             # omnitruck installer does not currently support a tmp dir option on windows
             opts[:install_command_options][:tmp_dir] = config[:root_path]
-            opts[:install_command_options]["TMPDIR"] = config[:root_path]
+            opts[:install_command_options]['TMPDIR'] = config[:root_path]
           end
 
           if config[:download_url]
@@ -536,12 +534,12 @@ module Kitchen
           end
 
           proxies = {}.tap do |prox|
-            %i{http_proxy https_proxy ftp_proxy no_proxy}.each do |key|
+            %i(http_proxy https_proxy ftp_proxy no_proxy).each do |key|
               prox[key] = config[key] if config[key]
             end
 
             # install.ps1 only supports http_proxy
-            prox.delete_if { |p| %i{https_proxy ftp_proxy no_proxy}.include?(p) } if powershell_shell?
+            prox.delete_if { |p| %i(https_proxy ftp_proxy no_proxy).include?(p) } if powershell_shell?
           end
           opts[:install_command_options].merge!(proxies)
 
@@ -566,20 +564,20 @@ module Kitchen
       #                  cache directory
       # @api private
       def omnibus_dir_option
-        windows_os? ? "-download_directory" : "-d"
+        windows_os? ? '-download_directory' : '-d'
       end
 
       def install_from_file(command)
         install_file = "#{config[:root_path]}/chef-installer.sh"
         script = []
         script << "mkdir -p #{config[:root_path]}"
-        script << "if [ $? -ne 0 ]; then"
+        script << 'if [ $? -ne 0 ]; then'
         script << "  echo Kitchen config setting root_path: '#{config[:root_path]}' not creatable by regular user "
-        script << "  exit 1"
-        script << "fi"
+        script << '  exit 1'
+        script << 'fi'
         script << "cat > #{install_file} <<\"EOL\""
         script << command
-        script << "EOL"
+        script << 'EOL'
         script << "chmod +x #{install_file}"
         script << sudo(install_file)
         script.join("\n")
@@ -588,7 +586,7 @@ module Kitchen
       # @return [String] contents of version based install script
       # @api private
       def script_for_omnibus_version
-        require "mixlib/install/script_generator"
+        require 'mixlib/install/script_generator'
         opts = install_options
         opts[:omnibus_url] = config[:install_sh_url] if config[:install_sh_url]
         installer = Mixlib::Install::ScriptGenerator.new(
@@ -612,19 +610,19 @@ module Kitchen
       # @api private
       def sanity_check_sandbox_options!
         if (config[:policyfile_path] || config[:policyfile]) && !File.exist?(policyfile)
-          raise UserError, "policyfile_path set in config "\
+          raise UserError, 'policyfile_path set in config ' \
             "(#{config[:policyfile_path]} could not be found. " \
             "Expected to find it at full path #{policyfile}."
         end
         if config[:berksfile_path] && !File.exist?(berksfile)
-          raise UserError, "berksfile_path set in config "\
+          raise UserError, 'berksfile_path set in config ' \
             "(#{config[:berksfile_path]} could not be found. " \
             "Expected to find it at full path #{berksfile}."
         end
         if File.exist?(policyfile) && !supports_policyfile?
-          raise UserError, "policyfile detected, but provisioner " \
+          raise UserError, 'policyfile detected, but provisioner ' \
             "#{self.class.name} doesn't support Policyfiles. " \
-            "Either use a different provisioner, or delete/rename " \
+            'Either use a different provisioner, or delete/rename ' \
             "#{policyfile}."
         end
       end
@@ -632,15 +630,13 @@ module Kitchen
       # Writes a configuration file to the sandbox directory.
       # @api private
       def prepare_config_rb
-        data = default_config_rb.merge(config[config_filename.tr(".", "_").to_sym])
+        data = default_config_rb.merge(config[config_filename.tr('.', '_').to_sym])
         data = data.merge(named_run_list: config[:named_run_list]) if config[:named_run_list]
 
         info("Preparing #{config_filename}")
         debug("Creating #{config_filename} from #{data.inspect}")
 
-        File.open(File.join(sandbox_path, config_filename), "wb") do |file|
-          file.write(format_config_file(data))
-        end
+        File.binwrite(File.join(sandbox_path, config_filename), format_config_file(data))
 
         prepare_config_idempotency_check(data) if config[:enforce_idempotency]
       end
@@ -649,12 +645,12 @@ module Kitchen
       # to check for idempotency of the run.
       # @api private
       def prepare_config_idempotency_check(data)
-        handler_filename = "chef-client-fail-if-update-handler.rb"
+        handler_filename = 'chef-client-fail-if-update-handler.rb'
         source = File.join(
-          File.dirname(__FILE__), %w{.. .. .. support }, handler_filename
+          File.dirname(__FILE__), %w(.. .. .. support ), handler_filename
         )
         FileUtils.cp(source, File.join(sandbox_path, handler_filename))
-        File.open(File.join(sandbox_path, "client_no_updated_resources.rb"), "wb") do |file|
+        File.open(File.join(sandbox_path, 'client_no_updated_resources.rb'), 'wb') do |file|
           file.write(format_config_file(data))
           file.write("\n\n")
           file.write("handler_file = File.join(File.dirname(__FILE__), '#{handler_filename}')\n")
@@ -667,7 +663,7 @@ module Kitchen
       # @return [Array<String>] an array of command line arguments
       # @api private
       def chef_args(_config_filename)
-        raise "You must override in sub classes!"
+        raise 'You must override in sub classes!'
       end
 
       # Returns a filename for the configuration file
@@ -676,20 +672,20 @@ module Kitchen
       # @return [String] a filename
       # @api private
       def config_filename
-        "client.rb"
+        'client.rb'
       end
 
       # Gives the command used to run chef
       # @api private
       def chef_cmd(base_cmd)
-        if windows_os?
-          separator = [
-            "; if ($LastExitCode -ne 0) { ",
-            "throw \"Command failed with exit code $LastExitCode.\" } ;",
-          ].join
-        else
-          separator = " && "
-        end
+        separator = if windows_os?
+                      [
+                        '; if ($LastExitCode -ne 0) { ',
+                        'throw "Command failed with exit code $LastExitCode." } ;',
+                      ].join
+                    else
+                      ' && '
+                    end
         chef_cmds(base_cmd).join(separator)
       end
 
@@ -707,24 +703,24 @@ module Kitchen
 
         # Append another execution with Windows specific Exit code helper or (for
         # idempotency check) a specific config file which assures no changed resources.
-        cmds << unless idempotency
-                  wrapped_chef_cmd(base_cmd, config_filename, append: last_exit_code)
+        cmds << if idempotency
+                  wrapped_chef_cmd(base_cmd, 'client_no_updated_resources.rb', append: last_exit_code)
                 else
-                  wrapped_chef_cmd(base_cmd, "client_no_updated_resources.rb", append: last_exit_code)
+                  wrapped_chef_cmd(base_cmd, config_filename, append: last_exit_code)
                 end
         cmds
       end
 
       # Concatenate all arguments and wrap it with shell-specifics
       # @api private
-      def wrapped_chef_cmd(base_cmd, configfile, append: "")
+      def wrapped_chef_cmd(base_cmd, configfile, append: '')
         args = []
 
         args << base_cmd
         args << chef_args(configfile)
         args << append
 
-        shell_cmd = args.flatten.join(" ")
+        shell_cmd = args.flatten.join(' ')
         shell_cmd = shell_cmd.prepend(reload_ps1_path) if windows_os?
 
         prefix_command(wrap_shell_code(shell_cmd))

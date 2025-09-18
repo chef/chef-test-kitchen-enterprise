@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, 2013, 2014, Fletcher Nichol
+# Copyright:: (C) 2012, 2013, 2014, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -213,7 +213,7 @@ module Kitchen
           provisioner: Provisioner::DEFAULT_PLUGIN,
           verifier: Verifier::DEFAULT_PLUGIN,
           transport: lambda do |_suite, platform|
-            /^win/i.match?(platform) ? "winrm" : Transport::DEFAULT_PLUGIN
+            /^win/i.match?(platform) ? 'winrm' : Transport::DEFAULT_PLUGIN
           end,
         },
         kitchen_root:,

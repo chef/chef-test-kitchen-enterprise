@@ -1,7 +1,7 @@
 #
 # Author:: Noah Kantrowitz <noah@coderanger.net>
 #
-# Copyright (C) 2018, Noah Kantrowitz
+# Copyright:: (C) 2018, Noah Kantrowitz
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "configurable"
-require_relative "errors"
-require_relative "lifecycle_hook/local"
-require_relative "lifecycle_hook/remote"
-require_relative "logging"
+require_relative 'configurable'
+require_relative 'errors'
+require_relative 'lifecycle_hook/local'
+require_relative 'lifecycle_hook/remote'
+require_relative 'logging'
 
 module Kitchen
   # A helper object used by {Instance} to coordinate lifecycle hook calls from
@@ -42,7 +42,7 @@ module Kitchen
     # @param state_file [StateFile] Instance state file object.
     # @param block [Proc] Block of code implementing the lifecycle phase.
     # @return [void]
-    def run_with_hooks(phase, state_file, &block)
+    def run_with_hooks(phase, _state_file)
       run(phase, :pre)
       yield
       run(phase, :post)

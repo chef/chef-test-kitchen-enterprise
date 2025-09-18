@@ -16,14 +16,14 @@
 # limitations under the License.
 #
 
-require "chef-licensing"
+require 'chef-licensing'
 
 module Kitchen
   module Licensing
-    PRODUCT_NAME = "Test Kitchen Enterprise"
-    ENTITLEMENT_ID = "x6f3bc76-a94f-4b6c-bc97-4b7ed2b045c0"
-    EXECUTABLE_NAME = "kitchen"
-    GLOBAL_LICENSE_SERVER = "https://services.chef.io/licensing"
+    PRODUCT_NAME = 'Test Kitchen Enterprise'
+    ENTITLEMENT_ID = 'x6f3bc76-a94f-4b6c-bc97-4b7ed2b045c0'
+    EXECUTABLE_NAME = 'kitchen'
+    GLOBAL_LICENSE_SERVER = 'https://services.chef.io/licensing'
 
     class << self
       def configure_licensing

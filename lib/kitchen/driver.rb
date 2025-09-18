@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, Fletcher Nichol
+# Copyright:: (C) 2012, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "plugin"
+require_relative 'plugin'
 
 module Kitchen
   # A driver is responsible for carrying out the lifecycle activities of an
@@ -24,7 +24,7 @@ module Kitchen
   # @author Fletcher Nichol <fnichol@nichol.ca>
   module Driver
     # Default driver plugin to use
-    DEFAULT_PLUGIN = "dummy".freeze
+    DEFAULT_PLUGIN = 'dummy'.freeze
 
     # Returns an instance of a driver given a plugin type string.
     #

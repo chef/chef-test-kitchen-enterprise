@@ -1,9 +1,9 @@
 # Set up the environment for testing
-require "aruba/cucumber"
-require "aruba/processes/in_process"
-require "aruba/processes/spawn_process"
-require "kitchen"
-require "kitchen/cli"
+require 'aruba/cucumber'
+require 'aruba/processes/in_process'
+require 'aruba/processes/spawn_process'
+require 'kitchen'
+require 'kitchen/cli'
 
 class ArubaHelper
   def initialize(argv, stdin = STDIN, stdout = STDOUT, stderr = STDERR, kernel = Kernel)
@@ -25,14 +25,14 @@ class ArubaHelper
 end
 
 Before do
-  aruba.config.exit_timeout = ENV.fetch("ARUBA_EXIT_TIMEOUT", 60).to_i
+  aruba.config.exit_timeout = ENV.fetch('ARUBA_EXIT_TIMEOUT', 60).to_i
   @cleanup_dirs = []
 
   aruba.config.command_launcher = :in_process
   aruba.config.main_class = ArubaHelper
 end
 
-Before("@spawn") do
+Before('@spawn') do
   aruba.config.command_launcher = :spawn
 end
 
@@ -46,10 +46,10 @@ After do |s|
   # been saved off
   env = aruba.environment
   env.to_h.keys.select { |key| key =~ /^_CUKE_/ }
-    .each do |backup_key|
-      env[backup_key.sub(/^_CUKE_/, "")] = env[backup_key]
-      env.delete(backup_key)
-    end
+     .each do |backup_key|
+    env[backup_key.sub(/^_CUKE_/, '')] = env[backup_key]
+    env.delete(backup_key)
+  end
 
   @cleanup_dirs.each { |dir| FileUtils.rm_rf(dir) }
 end
@@ -64,9 +64,12 @@ def restore_envvar(key)
 end
 
 def unbundlerize
-  keys = %w{BUNDLER_EDITOR BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPT}
+  keys = %w(BUNDLER_EDITOR BUNDLE_BIN_PATH BUNDLE_GEMFILE RUBYOPT)
 
-  keys.each { |key| backup_envvar(key); aruba.environment.delete(key) }
+  keys.each do |key|
+    backup_envvar(key)
+    aruba.environment.delete(key)
+  end
   yield
   keys.each { |key| restore_envvar(key) }
 end

@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-autoload :YAML, "yaml"
+autoload :YAML, 'yaml'
 
 module Kitchen
   # Exception class for any exceptions raised when reading and parsing a state
@@ -32,7 +32,7 @@ module Kitchen
     # @param name [String] name of the instance representing this state
     def initialize(kitchen_root, name)
       @file_name = File.expand_path(
-        File.join(kitchen_root, ".kitchen", "#{name}.yml")
+        File.join(kitchen_root, '.kitchen', "#{name}.yml")
       )
     end
 
@@ -58,7 +58,7 @@ module Kitchen
       serialized_string = serialize_hash(Util.stringified_hash(state))
 
       FileUtils.mkdir_p(dir) unless File.directory?(dir)
-      File.open(file_name, "wb") { |f| f.write(serialized_string) }
+      File.binwrite(file_name, serialized_string)
     end
 
     # Destroys a state file on disk if it exists.

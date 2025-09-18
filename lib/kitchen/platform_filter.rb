@@ -1,7 +1,7 @@
 #
 # Author:: Baptiste Courtois (<b.courtois@criteo.com>)
 #
-# Copyright (C) 2021, Baptiste Courtois
+# Copyright:: (C) 2021, Baptiste Courtois
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -35,9 +35,9 @@ module Kitchen
     def self.convert(filters)
       ::Kernel.Array(filters).map do |filter|
         if (match = filter.match(REGEXP_LIKE_PATTERN))
-          options = match["options"].include?("i") ? ::Regexp::IGNORECASE : 0
-          options |= ::Regexp::EXTENDED if match["options"].include?("x")
-          filter = ::Regexp.new(match["pattern"], options)
+          options = match['options'].include?('i') ? ::Regexp::IGNORECASE : 0
+          options |= ::Regexp::EXTENDED if match['options'].include?('x')
+          filter = ::Regexp.new(match['pattern'], options)
         end
         new(filter)
       end
@@ -50,7 +50,7 @@ module Kitchen
     #
     # @param [Regexp,String] value of the filter
     def initialize(value)
-      raise ::ArgumentError, "PlatformFilter#new requires value to be a String or a Regexp" unless value.is_a?(::Regexp) || value.is_a?(::String)
+      raise ::ArgumentError, 'PlatformFilter#new requires value to be a String or a Regexp' unless value.is_a?(::Regexp) || value.is_a?(::String)
 
       @value = value
     end

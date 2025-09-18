@@ -2,7 +2,7 @@
 # Author:: Salim Afiune (<salim@afiunemaya.com.mx>)
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2014, Salim Afiune
+# Copyright:: (C) 2014, Salim Afiune
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "../configurable"
-require_relative "../errors"
-require_relative "../lazy_hash"
-require_relative "../logging"
-require_relative "../login_command"
-require_relative "../plugin_base"
+require_relative '../configurable'
+require_relative '../errors'
+require_relative '../lazy_hash'
+require_relative '../logging'
+require_relative '../login_command'
+require_relative '../plugin_base'
 
 module Kitchen
   module Transport
@@ -142,8 +142,8 @@ module Kitchen
         def retry?(current_try, max_retries, retryable_exit_codes, exception)
           if exception.is_a?(Kitchen::Transport::TransportFailed)
             return current_try <= max_retries &&
-                !retryable_exit_codes.nil? &&
-                retryable_exit_codes.flatten.include?(exception.exit_code)
+                   !retryable_exit_codes.nil? &&
+                   retryable_exit_codes.flatten.include?(exception.exit_code)
           end
 
           false

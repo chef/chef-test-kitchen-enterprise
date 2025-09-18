@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "chef_base"
+require_relative 'chef_base'
 
 module Kitchen
   module Provisioner
@@ -35,13 +35,13 @@ module Kitchen
 
       default_config :chef_solo_path do |provisioner|
         provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} bin chef-solo})
-          .tap { |path| path.concat(".bat") if provisioner.windows_os? }
+          .remote_path_join(%W(#{provisioner[:chef_omnibus_root]} bin chef-solo))
+          .tap { |path| path.concat('.bat') if provisioner.windows_os? }
       end
 
       # (see Base#config_filename)
       def config_filename
-        "solo.rb"
+        'solo.rb'
       end
 
       # (see Base#create_sandbox)
@@ -53,7 +53,7 @@ module Kitchen
       # (see Base#run_command)
       def run_command
         cmd = sudo(config[:chef_solo_path]).dup
-          .tap { |str| str.insert(0, "& ") if powershell_shell? }
+                                           .tap { |str| str.insert(0, '& ') if powershell_shell? }
 
         chef_cmd(cmd)
       end
@@ -68,13 +68,13 @@ module Kitchen
         args = [
           "--config #{remote_path_join(config[:root_path], solo_rb_filename)}",
           "--log_level #{config[:log_level]}",
-          "--force-formatter",
-          "--no-color",
-          "--json-attributes #{remote_path_join(config[:root_path], "dna.json")}",
+          '--force-formatter',
+          '--no-color',
+          "--json-attributes #{remote_path_join(config[:root_path], 'dna.json')}",
         ]
         args << "--logfile #{config[:log_file]}" if config[:log_file]
-        args << "--profile-ruby" if config[:profile_ruby]
-        args << "--legacy-mode" if config[:legacy_mode]
+        args << '--profile-ruby' if config[:profile_ruby]
+        args << '--legacy-mode' if config[:legacy_mode]
         args
       end
     end

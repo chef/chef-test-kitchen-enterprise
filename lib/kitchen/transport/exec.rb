@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "fileutils" unless defined?(FileUtils)
+require 'fileutils' unless defined?(FileUtils)
 
-require_relative "../shell_out"
-require_relative "base"
-require_relative "../version"
+require_relative '../shell_out'
+require_relative 'base'
+require_relative '../version'
 
 module Kitchen
   module Transport
@@ -59,7 +59,7 @@ module Kitchen
         # @see Base#upload
         def upload(locals, remote)
           # evaluate $env:temp on Windows
-          real_remote = remote.to_s == "\$env:TEMP\\kitchen" ? kitchen_temp : remote
+          real_remote = remote.to_s == '$env:TEMP\\kitchen' ? kitchen_temp : remote
           FileUtils.mkdir_p(real_remote)
           Array(locals).each do |local|
             FileUtils.cp_r(local, real_remote)
@@ -94,14 +94,14 @@ module Kitchen
             debug("Creating exec script for #{instance_name} (#{exec_script_file})")
             debug("Executing #{exec_script_file}")
           end
-          File.open(exec_script_file, "wb") { |file| file.write(command) }
-          %{powershell -file "#{exec_script_file}"}
+          File.binwrite(exec_script_file, command)
+          %(powershell -file "#{exec_script_file}")
         end
 
         # @return [String] evaluated $env:temp variable
         # @api private
         def kitchen_temp
-          "#{ENV["temp"]}/kitchen"
+          "#{ENV['temp']}/kitchen"
         end
 
         # @return [String] name of script using instance name
@@ -113,11 +113,11 @@ module Kitchen
         # @return [String] file path for exec script to be run
         # @api private
         def exec_script_file
-          File.join(kitchen_root, ".kitchen", exec_script_name)
+          File.join(kitchen_root, '.kitchen', exec_script_name)
         end
 
         def host_os_windows?
-          case RbConfig::CONFIG["host_os"]
+          case RbConfig::CONFIG['host_os']
           when /mswin|msys|mingw|cygwin|bccwin|wince|emc/
             true
           else
@@ -133,12 +133,11 @@ module Kitchen
       # @param data [Hash] merged configuration and mutable state data
       # @return [Hash] hash of connection options
       # @api private
-      def connection_options(data)
-        opts = {
+      def connection_options(_data)
+        {
           instance_name: instance.name,
           kitchen_root: Dir.pwd,
         }
-        opts
       end
     end
   end

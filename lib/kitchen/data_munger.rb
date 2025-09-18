@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "../vendor/hash_recursive_merge"
+require_relative '../vendor/hash_recursive_merge'
 
 module Kitchen
   # Class to handle recursive merging of configuration between platforms,
@@ -155,8 +155,8 @@ module Kitchen
     def combine_arrays!(root, key, *namespaces)
       if root.key?(key)
         root[key] = namespaces
-          .map { |namespace| root.fetch(key).fetch(namespace, []) }.flatten
-          .compact
+                    .map { |namespace| root.fetch(key).fetch(namespace, []) }.flatten
+                    .compact
       end
     end
 
@@ -239,7 +239,7 @@ module Kitchen
       if root.key?(:busser)
         bdata = root.delete(:busser)
         bdata = { version: bdata } if bdata.is_a?(String)
-        bdata[:name] = "busser" if bdata[:name].nil?
+        bdata[:name] = 'busser' if bdata[:name].nil?
 
         vdata = root.fetch(:verifier, {})
         vdata = { name: vdata } if vdata.is_a?(String)
@@ -294,10 +294,10 @@ module Kitchen
     # @api private
     def convert_legacy_chef_paths_format!
       data.fetch(:suites, []).each do |suite|
-        %w{
+        %w(
           data data_bags encrypted_data_bag_secret_key
           environments nodes roles
-        }.each do |key|
+        ).each do |key|
           move_data_to!(:provisioner, suite, "#{key}_path".to_sym)
         end
       end
@@ -506,7 +506,7 @@ module Kitchen
     def convert_legacy_driver_http_proxy_format_at!(root)
       ddata = root.fetch(:driver, {})
 
-      %i{http_proxy https_proxy}.each do |key|
+      %i(http_proxy https_proxy).each do |key|
         next unless ddata.is_a?(Hash) && ddata.key?(key)
 
         pdata = root.fetch(:provisioner, {})

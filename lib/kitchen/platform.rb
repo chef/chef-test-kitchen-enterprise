@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, Fletcher Nichol
+# Copyright:: (C) 2012, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -38,19 +38,19 @@ module Kitchen
     #   (**Required**)
     def initialize(options = {})
       @name = options.fetch(:name) do
-        raise ClientError, "Platform#new requires option :name"
+        raise ClientError, 'Platform#new requires option :name'
       end
       @os_type = options.fetch(:os_type) do
-        windows?(options) ? "windows" : "unix"
+        windows?(options) ? 'windows' : 'unix'
       end
       @shell_type = options.fetch(:shell_type) do
-        windows?(options) ? "powershell" : "bourne"
+        windows?(options) ? 'powershell' : 'bourne'
       end
     end
 
     def windows?(options)
       @name.downcase =~ /^win/ || (
-        !options[:transport].nil? && options[:transport][:name] == "winrm"
+        !options[:transport].nil? && options[:transport][:name] == 'winrm'
       )
     end
 

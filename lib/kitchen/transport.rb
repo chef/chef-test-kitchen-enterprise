@@ -1,7 +1,7 @@
 #
 # Author:: Salim Afiune (<salim@afiunemaya.com.mx>)
 #
-# Copyright (C) 2014, Salim Afiune
+# Copyright:: (C) 2014, Salim Afiune
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "plugin"
+require_relative 'plugin'
 
 module Kitchen
   # A transport is responsible for the communication with an instance,
@@ -25,7 +25,7 @@ module Kitchen
   # @author Salim Afiune <salim@afiunemaya.com.mx>
   module Transport
     # Default transport to use
-    DEFAULT_PLUGIN = "ssh".freeze
+    DEFAULT_PLUGIN = 'ssh'.freeze
 
     # Returns an instance of a transport given a plugin type string.
     #

@@ -1,7 +1,7 @@
 #
 # Author:: Thomas Heinen (<thomas.heinen@gmail.com>)
 #
-# Copyright (C) 2023, Thomas Heinen
+# Copyright:: (C) 2023, Thomas Heinen
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "chef_infra"
+require_relative 'chef_infra'
 
 module Kitchen
   module Provisioner
@@ -23,54 +23,62 @@ module Kitchen
     #
     # @author Thomas Heinen <thomas.heinen@gmail.com>
     class ChefTarget < ChefInfra
-      MIN_VERSION_REQUIRED = "19.0.0".freeze
+      MIN_VERSION_REQUIRED = '19.0.0'.freeze
       class ChefVersionTooLow < UserError; end
       class ChefClientNotFound < UserError; end
       class RequireTrainTransport < UserError; end
 
-      default_config :install_strategy, "none"
+      default_config :install_strategy, 'none'
       default_config :sudo, true
 
-      def install_command; ""; end
-      def init_command; ""; end
-      def prepare_command; ""; end
+      def install_command
+        ''
+      end
+
+      def init_command
+        ''
+      end
+
+      def prepare_command
+        ''
+      end
 
       def chef_args(client_rb_filename)
         # Dummy execution to initialize and test remote connection
-        connection = instance.remote_exec("echo Connection established")
+        connection = instance.remote_exec('echo Connection established')
 
         check_transport(connection)
         check_local_chef_client
 
         instance_name = instance.name
-        credentials_file = File.join(kitchen_basepath, ".kitchen", instance_name + ".ini")
+        credentials_file = File.join(kitchen_basepath, '.kitchen', instance_name + '.ini')
         File.write(credentials_file, connection.credentials_file)
 
         super.concat([
-          "--target #{instance_name}",
-          "--credentials #{credentials_file}",
-        ])
+                       "--target #{instance_name}",
+                       "--credentials #{credentials_file}",
+                     ])
       end
 
       def check_transport(connection)
-        debug("Checking for active transport")
+        debug('Checking for active transport')
 
-        unless connection.respond_to? "train_uri"
-          error("Chef Target Mode provisioner requires a Train-based transport like kitchen-transport-train")
-          raise RequireTrainTransport.new("No Train transport")
+        unless connection.respond_to? 'train_uri'
+          error('Chef Target Mode provisioner requires a Train-based transport like kitchen-transport-train')
+          raise RequireTrainTransport.new('No Train transport')
         end
 
-        debug("Kitchen transport responds to train_uri function call, as required")
+        debug('Kitchen transport responds to train_uri function call, as required')
       end
 
       def check_local_chef_client
-        debug("Checking for chef-client version")
+        debug('Checking for chef-client version')
 
         begin
-          client_version = `chef-client -v`.chop.split(":")[-1]
+          client_version = `chef-client -v`.chop.split(':')[-1]
         rescue Errno::ENOENT => e
           error("Error determining Chef Infra version: #{e.exception.message}")
-          raise ChefClientNotFound.new("Need chef-client installed locally")
+          raise ChefClientNotFound.new('Need chef-client installed locally')
         end
 
         minimum_version = Gem::Version.new(MIN_VERSION_REQUIRED)
@@ -81,7 +89,7 @@ module Kitchen
           raise ChefVersionTooLow.new("Need version #{MIN_VERSION_REQUIRED} or higher")
         end
 
-        debug("Chef Infra found and version constraints match")
+        debug('Chef Infra found and version constraints match')
       end
 
       def kitchen_basepath
@@ -100,7 +108,7 @@ module Kitchen
         remote_connection = instance.transport.connection(state)
 
         config[:uploads].to_h.each do |locals, remote|
-          debug("Uploading #{Array(locals).join(", ")} to #{remote}")
+          debug("Uploading #{Array(locals).join(', ')} to #{remote}")
           remote_connection.upload(locals.to_s, remote)
         end
 
@@ -109,17 +117,17 @@ module Kitchen
         # no prepare command
 
         # Stream output to logger
-        require "open3"
+        require 'open3'
         Open3.popen2e(run_command) do |_stdin, output, _thread|
           output.each { |line| logger << line }
         end
 
         info("Downloading files from #{instance.to_str}")
         config[:downloads].to_h.each do |remotes, local|
-          debug("Downloading #{Array(remotes).join(", ")} to #{local}")
+          debug("Downloading #{Array(remotes).join(', ')} to #{local}")
           remote_connection.download(remotes, local)
         end
-        debug("Download complete")
+        debug('Download complete')
       rescue Kitchen::Transport::TransportFailed => ex
         raise ActionFailed, ex.message
       ensure

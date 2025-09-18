@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,13 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "shellwords" unless defined?(Shellwords)
-require "rbconfig" unless defined?(RbConfig)
+require 'shellwords' unless defined?(Shellwords)
+require 'rbconfig' unless defined?(RbConfig)
 
-require_relative "../../errors"
-require_relative "../../logging"
-require_relative "../../shell_out"
-require_relative "../../which"
+require_relative '../../errors'
+require_relative '../../logging'
+require_relative '../../shell_out'
+require_relative '../../which'
 
 module Kitchen
   module Provisioner
@@ -90,7 +90,7 @@ module Kitchen
         #
         # @return [String]
         def lockfile
-          policyfile.gsub(/\.rb\Z/, ".lock.json")
+          policyfile.gsub(/\.rb\Z/, '.lock.json')
         end
 
         private
@@ -126,14 +126,14 @@ module Kitchen
         # @return [String]
         # @api private
         def escape_path(path)
-          if /mswin|mingw/.match?(RbConfig::CONFIG["host_os"])
+          if /mswin|mingw/.match?(RbConfig::CONFIG['host_os'])
             # I know what you're thinking: "just use Shellwords.escape". That
             # method produces incorrect results on Windows with certain input
             # which would be a metacharacter in Sh but is not for one or more of
             # Windows command line parsing libraries. This covers the 99% case of
             # spaces in the path without breaking other stuff.
             if /[ \t\n\v"]/.match?(path)
-              "\"#{path.gsub(/[ \t\n\v\"\\]/) { |m| "\\" + m[0] }}\""
+              "\"#{path.gsub(/[ \t\n\v\"\\]/) { |m| '\\' + m[0] }}\""
             else
               path
             end
@@ -150,18 +150,18 @@ module Kitchen
         # @api private
         # @returns [String]
         def cli_path
-          @cli_path ||= which("chef-cli") || hab_chef_cli || no_cli_found_error
+          @cli_path ||= which('chef-cli') || hab_chef_cli || no_cli_found_error
         end
 
         # If the habitat package for chef-cli is installed and not binlinked,
         # return the hab pkg exec command to run chef-cli.
         def hab_chef_cli
-          "hab pkg exec chef/chef-cli chef-cli" if hab_pkg_installed?("chef/chef-cli")
+          'hab pkg exec chef/chef-cli chef-cli' if hab_pkg_installed?('chef/chef-cli')
         end
 
         # Check whether a habitat package is installed or not
         def hab_pkg_installed?(pkg)
-          if which("hab")
+          if which('hab')
             `hab pkg list #{pkg} 2>/dev/null`.include?(pkg)
           else
             false
@@ -170,9 +170,9 @@ module Kitchen
 
         # @api private
         def no_cli_found_error
-          @logger.fatal("The `chef-cli` executable or the `chef/chef-cli` Habitat package cannot be found in your PATH. " \
-                        "Ensure that you have installed the Chef Workstation.")
-          raise UserError, "Could not find the chef-cli executables or the chef/chef-cli hab package."
+          @logger.fatal('The `chef-cli` executable or the `chef/chef-cli` Habitat package cannot be found in your PATH. ' \
+                        'Ensure that you have installed the Chef Workstation.')
+          raise UserError, 'Could not find the chef-cli executables or the chef/chef-cli hab package.'
         end
       end
     end

@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2014, Fletcher Nichol
+# Copyright:: (C) 2014, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ module Kitchen
       # @param methods [Array<Symbol>] one or more actions as symbols
       # @raise [ClientError] if any method is not a valid action method name
       def self.no_parallel_for(*methods)
-        action_methods = %i{create setup converge verify destroy}
+        action_methods = %i(create setup converge verify destroy)
 
         Array(methods).each do |meth|
           next if action_methods.include?(meth)

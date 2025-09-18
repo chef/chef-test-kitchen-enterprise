@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, Fletcher Nichol
+# Copyright:: (C) 2012, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "rake/tasklib"
+require 'rake/tasklib'
 
-require_relative "../kitchen"
+require_relative '../kitchen'
 
 module Kitchen
   # Kitchen Rake task generator.
@@ -29,9 +29,9 @@ module Kitchen
     # @yield [self] gives itself to the block
     def initialize(cfg = {})
       @loader = Kitchen::Loader::YAML.new(
-        project_config: ENV["KITCHEN_YAML"],
-        local_config: ENV["KITCHEN_LOCAL_YAML"],
-        global_config: ENV["KITCHEN_GLOBAL_YAML"]
+        project_config: ENV['KITCHEN_YAML'],
+        local_config: ENV['KITCHEN_LOCAL_YAML'],
+        global_config: ENV['KITCHEN_GLOBAL_YAML']
       )
       @config = Kitchen::Config.new(
         { loader: @loader }.merge(cfg)
@@ -51,8 +51,8 @@ module Kitchen
     #
     # @api private
     def define
-      namespace "kitchen" do
-        kitchen_commands = %w{create converge setup verify destroy}
+      namespace 'kitchen' do
+        kitchen_commands = %w(create converge setup verify destroy)
         config.instances.each do |instance|
           desc "Run #{instance.name} test instance"
           task instance.name do
@@ -65,13 +65,13 @@ module Kitchen
                 instance.send(cmd)
               end
               desc "Run all #{cmd} instances"
-              task "all" => config.instances.map(&:name)
+              task 'all' => config.instances.map(&:name)
             end
           end
         end
 
-        desc "Run all test instances"
-        task "all" => config.instances.map(&:name)
+        desc 'Run all test instances'
+        task 'all' => config.instances.map(&:name)
 
         kitchen_commands.each { |cmd| task cmd => "#{cmd}:all" }
       end

@@ -1,6 +1,6 @@
-require_relative "base"
-require_relative "../shell_out"
-require_relative "../logging"
+require_relative 'base'
+require_relative '../shell_out'
+require_relative '../logging'
 
 module Kitchen
   class LifecycleHook
@@ -17,10 +17,10 @@ module Kitchen
         user = {}
         # Set up some environment variables with instance info.
         environment = {
-          "KITCHEN_INSTANCE_NAME" => instance.name,
-          "KITCHEN_SUITE_NAME" => instance.suite.name,
-          "KITCHEN_PLATFORM_NAME" => instance.platform.name,
-          "KITCHEN_INSTANCE_HOSTNAME" => state[:hostname].to_s,
+          'KITCHEN_INSTANCE_NAME' => instance.name,
+          'KITCHEN_SUITE_NAME' => instance.suite.name,
+          'KITCHEN_PLATFORM_NAME' => instance.platform.name,
+          'KITCHEN_INSTANCE_HOSTNAME' => state[:hostname].to_s,
         }
         # If the user specified env vars too, fix them up because symbol keys
         # make mixlib-shellout sad.

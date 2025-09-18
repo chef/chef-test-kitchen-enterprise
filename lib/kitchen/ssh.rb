@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "logger"
+require 'logger'
 module Net
-  autoload :SSH, "net/ssh"
+  autoload :SSH, 'net/ssh'
 end
-require "socket" unless defined?(Socket)
+require 'socket' unless defined?(Socket)
 
-require_relative "errors"
-require_relative "login_command"
-require_relative "util"
+require_relative 'errors'
+require_relative 'login_command'
+require_relative 'util'
 
 module Kitchen
   # Wrapped exception for any internally raised SSH-related errors.
@@ -77,7 +77,7 @@ module Kitchen
     # @raise [SSHFailed] if the command does not exit with a 0 code
     def exec(cmd)
       string_to_mask = "[SSH] #{self} (#{cmd})"
-      masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
+      masked_string = Util.mask_values(string_to_mask, %w(password ssh_http_proxy_password))
       logger.debug(masked_string)
       exit_code = exec_with_exit(cmd)
 
@@ -94,7 +94,7 @@ module Kitchen
     #   `Net::SCP.upload`
     # @see http://net-ssh.github.io/net-scp/classes/Net/SCP.html#method-i-upload
     def upload!(local, remote, options = {}, &progress)
-      require "net/scp" unless defined?(Net::SCP)
+      require 'net/scp' unless defined?(Net::SCP)
       if progress.nil?
         progress = lambda do |_ch, name, sent, total|
           logger.debug("Uploaded #{name} (#{total} bytes)") if sent == total
@@ -105,7 +105,7 @@ module Kitchen
     end
 
     def upload(local, remote, options = {}, &progress)
-      require "net/scp" unless defined?(Net::SCP)
+      require 'net/scp' unless defined?(Net::SCP)
       if progress.nil?
         progress = lambda do |_ch, name, sent, total|
           if sent == total
@@ -141,7 +141,7 @@ module Kitchen
       return if @session.nil?
 
       string_to_mask = "[SSH] closing connection to #{self}"
-      masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
+      masked_string = Util.mask_values(string_to_mask, %w(password ssh_http_proxy_password))
       logger.debug(masked_string)
       session.shutdown!
     ensure
@@ -158,18 +158,18 @@ module Kitchen
     #
     # @return [LoginCommand] the login command
     def login_command
-      args  = %w{ -o UserKnownHostsFile=/dev/null }
-      args += %w{ -o StrictHostKeyChecking=no }
-      args += %w{ -o IdentitiesOnly=yes } if options[:keys]
-      args += %W{ -o LogLevel=#{logger.debug? ? "VERBOSE" : "ERROR"} }
+      args  = %w( -o UserKnownHostsFile=/dev/null )
+      args += %w( -o StrictHostKeyChecking=no )
+      args += %w( -o IdentitiesOnly=yes ) if options[:keys]
+      args += %W( -o LogLevel=#{logger.debug? ? 'VERBOSE' : 'ERROR'} )
       if options.key?(:forward_agent)
-        args += %W{ -o ForwardAgent=#{options[:forward_agent] ? "yes" : "no"} }
+        args += %W( -o ForwardAgent=#{options[:forward_agent] ? 'yes' : 'no'} )
       end
-      Array(options[:keys]).each { |ssh_key| args += %W{ -i #{ssh_key} } }
-      args += %W{ -p #{port} }
-      args += %W{ #{username}@#{hostname} }
+      Array(options[:keys]).each { |ssh_key| args += %W( -i #{ssh_key} ) }
+      args += %W( -p #{port} )
+      args += %W( #{username}@#{hostname} )
 
-      LoginCommand.new("ssh", args)
+      LoginCommand.new('ssh', args)
     end
 
     private
@@ -218,7 +218,7 @@ module Kitchen
 
       begin
         string_to_mask = "[SSH] opening connection to #{self}"
-        masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
+        masked_string = Util.mask_values(string_to_mask, %w(password ssh_http_proxy_password))
         retries.times do
           logger.debug(masked_string)
         end
@@ -269,7 +269,7 @@ module Kitchen
             logger << data
           end
 
-          channel.on_request("exit-status") do |_ch, data|
+          channel.on_request('exit-status') do |_ch, data|
             exit_code = data.read_long
           end
         end

@@ -2,7 +2,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative "chef_base"
-require "kitchen/licensing/base"
+require_relative 'chef_base'
+require 'kitchen/licensing/base'
 
 module Kitchen
   module Provisioner
@@ -25,7 +25,6 @@ module Kitchen
     #
     # @author Fletcher Nichol <fnichol@nichol.ca>
     class ChefInfra < ChefBase
-
       kitchen_provisioner_api_version 2
 
       plugin_version Kitchen::VERSION
@@ -40,13 +39,13 @@ module Kitchen
 
       default_config :chef_client_path do |provisioner|
         provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} bin chef-client})
-          .tap { |path| path.concat(".bat") if provisioner.windows_os? }
+          .remote_path_join(%W(#{provisioner[:chef_omnibus_root]} bin chef-client))
+          .tap { |path| path.concat('.bat') if provisioner.windows_os? }
       end
 
       default_config :ruby_bindir do |provisioner|
         provisioner
-          .remote_path_join(%W{#{provisioner[:chef_omnibus_root]} embedded bin})
+          .remote_path_join(%W(#{provisioner[:chef_omnibus_root]} embedded bin))
       end
 
       # (see Base#create_sandbox)
@@ -65,9 +64,9 @@ module Kitchen
       def check_license
         super
 
-        info("Fetching the Chef license key")
+        info('Fetching the Chef license key')
         unless config[:chef_license_server].nil? || config[:chef_license_server].empty?
-          ENV["CHEF_LICENSE_SERVER"] = config[:chef_license_server].join(",")
+          ENV['CHEF_LICENSE_SERVER'] = config[:chef_license_server].join(',')
         end
 
         key, type, install_sh_url = if config[:chef_license_key].nil?
@@ -100,10 +99,9 @@ module Kitchen
       #
       # @param args [Array<String>] array of flags
       # @api private
-      # rubocop:disable Metrics/CyclomaticComplexity
       def add_optional_chef_client_args!(args)
         if config[:json_attributes]
-          json = remote_path_join(config[:root_path], "dna.json")
+          json = remote_path_join(config[:root_path], 'dna.json')
           args << "--json-attributes #{json}"
         end
 
@@ -119,14 +117,14 @@ module Kitchen
           args << "--chef-zero-port #{config[:chef_zero_port]}"
         end
 
-        args << "--profile-ruby" if config[:profile_ruby]
+        args << '--profile-ruby' if config[:profile_ruby]
 
         if config[:slow_resource_report]
-          if config[:slow_resource_report].is_a?(Integer)
-            args << "--slow-report #{config[:slow_resource_report]}"
-          else
-            args << "--slow-report"
-          end
+          args << if config[:slow_resource_report].is_a?(Integer)
+                    "--slow-report #{config[:slow_resource_report]}"
+                  else
+                    '--slow-report'
+                  end
         end
       end
       # rubocop:enable Metrics/CyclomaticComplexity
@@ -138,10 +136,10 @@ module Kitchen
       def chef_args(client_rb_filename)
         level = config[:log_level]
         args = [
-            "--config #{remote_path_join(config[:root_path], client_rb_filename)}",
-            "--log_level #{level}",
-            "--force-formatter",
-            "--no-color",
+          "--config #{remote_path_join(config[:root_path], client_rb_filename)}",
+          "--log_level #{level}",
+          '--force-formatter',
+          '--no-color',
         ]
         add_optional_chef_client_args!(args)
 
@@ -155,14 +153,14 @@ module Kitchen
       # @api private
       def chef_client_zero_env
         root = config[:root_path]
-        gem_home = gem_path = remote_path_join(root, "chef-client-zero-gems")
-        gem_cache = remote_path_join(gem_home, "cache")
+        gem_home = gem_path = remote_path_join(root, 'chef-client-zero-gems')
+        gem_cache = remote_path_join(gem_home, 'cache')
 
         [
-            shell_env_var("CHEF_REPO_PATH", root),
-            shell_env_var("GEM_HOME", gem_home),
-            shell_env_var("GEM_PATH", gem_path),
-            shell_env_var("GEM_CACHE", gem_cache),
+          shell_env_var('CHEF_REPO_PATH', root),
+          shell_env_var('GEM_HOME', gem_home),
+          shell_env_var('GEM_PATH', gem_path),
+          shell_env_var('GEM_CACHE', gem_cache),
         ].join("\n").concat("\n")
       end
 
@@ -170,12 +168,12 @@ module Kitchen
       #
       # @api private
       def prepare_validation_pem
-        info("Preparing validation.pem")
-        debug("Using a dummy validation.pem")
+        info('Preparing validation.pem')
+        debug('Using a dummy validation.pem')
 
         source = File.join(File.dirname(__FILE__),
-                           %w{.. .. .. support dummy-validation.pem})
-        FileUtils.cp(source, File.join(sandbox_path, "validation.pem"))
+                           %w(.. .. .. support dummy-validation.pem))
+        FileUtils.cp(source, File.join(sandbox_path, 'validation.pem'))
       end
 
       # Returns the command that will run a backwards compatible shim script
@@ -184,9 +182,9 @@ module Kitchen
       # @return [String] the command string
       # @api private
       def shim_command
-        ruby = remote_path_join(config[:ruby_bindir], "ruby")
-          .tap { |path| path.concat(".exe") if windows_os? }
-        shim = remote_path_join(config[:root_path], "chef-client-zero.rb")
+        ruby = remote_path_join(config[:ruby_bindir], 'ruby')
+               .tap { |path| path.concat('.exe') if windows_os? }
+        shim = remote_path_join(config[:root_path], 'chef-client-zero.rb')
 
         "#{chef_client_zero_env}\n#{sudo(ruby)} #{shim}"
       end
