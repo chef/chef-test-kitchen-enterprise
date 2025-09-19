@@ -5,9 +5,9 @@ driver:
   reset_command: exit 0
 
 platforms:
-    - name: ubuntu-latest
-    - name: macos-latest
-    - name: windows-latest
-      transport:
-        username: <%= ENV["MACHINE_USER"] %>
-        password: <%= ENV["MACHINE_PASS"] %>
+  - name: ubuntu-latest
+  - name: macos-latest
+  - name: windows-latest
+    transport:
+      username: <%= ENV["MACHINE_USER"] %>
+      password: <%= ENV["MACHINE_PASS"] %>

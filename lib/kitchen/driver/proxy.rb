@@ -58,6 +58,7 @@ module Kitchen
 
       # (see Base#converge)
       def converge(state) # rubocop:disable Metrics/AbcSize
+        raise
         provisioner = instance.provisioner
         provisioner.create_sandbox
         sandbox_dirs = provisioner.sandbox_dirs
@@ -83,36 +84,36 @@ module Kitchen
         instance.provisioner.cleanup_sandbox
       end
 
-      # (see Base#setup)
-      def setup(state)
-        verifier = instance.verifier
-
-        instance.transport.connection(state) do |conn|
-          conn.execute(env_cmd(verifier.install_command))
-        end
-      rescue Kitchen::Transport::TransportFailed => ex
-        raise ActionFailed, ex.message
-      end
-
-      # (see Base#verify)
-      def verify(state) # rubocop:disable Metrics/AbcSize
-        verifier = instance.verifier
-        verifier.create_sandbox
-        sandbox_dirs = Util.list_directory(verifier.sandbox_path)
-
-        instance.transport.connection(state) do |conn|
-          conn.execute(env_cmd(verifier.init_command))
-          info("Transferring files to #{instance.to_str}")
-          conn.upload(sandbox_dirs, verifier[:root_path])
-          debug("Transfer complete")
-          conn.execute(env_cmd(verifier.prepare_command))
-          conn.execute(env_cmd(verifier.run_command))
-        end
-      rescue Kitchen::Transport::TransportFailed => ex
-        raise ActionFailed, ex.message
-      ensure
-        instance.verifier.cleanup_sandbox
-      end
+      # # (see Base#setup)
+      # def setup(state)
+      #   verifier = instance.verifier
+      #
+      #   instance.transport.connection(state) do |conn|
+      #     conn.execute(env_cmd(verifier.install_command))
+      #   end
+      # rescue Kitchen::Transport::TransportFailed => ex
+      #   raise ActionFailed, ex.message
+      # end
+      #
+      # # (see Base#verify)
+      # def verify(state) # rubocop:disable Metrics/AbcSize
+      #   verifier = instance.verifier
+      #   verifier.create_sandbox
+      #   sandbox_dirs = Util.list_directory(verifier.sandbox_path)
+      #
+      #   instance.transport.connection(state) do |conn|
+      #     conn.execute(env_cmd(verifier.init_command))
+      #     info("Transferring files to #{instance.to_str}")
+      #     conn.upload(sandbox_dirs, verifier[:root_path])
+      #     debug("Transfer complete")
+      #     conn.execute(env_cmd(verifier.prepare_command))
+      #     conn.execute(env_cmd(verifier.run_command))
+      #   end
+      # rescue Kitchen::Transport::TransportFailed => ex
+      #   raise ActionFailed, ex.message
+      # ensure
+      #   instance.verifier.cleanup_sandbox
+      # end
 
       # (see Base#destroy)
       def destroy(state)
