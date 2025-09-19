@@ -25,11 +25,13 @@ Gem::Specification.new do |gem|
   gem.add_dependency "bcrypt_pbkdf",       "~> 1.0" # ed25519 ssh key support
   gem.add_dependency "chef-utils",         ">= 16.4.35"
   gem.add_dependency "ed25519",            "~> 1.2" # ed25519 ssh key support
+  gem.add_dependency "irb"
   gem.add_dependency "mixlib-install",     "~> 3.6"
   gem.add_dependency "mixlib-shellout",    ">= 1.2", "< 4.0"
   gem.add_dependency "net-scp",            ">= 1.1", "< 5.0" # pinning until we can confirm 4+ works
   gem.add_dependency "net-ssh",            ">= 2.9", "< 8.0" # pinning until we can confirm 8+ works
   gem.add_dependency "net-ssh-gateway",    ">= 1.2", "< 3.0" # pinning until we can confirm 3+ works
+  gem.add_dependency "syslog"
   gem.add_dependency "thor",               ">= 0.19", "< 1.3.0" # downgrading thor bec inspec-core depends on < 1.3.0
   gem.add_dependency "winrm",              "~> 2.0"
   gem.add_dependency "winrm-elevated",     "~> 1.0"
