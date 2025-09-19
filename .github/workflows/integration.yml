@@ -72,13 +72,13 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Setup Machine
-        run: |
+#       - name: Setup Machine
+#         run: |
 #           winrm.cmd quickconfig -q
 #           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
 #           net localgroup administrators ${{ env.machine_user }} /add
-          bundle config set --local with 'integration'
-          bundle install
+#           bundle config set --local with 'integration'
+#           bundle install
       - name: Verify Windows
         run: bundle exec kitchen verify windows-latest
 
@@ -96,8 +96,8 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Setup Machine
-        run: |
+#       - name: Setup Machine
+#         run: |
 #           sudo dscl . -create /Users/${{ env.machine_user }}
 #           sudo dscl . -create /Users/${{ env.machine_user }} UserShell /bin/bash
 #           sudo dscl . -create /Users/${{ env.machine_user }} RealName "${{ env.machine_user }}"
@@ -107,8 +107,8 @@ jobs:
 #           sudo dscl . -passwd /Users/${{ env.machine_user }} ${{ env.machine_pass }}
 #           sudo createhomedir -c -u ${{ env.machine_user }}
 #           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
-          bundle config set --local with 'integration'
-          bundle install
+#           bundle config set --local with 'integration'
+#           bundle install
       - name: Verify macOS
         run: bundle exec kitchen verify macos-latest
 
@@ -127,12 +127,12 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Setup Machine
-        run: |
+#       - name: Setup Machine
+#         run: |
 #           sudo useradd -m ${{ env.machine_user }}
 #           echo "${{ env.machine_user }}:${{ env.machine_pass }}" | sudo chpasswd
 #           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
-          bundle config set --local with 'integration'
-          bundle install
+#           bundle config set --local with 'integration'
+#           bundle install
       - name: Verify Linux
         run: bundle exec kitchen verify ubuntu-latest
