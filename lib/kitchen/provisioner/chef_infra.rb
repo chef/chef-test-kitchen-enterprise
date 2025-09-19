@@ -65,6 +65,7 @@ module Kitchen
       def check_license
         super
 
+        # only chef-client 15 and newer requires a license key to download
         return unless (config[:product_name].nil? || config[:product_name]&.start_with?("chef")) && (config[:product_version].to_s == "latest" || config[:product_version].to_s.to_i >= 15)
 
         info("Fetching the Chef license key")
@@ -164,12 +165,15 @@ module Kitchen
         gem_home = gem_path = remote_path_join(root, "chef-client-zero-gems")
         gem_cache = remote_path_join(gem_home, "cache")
 
-        [
+        env_vars = [
             shell_env_var("CHEF_REPO_PATH", root),
             shell_env_var("GEM_HOME", gem_home),
             shell_env_var("GEM_PATH", gem_path),
             shell_env_var("GEM_CACHE", gem_cache),
-        ].join("\n").concat("\n")
+        ]
+        env_vars << shell_env_var("CHEF_LICENSE_KEY", config[:chef_license_key]) if config[:chef_license_key] && !config[:chef_license_key].empty?
+        env_vars << shell_env_var("CHEF_LICENSE_SERVER", config[:chef_license_server]) if config[:chef_license_server] && !config[:chef_license_server].empty?
+        env_vars.join("\n").concat("\n")
       end
 
       # Writes a fake (but valid) validation.pem into the sandbox directory.

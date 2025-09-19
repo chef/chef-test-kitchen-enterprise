@@ -42,7 +42,7 @@ module Kitchen
     # @author Fletcher Nichol <fnichol@nichol.ca>
     class ChefBase < Base
       default_config :require_chef_omnibus, true
-      default_config :chef_omnibus_url, &:omnitruck_download_url
+      default_config :chef_omnibus_url, &:omnitruck_community_url
       default_config :chef_omnibus_install_options, nil
       default_config :chef_license, nil
       default_config :run_list, []
@@ -137,7 +137,7 @@ module Kitchen
 
       default_config :architecture
 
-      default_config :download_url, &:omnitruck_download_url
+      default_config :download_url, &:omnitruck_community_url
 
       default_config :checksum
 
@@ -297,21 +297,9 @@ module Kitchen
         end
       end
 
-      def omnitruck_base_url
-        if config[:product_version].to_s == "latest" || config[:product_version].to_s.to_i >= 15
-          "https://chefdownload-commercial.chef.io"
-        else
-          "https://chefdownload-community.chef.io"
-        end
-      end
-
       # Select the download URL based on the product name
-      def omnitruck_download_url
-        if config[:product_version].to_s == "latest" || config[:product_version].to_s.to_i >= 15
-          "#{omnitruck_base_url}/install.#{powershell_shell? ? 'ps1' : 'sh'}?license_id=#{config[:chef_license_key]}"
-        else
-          "#{omnitruck_base_url}/install.#{powershell_shell? ? 'ps1' : 'sh'}"
-        end
+      def omnitruck_community_url
+        "https://chefdownload-community.chef.io/install.#{powershell_shell? ? 'ps1' : 'sh'}"
       end
 
       # (see Base#create_sandbox)
@@ -556,8 +544,6 @@ module Kitchen
             prox.delete_if { |p| %i{https_proxy ftp_proxy no_proxy}.include?(p) } if powershell_shell?
           end
           opts[:install_command_options].merge!(proxies)
-
-          opts[:new_omnibus_download_url] = config[:install_script_url] if config[:install_script_url]
         end
         debug("[script_for_product] opts = #{opts.inspect}")
         installer = Mixlib::Install.new(opts)
