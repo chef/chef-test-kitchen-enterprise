@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-require_relative "ssh_base"
+require_relative "base"
 require_relative "../version"
 
 module Kitchen
@@ -29,7 +29,11 @@ module Kitchen
     # the driver was created.
     #
     # @author Seth Chisamore <schisamo@opscode.com>
-    class Proxy < Kitchen::Driver::SSHBase
+    class Proxy < Kitchen::Driver::Base
+      include ShellOut
+      include Configurable
+      include Logging
+
       plugin_version Kitchen::VERSION
 
       required_config :host
@@ -37,11 +41,77 @@ module Kitchen
 
       no_parallel_for :create, :destroy
 
+      # Creates a new Driver object using the provided configuration data
+      # which will be merged with any default configuration.
+      #
+      # @param config [Hash] provided driver configuration
+      def initialize(config = {})
+        init_config(config)
+      end
+
       # (see Base#create)
       def create(state)
-        # TODO: Once this isn't using SSHBase, it should call `super` to support pre_create_command.
+        super
         state[:hostname] = config[:host]
         reset_instance(state)
+      end
+
+      # (see Base#converge)
+      def converge(state) # rubocop:disable Metrics/AbcSize
+        provisioner = instance.provisioner
+        provisioner.create_sandbox
+        sandbox_dirs = provisioner.sandbox_dirs
+
+        instance.transport.connection(state) do |conn|
+          conn.execute(env_cmd(provisioner.install_command))
+          conn.execute(env_cmd(provisioner.init_command))
+          info("Transferring files to #{instance.to_str}")
+          conn.upload(sandbox_dirs, provisioner[:root_path])
+          info("Transfer complete")
+          conn.execute(env_cmd(provisioner.prepare_command))
+          conn.execute(env_cmd(provisioner.run_command))
+          info("Downloading files from #{instance.to_str}")
+          provisioner[:downloads].to_h.each do |remotes, local|
+            debug("Downloading #{Array(remotes).join(", ")} to #{local}")
+            conn.download(remotes, local)
+          end
+          debug("Download complete")
+        end
+      rescue Kitchen::Transport::TransportFailed => ex
+        raise ActionFailed, ex.message
+      ensure
+        instance.provisioner.cleanup_sandbox
+      end
+
+      # (see Base#setup)
+      def setup(state)
+        verifier = instance.verifier
+
+        instance.transport.connection(state) do |conn|
+          conn.execute(env_cmd(verifier.install_command))
+        end
+      rescue Kitchen::Transport::TransportFailed => ex
+        raise ActionFailed, ex.message
+      end
+
+      # (see Base#verify)
+      def verify(state) # rubocop:disable Metrics/AbcSize
+        verifier = instance.verifier
+        verifier.create_sandbox
+        sandbox_dirs = Util.list_directory(verifier.sandbox_path)
+
+        instance.transport.connection(state) do |conn|
+          conn.execute(env_cmd(verifier.init_command))
+          info("Transferring files to #{instance.to_str}")
+          conn.upload(sandbox_dirs, verifier[:root_path])
+          debug("Transfer complete")
+          conn.execute(env_cmd(verifier.prepare_command))
+          conn.execute(env_cmd(verifier.run_command))
+        end
+      rescue Kitchen::Transport::TransportFailed => ex
+        raise ActionFailed, ex.message
+      ensure
+        instance.verifier.cleanup_sandbox
       end
 
       # (see Base#destroy)
@@ -64,6 +134,36 @@ module Kitchen
           info("Resetting instance state with command: #{cmd}")
           ssh(build_ssh_args(state), cmd)
         end
+      end
+
+      # Adds http, https and ftp proxy environment variables to a command, if
+      # set in configuration data or on local workstation.
+      #
+      # @param cmd [String] command string
+      # @return [String] command string
+      # @api private
+      # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/AbcSize
+      def env_cmd(cmd)
+        return if cmd.nil?
+
+        env = String.new("env")
+        http_proxy = config[:http_proxy] || ENV["http_proxy"] ||
+                     ENV["HTTP_PROXY"]
+        https_proxy = config[:https_proxy] || ENV["https_proxy"] ||
+                      ENV["HTTPS_PROXY"]
+        ftp_proxy = config[:ftp_proxy] || ENV["ftp_proxy"] ||
+                    ENV["FTP_PROXY"]
+        no_proxy = if (!config[:http_proxy] && http_proxy) ||
+                      (!config[:https_proxy] && https_proxy) ||
+                      (!config[:ftp_proxy] && ftp_proxy)
+                     ENV["no_proxy"] || ENV["NO_PROXY"]
+                   end
+        env << " http_proxy=#{http_proxy}"   if http_proxy
+        env << " https_proxy=#{https_proxy}" if https_proxy
+        env << " ftp_proxy=#{ftp_proxy}"     if ftp_proxy
+        env << " no_proxy=#{no_proxy}"       if no_proxy
+
+        env == "env" ? cmd : "#{env} #{cmd}"
       end
     end
   end
