@@ -413,10 +413,8 @@ module Kitchen
       banner "Converging #{to_str}..."
       elapsed = action(:converge) do |state|
         if legacy_ssh_base_driver?
-          puts "inside if condition converge action-------"
           legacy_ssh_base_converge(state)
         else
-          puts "inside else condition converge action-------"
           provisioner.check_license
           provisioner.call(state)
         end

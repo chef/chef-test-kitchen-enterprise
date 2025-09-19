@@ -37,6 +37,8 @@ Gem::Specification.new do |gem|
   # Required to run the Chef provisioner local license check for remote systems
   # TK is not under Chef EULA
   gem.add_dependency "license-acceptance", ">= 1.0.11", "< 3.0" # pinning until we can confirm 3+ works
-  # gem.add_dependency "chef-licensing",     "~> 1.0"
+  # Since chef-licensing with optional licensing is not yet released, we point it to a custom branch in Gemfile.
+  # TODO: Remove the following comment once chef-licensing is released with optional licensing.
+  # spec.add_dependency "chef-licensing", "~> 1.1"
   gem.add_dependency "berkshelf",          "~> 8.0" # for managing berks cookbooks
 end

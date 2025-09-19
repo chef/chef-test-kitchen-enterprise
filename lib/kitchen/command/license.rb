@@ -24,7 +24,6 @@ module Kitchen
       OPTIONS      = %w{--chef-license-key -h --help}.freeze
 
       def call
-        puts "inside call method-------"
         result = validate_arguments!
 
         case result
