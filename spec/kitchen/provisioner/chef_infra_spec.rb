@@ -13,16 +13,16 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permission        it "calls the chef-client command from :chef_client_path" do
-          config[:chef_client_path] = '
-\chef-client.bat'
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-          _(cmd).must_match regexify('& 
-\chef-client.bat ', :partial_line)
-        end
-      end
-    end
-  end
+require_relative "../../spec_helper"
+
+describe Kitchen::Provisioner::ChefInfra do
+  let(:provisioner) { described_class.new(config).finalize_config!(instance) }
+  let(:config) { {} }
+  let(:instance) { stub(name: "test-instance", logger: Logger.new(logged_output), suite: stub(name: "default"), platform: stub(os_type: "unix")) }
+  let(:logged_output) { StringIO.new }
 
   describe "#check_license" do
     let(:licensing_base) { Kitchen::Licensing::Base }
