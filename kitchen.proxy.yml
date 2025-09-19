@@ -4,14 +4,10 @@ driver:
   host: localhost
   reset_command: exit 0
 
-transport:
-  username: <%= ENV["MACHINE_USER"] %>
-  password: <%= ENV["MACHINE_PASS"] %>
-
 platforms:
     - name: ubuntu-latest
     - name: macos-latest
     - name: windows-latest
-#       transport:
-#         name: winrm
-#         elevated: true
+      transport:
+        username: <%= ENV["MACHINE_USER"] %>
+        password: <%= ENV["MACHINE_PASS"] %>
