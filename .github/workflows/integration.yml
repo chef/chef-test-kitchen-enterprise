@@ -11,6 +11,11 @@ concurrency:
   group: integration-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  machine_user: test_user
+  machine_pass: Pass@word1
+  machine_port: 22
+  SPEC_OPTS: --format progress
 jobs:
   integration-linux:
     name: Linux Dokken Integration Tests
@@ -54,10 +59,7 @@ jobs:
     name: Windows Integration Tests
     env:
       BUNDLE_without: integration
-      machine_user: test_user
-      machine_pass: Pass@word1
       machine_port: 5985
-      SPEC_OPTS: --format progress
       KITCHEN_LOCAL_YAML: kitchen.proxy.yml
     runs-on: windows-latest
     timeout-minutes: 600
