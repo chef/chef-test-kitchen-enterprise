@@ -63,7 +63,6 @@ module Kitchen
       end
 
       def check_license
-        puts "inside check_license method-------"
         super
 
         # Use require_license_for to enforce licensing for kitchen converge operations
