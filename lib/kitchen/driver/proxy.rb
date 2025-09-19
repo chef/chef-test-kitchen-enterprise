@@ -132,7 +132,9 @@ module Kitchen
       def reset_instance(state)
         if (cmd = config[:reset_command])
           info("Resetting instance state with command: #{cmd}")
-          ssh(build_ssh_args(state), cmd)
+          instance.transport.connection(state) do |conn|
+            conn.execute(env_cmd(command))
+          end
         end
       end
 
