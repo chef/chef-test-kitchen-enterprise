@@ -84,36 +84,36 @@ module Kitchen
         instance.provisioner.cleanup_sandbox
       end
 
-      # # (see Base#setup)
-      # def setup(state)
-      #   verifier = instance.verifier
-      #
-      #   instance.transport.connection(state) do |conn|
-      #     conn.execute(env_cmd(verifier.install_command))
-      #   end
-      # rescue Kitchen::Transport::TransportFailed => ex
-      #   raise ActionFailed, ex.message
-      # end
-      #
-      # # (see Base#verify)
-      # def verify(state) # rubocop:disable Metrics/AbcSize
-      #   verifier = instance.verifier
-      #   verifier.create_sandbox
-      #   sandbox_dirs = Util.list_directory(verifier.sandbox_path)
-      #
-      #   instance.transport.connection(state) do |conn|
-      #     conn.execute(env_cmd(verifier.init_command))
-      #     info("Transferring files to #{instance.to_str}")
-      #     conn.upload(sandbox_dirs, verifier[:root_path])
-      #     debug("Transfer complete")
-      #     conn.execute(env_cmd(verifier.prepare_command))
-      #     conn.execute(env_cmd(verifier.run_command))
-      #   end
-      # rescue Kitchen::Transport::TransportFailed => ex
-      #   raise ActionFailed, ex.message
-      # ensure
-      #   instance.verifier.cleanup_sandbox
-      # end
+      # (see Base#setup)
+      def setup(state)
+        verifier = instance.verifier
+
+        instance.transport.connection(state) do |conn|
+          conn.execute(env_cmd(verifier.install_command))
+        end
+      rescue Kitchen::Transport::TransportFailed => ex
+        raise ActionFailed, ex.message
+      end
+
+      # (see Base#verify)
+      def verify(state) # rubocop:disable Metrics/AbcSize
+        verifier = instance.verifier
+        verifier.create_sandbox
+        sandbox_dirs = Util.list_directory(verifier.sandbox_path)
+
+        instance.transport.connection(state) do |conn|
+          conn.execute(env_cmd(verifier.init_command))
+          info("Transferring files to #{instance.to_str}")
+          conn.upload(sandbox_dirs, verifier[:root_path])
+          debug("Transfer complete")
+          conn.execute(env_cmd(verifier.prepare_command))
+          conn.execute(env_cmd(verifier.run_command))
+        end
+      rescue Kitchen::Transport::TransportFailed => ex
+        raise ActionFailed, ex.message
+      ensure
+        instance.verifier.cleanup_sandbox
+      end
 
       # (see Base#destroy)
       def destroy(state)
@@ -121,6 +121,28 @@ module Kitchen
 
         reset_instance(state)
         state.delete(:hostname)
+      end
+
+      # Package an instance.
+      #
+      # (see Base#package)
+      def package(state); end
+
+      # (see Base#login_command)
+      def login_command(state)
+        instance.transport.connection(state)
+                .login_command
+      end
+
+      # Executes an arbitrary command on an instance over an SSH connection.
+      #
+      # @param state [Hash] mutable instance and driver state
+      # @param command [String] the command to be executed
+      # @raise [ActionFailed] if the command could not be successfully completed
+      def remote_command(state, command)
+        instance.transport.connection(state) do |conn|
+          conn.execute(env_cmd(command))
+        end
       end
 
       private
