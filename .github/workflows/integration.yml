@@ -14,7 +14,7 @@ concurrency:
 env:
   machine_user: test_user
   machine_pass: Pass@word1
-  machine_port: 22
+  machine_port: 5985
   SPEC_OPTS: --format progress
 jobs:
   integration-linux:
@@ -59,7 +59,6 @@ jobs:
     name: Windows Integration Tests
     env:
       BUNDLE_without: integration
-      machine_port: 5985
       KITCHEN_LOCAL_YAML: kitchen.proxy.yml
     runs-on: windows-latest
     timeout-minutes: 600

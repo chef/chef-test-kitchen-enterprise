@@ -133,7 +133,7 @@ module Kitchen
         if (cmd = config[:reset_command])
           info("Resetting instance state with command: #{cmd}")
           instance.transport.connection(state) do |conn|
-            conn.execute(env_cmd(command))
+            conn.execute(env_cmd(cmd))
           end
         end
       end
