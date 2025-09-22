@@ -73,7 +73,15 @@ module Kitchen
           end
 
           key, type, install_sh_url = if config[:chef_license_key].nil?
-                                        get_or_prompt_for_license
+                                        license_keys = ChefLicensing.fetch_and_persist
+
+                                        licenses_metadata = ChefLicensing::Api::Describe.list({
+                                          license_keys: license_keys,
+                                        })
+
+                                        # Get the last license info
+                                        last_license = licenses_metadata.last
+                                        [last_license.id, last_license.license_type, Licensing::Base.install_sh_url(last_license.license_type, license_keys)]
                                       else
                                         key = config[:chef_license_key]
                                         client = Licensing::Base.get_license_client([key])
@@ -97,28 +105,6 @@ module Kitchen
       end
 
       private
-
-      # Gets or prompts for a license key when none is available.
-      # Uses ChefLicensing.fetch_and_persist to prompt user for license input.
-      #
-      # @return [Array<String, String, String>] array containing [license_key, license_type, install_sh_url]
-      # @api private
-      def get_or_prompt_for_license
-        # Try to get existing license keys first
-        Licensing::Base.get_license_keys
-      rescue ChefLicensing::InvalidLicense
-        # No license available, prompt user to add one
-        info("No valid license found. Please provide a license key.")
-
-        # Use ChefLicensing.fetch_and_persist to prompt for and persist license
-        keys = ChefLicensing.fetch_and_persist
-        raise ChefLicensing::InvalidLicense, "Failed to obtain a valid license" if keys.empty?
-
-        # Get the license client information for the newly added license
-        client = Licensing::Base.get_license_client(keys)
-
-        [keys.last, client.license_type, Licensing::Base.install_sh_url(client.license_type, keys)]
-      end
 
       # Adds optional flags to a chef-client command, depending on
       # configuration data. Note that this method mutates the incoming Array.

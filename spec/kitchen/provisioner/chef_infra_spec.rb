@@ -31,6 +31,127 @@ describe Kitchen::Provisioner::ChefInfra do
     { test_base_path: "/b", kitchen_root: "/r" }
   end
 
+  describe "#check_license" do
+    before do
+      # avoid running legacy base acceptance in tests
+      Kitchen::Provisioner::ChefBase.any_instance.stubs(:check_license)
+      ChefLicensing::Config.stubs(:require_license_for).yields
+    end
+
+    it "wraps license logic in ChefLicensing::Config.require_license_for" do
+      ChefLicensing::Config.unstub(:require_license_for)
+      ChefLicensing::Config.expects(:require_license_for).once.yields
+
+      # use preconfigured key to avoid external calls
+      config[:chef_license_key] = "k1"
+      client = stub(license_type: "commercial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["k1"]).returns("https://install.sh/commercial")
+
+      provisioner.check_license
+    end
+
+    it "does nothing when ChefLicensing::Config.require_license_for does not yield" do
+      # ensure require_license_for returns without yielding
+      ChefLicensing::Config.unstub(:require_license_for)
+      ChefLicensing::Config.expects(:require_license_for).once.returns(nil)
+
+      # set expectations that no licensing calls are made
+      Kitchen::Licensing::Base.expects(:get_license_client).never
+      ChefLicensing.expects(:fetch_and_persist).never
+      ChefLicensing::Api::Describe.expects(:list).never
+
+      # preconditions
+      _(provisioner[:chef_license_key]).must_be_nil
+      _(provisioner[:chef_license_type]).must_be_nil
+      _(provisioner[:install_sh_url]).must_be_nil
+
+      provisioner.check_license
+
+      # postconditions remain unchanged
+      _(provisioner[:chef_license_key]).must_be_nil
+      _(provisioner[:chef_license_type]).must_be_nil
+      _(provisioner[:install_sh_url]).must_be_nil
+    end
+
+    it "sets CHEF_LICENSE_SERVER when configured" do
+      orig = ENV["CHEF_LICENSE_SERVER"]
+      begin
+        config[:chef_license_server] = ["s1", "s2"]
+        config[:chef_license_key] = "k1"
+        client = stub(license_type: "commercial")
+        Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
+        Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["k1"]).returns("https://install.sh/commercial")
+
+        provisioner.check_license
+        _(ENV["CHEF_LICENSE_SERVER"]).must_equal "s1,s2"
+      ensure
+        orig.nil? ? ENV.delete("CHEF_LICENSE_SERVER") : ENV["CHEF_LICENSE_SERVER"] = orig
+      end
+    end
+
+    it "does not change CHEF_LICENSE_SERVER when not configured" do
+      orig = ENV["CHEF_LICENSE_SERVER"]
+      begin
+        config[:chef_license_server] = []
+        config[:chef_license_key] = "k1"
+        client = stub(license_type: "commercial")
+        Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
+        Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["k1"]).returns("https://install.sh/commercial")
+
+        provisioner.check_license
+        _(ENV.key?("CHEF_LICENSE_SERVER") ? ENV["CHEF_LICENSE_SERVER"] : nil).must_equal(orig)
+      ensure
+        orig.nil? ? ENV.delete("CHEF_LICENSE_SERVER") : ENV["CHEF_LICENSE_SERVER"] = orig
+      end
+    end
+
+    it "uses preconfigured key and derives type and install url" do
+      config[:chef_license_key] = "pre-key"
+      client = stub(license_type: "trial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(["pre-key"]).returns(client)
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("trial", ["pre-key"]).returns("https://install.sh/trial")
+
+      provisioner.check_license
+      _(provisioner[:chef_license_key]).must_equal "pre-key"
+      _(provisioner[:chef_license_type]).must_equal "trial"
+      _(provisioner[:install_sh_url]).must_equal "https://install.sh/trial"
+      _(logged_output.string).must_match info_line("Fetching the Chef license key")
+      _(logged_output.string).must_match info_line("Chef license key: pre-key")
+    end
+
+    it "fetches and persists when no key is provided, then sets config" do
+      # no config[:chef_license_key]
+      license_keys = ["xyz-999"]
+      ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
+      last = stub(id: "xyz-999", license_type: "commercial")
+      ChefLicensing::Api::Describe.stubs(:list).with({ license_keys: license_keys }).returns([last])
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
+
+      provisioner.check_license
+      _(provisioner[:chef_license_key]).must_equal "xyz-999"
+      _(provisioner[:chef_license_type]).must_equal "commercial"
+      _(provisioner[:install_sh_url]).must_equal "https://install.sh/commercial"
+      _(logged_output.string).must_match info_line("Fetching the Chef license key")
+      _(logged_output.string).must_match info_line("Chef license key: xyz-999")
+    end
+
+    it "propagates errors from get_license_client when key is provided" do
+      config[:chef_license_key] = "bad-key"
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(["bad-key"]).raises(StandardError.new("validation failed"))
+
+      _(proc { provisioner.check_license }).must_raise StandardError
+      _(logged_output.string).must_match info_line("Fetching the Chef license key")
+    end
+
+    it "propagates errors from fetch_and_persist when no key is provided" do
+      ChefLicensing.stubs(:fetch_and_persist).raises(StandardError.new("fetch failed"))
+
+      _(proc { provisioner.check_license }).must_raise StandardError
+      _(logged_output.string).must_match info_line("Fetching the Chef license key")
+    end
+  end
+
   let(:instance) do
     stub(
       name: "coolbeans",
@@ -99,110 +220,6 @@ describe Kitchen::Provisioner::ChefInfra do
 
     it "sets :chef_zero_port to 8889" do
       _(provisioner[:chef_zero_port]).must_equal 8889
-    end
-  end
-
-  describe "#get_or_prompt_for_license" do
-    it "returns [key,type,url] when license already exists" do
-      Kitchen::Licensing::Base.stubs(:get_license_keys)
-        .returns(["abc-123", "commercial", "https://install.sh/commercial"])
-
-      key, type, url = provisioner.send(:get_or_prompt_for_license)
-      _(key).must_equal "abc-123"
-      _(type).must_equal "commercial"
-      _(url).must_equal "https://install.sh/commercial"
-    end
-
-    it "prompts via fetch_and_persist when no valid license and returns new info" do
-      Kitchen::Licensing::Base.stubs(:get_license_keys).raises(ChefLicensing::InvalidLicense)
-      ChefLicensing.stubs(:fetch_and_persist).returns(["xyz-999"]) # user provided key
-      client = stub(license_type: "trial")
-      Kitchen::Licensing::Base.stubs(:get_license_client).with(["xyz-999"]).returns(client)
-      Kitchen::Licensing::Base.stubs(:install_sh_url).with("trial", ["xyz-999"]).returns("https://install.sh/trial")
-
-      key, type, url = provisioner.send(:get_or_prompt_for_license)
-      _(key).must_equal "xyz-999"
-      _(type).must_equal "trial"
-      _(url).must_equal "https://install.sh/trial"
-      _(logged_output.string).must_match info_line("No valid license found. Please provide a license key.")
-    end
-
-    it "raises InvalidLicense when fetch_and_persist returns empty" do
-      Kitchen::Licensing::Base.stubs(:get_license_keys).raises(ChefLicensing::InvalidLicense)
-      ChefLicensing.stubs(:fetch_and_persist).returns([])
-
-      _ { provisioner.send(:get_or_prompt_for_license) }.must_raise ChefLicensing::InvalidLicense
-    end
-
-    it "propagates LicenseKeyNotFetchedError from fetch_and_persist" do
-      Kitchen::Licensing::Base.stubs(:get_license_keys).raises(ChefLicensing::InvalidLicense)
-      ChefLicensing.stubs(:fetch_and_persist).raises(ChefLicensing::LicenseKeyFetcher::LicenseKeyNotFetchedError)
-
-      _ { provisioner.send(:get_or_prompt_for_license) }.must_raise ChefLicensing::LicenseKeyFetcher::LicenseKeyNotFetchedError
-    end
-  end
-
-  describe "#check_license" do
-    before do
-      # prevent base class legacy flow from running in these tests
-      Kitchen::Provisioner::ChefBase.any_instance.stubs(:check_license)
-      ChefLicensing::Config.stubs(:require_license_for).yields
-    end
-
-    it "wraps in ChefLicensing::Config.require_license_for" do
-      ChefLicensing::Config.unstub(:require_license_for)
-      ChefLicensing::Config.expects(:require_license_for).once.yields
-      provisioner.stubs(:get_or_prompt_for_license).returns(["k1", "commercial", "https://install.sh/commercial"]) # avoid external calls
-      provisioner.check_license
-    end
-
-    it "sets CHEF_LICENSE_SERVER when configured" do
-      orig = ENV["CHEF_LICENSE_SERVER"]
-      begin
-        config[:chef_license_server] = ["s1", "s2"]
-        provisioner.stubs(:get_or_prompt_for_license).returns(["k1", "commercial", "https://install.sh/commercial"]) # avoid external calls
-        provisioner.check_license
-        _(ENV["CHEF_LICENSE_SERVER"]).must_equal "s1,s2"
-      ensure
-        orig.nil? ? ENV.delete("CHEF_LICENSE_SERVER") : ENV["CHEF_LICENSE_SERVER"] = orig
-      end
-    end
-
-    it "does not set CHEF_LICENSE_SERVER when not configured" do
-      orig = ENV["CHEF_LICENSE_SERVER"]
-      begin
-        config[:chef_license_server] = []
-        provisioner.stubs(:get_or_prompt_for_license).returns(["k1", "commercial", "https://install.sh/commercial"]) # avoid external calls
-        provisioner.check_license
-        _(ENV.key?("CHEF_LICENSE_SERVER") ? ENV["CHEF_LICENSE_SERVER"] : nil).must_equal(orig)
-      ensure
-        orig.nil? ? ENV.delete("CHEF_LICENSE_SERVER") : ENV["CHEF_LICENSE_SERVER"] = orig
-      end
-    end
-
-    it "calls get_or_prompt_for_license and sets config when no key provided" do
-      provisioner.stubs(:get_or_prompt_for_license).returns(["k1", "trial", "https://install.sh/trial"]) 
-      provisioner.check_license
-      _(provisioner[:chef_license_key]).must_equal "k1"
-      _(provisioner[:chef_license_type]).must_equal "trial"
-      _(provisioner[:install_sh_url]).must_equal "https://install.sh/trial"
-      _(logged_output.string).must_match info_line("Fetching the Chef license key")
-      _(logged_output.string).must_match info_line("Chef license key: k1")
-    end
-
-    it "uses preconfigured key and derives type and url" do
-      config[:chef_license_key] = "pre-key"
-      provisioner.expects(:get_or_prompt_for_license).never
-      client = stub(license_type: "commercial")
-      Kitchen::Licensing::Base.stubs(:get_license_client).with(["pre-key"]).returns(client)
-      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["pre-key"]).returns("https://install.sh/commercial")
-
-      provisioner.check_license
-      _(provisioner[:chef_license_key]).must_equal "pre-key"
-      _(provisioner[:chef_license_type]).must_equal "commercial"
-      _(provisioner[:install_sh_url]).must_equal "https://install.sh/commercial"
-      _(logged_output.string).must_match info_line("Fetching the Chef license key")
-      _(logged_output.string).must_match info_line("Chef license key: pre-key")
     end
   end
 
