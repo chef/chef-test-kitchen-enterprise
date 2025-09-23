@@ -76,7 +76,7 @@ module Kitchen
                                         license_keys = ChefLicensing.fetch_and_persist
 
                                         licenses_metadata = ChefLicensing::Api::Describe.list({
-                                          license_keys: license_keys,
+                                          license_keys:,
                                         })
 
                                         # Get the last license info

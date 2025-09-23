@@ -36,7 +36,7 @@ module Kitchen
         else
           # The license command needs to run with require_license, otherwise
           # license activation will be skipped
-          ChefLicensing::Config.require_license_for  do
+          ChefLicensing::Config.require_license_for do
             ChefLicensing.fetch_and_persist.each do |key|
               ui.msg("License_key: #{key}")
             end
