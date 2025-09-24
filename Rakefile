@@ -35,7 +35,7 @@ begin
     task.options += ["--chefstyle", "--display-cop-names", "--no-color"]
   end
 rescue LoadError
-  puts "cookstyle is not available. (sudo) gem install chefstyle to do style checking."
+  puts "cookstyle is not available. (sudo) gem install cookstyle to do style checking."
 end
 
 desc "Run all quality tasks"
