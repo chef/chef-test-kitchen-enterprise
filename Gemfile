@@ -19,6 +19,7 @@ group :integration do
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent_a"
   gem "kitchen-vagrant", ">= 2.1.2"
+  gem "vagrant", ">= 2.4.4"
 end
 
 group :cookstyle do
