@@ -49,13 +49,18 @@ function Invoke-Build {
         gem build chef-test-kitchen-enterprise.gemspec
 	    Write-BuildLine " ** Using gem to  install"
 	    gem install chef-test-kitchen-enterprise*.gem --no-document
+
+        ruby ./post-bundle-install.rb
+        If ($lastexitcode -ne 0) { Exit $lastexitcode }
+
+        # Install chef-official-distribution AFTER post-bundle-install
         Install-ChefOfficialDistribution
 
-	ruby ./post-bundle-install.rb
-        If ($lastexitcode -ne 0) { Exit $lastexitcode }
+        Write-BuildLine " ** Build complete"
     } finally {
         Pop-Location
     }
+
 }
 function Invoke-Install {
     Write-BuildLine "** Copy built & cached gems to install directory"
