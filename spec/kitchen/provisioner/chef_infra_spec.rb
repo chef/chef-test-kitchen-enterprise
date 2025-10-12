@@ -76,7 +76,7 @@ describe Kitchen::Provisioner::ChefInfra do
     it "sets CHEF_LICENSE_SERVER when configured" do
       orig = ENV["CHEF_LICENSE_SERVER"]
       begin
-        config[:chef_license_server] = ["s1", "s2"]
+        config[:chef_license_server] = %w{s1 s2}
         config[:chef_license_key] = "k1"
         client = stub(license_type: "commercial")
         Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
@@ -123,7 +123,7 @@ describe Kitchen::Provisioner::ChefInfra do
       # no config[:chef_license_key]
       license_keys = ["xyz-999"]
       ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
-      
+
       # Use the same validation pattern as the current implementation
       client = stub(license_type: "commercial")
       Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
