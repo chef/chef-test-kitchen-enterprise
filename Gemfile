@@ -24,3 +24,7 @@ end
 group :cookstyle do
   gem "cookstyle"
 end
+
+group :build do
+  gem "appbundler"
+end
