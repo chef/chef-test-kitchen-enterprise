@@ -59,7 +59,6 @@ describe Kitchen::Provisioner::ChefInfra do
       # set expectations that no licensing calls are made
       Kitchen::Licensing::Base.expects(:get_license_client).never
       ChefLicensing.expects(:fetch_and_persist).never
-      ChefLicensing::Api::Describe.expects(:list).never
 
       # preconditions
       _(provisioner[:chef_license_key]).must_be_nil
@@ -124,8 +123,10 @@ describe Kitchen::Provisioner::ChefInfra do
       # no config[:chef_license_key]
       license_keys = ["xyz-999"]
       ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
-      last = stub(id: "xyz-999", license_type: "commercial")
-      ChefLicensing::Api::Describe.stubs(:list).with({ license_keys: license_keys }).returns([last])
+      
+      # Use the same validation pattern as the current implementation
+      client = stub(license_type: "commercial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
       Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
       provisioner.check_license

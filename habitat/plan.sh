@@ -96,26 +96,10 @@ EOF
 }
 
 make_pkg_official_distrib() {
-  build_line "Building chef-official-distribution gem from GitHub main"
-
-  if [[ -z "$GITHUB_TOKEN" ]]; then
-    echo "Error: GITHUB_TOKEN is not set"
-    exit 1
-  fi
-
-  TMP_DIR="/tmp/chef-official-distribution"
-  rm -rf "$TMP_DIR"
-
-  git clone --depth 1 --branch main \
-    "https://$GITHUB_TOKEN@github.com/chef/chef-official-distribution.git" \
-    "$TMP_DIR"
-
-  pushd "$TMP_DIR" > /dev/null
-    gem build chef-official-distribution.gemspec
-    gem install chef-official-distribution-*.gem --no-document --install-dir "$GEM_HOME"
-  popd > /dev/null
-
-  rm -rf "$TMP_DIR"
+  build_line "Installing chef-official-distribution gem"
+  gem source --add "https://artifactory-internal.ps.chef.co/artifactory/omnibus-gems-local/"
+  gem install chef-official-distribution --no-document --install-dir "$GEM_HOME"
+  gem sources -r "https://artifactory-internal.ps.chef.co/artifactory/omnibus-gems-local/"
 }
 
 do_strip() {

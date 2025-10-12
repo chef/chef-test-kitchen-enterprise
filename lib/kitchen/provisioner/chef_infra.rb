@@ -75,13 +75,9 @@ module Kitchen
           key, type, install_sh_url = if config[:chef_license_key].nil?
                                         license_keys = ChefLicensing.fetch_and_persist
 
-                                        licenses_metadata = ChefLicensing::Api::Describe.list({
-                                          license_keys:,
-                                        })
-
-                                        # Get the last license info
-                                        last_license = licenses_metadata.last
-                                        [last_license.id, last_license.license_type, Licensing::Base.install_sh_url(last_license.license_type, license_keys)]
+                                        # Use the same validation pattern as get_license_keys
+                                        client = Licensing::Base.get_license_client(license_keys)
+                                        [license_keys.last, client.license_type, Licensing::Base.install_sh_url(client.license_type, license_keys)]
                                       else
                                         key = config[:chef_license_key]
                                         client = Licensing::Base.get_license_client([key])
