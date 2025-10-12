@@ -38,7 +38,7 @@ module Kitchen
           # license activation will be skipped
           ChefLicensing::Config.require_license_for do
             ChefLicensing.fetch_and_persist.each do |key|
-              ui.msg("License_key: #{key}")
+              puts "License_key: #{key}"
             end
           end
         end
