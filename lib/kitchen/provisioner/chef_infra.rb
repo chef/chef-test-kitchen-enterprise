@@ -81,7 +81,7 @@ module Kitchen
                                       else
                                         # Set license key in environment so fetch_and_persist can use it
                                         ENV["CHEF_LICENSE_KEY"] = config[:chef_license_key]
- 
+
                                         license_keys = ChefLicensing.fetch_and_persist
                                         client = Licensing::Base.get_license_client(license_keys)
                                         [license_keys.last, client.license_type, Licensing::Base.install_sh_url(client.license_type, license_keys)]
