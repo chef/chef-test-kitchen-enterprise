@@ -79,10 +79,12 @@ module Kitchen
                                         client = Licensing::Base.get_license_client(license_keys)
                                         [license_keys.last, client.license_type, Licensing::Base.install_sh_url(client.license_type, license_keys)]
                                       else
-                                        key = config[:chef_license_key]
-                                        client = Licensing::Base.get_license_client([key])
-
-                                        [key, client.license_type, Licensing::Base.install_sh_url(client.license_type, [key])]
+                                        # Set license key in environment so fetch_and_persist can use it
+                                        ENV["CHEF_LICENSE_KEY"] = config[:chef_license_key]
+ 
+                                        license_keys = ChefLicensing.fetch_and_persist
+                                        client = Licensing::Base.get_license_client(license_keys)
+                                        [license_keys.last, client.license_type, Licensing::Base.install_sh_url(client.license_type, license_keys)]
                                       end
 
           info("Chef license key: #{key}")

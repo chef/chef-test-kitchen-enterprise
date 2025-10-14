@@ -44,9 +44,11 @@ describe Kitchen::Provisioner::ChefInfra do
 
       # use preconfigured key to avoid external calls
       config[:chef_license_key] = "k1"
+      license_keys = ["k1"]
+      ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
       client = stub(license_type: "commercial")
-      Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
-      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["k1"]).returns("https://install.sh/commercial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
       provisioner.check_license
     end
@@ -78,9 +80,11 @@ describe Kitchen::Provisioner::ChefInfra do
       begin
         config[:chef_license_server] = %w{s1 s2}
         config[:chef_license_key] = "k1"
+        license_keys = ["k1"]
+        ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
         client = stub(license_type: "commercial")
-        Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
-        Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["k1"]).returns("https://install.sh/commercial")
+        Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+        Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
         provisioner.check_license
         _(ENV["CHEF_LICENSE_SERVER"]).must_equal "s1,s2"
@@ -94,9 +98,11 @@ describe Kitchen::Provisioner::ChefInfra do
       begin
         config[:chef_license_server] = []
         config[:chef_license_key] = "k1"
+        license_keys = ["k1"]
+        ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
         client = stub(license_type: "commercial")
-        Kitchen::Licensing::Base.stubs(:get_license_client).with(["k1"]).returns(client)
-        Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", ["k1"]).returns("https://install.sh/commercial")
+        Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+        Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
         provisioner.check_license
         _(ENV.key?("CHEF_LICENSE_SERVER") ? ENV["CHEF_LICENSE_SERVER"] : nil).must_equal(orig)
@@ -107,9 +113,11 @@ describe Kitchen::Provisioner::ChefInfra do
 
     it "uses preconfigured key and derives type and install url" do
       config[:chef_license_key] = "pre-key"
+      license_keys = ["pre-key"]
+      ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
       client = stub(license_type: "trial")
-      Kitchen::Licensing::Base.stubs(:get_license_client).with(["pre-key"]).returns(client)
-      Kitchen::Licensing::Base.stubs(:install_sh_url).with("trial", ["pre-key"]).returns("https://install.sh/trial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("trial", license_keys).returns("https://install.sh/trial")
 
       provisioner.check_license
       _(provisioner[:chef_license_key]).must_equal "pre-key"
@@ -139,7 +147,9 @@ describe Kitchen::Provisioner::ChefInfra do
 
     it "propagates errors from get_license_client when key is provided" do
       config[:chef_license_key] = "bad-key"
-      Kitchen::Licensing::Base.stubs(:get_license_client).with(["bad-key"]).raises(StandardError.new("validation failed"))
+      license_keys = ["bad-key"]
+      ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).raises(StandardError.new("validation failed"))
 
       _(proc { provisioner.check_license }).must_raise StandardError
       _(logged_output.string).must_match info_line("Fetching the Chef license key")
