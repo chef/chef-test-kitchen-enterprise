@@ -29,6 +29,3 @@ group :build do
   gem "appbundler"
 end
 
-group :build do
-  gem "appbundler"
-end
