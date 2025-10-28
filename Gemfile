@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "benchmark"
+
 group :test do
   gem "rake"
   gem "rb-readline"
