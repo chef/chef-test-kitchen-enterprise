@@ -22,10 +22,10 @@ require "kitchen"
 require "kitchen/provisioner/chef_infra"
 
 describe Kitchen::Provisioner::ChefInfra do
-  let(:logged_output)   { StringIO.new }
-  let(:logger)          { Logger.new(logged_output) }
-  let(:platform)        { stub(os_type: nil) }
-  let(:suite)           { stub(name: "fries") }
+  let(:logged_output) { StringIO.new }
+  let(:logger) { Logger.new(logged_output) }
+  let(:platform) { stub(os_type: nil) }
+  let(:suite) { stub(name: "fries") }
 
   let(:config) do
     { test_base_path: "/b", kitchen_root: "/r" }
@@ -165,8 +165,8 @@ describe Kitchen::Provisioner::ChefInfra do
 
   let(:instance) do
     # Create a default non-dokken driver for existing tests
-    default_driver = stub(name: "vagrant", config: { name: "vagrant" })
-    default_driver.stubs(:respond_to?).with(:config).returns(true)
+    default_driver = stub
+    default_driver.stubs(:instance_variable_get).with(:@config).returns({ name: "vagrant" })
 
     stub(
       name: "coolbeans",
@@ -777,343 +777,177 @@ describe Kitchen::Provisioner::ChefInfra do
   end
 
   describe "#dokken_with_private_registry?" do
-    let(:driver_config) { { name: "dokken" } }
-    let(:mock_driver) { stub }
-    let(:instance) { stub(name: "test-instance", logger: logger, suite: suite, platform: platform, driver: mock_driver) }
-    let(:provisioner) { Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(instance) }
-
-    before do
-      mock_driver.stubs(:respond_to?).with(:config).returns(true)
-      mock_driver.stubs(:config).returns(driver_config)
+    it "returns false when instance is nil" do
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
     end
 
-    describe "when instance is nil" do
-      let(:provisioner) { Kitchen::Provisioner::ChefInfra.new(config) }
-
-      it "returns false" do
-        _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-      end
+    it "returns false when driver is nil" do
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: nil
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
     end
 
-    describe "when instance driver is nil" do
-      before do
-        instance.stubs(:driver).returns(nil)
-      end
+    it "returns false when driver config is nil" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns(nil)
 
-      it "returns false" do
-        _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-      end
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
     end
 
-    describe "when driver does not respond to config" do
-      before do
-        mock_driver.stubs(:respond_to?).with(:config).returns(false)
-      end
+    it "returns false when driver is not dokken" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({ name: "vagrant" })
 
-      it "returns false" do
-        _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-      end
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
     end
 
-    describe "when driver is not Dokken" do
-      let(:driver_config) { { name: "vagrant" } }
+    it "returns true with explicit docker_registry config" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        docker_registry: "127.0.0.1:5000"
+      })
 
-      it "returns false for vagrant driver" do
-        _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-      end
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
     end
 
-    describe "when driver name is symbol" do
-      let(:driver_config) { { name: :dokken } }
+    it "returns true with explicit creds_file config" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        creds_file: "./creds.json"
+      })
 
-      it "returns false for symbol driver name" do
-        _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-      end
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
     end
 
-    describe "when driver is Dokken" do
-      describe "with docker_registry configured" do
-        it "returns true for any registry (explicit configuration indicates private usage)" do
-          driver_config[:docker_registry] = "private-registry.example.com"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
+    it "returns true with private registry in chef_image (localhost)" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        chef_image: "localhost:5000/chef/chef-hab"
+      })
 
-        it "returns true even for Docker Hub (users don't normally set this explicitly)" do
-          driver_config[:docker_registry] = "docker.io"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns true for registry with port" do
-          driver_config[:docker_registry] = "registry.internal.com:5000"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns false for empty string" do
-          driver_config[:docker_registry] = ""
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-
-        it "returns false for nil value" do
-          driver_config[:docker_registry] = nil
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-
-        it "returns false for whitespace-only string" do
-          driver_config[:docker_registry] = "   "
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-      end
-
-      describe "with creds_file configured" do
-        it "returns true for valid file path" do
-          driver_config[:creds_file] = "/path/to/creds.json"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns true for relative path" do
-          driver_config[:creds_file] = "./docker-creds.json"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns false for empty string" do
-          driver_config[:creds_file] = ""
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-
-        it "returns false for nil value" do
-          driver_config[:creds_file] = nil
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-
-        it "returns false for whitespace-only string" do
-          driver_config[:creds_file] = "   "
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-      end
-
-      describe "with both docker_registry and creds_file configured" do
-        it "returns true when both are valid" do
-          driver_config[:docker_registry] = "registry.internal.com"
-          driver_config[:creds_file] = "./docker-creds.json"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns true when only docker_registry is valid" do
-          driver_config[:docker_registry] = "registry.internal.com"
-          driver_config[:creds_file] = ""
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns true when only creds_file is valid" do
-          driver_config[:docker_registry] = ""
-          driver_config[:creds_file] = "./creds.json"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns false when both are empty" do
-          driver_config[:docker_registry] = ""
-          driver_config[:creds_file] = ""
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-
-        it "returns false when both are nil" do
-          driver_config[:docker_registry] = nil
-          driver_config[:creds_file] = nil
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-      end
-
-      describe "without any private registry configuration" do
-        it "returns false when no registry options are set and using Docker Hub" do
-          driver_config[:chef_image] = "chef/chef-hab"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-        end
-
-        it "returns true when chef_image contains private registry" do
-          driver_config[:chef_image] = "127.0.0.1:5000/chef/chef-hab"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-      end
-
-      describe "configuration-based detection behavior" do
-        it "returns true when docker_registry is configured regardless of chef_image" do
-          driver_config[:docker_registry] = "my-registry.com"
-          driver_config[:chef_image] = "chef/chef-hab"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "returns true when creds_file is configured regardless of chef_image" do
-          driver_config[:creds_file] = "./creds.json"
-          driver_config[:chef_image] = "chef/chef-hab"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-
-        it "detects private registry in chef_image as well as explicit config" do
-          driver_config[:docker_registry] = "my-registry.com"
-          driver_config[:chef_image] = "127.0.0.1:5000/chef/chef-hab"
-          _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-        end
-      end
-
-      describe "chef_image private registry detection" do
-        describe "detects private registries with domain or port indicators" do
-          it "detects IP address registries with port (user's specific case)" do
-            driver_config[:chef_image] = "127.0.0.1:5000/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "detects IP address registries without port" do
-            driver_config[:chef_image] = "192.168.1.100/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "detects localhost registries with port" do
-            driver_config[:chef_image] = "localhost:5000/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "detects company domain registries" do
-            driver_config[:chef_image] = "registry.company.com/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "detects company domain registries with port" do
-            driver_config[:chef_image] = "registry.company.com:443/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "detects AWS ECR registry" do
-            driver_config[:chef_image] = "123456789012.dkr.ecr.us-west-2.amazonaws.com/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "detects simple hostname with port" do
-            driver_config[:chef_image] = "registry:5000/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-          end
-
-          it "returns false for localhost without port or slash" do
-            driver_config[:chef_image] = "localhost"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for simple hostname without indicators" do
-            driver_config[:chef_image] = "chef"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-        end
-
-        describe "correctly identifies public registry images" do
-          it "returns false for Docker Hub images (docker.io)" do
-            driver_config[:chef_image] = "docker.io/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for Docker Hub images (ghcr.io)" do
-            driver_config[:chef_image] = "ghcr.io/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for Docker Hub images (hub.docker.com)" do
-            driver_config[:chef_image] = "hub.docker.com/chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for standard Docker Hub images without registry prefix" do
-            driver_config[:chef_image] = "chef/chef-hab"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for standard Docker Hub images with tag" do
-            driver_config[:chef_image] = "chef/chef-hab:latest"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for official Docker Hub images" do
-            driver_config[:chef_image] = "ubuntu:20.04"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "returns false for library images without namespace" do
-            driver_config[:chef_image] = "alpine"
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-
-          it "handles whitespace in chef_image" do
-            driver_config[:chef_image] = "  chef/chef-hab  "
-            _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-          end
-        end
-      end
-    end
-  end
-
-  describe "#check_license with Dokken private registry" do
-    let(:instance) { stub(name: "test-instance", logger: logger, suite: suite, platform: platform) }
-    let(:provisioner) { Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(instance) }
-    let(:mock_driver) { stub }
-    let(:driver_config) { { name: "dokken" } }
-
-    before do
-      # Stub the base class check_license to avoid base validation
-      Kitchen::Provisioner::ChefBase.any_instance.stubs(:check_license).returns(nil)
-
-      # Stub ChefLicensing constant since it may not be available in test environment
-      unless defined?(ChefLicensing)
-        Object.const_set(:ChefLicensing, Module.new)
-      end
-
-      instance.stubs(:driver).returns(mock_driver)
-      mock_driver.stubs(:respond_to?).with(:config).returns(true)
-      mock_driver.stubs(:config).returns(driver_config)
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
     end
 
-    describe "when docker_registry is configured" do
-      before do
-        driver_config[:docker_registry] = "private-registry.example.com"
-      end
+    it "returns true with private registry in chef_image (IP address)" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        chef_image: "127.0.0.1:5000/chef/chef-hab"
+      })
 
-      it "skips license check and returns true" do
-        result = provisioner.check_license
-        _(result).must_equal true
-      end
-
-      it "does not call ChefLicensing.fetch_and_persist" do
-        ChefLicensing.expects(:fetch_and_persist).never
-        provisioner.check_license
-      end
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
     end
 
-    describe "when creds_file is configured" do
-      before do
-        driver_config[:creds_file] = "./private-registry-creds.json"
-      end
+    it "returns true with private registry in chef_image (private hostname)" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        chef_image: "registry.company.com/chef/chef-hab"
+      })
 
-      it "skips license check and returns true" do
-        result = provisioner.check_license
-        _(result).must_equal true
-      end
-
-      it "does not call ChefLicensing.fetch_and_persist" do
-        ChefLicensing.expects(:fetch_and_persist).never
-        provisioner.check_license
-      end
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
     end
 
-    describe "when neither docker_registry nor creds_file is configured" do
-      it "continues with normal license check" do
-        ChefLicensing::Config.expects(:require_license_for).once.yields
+    it "returns false with public registry in chef_image (docker.io)" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        chef_image: "docker.io/chef/chef-hab"
+      })
 
-        # Mock the license fetching
-        config[:chef_license_key] = "test-key"
-        license_keys = ["test-key"]
-        ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
-        client = stub(license_type: "commercial")
-        Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
-        Kitchen::Licensing::Base.stubs(:install_sh_url).returns("http://example.com/install.sh")
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
+    end
 
-        provisioner.check_license
-      end
+    it "returns false with default chef image (no registry)" do
+      mock_driver = stub
+      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
+        name: "dokken",
+        chef_image: "chef/chef-hab"
+      })
+
+      test_instance = stub(
+        name: "test-instance",
+        logger: logger,
+        suite: suite,
+        platform: platform,
+        driver: mock_driver
+      )
+      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
+      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
     end
   end
 

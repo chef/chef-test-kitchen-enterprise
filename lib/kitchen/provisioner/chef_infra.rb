@@ -67,9 +67,10 @@ module Kitchen
 
         # If Dokken driver with private registry is detected, skip license check
         # This covers users who have either:
-        # - Licensed Chef Infra and built their own images
+        # - Built custom Chef Infra Client images with embedded licenses
         # - Downloaded licensed Chef containers and uploaded to internal registry
-        # - Are using private registries to avoid Docker Hub rate limits
+        # - Using internal/air-gapped registries with pre-licensed Chef images
+        # - Avoiding Docker Hub rate limits with mirrored Chef images
         if dokken_with_private_registry?
           debug("Skipping Chef license check - private registry usage detected")
           debug("Private registry users either have existing licenses or custom-built images")
@@ -117,22 +118,33 @@ module Kitchen
       private
 
       def dokken_with_private_registry?
-        return false unless instance&.driver.respond_to?(:config)
-        return false unless instance.driver.config[:name] == "dokken"
+        driver = instance&.driver
+        return false unless driver
 
-        config = instance.driver.config
+        config = driver.instance_variable_get(:@config)
+        return false unless config&.dig(:name) == "dokken"
+
         docker_registry = config[:docker_registry].to_s.strip
         creds_file      = config[:creds_file].to_s.strip
         chef_image      = config[:chef_image].to_s.strip
 
-        # Private if creds_file or docker_registry is configured
-        return true unless creds_file.empty? && docker_registry.empty?
+        # 1. Private registry if creds_file or docker_registry explicitly configured
+        return true unless creds_file.empty?
+        return true unless docker_registry.empty?
 
-        # Private if chef_image specifies a non-public registry hostname
+        # 2. Detect private registry from chef_image
+        return false if chef_image.empty?
+
         if chef_image.include?("/")
           registry_host = chef_image.split("/").first
+          public_hosts = %w[docker.io ghcr.io hub.docker.com registry-1.docker.io]
+
+          # Detect localhost or IP-based registries (e.g. 127.0.0.1:5000 or localhost:5000)
+          return true if registry_host.match?(/\A((?:localhost|127\.0\.0\.1)|\d{1,3}(?:\.\d{1,3}){3})(?::\d+)?\z/)
+
+          # Detect private hostname-based registries
           if (registry_host.include?(".") || registry_host.include?(":")) &&
-              !registry_host.match?(/^(docker\.io|ghcr\.io|hub\.docker\.com)$/i)
+             !public_hosts.include?(registry_host.downcase)
             return true
           end
         end
