@@ -137,14 +137,14 @@ module Kitchen
 
         if chef_image.include?("/")
           registry_host = chef_image.split("/").first
-          public_hosts = %w[docker.io ghcr.io hub.docker.com registry-1.docker.io]
+          public_hosts = %w{docker.io ghcr.io hub.docker.com registry-1.docker.io}
 
           # Detect localhost or IP-based registries (e.g. 127.0.0.1:5000 or localhost:5000)
           return true if registry_host.match?(/\A((?:localhost|127\.0\.0\.1)|\d{1,3}(?:\.\d{1,3}){3})(?::\d+)?\z/)
 
           # Detect private hostname-based registries
           if (registry_host.include?(".") || registry_host.include?(":")) &&
-             !public_hosts.include?(registry_host.downcase)
+              !public_hosts.include?(registry_host.downcase)
             return true
           end
         end
