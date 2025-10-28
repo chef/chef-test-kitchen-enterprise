@@ -65,6 +65,18 @@ module Kitchen
       def check_license
         super
 
+        # If Dokken driver with private registry is detected, skip license check
+        # This covers users who have either:
+        # - Licensed Chef Infra and built their own images
+        # - Downloaded licensed Chef containers and uploaded to internal registry
+        # - Are using private registries to avoid Docker Hub rate limits
+        if dokken_with_private_registry?
+          debug("Skipping Chef license check - private registry usage detected")
+          debug("Private registry users either have existing licenses or custom-built images")
+          return true
+        end
+
+        debug("Proceeding with Chef license check for public registry usage")
         # Use require_license_for to enforce licensing for kitchen converge operations
         ChefLicensing::Config.require_license_for do
           info("Fetching the Chef license key")
@@ -103,6 +115,30 @@ module Kitchen
       end
 
       private
+
+      def dokken_with_private_registry?
+        return false unless instance&.driver.respond_to?(:config)
+        return false unless instance.driver.config[:name] == "dokken"
+
+        config = instance.driver.config
+        docker_registry = config[:docker_registry].to_s.strip
+        creds_file      = config[:creds_file].to_s.strip
+        chef_image      = config[:chef_image].to_s.strip
+
+        # Private if creds_file or docker_registry is configured
+        return true unless creds_file.empty? && docker_registry.empty?
+
+        # Private if chef_image specifies a non-public registry hostname
+        if chef_image.include?("/")
+          registry_host = chef_image.split("/").first
+          if (registry_host.include?(".") || registry_host.include?(":")) &&
+              !registry_host.match?(/^(docker\.io|ghcr\.io|hub\.docker\.com)$/i)
+            return true
+          end
+        end
+
+        false
+      end
 
       # Adds optional flags to a chef-client command, depending on
       # configuration data. Note that this method mutates the incoming Array.
