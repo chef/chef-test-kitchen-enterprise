@@ -828,7 +828,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        docker_registry: "127.0.0.1:5000"
+        docker_registry: "127.0.0.1:5000",
       })
 
       test_instance = stub(
@@ -846,7 +846,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        creds_file: "./creds.json"
+        creds_file: "./creds.json",
       })
 
       test_instance = stub(
@@ -864,7 +864,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        chef_image: "localhost:5000/chef/chef-hab"
+        chef_image: "localhost:5000/chef/chef-hab",
       })
 
       test_instance = stub(
@@ -882,7 +882,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        chef_image: "127.0.0.1:5000/chef/chef-hab"
+        chef_image: "127.0.0.1:5000/chef/chef-hab",
       })
 
       test_instance = stub(
@@ -900,7 +900,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        chef_image: "registry.company.com/chef/chef-hab"
+        chef_image: "registry.company.com/chef/chef-hab",
       })
 
       test_instance = stub(
@@ -918,7 +918,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        chef_image: "docker.io/chef/chef-hab"
+        chef_image: "docker.io/chef/chef-hab",
       })
 
       test_instance = stub(
@@ -936,7 +936,7 @@ describe Kitchen::Provisioner::ChefInfra do
       mock_driver = stub
       mock_driver.stubs(:instance_variable_get).with(:@config).returns({
         name: "dokken",
-        chef_image: "chef/chef-hab"
+        chef_image: "chef/chef-hab",
       })
 
       test_instance = stub(
