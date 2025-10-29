@@ -65,19 +65,25 @@ module Kitchen
       def check_license
         super
 
-        # If Dokken driver with private registry is detected, skip license check
-        # This covers users who have either:
-        # - Built custom Chef Infra Client images with embedded licenses
-        # - Downloaded licensed Chef containers and uploaded to internal registry
-        # - Using internal/air-gapped registries with pre-licensed Chef images
-        # - Avoiding Docker Hub rate limits with mirrored Chef images
-        if dokken_with_private_registry?
-          debug("Skipping Chef license check - private registry usage detected")
-          debug("Private registry users either have existing licenses or custom-built images")
-          return true
-        end
+        # Check for driver-specific license bypass conditions
+        return true if bypass_chef_licensing?
 
-        debug("Proceeding with Chef license check for public registry usage")
+        check_chef_license_key
+      end
+
+      # Hook method that can be overridden by driver-specific provisioner implementations
+      # to provide custom licensing bypass logic based on their specific scenarios.
+      #
+      # @return [Boolean] true if Chef licensing should be bypassed, false otherwise
+      def bypass_chef_licensing?
+        false
+      end
+
+      # Handles Chef license key validation and configuration.
+      # This method contains the core licensing logic that can be reused
+      # by driver-specific implementations.
+      def check_chef_license_key
+        debug("Proceeding with Chef license check")
         # Use require_license_for to enforce licensing for kitchen converge operations
         ChefLicensing::Config.require_license_for do
           info("Fetching the Chef license key")
@@ -116,41 +122,6 @@ module Kitchen
       end
 
       private
-
-      def dokken_with_private_registry?
-        driver = instance&.driver
-        return false unless driver
-
-        config = driver.instance_variable_get(:@config)
-        return false unless config&.dig(:name) == "dokken"
-
-        docker_registry = config[:docker_registry].to_s.strip
-        creds_file      = config[:creds_file].to_s.strip
-        chef_image      = config[:chef_image].to_s.strip
-
-        # 1. Private registry if creds_file or docker_registry explicitly configured
-        return true unless creds_file.empty?
-        return true unless docker_registry.empty?
-
-        # 2. Detect private registry from chef_image
-        return false if chef_image.empty?
-
-        if chef_image.include?("/")
-          registry_host = chef_image.split("/").first
-          public_hosts = %w{docker.io ghcr.io hub.docker.com registry-1.docker.io}
-
-          # Detect localhost or IP-based registries (e.g. 127.0.0.1:5000 or localhost:5000)
-          return true if registry_host.match?(/\A((?:localhost|127\.0\.0\.1)|\d{1,3}(?:\.\d{1,3}){3})(?::\d+)?\z/)
-
-          # Detect private hostname-based registries
-          if (registry_host.include?(".") || registry_host.include?(":")) &&
-              !public_hosts.include?(registry_host.downcase)
-            return true
-          end
-        end
-
-        false
-      end
 
       # Adds optional flags to a chef-client command, depending on
       # configuration data. Note that this method mutates the incoming Array.
