@@ -38,6 +38,31 @@ describe Kitchen::Provisioner::ChefInfra do
       ChefLicensing::Config.stubs(:require_license_for).yields
     end
 
+    it "calls super first" do
+      Kitchen::Provisioner::ChefBase.any_instance.expects(:check_license).once
+      provisioner.stubs(:bypass_chef_licensing?).returns(false)
+      provisioner.stubs(:check_chef_license_key)
+
+      provisioner.check_license
+    end
+
+    it "returns true early when bypass_chef_licensing? returns true" do
+      Kitchen::Provisioner::ChefBase.any_instance.stubs(:check_license)
+      provisioner.stubs(:bypass_chef_licensing?).returns(true)
+      provisioner.expects(:check_chef_license_key).never
+
+      result = provisioner.check_license
+      _(result).must_equal true
+    end
+
+    it "calls check_chef_license_key when bypass_chef_licensing? returns false" do
+      Kitchen::Provisioner::ChefBase.any_instance.stubs(:check_license)
+      provisioner.stubs(:bypass_chef_licensing?).returns(false)
+      provisioner.expects(:check_chef_license_key).once
+
+      provisioner.check_license
+    end
+
     it "wraps license logic in ChefLicensing::Config.require_license_for" do
       ChefLicensing::Config.unstub(:require_license_for)
       ChefLicensing::Config.expects(:require_license_for).once.yields
@@ -58,6 +83,7 @@ describe Kitchen::Provisioner::ChefInfra do
       ChefLicensing::Config.unstub(:require_license_for)
       ChefLicensing::Config.expects(:require_license_for).once.returns(nil)
 
+      provisioner.stubs(:bypass_chef_licensing?).returns(false)
       # set expectations that no licensing calls are made
       Kitchen::Licensing::Base.expects(:get_license_client).never
       ChefLicensing.expects(:fetch_and_persist).never
@@ -74,6 +100,57 @@ describe Kitchen::Provisioner::ChefInfra do
       _(provisioner[:chef_license_type]).must_be_nil
       _(provisioner[:install_sh_url]).must_be_nil
     end
+  end
+
+  describe "#bypass_chef_licensing?" do
+    it "returns false by default" do
+      _(provisioner.bypass_chef_licensing?).must_equal false
+    end
+
+    it "can be overridden by subclasses" do
+      # Create a test class that overrides the method
+      test_class = Class.new(Kitchen::Provisioner::ChefInfra) do
+        def bypass_chef_licensing?
+          true
+        end
+      end
+
+      test_provisioner = test_class.new(config).finalize_config!(instance)
+      _(test_provisioner.bypass_chef_licensing?).must_equal true
+    end
+  end
+
+  describe "#check_chef_license_key" do
+    before do
+      ChefLicensing::Config.stubs(:require_license_for).yields
+    end
+
+    it "wraps license logic in ChefLicensing::Config.require_license_for" do
+      ChefLicensing::Config.unstub(:require_license_for)
+      ChefLicensing::Config.expects(:require_license_for).once.yields
+
+      # use preconfigured key to avoid external calls
+      config[:chef_license_key] = "k1"
+      license_keys = ["k1"]
+      ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
+      client = stub(license_type: "commercial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
+
+      provisioner.check_chef_license_key
+    end
+
+    it "logs debug message about proceeding with license check" do
+      config[:chef_license_key] = "k1"
+      license_keys = ["k1"]
+      ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
+      client = stub(license_type: "commercial")
+      Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+      Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
+
+      provisioner.check_chef_license_key
+      _(logged_output.string).must_match debug_line_starting_with("Proceeding with Chef license check")
+    end
 
     it "sets CHEF_LICENSE_SERVER when configured" do
       orig = ENV["CHEF_LICENSE_SERVER"]
@@ -86,7 +163,7 @@ describe Kitchen::Provisioner::ChefInfra do
         Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
         Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
-        provisioner.check_license
+        provisioner.check_chef_license_key
         _(ENV["CHEF_LICENSE_SERVER"]).must_equal "s1,s2"
       ensure
         orig.nil? ? ENV.delete("CHEF_LICENSE_SERVER") : ENV["CHEF_LICENSE_SERVER"] = orig
@@ -104,7 +181,7 @@ describe Kitchen::Provisioner::ChefInfra do
         Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
         Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
-        provisioner.check_license
+        provisioner.check_chef_license_key
         _(ENV.key?("CHEF_LICENSE_SERVER") ? ENV["CHEF_LICENSE_SERVER"] : nil).must_equal(orig)
       ensure
         orig.nil? ? ENV.delete("CHEF_LICENSE_SERVER") : ENV["CHEF_LICENSE_SERVER"] = orig
@@ -119,7 +196,7 @@ describe Kitchen::Provisioner::ChefInfra do
       Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
       Kitchen::Licensing::Base.stubs(:install_sh_url).with("trial", license_keys).returns("https://install.sh/trial")
 
-      provisioner.check_license
+      provisioner.check_chef_license_key
       _(provisioner[:chef_license_key]).must_equal "pre-key"
       _(provisioner[:chef_license_type]).must_equal "trial"
       _(provisioner[:install_sh_url]).must_equal "https://install.sh/trial"
@@ -137,12 +214,29 @@ describe Kitchen::Provisioner::ChefInfra do
       Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
       Kitchen::Licensing::Base.stubs(:install_sh_url).with("commercial", license_keys).returns("https://install.sh/commercial")
 
-      provisioner.check_license
+      provisioner.check_chef_license_key
       _(provisioner[:chef_license_key]).must_equal "xyz-999"
       _(provisioner[:chef_license_type]).must_equal "commercial"
       _(provisioner[:install_sh_url]).must_equal "https://install.sh/commercial"
       _(logged_output.string).must_match info_line("Fetching the Chef license key")
       _(logged_output.string).must_match info_line("Chef license key: xyz-999")
+    end
+
+    it "sets CHEF_LICENSE_KEY environment variable when key is preconfigured" do
+      orig = ENV["CHEF_LICENSE_KEY"]
+      begin
+        config[:chef_license_key] = "pre-key"
+        license_keys = ["pre-key"]
+        ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
+        client = stub(license_type: "trial")
+        Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).returns(client)
+        Kitchen::Licensing::Base.stubs(:install_sh_url).with("trial", license_keys).returns("https://install.sh/trial")
+
+        provisioner.check_chef_license_key
+        _(ENV["CHEF_LICENSE_KEY"]).must_equal "pre-key"
+      ensure
+        orig.nil? ? ENV.delete("CHEF_LICENSE_KEY") : ENV["CHEF_LICENSE_KEY"] = orig
+      end
     end
 
     it "propagates errors from get_license_client when key is provided" do
@@ -151,14 +245,14 @@ describe Kitchen::Provisioner::ChefInfra do
       ChefLicensing.stubs(:fetch_and_persist).returns(license_keys)
       Kitchen::Licensing::Base.stubs(:get_license_client).with(license_keys).raises(StandardError.new("validation failed"))
 
-      _(proc { provisioner.check_license }).must_raise StandardError
+      _(proc { provisioner.check_chef_license_key }).must_raise StandardError
       _(logged_output.string).must_match info_line("Fetching the Chef license key")
     end
 
     it "propagates errors from fetch_and_persist when no key is provided" do
       ChefLicensing.stubs(:fetch_and_persist).raises(StandardError.new("fetch failed"))
 
-      _(proc { provisioner.check_license }).must_raise StandardError
+      _(proc { provisioner.check_chef_license_key }).must_raise StandardError
       _(logged_output.string).must_match info_line("Fetching the Chef license key")
     end
   end
@@ -773,181 +867,6 @@ describe Kitchen::Provisioner::ChefInfra do
           _(cmd).must_match regexify('& \\r\\chef-client.bat ', :partial_line)
         end
       end
-    end
-  end
-
-  describe "#dokken_with_private_registry?" do
-    it "returns false when instance is nil" do
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-    end
-
-    it "returns false when driver is nil" do
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: nil
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-    end
-
-    it "returns false when driver config is nil" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns(nil)
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-    end
-
-    it "returns false when driver is not dokken" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({ name: "vagrant" })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-    end
-
-    it "returns true with explicit docker_registry config" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        docker_registry: "127.0.0.1:5000",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-    end
-
-    it "returns true with explicit creds_file config" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        creds_file: "./creds.json",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-    end
-
-    it "returns true with private registry in chef_image (localhost)" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        chef_image: "localhost:5000/chef/chef-hab",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-    end
-
-    it "returns true with private registry in chef_image (IP address)" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        chef_image: "127.0.0.1:5000/chef/chef-hab",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-    end
-
-    it "returns true with private registry in chef_image (private hostname)" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        chef_image: "registry.company.com/chef/chef-hab",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal true
-    end
-
-    it "returns false with public registry in chef_image (docker.io)" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        chef_image: "docker.io/chef/chef-hab",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
-    end
-
-    it "returns false with default chef image (no registry)" do
-      mock_driver = stub
-      mock_driver.stubs(:instance_variable_get).with(:@config).returns({
-        name: "dokken",
-        chef_image: "chef/chef-hab",
-      })
-
-      test_instance = stub(
-        name: "test-instance",
-        logger: logger,
-        suite: suite,
-        platform: platform,
-        driver: mock_driver
-      )
-      provisioner = Kitchen::Provisioner::ChefInfra.new(config).finalize_config!(test_instance)
-      _(provisioner.send(:dokken_with_private_registry?)).must_equal false
     end
   end
 
