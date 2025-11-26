@@ -133,11 +133,11 @@ Feature: Add Test Kitchen support to an existing project
 
   Scenario: Running init with a provisioner sets the provisioner in kitchen.yml
     Given an empty file named "Gemfile"
-    When I successfully run `kitchen init --no-driver --provisioner=chef_zero`
+    When I successfully run `kitchen init --no-driver --provisioner=shell`
     Then the file "kitchen.yml" should contain:
     """
     provisioner:
-      name: chef_zero
+      name: shell
     """
 
   Scenario: Running with a Rakefile file appends Kitchen tasks
