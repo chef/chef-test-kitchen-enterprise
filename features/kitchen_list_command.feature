@@ -114,7 +114,7 @@ Feature: Listing Test Kitchen instances
     """
     ---
     driver: dummy
-    provisioner: chef_solo
+    provisioner: shell
 
     platforms:
       - name: ubuntu-16.04
