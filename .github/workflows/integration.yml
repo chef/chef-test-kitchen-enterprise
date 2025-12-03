@@ -29,8 +29,10 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -56,6 +58,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y software-properties-common libarchive-tools vagrant virtualbox
       - uses: actions/checkout@v5
+      - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -76,6 +83,11 @@ jobs:
         kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
     steps:
       - uses: actions/checkout@v5
+      - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -107,6 +119,11 @@ jobs:
         kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
     steps:
       - uses: actions/checkout@v5
+      - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -132,6 +149,11 @@ jobs:
         kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
     steps:
       - uses: actions/checkout@v5
+      - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -158,6 +180,11 @@ jobs:
         kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
     steps:
       - uses: actions/checkout@v5
+      - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}

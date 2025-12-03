@@ -30,8 +30,10 @@ jobs:
             echo "gemfile=false" >> $GITHUB_OUTPUT
           fi
       - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1
@@ -94,8 +96,10 @@ jobs:
             echo "gemfile=false" >> $GITHUB_OUTPUT
           fi
       - name: Configure Git for private repo access
+        env:
+          GH_TOKEN: ${{ secrets.GH_PRIVATE_REPO_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://x-access-token:${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1
