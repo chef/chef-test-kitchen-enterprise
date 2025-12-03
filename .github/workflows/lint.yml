@@ -29,6 +29,9 @@ jobs:
           else
             echo "gemfile=false" >> $GITHUB_OUTPUT
           fi
+      - name: Configure Git for private repo access
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1
@@ -90,6 +93,9 @@ jobs:
           else
             echo "gemfile=false" >> $GITHUB_OUTPUT
           fi
+      - name: Configure Git for private repo access
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - name: Setup Ruby
         if: steps.check.outputs.gemfile == 'true'
         uses: ruby/setup-ruby@v1
