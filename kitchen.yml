@@ -4,7 +4,7 @@ driver:
   linked_clone: false
 
 provisioner:
-  name: shell
+  name: chef_infra
 
 verifier:
   name: inspec
