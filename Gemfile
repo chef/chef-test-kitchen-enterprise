@@ -21,7 +21,6 @@ group :integration do
   gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "new-gem" # TODO: update this when the new gem is released
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent_a"
-  gem "kitchen-vagrant", ">= 2.1.2"
 end
 
 group :cookstyle do

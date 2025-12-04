@@ -67,6 +67,15 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+      - name: Setup Machine
+        run: |
+          bundle config set --local with 'integration'
+          bundle add vagrant --version ">= 2.4.4"
+          bundle install
+          bundle binstubs vagrant
+          export PATH="$(pwd)/bin:$PATH"
+          which vagrant
+          vagrant -v
       - name: Verify Vagrant
         run: |
           bundle exec kitchen verify almalinux-9
@@ -103,6 +112,8 @@ jobs:
           sudo dscl . -passwd /Users/${{ env.machine_user }} ${{ env.machine_pass }}
           sudo createhomedir -c -u ${{ env.machine_user }}
           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+          bundle config set --local with 'integration'
+          bundle install
       - name: Verify macOS
         run: bundle exec kitchen verify localhost
 
@@ -133,6 +144,8 @@ jobs:
           winrm.cmd quickconfig -q
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
+          bundle config set --local with 'integration'
+          bundle install
       - name: Verify Windows
         run: bundle exec kitchen verify windows-winrm
 
@@ -163,6 +176,8 @@ jobs:
           sudo useradd -m ${{ env.machine_user }}
           echo "${{ env.machine_user }}:${{ env.machine_pass }}" | sudo chpasswd
           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
+          bundle config set --local with 'integration'
+          bundle install
       - name: Verify Linux
         run: |
           bundle exec kitchen verify localhost
@@ -228,5 +243,7 @@ jobs:
           }
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
+          bundle config set --local with 'integration'
+          bundle install
       - name: Verify Windows FIPS SSH
         run: bundle exec kitchen verify windows-fips-ssh -l debug
