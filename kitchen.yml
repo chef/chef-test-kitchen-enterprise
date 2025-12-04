@@ -5,6 +5,9 @@ driver:
 
 provisioner:
   name: chef_infra
+  product_name: chef
+  deprecations_as_errors: true
+  chef_license: accept-no-persist
 
 verifier:
   name: inspec
