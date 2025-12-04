@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 gemspec
 
+gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "Stromweld-patch-1", glob: "components/ruby/*.gemspec" # TODO: remove once PR is merged https://github.com/chef/chef-licensing/pull/215
+
 group :test do
   gem "rake"
   gem "rb-readline"
