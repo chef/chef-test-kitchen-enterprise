@@ -16,7 +16,6 @@ end
 
 group :integration do
   gem "chef-cli"
-  gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main" # TODO: remove git reference when the new gem is released to chef rubygems server
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent_a"
 end
@@ -27,4 +26,8 @@ end
 
 group :build do
   gem "appbundler"
+end
+
+source "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local" do
+  gem "kitchen-chef-enterprise"
 end
