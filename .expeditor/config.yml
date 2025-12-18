@@ -30,7 +30,6 @@ changelog:
 pipelines:
   - verify:
       description: Pull Request validation tests
-      public: true
   - habitat/build:
       description: Build the habitat artifact for Chef-Test-Kitchen-Enterprise
       env:
