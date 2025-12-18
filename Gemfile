@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gemspec
+gemspec name: 'chef-test-kitchen-enterprise'
 
 group :test do
   gem "rake"
@@ -17,11 +17,11 @@ end
 group :integration do
   gem "chef-cli"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent_a"
+  gem "kitchen-inspec"
 end
 
 group :cookstyle do
-  gem "cookstyle", "~> 8.2"
+  gem "cookstyle", ">= 8.2", "< 9.0"
 end
 
 group :build do
