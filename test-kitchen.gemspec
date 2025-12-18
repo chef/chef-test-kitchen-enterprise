@@ -4,7 +4,7 @@ require "kitchen/version"
 
 Gem::Specification.new do |gem|
   gem.name          = "test-kitchen"
-  gem.version       = "999.0.0" # High version number to satisfy all version constraints
+  gem.version       = "3.999.0" # High version number to satisfy all version constraints
   gem.license       = "Apache-2.0"
   gem.authors       = ["Fletcher Nichol"]
   gem.email         = ["fnichol@nichol.ca"]
