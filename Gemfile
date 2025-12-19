@@ -6,12 +6,13 @@ group :test do
   gem "rake"
   gem "rb-readline"
   gem "aruba",     ">= 0.11", "< 3.0"
-  gem "countloc",  "~> 0.4"
+  gem "countloc",  ">= 0.4", "< 1.0"
   gem "cucumber",  ">= 9.2", "< 11"
-  gem "fakefs",    "~> 3.0"
-  gem "maruku",    "~> 0.7"
-  gem "minitest",  "~> 5.3", "< 6.0"
-  gem "mocha",     "~> 2.0"
+  gem "fakefs",    ">= 3.0", "< 4.0"
+  gem "maruku",    ">= 0.7", "< 1.0"
+  gem "minitest",  ">= 5.3", "< 7.0"
+  gem "mocha",     ">= 2.0", "< 4.0"
+  gem "irb"
 end
 
 group :integration do

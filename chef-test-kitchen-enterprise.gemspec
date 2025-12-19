@@ -33,4 +33,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "winrm",              ">= 2.0", "< 3.0"
   gem.add_dependency "winrm-elevated",     ">= 1.0", "< 2.0"
   gem.add_dependency "winrm-fs",           ">= 1.1", "< 2.0"
+  gem.add_dependency "csv" # Needed for winrm-fs since it's not bundled in ruby 3.4+ anymore
 end
