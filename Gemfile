@@ -18,7 +18,7 @@ end
 group :integration do
   gem "chef-cli"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-inspec"
+  gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent_a"
 end
 
 group :cookstyle do
