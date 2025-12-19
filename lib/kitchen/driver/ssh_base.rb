@@ -67,7 +67,7 @@ module Kitchen
         provisioner.create_sandbox
         sandbox_dirs = provisioner.sandbox_dirs
 
-        instance.transport.connection(backcompat_merged_state(state)) do |conn|
+        instance.transport.connection(**backcompat_merged_state(state)) do |conn|
           conn.execute(env_cmd(provisioner.install_command))
           conn.execute(env_cmd(provisioner.init_command))
           info("Transferring files to #{instance.to_str}")
@@ -92,7 +92,7 @@ module Kitchen
       def setup(state)
         verifier = instance.verifier
 
-        instance.transport.connection(backcompat_merged_state(state)) do |conn|
+        instance.transport.connection(**backcompat_merged_state(state)) do |conn|
           conn.execute(env_cmd(verifier.install_command))
         end
       rescue Kitchen::Transport::TransportFailed => ex
@@ -105,7 +105,7 @@ module Kitchen
         verifier.create_sandbox
         sandbox_dirs = Util.list_directory(verifier.sandbox_path)
 
-        instance.transport.connection(backcompat_merged_state(state)) do |conn|
+        instance.transport.connection(**backcompat_merged_state(state)) do |conn|
           conn.execute(env_cmd(verifier.init_command))
           info("Transferring files to #{instance.to_str}")
           conn.upload(sandbox_dirs, verifier[:root_path])
@@ -135,7 +135,7 @@ module Kitchen
 
       # (see Base#login_command)
       def login_command(state)
-        instance.transport.connection(backcompat_merged_state(state))
+        instance.transport.connection(**backcompat_merged_state(state))
           .login_command
       end
 
@@ -145,7 +145,7 @@ module Kitchen
       # @param command [String] the command to be executed
       # @raise [ActionFailed] if the command could not be successfully completed
       def remote_command(state, command)
-        instance.transport.connection(backcompat_merged_state(state)) do |conn|
+        instance.transport.connection(**backcompat_merged_state(state)) do |conn|
           conn.execute(env_cmd(command))
         end
       end
@@ -161,7 +161,7 @@ module Kitchen
         pseudo_state.merge!(ssh_args[2])
         connection_state = backcompat_merged_state(pseudo_state)
 
-        instance.transport.connection(connection_state) do |conn|
+        instance.transport.connection(**connection_state) do |conn|
           conn.execute(env_cmd(command))
         end
       end
@@ -185,9 +185,19 @@ module Kitchen
 
       def backcompat_merged_state(state)
         driver_ssh_keys = %w{
-          forward_agent hostname password port ssh_key username
+          hostname username password port ssh_key forward_agent
         }.map(&:to_sym)
-        config.select { |key, _| driver_ssh_keys.include?(key) }.rmerge(state)
+        # Build result with standard driver keys first in expected order, then additional keys
+        result = {}
+        # Add standard keys in order from state, with config as fallback
+        driver_ssh_keys.each do |key|
+          result[key] = state[key] || config[key] if state.key?(key) || config.key?(key)
+        end
+        # Add any remaining keys from state that aren't standard driver keys
+        state.each do |key, value|
+          result[key] = value unless driver_ssh_keys.include?(key)
+        end
+        result
       end
 
       # Builds arguments for constructing a `Kitchen::SSH` instance.

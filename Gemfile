@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gemspec :name => 'chef-test-kitchen-enterprise'
+gemspec name: 'chef-test-kitchen-enterprise'
 
 group :test do
   gem "rake"

@@ -34,6 +34,16 @@ end
 
 Before("@spawn") do
   aruba.config.command_launcher = :spawn
+  # Disable bundler for spawned processes by removing bundler environment
+  # variables and setting BUNDLE_GEMFILE to empty to prevent bundler/setup
+  # from being automatically required by rubygems
+  %w{BUNDLE_BIN_PATH BUNDLER_EDITOR BUNDLER_VERSION BUNDLE_PATH}.each do |key|
+    aruba.environment.delete(key)
+  end
+  # Set BUNDLE_GEMFILE to empty to disable bundler setup
+  aruba.environment["BUNDLE_GEMFILE"] = ""
+  # Remove RUBYOPT which may contain bundler setup options
+  aruba.environment.delete("RUBYOPT")
 end
 
 After do |s|
