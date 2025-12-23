@@ -15,7 +15,6 @@ env:
   machine_pass: Pass@word1
   SPEC_OPTS: --format progress
   CHEF_LICENSE: accept-no-persist
-  CHEF_LICENSE_SERVER: http://hosted-license-service-lb-8000-606952349.us-west-2.elb.amazonaws.com:8000/
 
 jobs:
   dokken:
@@ -25,7 +24,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.4"]
+        ruby:
+          - 3.4
+        os:
+          - almalinux-9
+          - ubuntu-2404
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git for private repo access
@@ -40,14 +43,17 @@ jobs:
           bundle config set --local with 'integration'
           bundle install
       - name: Verify Dokken
-        run: bundle exec kitchen verify
+        run: bundle exec kitchen verify ${{ matrix.os }}
 
   vagrant:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.4"]
+        ruby:
+          - 3.4
+        os:
+          - almalinux-9
     steps:
       - name: Install VirtualBox
         run: |
@@ -76,7 +82,8 @@ jobs:
           vagrant -v
       - name: Verify Vagrant
         run: |
-          bundle exec kitchen verify almalinux-9
+          export PATH="$(pwd)/bin:$PATH"
+          bundle exec kitchen verify ${{ matrix.os }}
 
   macos:
     env:
@@ -86,8 +93,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.4"]
-        kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
+        ruby:
+          - 3.4
+        kitchen_yaml:
+          - dummy
+          - exec
+          - proxy
+          - shell
+        os:
+          - localhost
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git for private repo access
@@ -109,7 +123,7 @@ jobs:
           sudo createhomedir -c -u ${{ env.machine_user }}
           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
       - name: Verify macOS
-        run: bundle exec kitchen verify localhost
+        run: bundle exec kitchen verify ${{ matrix.os }}
 
   windows:
     env:
@@ -120,8 +134,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.4"]
-        kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
+        ruby:
+          - 3.4
+        kitchen_yaml:
+          - dummy
+          - exec
+          - proxy
+          - shell
+        os:
+          - windows-winrm
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git for private repo access
@@ -136,8 +157,9 @@ jobs:
           winrm.cmd quickconfig -q
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
       - name: Verify Windows
-        run: bundle exec kitchen verify windows-winrm
+        run: bundle exec kitchen verify ${{ matrix.os }}
 
   linux:
     env:
@@ -148,8 +170,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.4"]
-        kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
+        ruby:
+          - 3.4
+        kitchen_yaml:
+          - dummy
+          - exec
+          - proxy
+          - shell
+        os:
+          - localhost
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git for private repo access
@@ -166,7 +195,7 @@ jobs:
           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
       - name: Verify Linux
         run: |
-          bundle exec kitchen verify localhost
+          bundle exec kitchen verify ${{ matrix.os }}
 
   windows-fips-ssh:
     env:
@@ -177,8 +206,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.4"]
-        kitchen_yaml: ["dummy", "exec", "proxy", "shell"]
+        ruby:
+          - 3.4
+        kitchen_yaml:
+          - dummy
+          - exec
+          - proxy
+          - shell
+        os:
+          - windows-fips-ssh
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git for private repo access
@@ -227,5 +263,6 @@ jobs:
           }
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
       - name: Verify Windows FIPS SSH
-        run: bundle exec kitchen verify windows-fips-ssh -l debug
+        run: bundle exec kitchen verify ${{ matrix.os }} -l debug
