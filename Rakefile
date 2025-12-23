@@ -1,4 +1,17 @@
-require "bundler/gem_tasks"
+require "bundler/gem_helper"
+
+# Setup gem tasks for the main gem
+Bundler::GemHelper.install_tasks(name: "chef-test-kitchen-enterprise")
+
+# Setup gem tasks for the alias gem
+namespace :alias do
+  Bundler::GemHelper.install_tasks(name: "test-kitchen", gemspec: "test-kitchen.gemspec")
+end
+
+namespace :build do
+  desc "Build both chef-test-kitchen-enterprise and test-kitchen alias gems"
+  task all: ["build", "alias:build"]
+end
 
 require "rake/testtask"
 Rake::TestTask.new(:unit) do |t|
