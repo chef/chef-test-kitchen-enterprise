@@ -18,7 +18,8 @@ end
 group :integration do
   gem "chef-cli"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "temp-point-to-chef-test-kitchen-ent_a"
+  gem "kitchen-inspec", git: "https://github.com/inspec/kitchen-inspec", branch: "corey-test"
+  gem "inspec", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
 end
 
 group :cookstyle do
