@@ -102,6 +102,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
+      - name: Setup Machine
+        run: |
+          bundle install
       - name: Rake Test
         if: steps.check.outputs.gemfile == 'true'
         run: bundle exec rake test
