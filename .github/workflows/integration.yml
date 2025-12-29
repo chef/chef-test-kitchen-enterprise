@@ -37,7 +37,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false
       - name: Setup Machine
         run: |
           bundle config set --local with 'integration'
@@ -70,7 +70,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false
       - name: Setup Machine
         run: |
           bundle config set --local with 'integration'
@@ -110,7 +110,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false
+      - name: Install dependencies
+        run: bundle install
       - name: Setup Machine
         run: |
           sudo dscl . -create /Users/${{ env.machine_user }}
@@ -151,7 +153,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false
+      - name: Install dependencies
+        run: bundle install
       - name: Setup Machine
         run: |
           winrm.cmd quickconfig -q
@@ -187,7 +191,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false
+      - name: Install dependencies
+        run: bundle install
       - name: Setup Machine
         run: |
           sudo useradd -m ${{ env.machine_user }}
@@ -223,7 +229,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
+          bundler-cache: false
+      - name: Install dependencies
+        run: bundle install
       - name: 'Enable FIPS via windows registry'
         run: |
           $OldErrorActionPreference = $ErrorActionPreference
