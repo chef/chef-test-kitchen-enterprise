@@ -147,8 +147,13 @@ jobs:
           - windows-winrm
     steps:
       - uses: actions/checkout@v5
-      - name: Configure Git for private repo access
+      - name: Enable Windows long paths and configure Git
         run: |
+          # Enable Windows long paths
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          # Enable Git long paths
+          git config --global core.longpaths true
+          # Configure Git for private repo access
           git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
@@ -161,7 +166,6 @@ jobs:
           winrm.cmd quickconfig -q
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
       - name: Verify Windows
         run: bundle exec kitchen verify ${{ matrix.os }}
 
@@ -223,8 +227,13 @@ jobs:
           - windows-fips-ssh
     steps:
       - uses: actions/checkout@v5
-      - name: Configure Git for private repo access
+      - name: Enable Windows long paths and configure Git
         run: |
+          # Enable Windows long paths
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          # Enable Git long paths
+          git config --global core.longpaths true
+          # Configure Git for private repo access
           git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
@@ -271,6 +280,5 @@ jobs:
           }
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
-          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
       - name: Verify Windows FIPS SSH
         run: bundle exec kitchen verify ${{ matrix.os }} -l debug
