@@ -30,8 +30,8 @@ Gem::Specification.new do |gem|
   gem.add_dependency "net-ssh",            ">= 2.9", "< 8.0" # pinning until we can confirm 8+ works
   gem.add_dependency "net-ssh-gateway",    ">= 1.2", "< 3.0" # pinning until we can confirm 3+ works
   gem.add_dependency "thor",               ">= 0.19", "< 2.0"
-  gem.add_dependency "winrm",              ">= 2.0", "< 3.0"
-  gem.add_dependency "winrm-elevated",     ">= 1.0", "< 2.0"
-  gem.add_dependency "winrm-fs",           ">= 1.1", "< 2.0"
-  gem.add_dependency "csv" # Needed for winrm-fs since it's not bundled in ruby 3.4+ anymore
+  gem.add_dependency "chef-winrm",         ">= 2.0", "< 3.0"
+  gem.add_dependency "chef-winrm-elevated", ">= 1.0", "< 2.0"
+  gem.add_dependency "chef-winrm-fs",      ">= 1.0", "< 2.0"
+  gem.add_dependency "csv" # Needed for chef-winrm-fs since it's not bundled in ruby 3.4+ anymore
 end
