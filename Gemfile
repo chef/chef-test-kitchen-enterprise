@@ -5,7 +5,7 @@ gemspec name: 'chef-test-kitchen-enterprise'
 # Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
 # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
 gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "remove-chef-provisioner", glob: "test-kitchen.gemspec" # TODO: update branch to main once PR is merged https://github.com/chef/chef-test-kitchen-enterprise/pull/60
-gem "mixlib-install", git: "https://github.com/chef/mixlib-install", branch: "fix-openssl-CRL-error" # TODO: remove this once this PR is merged https://github.com/chef/mixlib-install/pull/406
+gem "mixlib-install", git: "https://github.com/chef/mixlib-install", branch: "hab-pkg-pathing" # TODO: remove this once this PR is merged https://github.com/chef/mixlib-install/pull/406
 gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "add-fetch", glob: "components/ruby/*.gemspec" # TODO: remove once PR is merged https://github.com/chef/chef-licensing/pull/219
 
 group :test do
