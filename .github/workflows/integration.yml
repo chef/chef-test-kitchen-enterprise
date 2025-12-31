@@ -63,24 +63,33 @@ jobs:
           echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
           echo "deb [signed-by=/usr/share/keyrings/oracle-virtualbox-2016.gpg] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
           sudo apt-get update
-          sudo apt-get install -y software-properties-common libarchive-tools virtualbox-7.2
-      - uses: actions/checkout@v5
-      - name: Configure Git for private repo access
-        run: |
-          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
+          sudo apt-get install -y software-properties-common libarchive-tools vagrant virtualbox-7.2
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
+          bundler-cache: false  # Disable cache due to git dependencies causing issues
       - name: Setup Machine
         run: |
           bundle config set --local with 'integration'
-          bundle add vagrant --version ">= 2.4.4"
+          # bundle add vagrant --version ">= 2.4.4"
           bundle install
-          bundle binstubs vagrant
+          # Create a wrapper for vagrant that completely isolates it from bundler
+          mkdir -p bin
+          cat > bin/vagrant << 'EOF'
+          #!/usr/bin/env bash
+          # Run vagrant with a completely clean Ruby environment
+          env -i \
+            PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
+            HOME="$HOME" \
+            USER="$USER" \
+            LOGNAME="$LOGNAME" \
+            /usr/bin/vagrant "$@"
+          EOF
+          chmod +x bin/vagrant
           export PATH="$(pwd)/bin:$PATH"
-          which vagrant
-          vagrant -v
+          # Verify vagrant works
+          vagrant --version
       - name: Verify Vagrant
         run: |
           export PATH="$(pwd)/bin:$PATH"
