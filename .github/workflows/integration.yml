@@ -31,7 +31,7 @@ jobs:
           - almalinux-9
           - ubuntu-2404
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Configure Git for private repo access
         run: |
           git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
@@ -56,6 +56,9 @@ jobs:
         os:
           - almalinux-9
     steps:
+      - name: Configure Git for private repo access
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - name: Install VirtualBox
         run: |
           wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -113,7 +116,7 @@ jobs:
         os:
           - localhost
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Configure Git for private repo access
         run: |
           git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
@@ -156,7 +159,7 @@ jobs:
         os:
           - windows-winrm
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Enable Windows long paths and configure Git
         run: |
           # Enable Windows long paths
@@ -198,7 +201,7 @@ jobs:
         os:
           - localhost
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Configure Git for private repo access
         run: |
           git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
@@ -236,7 +239,7 @@ jobs:
         os:
           - windows-fips-ssh
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Enable Windows long paths and configure Git
         run: |
           # Enable Windows long paths
