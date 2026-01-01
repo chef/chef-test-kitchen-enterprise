@@ -1295,7 +1295,8 @@ describe Kitchen::Instance do
 
       it "#login executes the driver's login_command" do
         state_file.write(last_action: "create")
-        driver.stubs(:login_command).with(last_action: "create")
+        driver.stubs(:login_command)
+          .with { |state| state[:last_action] == "create" }
           .returns(Kitchen::LoginCommand.new("echo", ["hello"], purple: true))
         Kernel.expects(:exec).with("echo", "hello", purple: true)
 
