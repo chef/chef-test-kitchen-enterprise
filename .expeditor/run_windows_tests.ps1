@@ -1,5 +1,9 @@
 $ErrorActionPreference="stop"
 
+Write-Host "--- Enabling Git long paths"
+# Enable Git long paths to handle deep directory structures in gem dependencies
+git config --global core.longpaths true
+
 Write-Host "--- bundle install"
 
 bundle config --local path vendor/bundle
