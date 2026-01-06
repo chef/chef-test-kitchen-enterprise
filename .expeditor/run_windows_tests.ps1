@@ -4,6 +4,12 @@ Write-Host "--- Enabling Git long paths"
 # Enable Git long paths to handle deep directory structures in gem dependencies
 git config --global core.longpaths true
 
+Write-Host "--- Cleaning vendor/bundle cache"
+# Remove cached vendor/bundle to avoid Ruby version incompatibilities
+if (Test-Path "vendor/bundle") {
+    Remove-Item -Recurse -Force "vendor/bundle"
+}
+
 Write-Host "--- bundle install"
 
 bundle config --local path vendor/bundle
