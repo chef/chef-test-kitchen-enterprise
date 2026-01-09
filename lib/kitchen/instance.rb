@@ -213,19 +213,24 @@ module Kitchen
       lc = if legacy_ssh_base_driver?
              legacy_ssh_base_login(state)
            else
-             transport.connection(state).login_command
+             transport.connection(**state).login_command
            end
 
       debug(%{Login command: #{lc.command} #{lc.arguments.join(" ")} } \
         "(Options: #{lc.options})")
-      Kernel.exec(*lc.exec_args)
+      args = lc.exec_args
+      if args.last.is_a?(Hash)
+        Kernel.exec(*args[0..-2], **args.last)
+      else
+        Kernel.exec(*args)
+      end
     end
 
     # Executes an arbitrary command on this instance.
     #
     # @param command [String] a command string to execute
     def remote_exec(command)
-      transport.connection(state_file.read) do |conn|
+      transport.connection(**state_file.read) do |conn|
         conn.execute(command)
       end
     end

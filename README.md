@@ -11,6 +11,18 @@
 
 **Test Kitchen is an integration tool for developing and testing infrastructure code and software on isolated target platforms.**
 
+## Note: Gem Name Change
+
+This gem is now published as `chef-test-kitchen-enterprise`. For backward compatibility, a `test-kitchen` alias gem is also available that automatically installs `chef-test-kitchen-enterprise`. Both gem names work identically:
+
+```shell
+gem install chef-test-kitchen-enterprise
+# or
+gem install test-kitchen  # This installs chef-test-kitchen-enterprise
+```
+
+If you have gems with transitive dependencies on `test-kitchen`, installing the `test-kitchen` alias gem will satisfy those dependencies while using the `chef-test-kitchen-enterprise` implementation.
+
 ## Getting Started Guide
 
 To learn how to install and setup Test Kitchen for developing infrastructure

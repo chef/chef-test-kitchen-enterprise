@@ -120,7 +120,7 @@ module Kitchen
     #   in convergence integration
     def platforms
       @platforms ||= Collection.new(
-        data.platform_data.map { |pdata| Platform.new(pdata) }
+        data.platform_data.map { |pdata| Platform.new(**pdata) }
       )
     end
 
@@ -128,7 +128,7 @@ module Kitchen
     #   convergence integration
     def suites
       @suites ||= Collection.new(
-        data.suite_data.map { |sdata| Suite.new(sdata) }
+        data.suite_data.map { |sdata| Suite.new(**sdata) }
       )
     end
 
