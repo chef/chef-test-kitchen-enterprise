@@ -47,6 +47,7 @@ do_build() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
+  export CHEF_TEST_KITCHEN_ENTERPRISE="true"
   bundle config --local without deploy maintenance
   bundle config --local jobs 4
   bundle config --local retry 5
@@ -61,7 +62,7 @@ do_install() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
-  gem install chef-test-kitchen-enterprise-*.gem --no-document
+  gem install chef-test-kitchen-enterprise-*.gem --no-document --force
 
   make_pkg_official_distrib
 

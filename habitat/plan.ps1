@@ -30,6 +30,7 @@ function Invoke-SetupEnvironment {
     Set-RuntimeEnv FORCE_FFI_YAJL "ext"
     Set-RuntimeEnv LANG "en_US.UTF-8"
     Set-RuntimeEnv LC_CTYPE "en_US.UTF-8"
+    Set-RuntimeEnv CHEF_TEST_KITCHEN_ENTERPRISE "true"
 }
 
 function Invoke-Build {
@@ -48,7 +49,7 @@ function Invoke-Build {
 	    bundle lock --local
         gem build chef-test-kitchen-enterprise.gemspec
 	    Write-BuildLine " ** Using gem to  install"
-	    gem install chef-test-kitchen-enterprise*.gem --no-document
+	    gem install chef-test-kitchen-enterprise*.gem --no-document --force
 
         ruby ./post-bundle-install.rb
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
@@ -72,7 +73,7 @@ function Invoke-Install {
         Push-Location $pkg_prefix
         bundle config --local gemfile $project_root/Gemfile
          Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins"
-	 Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins $project_root $pkg_prefix/bin " 
+	 Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins $project_root $pkg_prefix/bin "
             Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin chef-test-kitchen-enterprise"
             If ($lastexitcode -ne 0) { Exit $lastexitcode }
 	Write-BuildLine " ** Running the chef-test-kitchen-enterprise project's 'rake install' to install the path-based gems so they look like any other installed gem."
