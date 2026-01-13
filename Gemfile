@@ -6,7 +6,6 @@ gemspec name: 'chef-test-kitchen-enterprise'
 # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
 gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "remove-chef-provisioner", glob: "test-kitchen.gemspec" # TODO: update branch to main once PR is merged https://github.com/chef/chef-test-kitchen-enterprise/pull/60
 gem "mixlib-install", git: "https://github.com/chef/mixlib-install", branch: "commercial-api" # TODO: remove this once this PR is merged https://github.com/chef/mixlib-install/pull/408
-gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "add-fetch", glob: "components/ruby/*.gemspec" # TODO: remove once PR is merged https://github.com/chef/chef-licensing/pull/219
 gem "chef-winrm", git: "https://github.com/stromweld/chef-winrm", branch: "patch-1" # TODO: remove once PR is merged https://github.com/stromweld/chef-winrm/pull/22
 
 group :test do
