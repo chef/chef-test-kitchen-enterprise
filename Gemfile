@@ -44,7 +44,7 @@ group :integration do
       gem "kitchen-chef-enterprise"
     end
   else
-    gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "licensing-hab-pkg-pathing" # TODO: update branch to main once PR is merged https://github.com/chef/kitchen-chef-enterprise/pull/8
+    gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
 end
 
