@@ -5,11 +5,11 @@
 
 name: CI Pull Request on Main Branch
 
-on: 
+on:
   pull_request:
-    branches: [ nikhil/onboard-sonarqube-and-enable-blackduck, release/** ]
+    branches: [nikhil/onboard-sonarqube-and-enable-blackduck, release/**]
   push:
-    branches: [ nikhil/onboard-sonarqube-and-enable-blackduck, release/** ]
+    branches: [nikhil/onboard-sonarqube-and-enable-blackduck, release/**]
 
   workflow_dispatch:
 
@@ -19,7 +19,7 @@ permissions:
 env:
   STUB_VERSION: "1.0.5"
 
-jobs: 
+jobs:
   echo_version:
     name: 'Echo stub version'
     runs-on: ubuntu-latest
