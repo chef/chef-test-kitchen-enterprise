@@ -34,4 +34,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "chef-winrm-elevated", ">= 1.0", "< 2.0"
   gem.add_dependency "chef-winrm-fs",      ">= 1.0", "< 2.0"
   gem.add_dependency "csv" # Needed for chef-winrm-fs since it's not bundled in ruby 3.4+ anymore
+  gem.add_dependency "mixlib-install",     ">= 3.15.0", "< 4.0"
 end

@@ -47,13 +47,19 @@ do_build() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
+  export CHEF_TEST_KITCHEN_ENTERPRISE="true"
+
   bundle config --local without deploy maintenance
+  bundle config --local with integration
   bundle config --local jobs 4
   bundle config --local retry 5
   bundle config --local silence_root_warning 1
+
   bundle install
   ruby ./post-bundle-install.rb
+
   gem build chef-test-kitchen-enterprise.gemspec
+  gem build test-kitchen.gemspec
 }
 
 do_install() {
@@ -61,7 +67,9 @@ do_install() {
 
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
-  gem install chef-test-kitchen-enterprise-*.gem --no-document
+  cleanup_community_test_kitchen_gem
+  gem install chef-test-kitchen-enterprise-*.gem --no-document --force
+  gem install test-kitchen-*.gem --no-document --force --ignore-dependencies
 
   make_pkg_official_distrib
 
@@ -90,18 +98,33 @@ export PATH="/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:\$PATH
 export GEM_HOME="$pkg_prefix/vendor"
 export GEM_PATH="\$GEM_HOME"
 
+# Set encoding to UTF-8 to handle non-ASCII characters in gem files
+export RUBYOPT="-Eutf-8"
+
 exec $(pkg_path_for $_chef_client_ruby)/bin/ruby $real_bin \$@
 EOF
   chmod -v 755 "$bin"
 }
 
 make_pkg_official_distrib() {
-  build_line "Installing chef-official-distribution gem"
+  # Install chef-official-distribution without dependencies since bundler already installed everything
+  build_line "Installing chef-official-distribution gem (package-level only)"
   gem source --add "https://artifactory-internal.ps.chef.co/artifactory/omnibus-gems-local/"
-  gem install chef-official-distribution --no-document --install-dir "$GEM_HOME"
+  gem install chef-official-distribution --no-document --install-dir "$GEM_HOME" --ignore-dependencies
   gem sources -r "https://artifactory-internal.ps.chef.co/artifactory/omnibus-gems-local/"
 }
 
 do_strip() {
   return 0
+}
+
+# Some kitchen-plugins may install the community test-kitchen gem as a dependency.
+# This can cause conflicts with the alias gem we are using from chef-test-kitchen-enterprise.
+# This function checks for the presence of the community test-kitchen gem and removes it if found
+cleanup_community_test_kitchen_gem() {
+  # Check if community test-kitchen gem is installed and remove it to avoid conflicts
+  if gem list -i "^test-kitchen$" > /dev/null 2>&1; then
+    build_line "Removing community test-kitchen gem to avoid conflicts with alias gem"
+    gem uninstall test-kitchen --all --ignore-dependencies --executables || true
+  fi
 }
