@@ -233,7 +233,6 @@ describe Kitchen::Config do
   describe "#suites" do
     before do
       Kitchen::DataMunger.stubs(:new).returns(munger)
-      Kitchen::Suite.stubs(:new).returns("suite")
     end
 
     let(:munger) do
@@ -243,12 +242,14 @@ describe Kitchen::Config do
     end
 
     it "loader loads data" do
+      Kitchen::Suite.stubs(:new)
       loader.expects(:read).returns({})
 
       config.suites
     end
 
     it "constucts a munger with loader data and defaults" do
+      Kitchen::Suite.stubs(:new)
       loader.stubs(:read).returns("datum")
 
       Kitchen::DataMunger.expects(:new).with do |data, kitchen_config|
@@ -260,6 +261,7 @@ describe Kitchen::Config do
     end
 
     it "platform_data is called on munger" do
+      Kitchen::Suite.stubs(:new)
       munger.expects(:suite_data).returns([])
 
       config.suites
