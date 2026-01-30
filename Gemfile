@@ -22,7 +22,7 @@ group :integration do
   gem "inspec-core", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
   # Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
   # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
-  gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "remove-chef-provisioner", glob: "test-kitchen.gemspec" # TODO: update branch to main once PR is merged https://github.com/chef/chef-test-kitchen-enterprise/pull/60
+  gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "main", glob: "test-kitchen.gemspec" # TODO: update branch to main once PR is merged https://github.com/chef/chef-test-kitchen-enterprise/pull/60
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
