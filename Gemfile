@@ -20,11 +20,11 @@ group :test do
 end
 
 group :integration do
-  gem "chef-cli"
+  # gem "chef-cli"
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-inspec"
-  gem "inspec", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
+  # gem "kitchen-inspec"
+  # gem "inspec", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -41,17 +41,22 @@ group :integration do
                             false
                           end
 
-  if artifactory_available
-    source artifactory_url do
-      gem "kitchen-chef-enterprise"
-    end
-  else
-    gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
-  end
+  # if artifactory_available
+  #   source artifactory_url do
+  #     gem "kitchen-chef-enterprise"
+  #   end
+  # else
+  #   gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
+  # end
   gem "kitchen-ec2"
-  gem "kitchen-vcenter"
   gem "kitchen-google"
   gem "kitchen-azurerm"
+end
+
+group :maintenance do
+  gem "chef-cli" # Has azure_mgmt_security dependency with 260+ character paths
+  gem "inspec", ">= 5.0", "< 6.6.0" # Also has azure dependencies through train
+  gem "kitchen-inspec" # Depends on inspec
 end
 
 group :cookstyle do
