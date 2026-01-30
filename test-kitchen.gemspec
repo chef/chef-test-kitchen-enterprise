@@ -4,7 +4,7 @@ require "kitchen/version"
 
 Gem::Specification.new do |gem|
   gem.name          = "test-kitchen"
-  gem.version       = "3.999.0" # High version number to satisfy all version constraints
+  gem.version       = "4.999.0" # Higher version number than community test-kitchen
   gem.license       = "Apache-2.0"
   gem.authors       = ["Fletcher Nichol"]
   gem.email         = ["fnichol@nichol.ca"]
@@ -28,14 +28,13 @@ Gem::Specification.new do |gem|
   gem.add_dependency "chef-test-kitchen-enterprise", ">= #{Kitchen::VERSION}"
 
   gem.post_install_message = <<~MESSAGE
-    
+
     ═══════════════════════════════════════════════════════════════════════════
     Thank you for installing test-kitchen!
-    
+
     This is an alias gem that installs chef-test-kitchen-enterprise.
     All functionality is provided by chef-test-kitchen-enterprise.
     ═══════════════════════════════════════════════════════════════════════════
-    
+
   MESSAGE
 end
-

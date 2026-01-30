@@ -40,7 +40,7 @@ function Invoke-Build {
         git config --global core.longpaths true
         # Set Windows environment to support long paths in Ruby
         $env:MSYS = "winsymlinks:nativestrict"
-        
+
         Write-BuildLine " ** Configuring bundler for this build environment"
         bundle config --local without "deploy maintenance"
         bundle config --local jobs 4
@@ -48,11 +48,11 @@ function Invoke-Build {
         bundle config --local silence_root_warning 1
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
         bundle install
-	    bundle lock --local
+	    bundle lock
         gem build chef-test-kitchen-enterprise.gemspec
 	    Write-BuildLine " ** Using gem to  install"
 	    gem install chef-test-kitchen-enterprise*.gem --no-document --force
-	    
+
 	    # Build and install the test-kitchen alias gem to satisfy driver dependencies
 	    Write-BuildLine " ** Building test-kitchen alias gem"
 	    gem build test-kitchen.gemspec
@@ -76,7 +76,7 @@ function Invoke-Install {
     Copy-Item -Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/*" -Destination $pkg_prefix -Recurse -Force -Exclude @("gem_make.out", "mkmf.log", "Makefile",
                      "*/latest", "latest",
                      "*/JSON-Schema-Test-Suite", "JSON-Schema-Test-Suite")
-    
+
     # Ensure Gemfile.lock is copied to the package root (it's in src/ subdirectory)
     Write-BuildLine "** Checking for Gemfile.lock at $HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock"
     if (Test-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock") {
@@ -96,16 +96,16 @@ function Invoke-Install {
             Write-BuildLine "ERROR: Gemfile.lock still not found in $pkg_prefix"
             Exit 1
         }
-        
+
         # Set GEM_PATH to include both vendor and the system gem paths
         $env:GEM_PATH = "$pkg_prefix/vendor"
         $env:GEM_HOME = "$pkg_prefix/vendor"
-        
+
         # Create bin directory if it doesn't exist
         if (-not (Test-Path "$pkg_prefix/bin")) {
             New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
         }
-        
+
         # Find the gem and create wrapper for kitchen binary
         $kitchenGemDir = Get-ChildItem "$pkg_prefix/vendor/gems" -Filter "chef-test-kitchen-enterprise-*" -Directory | Select-Object -First 1
         if ($kitchenGemDir) {
@@ -116,7 +116,7 @@ function Invoke-Install {
                 Wrap-KitchenBinary "$pkg_prefix/bin/kitchen" $realKitchenBin
             }
         }
-        
+
 	Write-BuildLine " ** Build and install complete"
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
@@ -130,11 +130,11 @@ function Wrap-KitchenBinary {
         [string]$WrapperPath,
         [string]$RealBinPath
     )
-    
+
     Write-BuildLine "Creating wrapper script at $WrapperPath"
-    
+
     $rubyPath = Get-HabPackagePath "core/ruby3_4-plus-devkit"
-    
+
     # Create a batch wrapper script that sets up the environment
     # Note: Using expandable string with escaped $ for batch variables
     $wrapperContent = @"
@@ -152,12 +152,12 @@ set "RUBYOPT=-Eutf-8"
 REM Execute the real kitchen binary with ruby
 "$rubyPath\bin\ruby.exe" "$RealBinPath" %*
 "@
-    
+
     Set-Content -Path $WrapperPath -Value $wrapperContent -Encoding ASCII
-    
+
     # Also create a .bat file for better Windows compatibility
     Set-Content -Path "$WrapperPath.bat" -Value $wrapperContent -Encoding ASCII
-    
+
     Write-BuildLine "Wrapper created successfully"
 }
 

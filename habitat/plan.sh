@@ -48,7 +48,6 @@ do_build() {
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
   export CHEF_TEST_KITCHEN_ENTERPRISE="true"
-
   bundle config --local without deploy maintenance
   bundle config --local with integration
   bundle config --local jobs 4

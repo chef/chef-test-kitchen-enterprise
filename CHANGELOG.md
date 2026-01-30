@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 1.1.8 -->
-## [v1.1.8](https://github.com/chef/chef-test-kitchen-enterprise/tree/v1.1.8) (2025-12-18)
+<!-- latest_release 3.0.0 -->
+## [v3.0.0](https://github.com/chef/chef-test-kitchen-enterprise/tree/v3.0.0) (2026-01-29)
 
 #### Merged Pull Requests
-- Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps))
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -74,6 +75,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -93,6 +95,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -114,6 +117,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -133,6 +137,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -156,6 +161,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -175,6 +181,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -196,6 +203,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -215,6 +223,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -240,6 +249,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -259,6 +269,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -280,6 +291,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -299,6 +311,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -322,6 +335,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -341,6 +355,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -362,6 +377,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -381,6 +397,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -408,6 +425,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -427,6 +445,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -448,6 +467,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -467,6 +487,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -490,6 +511,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -509,6 +531,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -530,6 +553,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -549,6 +573,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -574,6 +599,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -593,6 +619,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -614,6 +641,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -633,6 +661,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -656,6 +685,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -675,6 +705,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -696,6 +727,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -715,6 +747,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -744,6 +777,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -763,6 +797,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -784,6 +819,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -803,6 +839,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -826,6 +863,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -845,6 +883,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -866,6 +905,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -885,6 +925,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -910,6 +951,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -929,6 +971,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -950,6 +993,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -969,6 +1013,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -992,6 +1037,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1011,6 +1057,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1032,6 +1079,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1051,6 +1099,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1078,6 +1127,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1097,6 +1147,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1118,6 +1169,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1137,6 +1189,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1160,6 +1213,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1179,6 +1233,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1200,6 +1255,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1219,6 +1275,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1244,6 +1301,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1263,6 +1321,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1284,6 +1343,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1303,6 +1363,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1326,6 +1387,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1345,6 +1407,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1366,6 +1429,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1385,6 +1449,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1424,6 +1489,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1443,6 +1509,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1464,6 +1531,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1483,6 +1551,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1506,6 +1575,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1525,6 +1595,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1546,6 +1617,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1565,6 +1637,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1590,6 +1663,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1609,6 +1683,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1630,6 +1705,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1649,6 +1725,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1672,6 +1749,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1691,6 +1769,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1712,6 +1791,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1731,6 +1811,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1758,6 +1839,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1777,6 +1859,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1798,6 +1881,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1817,6 +1901,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1840,6 +1925,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1859,6 +1945,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1880,6 +1967,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1899,6 +1987,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1924,6 +2013,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1943,6 +2033,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1964,6 +2055,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -1983,6 +2075,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -2006,6 +2099,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -2025,6 +2119,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -2046,6 +2141,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
@@ -2065,6 +2161,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
 - [CHEF-23440] - Mandatory License enforcemnt on kitchen converge command [#55](https://github.com/chef/chef-test-kitchen-enterprise/pull/55) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.6 -->
