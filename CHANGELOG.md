@@ -1,5 +1,9 @@
 # Test Kitchen Change Log
 
+<!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
+<!-- latest_release 3.0.0 -->
+## [v3.0.0](https://github.com/chef/chef-test-kitchen-enterprise/tree/v3.0.0) (2026-01-29)
+
 #### Merged Pull Requests
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld))
 <!-- latest_release -->
