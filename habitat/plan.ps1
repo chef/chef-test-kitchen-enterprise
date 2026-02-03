@@ -96,16 +96,16 @@ function Invoke-Install {
             Write-BuildLine "ERROR: Gemfile.lock still not found in $pkg_prefix"
             Exit 1
         }
-        
+
         # Set GEM_PATH to include both vendor and the system gem paths
         $env:GEM_PATH = "$pkg_prefix/vendor"
         $env:GEM_HOME = "$pkg_prefix/vendor"
-        
+
         # Create bin directory if it doesn't exist
         if (-not (Test-Path "$pkg_prefix/bin")) {
             New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
         }
-        
+
         # Find the gem and create wrapper for kitchen binary
         $kitchenGemDir = Get-ChildItem "$pkg_prefix/vendor/gems" -Filter "chef-test-kitchen-enterprise-*" -Directory | Select-Object -First 1
         if ($kitchenGemDir) {
@@ -113,6 +113,14 @@ function Invoke-Install {
             $realKitchenBin = "$($kitchenGemDir.FullName)/bin/kitchen"
             if (Test-Path $realKitchenBin) {
                 Write-BuildLine "** Creating wrapper for kitchen binary"
+
+                # Remove any existing kitchen files in bin directory
+                Remove-Item "$pkg_prefix/bin/kitchen" -Force -ErrorAction SilentlyContinue
+                Remove-Item "$pkg_prefix/bin/kitchen.bat" -Force -ErrorAction SilentlyContinue
+
+                # Remove kitchen from vendor/bin if it exists (to avoid conflicts)
+                Remove-Item "$pkg_prefix/vendor/bin/kitchen" -Force -ErrorAction SilentlyContinue
+
                 Wrap-KitchenBinary "$pkg_prefix/bin/kitchen" $realKitchenBin
             }
         }
@@ -136,7 +144,6 @@ function Wrap-KitchenBinary {
     $rubyPath = Get-HabPackagePath "core/ruby3_4-plus-devkit"
     
     # Create a batch wrapper script that sets up the environment
-    # Note: Using expandable string with escaped $ for batch variables
     $wrapperContent = @"
 @echo off
 REM Wrapper script for Test Kitchen Enterprise
@@ -153,12 +160,10 @@ REM Execute the real kitchen binary with ruby
 "$rubyPath\bin\ruby.exe" "$RealBinPath" %*
 "@
     
-    Set-Content -Path $WrapperPath -Value $wrapperContent -Encoding ASCII
-    
-    # Also create a .bat file for better Windows compatibility
+    # Create the batch file (Windows will use .bat extension)
     Set-Content -Path "$WrapperPath.bat" -Value $wrapperContent -Encoding ASCII
     
-    Write-BuildLine "Wrapper created successfully"
+    Write-BuildLine "Wrapper created successfully at $WrapperPath.bat"
 }
 
 function Invoke-After {
