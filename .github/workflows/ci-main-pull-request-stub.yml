@@ -7,9 +7,9 @@ name: CI Pull Request on Main Branch
 
 on:
   pull_request:
-    branches: [nikhil/onboard-sonarqube-and-enable-blackduck, release/**]
+    branches: [main, release/**]
   push:
-    branches: [nikhil/onboard-sonarqube-and-enable-blackduck, release/**]
+    branches: [main, release/**]
 
   workflow_dispatch:
 
@@ -29,7 +29,7 @@ jobs:
           echo "CI main pull request stub version $STUB_VERSION"
 
   call-ci-main-pr-check-pipeline:
-    uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@nikhil/create-lock-file-runtime
+    uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@main
     secrets: inherit
     permissions:
       id-token: write
@@ -40,7 +40,7 @@ jobs:
       # go-private-modules: GOPRIVATE for Go private modules, default is 'github.com/progress-platform-services/*
 
       # if version specified, it takes precedence; can be a semver like 1.0.2-xyz or a tag like "latest"
-      version: '3.0.0' # ${{ github.event.repository.version }}
+      version: '2.0.0' # ${{ github.event.repository.version }}
       detect-version-source-type: 'none' # options include "none" (do not detect), "file", "github-tag" or "github-release"
       detect-version-source-parameter: '' # use for file name
       language: 'ruby'  # Go, Ruby, Rust, JavaScript, TypeScript, Python, Java, C#, PHP, other - used for build and SonarQube language setting
@@ -96,7 +96,6 @@ jobs:
       perform-blackduck-sca-scan: true # combined with generate sbom & generate github-sbom, also needs version above
       blackduck-project-group-name: 'Chef-Agents' # typically one of (Chef), Chef-Agents, Chef-Automate, Chef-Chef360, Chef-Habitat, Chef-Infrastructure-Server, Chef-Shared-Services, Chef-Non-Product'
       blackduck-project-name: ${{ github.event.repository.name }} # BlackDuck project name, typically the repository name
-      generate-blackduck-sbom: true # obsolete, use perform-blackduck-sca-scan instead
 
       run-bundle-install: true
 
