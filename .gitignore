@@ -4,8 +4,8 @@
 .config
 .yardoc
 binstubs
-Gemfile*.lock
-Gemfile.local
+# Gemfile*.lock
+# Gemfile.local
 InstalledFiles
 _yardoc
 coverage
