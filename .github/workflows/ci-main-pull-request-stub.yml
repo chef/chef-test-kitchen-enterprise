@@ -28,6 +28,29 @@ jobs:
         run: |
           echo "CI main pull request stub version $STUB_VERSION"
 
+  build-and-test:
+    name: 'Build/compilation and unit tests (CI)'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      
+      - name: Configure Git for private repo access
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: false
+      
+      - name: Install dependencies
+        run: bundle install
+      
+      - name: Run unit tests
+        run: bundle exec rake unit
+
   call-ci-main-pr-check-pipeline:
     uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@main
     secrets: inherit
@@ -65,10 +88,10 @@ jobs:
       # polaris-executable-detect-path: 'path/to/detect'
 
       # perform application build and unit testing, will use custom repository properties when implemented for chef-primary-application, chef-build-profile, and chef-build-language
-      build: true
+      build: false   # We handle build in build-and-test job above (common workflow lacks git auth for Ruby)
       # ga-build-profile: $chef-ga-build-profile
       # language: $chef-ga-build-language   # this will be removed from stub as autodetected in central GA
-      unit-tests: false
+      unit-tests: false  # We handle tests in the build-and-test job above
 
       # perform SonarQube scan, with or wihout unit test coverage data
       # requires secrets SONAR_TOKEN and SONAR_HOST_URL (progress.sonar.com)
