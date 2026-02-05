@@ -40,7 +40,7 @@ function Invoke-Build {
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
 
         Write-BuildLine " ** Configuring bundler for this build environment"
-        bundle config --local without deploy maintenance
+        bundle config --local without "test cookstyle"
         bundle config --local jobs 4
         bundle config --local retry 5
         bundle config --local silence_root_warning 1
@@ -55,7 +55,7 @@ function Invoke-Build {
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
         # Install chef-official-distribution AFTER post-bundle-install
-        Install-ChefOfficialDistribution
+        # Install-ChefOfficialDistribution
 
         Write-BuildLine " ** Build complete"
     } finally {
