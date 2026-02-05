@@ -88,7 +88,7 @@ jobs:
       # polaris-executable-detect-path: 'path/to/detect'
 
       # perform application build and unit testing, will use custom repository properties when implemented for chef-primary-application, chef-build-profile, and chef-build-language
-      build: false   # We handle build in build-and-test job above (common workflow lacks git auth for Ruby)
+      build: true   # Required for SBOM job (it depends on ci-build). May fail on bundle install due to missing git auth, but allows SBOM to attempt.
       # ga-build-profile: $chef-ga-build-profile
       # language: $chef-ga-build-language   # this will be removed from stub as autodetected in central GA
       unit-tests: false  # We handle tests in the build-and-test job above
