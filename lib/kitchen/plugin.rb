@@ -38,7 +38,6 @@ module Kitchen
       # This is critical for plugins whose gem names don't match their require paths
       # (e.g., kitchen-chef-enterprise provides kitchen/provisioner/chef_infra).
       # Without pre-activation, RubyGems can't auto-discover these gems when require is called.
-      activate_kitchen_gems
       first_load = require("kitchen/#{type_name}/#{plugin}")
 
       str_const = Kitchen::Util.camel_case(plugin)
@@ -84,47 +83,6 @@ module Kitchen
         .map { |plugin_path| File.basename(plugin_path).gsub(/\.rb$/, "") }
         .reject { |plugin_name| plugin_name == "base" }
         .sort
-    end
-
-    # Activate all kitchen-* plugin gems to ensure they're in the load path.
-    #
-    # Background: RubyGems normally auto-activates gems when you require a file,
-    # but only if it can discover which gem provides that file. This works when
-    # the gem name matches the require path (e.g., kitchen-ec2 provides kitchen/driver/ec2).
-    #
-    # Problem: Some gems have mismatched names and require paths:
-    # - kitchen-chef-enterprise provides kitchen/provisioner/chef_infra
-    # - RubyGems searches for a gem named "kitchen-provisioner-chef-infra" (doesn't exist)
-    # - Result: LoadError even though the gem is installed
-    #
-    # Solution: Pre-activate all kitchen-* gems by explicitly calling `gem 'name', 'version'`
-    # before any plugin loading. This adds their lib directories to $LOAD_PATH so subsequent
-    # require calls work regardless of name/path mismatches.
-    #
-    # @api private
-    def self.activate_kitchen_gems
-      return if @kitchen_gems_activated
-
-      gem_home = ENV["GEM_HOME"]
-      return unless gem_home && Dir.exist?(File.join(gem_home, "gems"))
-
-      # Scan gem_path for all kitchen-* plugin gems
-      Dir[File.join(gem_home, "gems", "kitchen-*")].each do |gem_path|
-        gem_name_version = File.basename(gem_path)
-        # Extract gem name and version from directory name (e.g., kitchen-ec2-3.21.0)
-        next unless gem_name_version =~ /^(.+)-(\d+\.\d+\.\d+.*?)$/
-
-        gem_name = $1
-        gem_version = $2
-        begin
-          # Activate gem: adds its lib/ directory to $LOAD_PATH
-          gem gem_name, gem_version
-        rescue Gem::LoadError
-          # Gem activation failed (wrong version, missing dependencies, etc.) - skip it
-        end
-      end
-
-      @kitchen_gems_activated = true
     end
   end
 end

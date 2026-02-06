@@ -49,7 +49,7 @@ do_build() {
   export GEM_PATH="$GEM_HOME"
   export CHEF_TEST_KITCHEN_ENTERPRISE="true"
   bundle config --local without deploy maintenance
-  bundle config --local with integration
+  bundle config --local with integration habitat
   bundle config --local jobs 4
   bundle config --local retry 5
   bundle config --local silence_root_warning 1
@@ -67,7 +67,8 @@ do_install() {
   build_line "Setting GEM_PATH=$GEM_HOME"
   export GEM_PATH="$GEM_HOME"
   cleanup_community_test_kitchen_gem
-  gem install chef-test-kitchen-enterprise-*.gem --no-document --force
+
+  gem install "chef-test-kitchen-enterprise-$(pkg_version).gem" --no-document --force --ignore-dependencies
   gem install test-kitchen-*.gem --no-document --force --ignore-dependencies
 
   make_pkg_official_distrib
@@ -78,13 +79,19 @@ do_install() {
 
 wrap_ruby_kitchen() {
   local bin="$pkg_prefix/bin/kitchen"
-  local real_bin="$GEM_HOME/gems/chef-test-kitchen-enterprise-${pkg_version}/bin/kitchen"
+  local real_bin="$GEM_HOME/gems/chef-test-kitchen-enterprise-$(pkg_version)/bin/kitchen"
   wrap_bin_with_ruby "$bin" "$real_bin"
 }
 
 wrap_bin_with_ruby() {
   local bin="$1"
   local real_bin="$2"
+  local ruby_default_gem_dir
+
+  # Include the packaged Ruby's default gem directory in GEM_PATH.
+  ruby_default_gem_dir="$(env -u GEM_HOME -u GEM_PATH "$(pkg_path_for $_chef_client_ruby)/bin/ruby" -rrubygems -e 'puts Gem.default_dir')"
+  build_line "Detected Ruby default gem dir: ${ruby_default_gem_dir}"
+
   build_line "Adding wrapper $bin to $real_bin"
   cat <<EOF > "$bin"
 #!$(pkg_path_for core/bash)/bin/bash
@@ -95,7 +102,7 @@ export PATH="/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:\$PATH
 
 # Set Ruby paths defined from 'do_setup_environment()'
 export GEM_HOME="$pkg_prefix/vendor"
-export GEM_PATH="\$GEM_HOME"
+export GEM_PATH="\$GEM_HOME:${ruby_default_gem_dir}"
 
 # Set encoding to UTF-8 to handle non-ASCII characters in gem files
 export RUBYOPT="-Eutf-8"

@@ -24,7 +24,7 @@ group :integration do
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec"
-  gem "inspec", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
+  gem "inspec-core", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -48,6 +48,9 @@ group :integration do
   else
     gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
+end
+
+group :habitat do
   gem "kitchen-ec2"
   gem "kitchen-google"
   gem "kitchen-azurerm"
