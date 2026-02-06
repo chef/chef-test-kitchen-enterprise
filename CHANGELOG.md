@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.0 -->
-## [v2.0.0](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.0) (2026-01-29)
+<!-- latest_release 2.0.1 -->
+## [v2.0.1](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.1) (2026-02-06)
 
 #### Merged Pull Requests
-- Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld))
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -75,6 +76,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -95,6 +97,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -117,6 +120,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -137,6 +141,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -161,6 +166,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -181,6 +187,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -203,6 +210,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -223,6 +231,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -249,6 +258,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -269,6 +279,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -291,6 +302,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -311,6 +323,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -335,6 +348,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -355,6 +369,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -377,6 +392,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -397,6 +413,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -425,6 +442,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -445,6 +463,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -467,6 +486,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -487,6 +507,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -511,6 +532,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -531,6 +553,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -553,6 +576,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -573,6 +597,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -599,6 +624,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -619,6 +645,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -641,6 +668,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -661,6 +689,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -685,6 +714,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -705,6 +735,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -727,6 +758,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -747,6 +779,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -777,6 +810,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -797,6 +831,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -819,6 +854,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -839,6 +875,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -863,6 +900,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -883,6 +921,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -905,6 +944,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -925,6 +965,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -951,6 +992,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -971,6 +1013,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -993,6 +1036,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1013,6 +1057,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1037,6 +1082,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1057,6 +1103,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1079,6 +1126,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1099,6 +1147,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1127,6 +1176,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1147,6 +1197,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1169,6 +1220,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1189,6 +1241,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1213,6 +1266,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1233,6 +1287,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1255,6 +1310,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1275,6 +1331,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1301,6 +1358,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1321,6 +1379,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1343,6 +1402,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1363,6 +1423,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1387,6 +1448,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1407,6 +1469,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1429,6 +1492,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1449,6 +1513,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1489,6 +1554,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1509,6 +1575,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1531,6 +1598,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1551,6 +1619,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1575,6 +1644,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1595,6 +1665,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1617,6 +1688,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1637,6 +1709,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1663,6 +1736,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1683,6 +1757,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1705,6 +1780,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1725,6 +1801,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1749,6 +1826,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1769,6 +1847,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1791,6 +1870,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1811,6 +1891,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1839,6 +1920,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1859,6 +1941,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1881,6 +1964,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1901,6 +1985,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1925,6 +2010,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1945,6 +2031,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1967,6 +2054,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -1987,6 +2075,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2013,6 +2102,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2033,6 +2123,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2055,6 +2146,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2075,6 +2167,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2099,6 +2192,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2119,6 +2213,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2141,6 +2236,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
@@ -2161,6 +2257,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
 - [CHEF-27321] - Skip license check when using internal/private registry [#59](https://github.com/chef/chef-test-kitchen-enterprise/pull/59) ([nikhil2611](https://github.com/nikhil2611)) <!-- 1.1.7 -->
