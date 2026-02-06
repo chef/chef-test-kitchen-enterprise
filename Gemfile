@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 gemspec name: 'chef-test-kitchen-enterprise'
 
+# Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
+# The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
+gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "main", glob: "test-kitchen.gemspec"
+
 group :test do
   gem "rake"
   gem "rb-readline"
@@ -17,12 +21,10 @@ end
 
 group :integration do
   gem "chef-cli"
+  gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec"
   gem "inspec-core", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
-  # Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
-  # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
-  gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "remove-chef-provisioner", glob: "test-kitchen.gemspec" # TODO: update branch to main once PR is merged https://github.com/chef/chef-test-kitchen-enterprise/pull/60
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -48,10 +50,16 @@ group :integration do
   end
 end
 
-group :cookstyle do
-  gem "cookstyle", ">= 8.2", "< 9.0"
+group :habitat do
+  gem "kitchen-ec2"
+  gem "kitchen-google"
+  gem "kitchen-azurerm"
+  gem "kitchen-vcenter"
+
+  # Windows-specific gems for native driver support
+  gem "win32-security", platforms: :mingw
 end
 
-group :build do
-  gem "appbundler"
+group :cookstyle do
+  gem "cookstyle", ">= 8.2", "< 9.0"
 end
