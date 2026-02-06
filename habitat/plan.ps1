@@ -63,7 +63,7 @@ function Invoke-Build {
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
         # Install chef-official-distribution AFTER post-bundle-install
-        Install-ChefOfficialDistribution
+        # Install-ChefOfficialDistribution
 
         Write-BuildLine " ** Build complete"
     } finally {
@@ -113,6 +113,14 @@ function Invoke-Install {
             $realKitchenBin = "$($kitchenGemDir.FullName)/bin/kitchen"
             if (Test-Path $realKitchenBin) {
                 Write-BuildLine "** Creating wrapper for kitchen binary"
+
+                # Remove any existing kitchen files in bin directory
+                Remove-Item "$pkg_prefix/bin/kitchen" -Force -ErrorAction SilentlyContinue
+                Remove-Item "$pkg_prefix/bin/kitchen.bat" -Force -ErrorAction SilentlyContinue
+
+                # Remove kitchen from vendor/bin if it exists (to avoid conflicts)
+                Remove-Item "$pkg_prefix/vendor/bin/kitchen" -Force -ErrorAction SilentlyContinue
+
                 Wrap-KitchenBinary "$pkg_prefix/bin/kitchen" $realKitchenBin
             }
         }
@@ -133,32 +141,42 @@ function Wrap-KitchenBinary {
 
     Write-BuildLine "Creating wrapper script at $WrapperPath"
 
-    $rubyPath = Get-HabPackagePath "core/ruby3_4-plus-devkit"
+    # Get the path from PKG_PREFIX to the gem directory
+    $kitchenBinPath = "vendor\gems\$($pkg_name)-$($pkg_version)\bin\kitchen"
 
-    # Create a batch wrapper script that sets up the environment
-    # Note: Using expandable string with escaped $ for batch variables
+    # Create a batch wrapper script that sets up the environment using runtime paths
     $wrapperContent = @"
 @echo off
+setlocal enabledelayedexpansion
 REM Wrapper script for Test Kitchen Enterprise
 REM Sets up Ruby gem environment and executes kitchen
 
+REM Get the package prefix from the script location
+for %%I in ("%~dp0..") do set "PKG_PREFIX=%%~fI"
+
+REM Use hab to find the Ruby installation path
+for /f "delims=" %%i in ('hab pkg path core/ruby3_4-plus-devkit 2^>nul') do set "RUBY_PATH=%%i"
+
+if not defined RUBY_PATH (
+    echo ERROR: Could not find Ruby installation. Run: hab pkg install core/ruby3_4-plus-devkit
+    exit /b 1
+)
+
 REM Set Ruby paths for gem loading - include both vendor and Ruby system gems
-set "GEM_HOME=$pkg_prefix\vendor"
-set "GEM_PATH=$pkg_prefix\vendor;$rubyPath\lib\ruby\gems\3.4.0"
+set "GEM_HOME=%PKG_PREFIX%\vendor"
+set "GEM_PATH=%PKG_PREFIX%\vendor;%RUBY_PATH%\lib\ruby\gems\3.4.0"
 
 REM Set encoding to UTF-8 to handle non-ASCII characters
 set "RUBYOPT=-Eutf-8"
 
 REM Execute the real kitchen binary with ruby
-"$rubyPath\bin\ruby.exe" "$RealBinPath" %*
+"%RUBY_PATH%\bin\ruby.exe" "%PKG_PREFIX%\$kitchenBinPath" %*
 "@
 
-    Set-Content -Path $WrapperPath -Value $wrapperContent -Encoding ASCII
-
-    # Also create a .bat file for better Windows compatibility
+    # On Windows, only create .bat file for compatibility
     Set-Content -Path "$WrapperPath.bat" -Value $wrapperContent -Encoding ASCII
 
-    Write-BuildLine "Wrapper created successfully"
+    Write-BuildLine "Wrapper created successfully at $WrapperPath.bat"
 }
 
 function Invoke-After {

@@ -23,10 +23,6 @@ group :integration do
   gem "chef-cli"
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-ec2"
-  gem "kitchen-google"
-  gem "kitchen-azurerm"
-  gem "kitchen-vcenter"
   gem "kitchen-inspec"
   gem "inspec", ">= 5.0", "< 6.6.0" # Inspec 6.6.0+ requires license key to run, this limits it to pre license key for CI and testing purposes
   # Check if Artifactory is accessible, otherwise use GitHub
@@ -52,7 +48,13 @@ group :integration do
   else
     gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
+  gem "kitchen-ec2"
+  gem "kitchen-google"
+  gem "kitchen-azurerm"
+  gem "kitchen-vcenter"
 
+  # Windows-specific gems for native driver support
+  gem "win32-security", platforms: :mingw
 end
 
 group :cookstyle do
