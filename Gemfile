@@ -4,7 +4,7 @@ gemspec name: 'chef-test-kitchen-enterprise'
 
 # Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
 # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
-gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "remove-chef-provisioner", glob: "test-kitchen.gemspec" # TODO: update branch to main once PR is merged https://github.com/chef/chef-test-kitchen-enterprise/pull/60
+gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "main", glob: "test-kitchen.gemspec"
 
 group :test do
   gem "rake"
@@ -59,8 +59,4 @@ end
 
 group :cookstyle do
   gem "cookstyle", ">= 8.2", "< 9.0"
-end
-
-group :build do
-  gem "appbundler"
 end

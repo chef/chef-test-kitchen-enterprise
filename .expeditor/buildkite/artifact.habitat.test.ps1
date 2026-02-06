@@ -70,7 +70,18 @@ Set-Location $project_root
 
 $env:DO_CHECK=$true; hab pkg build .
 
-. $project_root/results/last_build.ps1
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Habitat build failed!" -ForegroundColor Red
+    exit $LASTEXITCODE
+}
+
+$lastBuildScript = "$project_root/results/last_build.ps1"
+if (-not (Test-Path $lastBuildScript)) {
+    Write-Host "Build output file not found: $lastBuildScript" -ForegroundColor Red
+    exit 1
+}
+
+. $lastBuildScript
 
 Write-Host "--- Installing $pkg_ident/$pkg_artifact"
 hab pkg install -b $project_root/results/$pkg_artifact
