@@ -1,8 +1,8 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.1 -->
-## [v2.0.1](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.1) (2026-02-06)
+<!-- latest_release 2.0.2 -->
+## [v2.0.2](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.2) (2026-02-06)
 
 #### Merged Pull Requests
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps))
