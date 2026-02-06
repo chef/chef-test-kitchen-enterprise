@@ -40,7 +40,7 @@ function Invoke-Build {
         git config --global core.longpaths true
         # Set Windows environment to support long paths in Ruby
         $env:MSYS = "winsymlinks:nativestrict"
-        
+
         Write-BuildLine " ** Configuring bundler for this build environment"
         bundle config --local without "deploy maintenance"
         bundle config --local jobs 4
@@ -48,11 +48,11 @@ function Invoke-Build {
         bundle config --local silence_root_warning 1
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
         bundle install
-	    bundle lock --local
+	    bundle lock
         gem build chef-test-kitchen-enterprise.gemspec
 	    Write-BuildLine " ** Using gem to  install"
 	    gem install chef-test-kitchen-enterprise*.gem --no-document --force
-	    
+
 	    # Build and install the test-kitchen alias gem to satisfy driver dependencies
 	    Write-BuildLine " ** Building test-kitchen alias gem"
 	    gem build test-kitchen.gemspec
@@ -63,7 +63,7 @@ function Invoke-Build {
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
         # Install chef-official-distribution AFTER post-bundle-install
-        Install-ChefOfficialDistribution
+        # Install-ChefOfficialDistribution
 
         Write-BuildLine " ** Build complete"
     } finally {
@@ -76,7 +76,7 @@ function Invoke-Install {
     Copy-Item -Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/*" -Destination $pkg_prefix -Recurse -Force -Exclude @("gem_make.out", "mkmf.log", "Makefile",
                      "*/latest", "latest",
                      "*/JSON-Schema-Test-Suite", "JSON-Schema-Test-Suite")
-    
+
     # Ensure Gemfile.lock is copied to the package root (it's in src/ subdirectory)
     Write-BuildLine "** Checking for Gemfile.lock at $HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock"
     if (Test-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock") {
@@ -124,7 +124,7 @@ function Invoke-Install {
                 Wrap-KitchenBinary "$pkg_prefix/bin/kitchen" $realKitchenBin
             }
         }
-        
+
 	Write-BuildLine " ** Build and install complete"
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
@@ -138,31 +138,44 @@ function Wrap-KitchenBinary {
         [string]$WrapperPath,
         [string]$RealBinPath
     )
-    
+
     Write-BuildLine "Creating wrapper script at $WrapperPath"
-    
-    $rubyPath = Get-HabPackagePath "core/ruby3_4-plus-devkit"
-    
-    # Create a batch wrapper script that sets up the environment
+
+    # Get the path from PKG_PREFIX to the gem directory
+    $kitchenBinPath = "vendor\gems\$($pkg_name)-$($pkg_version)\bin\kitchen"
+
+    # Create a batch wrapper script that sets up the environment using runtime paths
     $wrapperContent = @"
 @echo off
+setlocal enabledelayedexpansion
 REM Wrapper script for Test Kitchen Enterprise
 REM Sets up Ruby gem environment and executes kitchen
 
+REM Get the package prefix from the script location
+for %%I in ("%~dp0..") do set "PKG_PREFIX=%%~fI"
+
+REM Use hab to find the Ruby installation path
+for /f "delims=" %%i in ('hab pkg path core/ruby3_4-plus-devkit 2^>nul') do set "RUBY_PATH=%%i"
+
+if not defined RUBY_PATH (
+    echo ERROR: Could not find Ruby installation. Run: hab pkg install core/ruby3_4-plus-devkit
+    exit /b 1
+)
+
 REM Set Ruby paths for gem loading - include both vendor and Ruby system gems
-set "GEM_HOME=$pkg_prefix\vendor"
-set "GEM_PATH=$pkg_prefix\vendor;$rubyPath\lib\ruby\gems\3.4.0"
+set "GEM_HOME=%PKG_PREFIX%\vendor"
+set "GEM_PATH=%PKG_PREFIX%\vendor;%RUBY_PATH%\lib\ruby\gems\3.4.0"
 
 REM Set encoding to UTF-8 to handle non-ASCII characters
 set "RUBYOPT=-Eutf-8"
 
 REM Execute the real kitchen binary with ruby
-"$rubyPath\bin\ruby.exe" "$RealBinPath" %*
+"%RUBY_PATH%\bin\ruby.exe" "%PKG_PREFIX%\$kitchenBinPath" %*
 "@
-    
-    # Create the batch file (Windows will use .bat extension)
+
+    # On Windows, only create .bat file for compatibility
     Set-Content -Path "$WrapperPath.bat" -Value $wrapperContent -Encoding ASCII
-    
+
     Write-BuildLine "Wrapper created successfully at $WrapperPath.bat"
 }
 
