@@ -33,11 +33,6 @@ module Kitchen
     # @raise [UserError] if the plugin's dependencies could not be met
     def self.load(type, plugin, config)
       type_name = Kitchen::Util.snake_case(type.name.split("::").last)
-
-      # Pre-activate all kitchen-* gems before attempting to load plugins.
-      # This is critical for plugins whose gem names don't match their require paths
-      # (e.g., kitchen-chef-enterprise provides kitchen/provisioner/chef_infra).
-      # Without pre-activation, RubyGems can't auto-discover these gems when require is called.
       first_load = require("kitchen/#{type_name}/#{plugin}")
 
       str_const = Kitchen::Util.camel_case(plugin)

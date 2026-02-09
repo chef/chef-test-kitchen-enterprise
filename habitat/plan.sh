@@ -5,7 +5,7 @@ pkg_origin="chef"
 pkg_maintainer="The Chef Maintainers <humans@chef.io>"
 pkg_description="The Chef Test Kitchen Enterprise"
 pkg_license=('Apache-2.0')
-_chef_client_ruby="core/ruby3_4"
+_ruby_pkg="core/ruby3_4"
 pkg_bin_dirs=(
   bin
 )
@@ -15,7 +15,7 @@ pkg_build_deps=(
   core/gcc
 )
 pkg_deps=(
-  ${_chef_client_ruby}
+  ${_ruby_pkg}
   core/coreutils
   core/git
 )
@@ -88,7 +88,7 @@ wrap_bin_with_ruby() {
   local ruby_default_gem_dir
 
   # Include the packaged Ruby's default gem directory in GEM_PATH.
-  ruby_default_gem_dir="$(env -u GEM_HOME -u GEM_PATH "$(pkg_path_for $_chef_client_ruby)/bin/ruby" -rrubygems -e 'puts Gem.default_dir')"
+  ruby_default_gem_dir="$(env -u GEM_HOME -u GEM_PATH "$(pkg_path_for $_ruby_pkg)/bin/ruby" -rrubygems -e 'puts Gem.default_dir')"
   build_line "Detected Ruby default gem dir: ${ruby_default_gem_dir}"
 
   build_line "Adding wrapper $bin to $real_bin"
@@ -106,7 +106,7 @@ export GEM_PATH="\$GEM_HOME:${ruby_default_gem_dir}"
 # Set encoding to UTF-8 to handle non-ASCII characters in gem files
 export RUBYOPT="-Eutf-8"
 
-exec $(pkg_path_for $_chef_client_ruby)/bin/ruby $real_bin \$@
+exec $(pkg_path_for $_ruby_pkg)/bin/ruby $real_bin \$@
 EOF
   chmod -v 755 "$bin"
 }

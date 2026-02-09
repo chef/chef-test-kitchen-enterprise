@@ -23,13 +23,13 @@ group :integration do
   gem "chef-cli"
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
-gem "kitchen-ec2"
-gem "kitchen-google"
-gem "kitchen-azurerm"
-gem "kitchen-vcenter"
-gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
-gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
+  gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
+  gem "kitchen-ec2"
+  gem "kitchen-google"
+  gem "kitchen-azurerm"
+  gem "kitchen-vcenter"
+  gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
+  gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -53,16 +53,6 @@ gem "win32-security", platforms: :mingw  # Windows-specific gems for native driv
   else
     gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
-end
-
-group :habitat do
-  gem "kitchen-ec2"
-  gem "kitchen-google"
-  gem "kitchen-azurerm"
-  gem "kitchen-vcenter"
-
-  # Windows-specific gems for native driver support
-  gem "win32-security", platforms: :mingw
 end
 
 group :cookstyle do
