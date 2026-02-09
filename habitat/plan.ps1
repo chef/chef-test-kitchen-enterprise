@@ -42,7 +42,7 @@ function Invoke-Build {
         $env:MSYS = "winsymlinks:nativestrict"
 
         Write-BuildLine " ** Configuring bundler for this build environment"
-        bundle config --local without "deploy maintenance"
+        bundle config --local without "deploy maintenance test cookstyle"
         bundle config --local jobs 4
         bundle config --local retry 5
         bundle config --local silence_root_warning 1
@@ -63,7 +63,7 @@ function Invoke-Build {
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
         # Install chef-official-distribution AFTER post-bundle-install
-        # Install-ChefOfficialDistribution
+        Install-ChefOfficialDistribution
 
         Write-BuildLine " ** Build complete"
     } finally {
