@@ -91,15 +91,43 @@ Write-Host "+++ Testing $Plan"
 Push-Location $project_root
 
 try {
-    Write-Host "Running unit tests..."
-    hab pkg exec "${pkg_ident}" rake unit
+  Write-Host "Running kitchen converge smoke test..."
 
-    If ($lastexitcode -ne 0) {
-        Write-Host "Rake unit tests failed!" -ForegroundColor Red
-        Exit $lastexitcode
-    } else {
-        Write-Host "Rake unit tests passed!" -ForegroundColor Green
-    }
+  $kitchenYaml = Join-Path $project_root "kitchen.dummy.yml"
+  if (-not (Test-Path $kitchenYaml)) {
+    Write-Host "Kitchen config not found: $kitchenYaml" -ForegroundColor Red
+    Exit 1
+  }
+
+  # Use a driver/transport combo that doesn't require external infrastructure.
+  $env:KITCHEN_YAML = $kitchenYaml
+
+  hab pkg exec "${pkg_ident}" kitchen diagnose
+  if ($lastexitcode -ne 0) {
+    Write-Host "kitchen diagnose failed!" -ForegroundColor Red
+    Exit $lastexitcode
+  }
+
+  hab pkg exec "${pkg_ident}" kitchen list
+  if ($lastexitcode -ne 0) {
+    Write-Host "kitchen list failed!" -ForegroundColor Red
+    Exit $lastexitcode
+  }
+
+  # Only converge the localhost instance; kitchen.dummy.yml also defines a windows platform.
+  hab pkg exec "${pkg_ident}" kitchen converge default-localhost
+  if ($lastexitcode -ne 0) {
+    Write-Host "kitchen converge default-localhost failed!" -ForegroundColor Red
+    Exit $lastexitcode
+  }
+
+  hab pkg exec "${pkg_ident}" kitchen destroy default-localhost
+  if ($lastexitcode -ne 0) {
+    Write-Host "kitchen destroy default-localhost failed!" -ForegroundColor Red
+    Exit $lastexitcode
+  }
+
+  Write-Host "Kitchen converge smoke test passed!" -ForegroundColor Green
 }
 finally {
     # Ensure we always return to the original directory
