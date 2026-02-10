@@ -93,7 +93,7 @@ Push-Location $project_root
 try {
   Write-Host "Running kitchen converge smoke test..."
 
-  $kitchenYaml = Join-Path $project_root "kitchen.dummy.yml"
+  $kitchenYaml = Join-Path $project_root "habitat/tests/kitchen.smoke.yml"
   if (-not (Test-Path $kitchenYaml)) {
     Write-Host "Kitchen config not found: $kitchenYaml" -ForegroundColor Red
     Exit 1
@@ -102,7 +102,7 @@ try {
   # Use a driver/transport combo that doesn't require external infrastructure.
   $env:KITCHEN_YAML = $kitchenYaml
 
-  hab pkg exec "${pkg_ident}" kitchen diagnose
+  hab pkg exec "${pkg_ident}" kitchen diagnose all
   if ($lastexitcode -ne 0) {
     Write-Host "kitchen diagnose failed!" -ForegroundColor Red
     Exit $lastexitcode

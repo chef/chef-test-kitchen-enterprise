@@ -31,12 +31,12 @@ actual_version=$(hab pkg exec "${pkg_ident}" kitchen -- -v | sed -E 's/.*Version
 
 echo "--- :kitchen: Running kitchen converge smoke test"
 
-[[ -f "${project_root}/kitchen.dummy.yml" ]] || error "${project_root}/kitchen.dummy.yml not found; cannot run kitchen converge smoke test"
+[[ -f "${project_root}/habitat/tests/kitchen.smoke.yml" ]] || error "${project_root}/habitat/tests/kitchen.smoke.yml not found; cannot run kitchen converge smoke test"
 
 # Use a driver/transport combo that doesn't require external infrastructure.
-export KITCHEN_YAML="${project_root}/kitchen.dummy.yml"
+export KITCHEN_YAML="${project_root}/habitat/tests/kitchen.smoke.yml"
 
-hab pkg exec "${pkg_ident}" kitchen diagnose || error "kitchen diagnose failed"
+hab pkg exec "${pkg_ident}" kitchen diagnose all || error "kitchen diagnose failed"
 hab pkg exec "${pkg_ident}" kitchen list || error "kitchen list failed"
 
 # Only converge the localhost instance; kitchen.dummy.yml also defines a windows platform.
