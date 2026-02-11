@@ -67,13 +67,18 @@ if (-not $kitchenCmd) {
   Fail "kitchen is not on PATH; PATH is: $env:Path"
 }
 
-# `kitchen -- -v` outputs something like: "Test Kitchen version 2.0.2"
-$versionOutput = & kitchen -- -v 2>&1
+# Prefer the explicit subcommand. Some Windows environments don't support `-v`
+# as a flag the same way as the bash smoke test.
+$versionOutput = & kitchen --version 2>&1
 if ($LASTEXITCODE -ne 0) {
-  Fail "kitchen -v failed: $versionOutput" $LASTEXITCODE
+  $versionOutput = & kitchen version 2>&1
 }
 
-$match = [regex]::Match($versionOutput, 'Version\s+(\d+\.\d+\.\d+)')
+if ($LASTEXITCODE -ne 0) {
+  Fail "kitchen version failed: $versionOutput" $LASTEXITCODE
+}
+
+$match = [regex]::Match($versionOutput, '(?i)version\s+(\d+\.\d+\.\d+)')
 if (-not $match.Success) {
   Fail "unable to parse kitchen version from output: $versionOutput"
 }
