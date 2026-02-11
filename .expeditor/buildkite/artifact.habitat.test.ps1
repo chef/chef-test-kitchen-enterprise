@@ -113,49 +113,19 @@ Write-Host "+++ Testing $Plan"
 Push-Location $project_root
 
 try {
-  Write-Host "Running kitchen converge smoke test..."
+  Write-Host "--- :mag_right: Testing $Plan"
 
-  $kitchenYaml = Join-Path $project_root "kitchen.dummy.yml"
-  if (-not (Test-Path $kitchenYaml)) {
-    Write-Host "Kitchen config not found: $kitchenYaml" -ForegroundColor Red
+  $testScript = Join-Path $project_root "habitat" | Join-Path -ChildPath "tests" | Join-Path -ChildPath "test.ps1"
+  if (-not (Test-Path $testScript)) {
+    Write-Host "Habitat test script not found: $testScript" -ForegroundColor Red
     Exit 1
   }
 
-  # Use a driver/transport combo that doesn't require external infrastructure.
-  $env:KITCHEN_LOCAL_YAML = $kitchenYaml
-
-  kitchen diagnose all
-  if ($lastexitcode -ne 0) {
-    Write-Host "kitchen diagnose failed!" -ForegroundColor Red
-    Exit $lastexitcode
+  & $testScript -PkgIdent $pkg_ident
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "Habitat smoke test failed!" -ForegroundColor Red
+    Exit $LASTEXITCODE
   }
-
-  kitchen list
-  if ($lastexitcode -ne 0) {
-    Write-Host "kitchen list failed!" -ForegroundColor Red
-    Exit $lastexitcode
-  }
-
-  # Only converge the localhost instance; kitchen.dummy.yml also defines a windows platform.
-  kitchen converge default-localhost
-  if ($lastexitcode -ne 0) {
-    Write-Host "kitchen converge default-localhost failed!" -ForegroundColor Red
-    Exit $lastexitcode
-  }
-
-  kitchen verify default-localhost
-  if ($lastexitcode -ne 0) {
-    Write-Host "kitchen verify default-localhost failed!" -ForegroundColor Red
-    Exit $lastexitcode
-  }
-
-  kitchen destroy default-localhost
-  if ($lastexitcode -ne 0) {
-    Write-Host "kitchen destroy default-localhost failed!" -ForegroundColor Red
-    Exit $lastexitcode
-  }
-
-  Write-Host "Kitchen converge smoke test passed!" -ForegroundColor Green
 }
 finally {
     # Ensure we always return to the original directory
