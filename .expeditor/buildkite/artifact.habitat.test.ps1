@@ -86,20 +86,46 @@ if (-not (Test-Path $lastBuildScript)) {
 Write-Host "--- Installing $pkg_ident/$pkg_artifact"
 hab pkg install -b $project_root/results/$pkg_artifact
 
+# Ensure the Habitat binlink directory and this package's bin dir are on PATH.
+# `hab pkg install -b` binlinks executables, but CI environments don't always
+# have the binlink directory pre-populated in PATH.
+$habBinlinkDir = "C:\hab\bin"
+if (Test-Path $habBinlinkDir) {
+  if ($env:Path -notlike "*$habBinlinkDir*") {
+    $env:Path = "$habBinlinkDir;$env:Path"
+  }
+}
+
+$pkgPath = (hab pkg path $pkg_ident).Trim()
+if ($pkgPath) {
+  $pkgBinDir = Join-Path $pkgPath "bin"
+  if (Test-Path $pkgBinDir) {
+    if ($env:Path -notlike "*$pkgBinDir*") {
+      $env:Path = "$pkgBinDir;$env:Path"
+    }
+  }
+}
+
+Write-Host "PATH is $env:Path"
+
 Write-Host "+++ Testing $Plan"
 
 Push-Location $project_root
 
 try {
-    Write-Host "Running unit tests..."
-    hab pkg exec "${pkg_ident}" rake unit
+  Write-Host "--- :mag_right: Testing $Plan"
 
-    If ($lastexitcode -ne 0) {
-        Write-Host "Rake unit tests failed!" -ForegroundColor Red
-        Exit $lastexitcode
-    } else {
-        Write-Host "Rake unit tests passed!" -ForegroundColor Green
-    }
+  $testScript = Join-Path $project_root "habitat" | Join-Path -ChildPath "tests" | Join-Path -ChildPath "test.ps1"
+  if (-not (Test-Path $testScript)) {
+    Write-Host "Habitat test script not found: $testScript" -ForegroundColor Red
+    Exit 1
+  }
+
+  & $testScript -PkgIdent $pkg_ident
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "Habitat smoke test failed!" -ForegroundColor Red
+    Exit $LASTEXITCODE
+  }
 }
 finally {
     # Ensure we always return to the original directory

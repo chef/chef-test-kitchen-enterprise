@@ -16,10 +16,6 @@ $pkg_bin_dirs=@("bin"
                 "vendor/bin")
 $project_root= (Resolve-Path "$PLAN_CONTEXT/../").Path
 
-function pkg_version {
-    Get-Content "$SRC_PATH/VERSION"
-}
-
 function Invoke-Before {
     Set-PkgVersion
 }
@@ -39,8 +35,14 @@ function Invoke-Build {
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
 
+        Write-BuildLine " ** Enabling Windows long path support"
+        # Enable Git long paths for bundler git operations
+        git config --global core.longpaths true
+        # Set Windows environment to support long paths in Ruby
+        $env:MSYS = "winsymlinks:nativestrict"
+
         Write-BuildLine " ** Configuring bundler for this build environment"
-        bundle config --local without deploy maintenance
+        bundle config --local without "deploy maintenance test cookstyle"
         bundle config --local jobs 4
         bundle config --local retry 5
         bundle config --local silence_root_warning 1
@@ -50,6 +52,12 @@ function Invoke-Build {
         gem build chef-test-kitchen-enterprise.gemspec
 	    Write-BuildLine " ** Using gem to  install"
 	    gem install chef-test-kitchen-enterprise*.gem --no-document --force
+
+	    # Build and install the test-kitchen alias gem to satisfy driver dependencies
+	    Write-BuildLine " ** Building test-kitchen alias gem"
+	    gem build test-kitchen.gemspec
+	    Write-BuildLine " ** Installing test-kitchen alias gem"
+	    gem install test-kitchen*.gem --no-document --force
 
         ruby ./post-bundle-install.rb
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
@@ -69,19 +77,106 @@ function Invoke-Install {
                      "*/latest", "latest",
                      "*/JSON-Schema-Test-Suite", "JSON-Schema-Test-Suite")
 
+    # Ensure Gemfile.lock is copied to the package root (it's in src/ subdirectory)
+    Write-BuildLine "** Checking for Gemfile.lock at $HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock"
+    if (Test-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock") {
+        Write-BuildLine "** Copying Gemfile.lock to $pkg_prefix/Gemfile.lock"
+        Copy-Item -Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock" -Destination "$pkg_prefix/Gemfile.lock" -Force
+    } else {
+        Write-BuildLine "** Gemfile.lock not found at expected location, checking alternatives..."
+        Get-ChildItem "$HAB_CACHE_SRC_PATH/$pkg_dirname" -Filter "Gemfile.lock" -Recurse | ForEach-Object {
+            Write-BuildLine "** Found Gemfile.lock at: $($_.FullName)"
+            Copy-Item -Path $_.FullName -Destination "$pkg_prefix/Gemfile.lock" -Force
+        }
+    }
+
     try {
         Push-Location $pkg_prefix
-        bundle config --local gemfile $project_root/Gemfile
-         Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins"
-	 Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins $project_root $pkg_prefix/bin "
-            Invoke-Expression -Command "appbundler.bat $project_root $pkg_prefix/bin chef-test-kitchen-enterprise"
-            If ($lastexitcode -ne 0) { Exit $lastexitcode }
-	Write-BuildLine " ** Running the chef-test-kitchen-enterprise project's 'rake install' to install the path-based gems so they look like any other installed gem."
+        if (-not (Test-Path "$pkg_prefix/Gemfile.lock")) {
+            Write-BuildLine "ERROR: Gemfile.lock still not found in $pkg_prefix"
+            Exit 1
+        }
+
+        # Set GEM_PATH to include both vendor and the system gem paths
+        $env:GEM_PATH = "$pkg_prefix/vendor"
+        $env:GEM_HOME = "$pkg_prefix/vendor"
+
+        # Create bin directory if it doesn't exist
+        if (-not (Test-Path "$pkg_prefix/bin")) {
+            New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
+        }
+
+        # Find the gem and create wrapper for kitchen binary
+        $kitchenGemDir = Get-ChildItem "$pkg_prefix/vendor/gems" -Filter "chef-test-kitchen-enterprise-*" -Directory | Select-Object -First 1
+        if ($kitchenGemDir) {
+            Write-BuildLine "** Found gem directory: $($kitchenGemDir.FullName)"
+            $realKitchenBin = "$($kitchenGemDir.FullName)/bin/kitchen"
+            if (Test-Path $realKitchenBin) {
+                Write-BuildLine "** Creating wrapper for kitchen binary"
+
+                # Remove any existing kitchen files in bin directory
+                Remove-Item "$pkg_prefix/bin/kitchen" -Force -ErrorAction SilentlyContinue
+                Remove-Item "$pkg_prefix/bin/kitchen.bat" -Force -ErrorAction SilentlyContinue
+
+                # Remove kitchen from vendor/bin if it exists (to avoid conflicts)
+                Remove-Item "$pkg_prefix/vendor/bin/kitchen" -Force -ErrorAction SilentlyContinue
+
+                Wrap-KitchenBinary "$pkg_prefix/bin/kitchen" $realKitchenBin
+            }
+        }
+
+	Write-BuildLine " ** Build and install complete"
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
     } finally {
         Pop-Location
     }
+}
+
+function Wrap-KitchenBinary {
+    param(
+        [string]$WrapperPath,
+        [string]$RealBinPath
+    )
+
+    Write-BuildLine "Creating wrapper script at $WrapperPath"
+
+    # Get the path from PKG_PREFIX to the gem directory
+    $kitchenBinPath = "vendor\gems\$($pkg_name)-$($pkg_version)\bin\kitchen"
+
+    # Create a batch wrapper script that sets up the environment using runtime paths
+    $wrapperContent = @"
+@echo off
+setlocal enabledelayedexpansion
+REM Wrapper script for Test Kitchen Enterprise
+REM Sets up Ruby gem environment and executes kitchen
+
+REM Get the package prefix from the script location
+for %%I in ("%~dp0..") do set "PKG_PREFIX=%%~fI"
+
+REM Use hab to find the Ruby installation path
+for /f "delims=" %%i in ('hab pkg path core/ruby3_4-plus-devkit 2^>nul') do set "RUBY_PATH=%%i"
+
+if not defined RUBY_PATH (
+    echo ERROR: Could not find Ruby installation. Run: hab pkg install core/ruby3_4-plus-devkit
+    exit /b 1
+)
+
+REM Set Ruby paths for gem loading - include both vendor and Ruby system gems
+set "GEM_HOME=%PKG_PREFIX%\vendor"
+set "GEM_PATH=%PKG_PREFIX%\vendor;%RUBY_PATH%\lib\ruby\gems\3.4.0"
+
+REM Set encoding to UTF-8 to handle non-ASCII characters
+set "RUBYOPT=-Eutf-8"
+
+REM Execute the real kitchen binary with ruby
+"%RUBY_PATH%\bin\ruby.exe" "%PKG_PREFIX%\$kitchenBinPath" %*
+"@
+
+    # On Windows, only create .bat file for compatibility
+    Set-Content -Path "$WrapperPath.bat" -Value $wrapperContent -Encoding ASCII
+
+    Write-BuildLine "Wrapper created successfully at $WrapperPath.bat"
 }
 
 function Invoke-After {
