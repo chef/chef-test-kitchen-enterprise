@@ -31,16 +31,19 @@ actual_version=$(hab pkg exec "${pkg_ident}" kitchen -- -v | sed -E 's/.*Version
 
 echo "--- :kitchen: Running kitchen converge smoke test"
 
-[[ -f "${project_root}/habitat/tests/kitchen.smoke.yml" ]] || error "${project_root}/habitat/tests/kitchen.smoke.yml not found; cannot run kitchen converge smoke test"
+[[ -f "${project_root}/kitchen.dummy.yml" ]] || error "${project_root}/kitchen.dummy.yml not found; cannot run kitchen converge smoke test"
 
 # Use a driver/transport combo that doesn't require external infrastructure.
-export KITCHEN_YAML="${project_root}/habitat/tests/kitchen.smoke.yml"
+export KITCHEN_LOCAL_YAML="${project_root}/kitchen.dummy.yml"
 
-hab pkg exec "${pkg_ident}" kitchen diagnose all || error "kitchen diagnose failed"
-hab pkg exec "${pkg_ident}" kitchen list || error "kitchen list failed"
+kitchen diagnose all || error "kitchen diagnose failed"
+kitchen list || error "kitchen list failed"
 
 # Only converge the localhost instance; kitchen.dummy.yml also defines a windows platform.
-hab pkg exec "${pkg_ident}" kitchen converge default-localhost || error "kitchen converge default-localhost failed"
+kitchen converge default-localhost || error "kitchen converge default-localhost failed"
+
+# Verify the instance.
+kitchen verify default-localhost || error "kitchen verify default-localhost failed"
 
 # Best-effort cleanup so CI workspaces stay clean.
-hab pkg exec "${pkg_ident}" kitchen destroy default-localhost || error "kitchen destroy default-localhost failed"
+kitchen destroy default-localhost || error "kitchen destroy default-localhost failed"
