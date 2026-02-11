@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.2 -->
-## [v2.0.2](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.2) (2026-02-06)
+<!-- latest_release 2.0.3 -->
+## [v2.0.3](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.3) (2026-02-11)
 
 #### Merged Pull Requests
-- Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps))
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -76,6 +77,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -97,6 +99,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -120,6 +123,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -141,6 +145,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -166,6 +171,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -187,6 +193,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -210,6 +217,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -231,6 +239,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -258,6 +267,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -279,6 +289,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -302,6 +313,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -323,6 +335,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -348,6 +361,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -369,6 +383,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -392,6 +407,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -413,6 +429,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -442,6 +459,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -463,6 +481,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -486,6 +505,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -507,6 +527,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -532,6 +553,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -553,6 +575,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -576,6 +599,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -597,6 +621,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -624,6 +649,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -645,6 +671,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -668,6 +695,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -689,6 +717,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -714,6 +743,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -735,6 +765,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -758,6 +789,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -779,6 +811,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -810,6 +843,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -831,6 +865,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -854,6 +889,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -875,6 +911,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -900,6 +937,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -921,6 +959,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -944,6 +983,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -965,6 +1005,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -992,6 +1033,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1013,6 +1055,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1036,6 +1079,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1057,6 +1101,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1082,6 +1127,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1103,6 +1149,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1126,6 +1173,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1147,6 +1195,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1176,6 +1225,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1197,6 +1247,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1220,6 +1271,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1241,6 +1293,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1266,6 +1319,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1287,6 +1341,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1310,6 +1365,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1331,6 +1387,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1358,6 +1415,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1379,6 +1437,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1402,6 +1461,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1423,6 +1483,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1448,6 +1509,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1469,6 +1531,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1492,6 +1555,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1513,6 +1577,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1554,6 +1619,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1575,6 +1641,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1598,6 +1665,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1619,6 +1687,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1644,6 +1713,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1665,6 +1735,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1688,6 +1759,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1709,6 +1781,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1736,6 +1809,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1757,6 +1831,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1780,6 +1855,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1801,6 +1877,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1826,6 +1903,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1847,6 +1925,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1870,6 +1949,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1891,6 +1971,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1920,6 +2001,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1941,6 +2023,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1964,6 +2047,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -1985,6 +2069,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2010,6 +2095,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2031,6 +2117,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2054,6 +2141,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2075,6 +2163,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2102,6 +2191,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2123,6 +2213,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2146,6 +2237,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2167,6 +2259,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2192,6 +2285,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2213,6 +2307,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2236,6 +2331,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
@@ -2257,6 +2353,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
 - Workflow to build and push gem to artifactory [#68](https://github.com/chef/chef-test-kitchen-enterprise/pull/68) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.1 -->
 - Removal of chef provisioner to new gem plugin [#60](https://github.com/chef/chef-test-kitchen-enterprise/pull/60) ([Stromweld](https://github.com/Stromweld)) <!-- 2.0.0 -->
 - Updated the verify pipeline to private [#66](https://github.com/chef/chef-test-kitchen-enterprise/pull/66) ([ashiqueps](https://github.com/ashiqueps)) <!-- 1.1.8 -->
