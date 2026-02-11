@@ -86,6 +86,28 @@ if (-not (Test-Path $lastBuildScript)) {
 Write-Host "--- Installing $pkg_ident/$pkg_artifact"
 hab pkg install -b $project_root/results/$pkg_artifact
 
+# Ensure the Habitat binlink directory and this package's bin dir are on PATH.
+# `hab pkg install -b` binlinks executables, but CI environments don't always
+# have the binlink directory pre-populated in PATH.
+$habBinlinkDir = "C:\hab\bin"
+if (Test-Path $habBinlinkDir) {
+  if ($env:Path -notlike "*$habBinlinkDir*") {
+    $env:Path = "$habBinlinkDir;$env:Path"
+  }
+}
+
+$pkgPath = (hab pkg path $pkg_ident).Trim()
+if ($pkgPath) {
+  $pkgBinDir = Join-Path $pkgPath "bin"
+  if (Test-Path $pkgBinDir) {
+    if ($env:Path -notlike "*$pkgBinDir*") {
+      $env:Path = "$pkgBinDir;$env:Path"
+    }
+  }
+}
+
+Write-Host "PATH is $env:Path"
+
 Write-Host "+++ Testing $Plan"
 
 Push-Location $project_root
