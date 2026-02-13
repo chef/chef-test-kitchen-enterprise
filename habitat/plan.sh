@@ -54,6 +54,7 @@ do_build() {
   bundle config --local silence_root_warning 1
 
   bundle install
+  ruby ./cleanup_lint_roller.rb
   ruby ./post-bundle-install.rb
 
   gem build chef-test-kitchen-enterprise.gemspec

@@ -58,7 +58,8 @@ function Invoke-Build {
 	    gem build test-kitchen.gemspec
 	    Write-BuildLine " ** Installing test-kitchen alias gem"
 	    gem install test-kitchen*.gem --no-document --force
-
+        Write-BuildLine " ** Cleaning up lint_roller Gemfile.lock"
+        ruby ./cleanup_lint_roller.rb
         ruby ./post-bundle-install.rb
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
 
