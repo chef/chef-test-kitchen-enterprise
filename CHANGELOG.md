@@ -1,4 +1,4 @@
-# Test Kitchen Change Log
+# Chef Test Kitchen Enterprise Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
 <!-- latest_release 2.0.3 -->
