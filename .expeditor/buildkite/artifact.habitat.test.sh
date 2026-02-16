@@ -2,6 +2,12 @@
 
 set -eo pipefail
 
+error() {
+    local message="$1"
+    echo -e "\nERROR: ${message}\n" >&2
+    exit 1
+}
+
 export PLAN='chef-test-kitchen-enterprise'
 export CHEF_LICENSE="accept-no-persist"
 export HAB_LICENSE="accept-no-persist"
@@ -72,4 +78,4 @@ export PATH
 echo "PATH is $PATH"
 
 echo "--- :mag_right: Testing $PLAN"
-${project_root}/habitat/tests/test.sh "$pkg_ident" || error 'failures during test of executables'
+${project_root}/habitat/tests/test.sh "$pkg_ident" || error 'failures during Habitat smoke test'

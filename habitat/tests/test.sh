@@ -29,5 +29,21 @@ echo "--- :mag_right: Testing ${pkg_ident} executables"
 actual_version=$(hab pkg exec "${pkg_ident}" kitchen -- -v | sed -E 's/.*Version ([0-9]+\.[0-9]+\.[0-9]+).*/\1/')
 [[ "$package_version" = "$actual_version" ]] || error "test-kitchen is not the expected version. Expected '$package_version', got '$actual_version'"
 
-echo "--- :Running rake"
-hab pkg exec "${pkg_ident}" rake unit
+echo "--- :kitchen: Running kitchen converge smoke test"
+
+[[ -f "${project_root}/kitchen.dummy.yml" ]] || error "${project_root}/kitchen.dummy.yml not found; cannot run kitchen converge smoke test"
+
+# Use a driver/transport combo that doesn't require external infrastructure.
+export KITCHEN_LOCAL_YAML="${project_root}/kitchen.dummy.yml"
+
+kitchen diagnose all || error "kitchen diagnose failed"
+kitchen list || error "kitchen list failed"
+
+# Only converge the localhost instance; kitchen.dummy.yml also defines a windows platform.
+kitchen converge default-localhost || error "kitchen converge default-localhost failed"
+
+# Verify the instance.
+kitchen verify default-localhost || error "kitchen verify default-localhost failed"
+
+# Best-effort cleanup so CI workspaces stay clean.
+kitchen destroy default-localhost || error "kitchen destroy default-localhost failed"
