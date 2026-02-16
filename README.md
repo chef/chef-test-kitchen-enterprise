@@ -145,3 +145,6 @@ Apache License, Version 2.0 (see [LICENSE][license])
 [semver]: https://semver.org/
 [slack]: https://chefcommunity.slack.com/messages/testkitchen/details/
 [website]: https://kitchen.ci/
+
+# Copyright
+See [COPYRIGHT.md](./COPYRIGHT.md).
