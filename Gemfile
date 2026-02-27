@@ -21,14 +21,15 @@ end
 
 group :integration do
   gem "chef-cli"
-  gem "kitchen-vagrant"
-  gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
-  gem "kitchen-ec2"
-  gem "kitchen-google"
-  gem "kitchen-azurerm"
-  gem "kitchen-vcenter"
-  gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
+  gem "kitchen-vagrant", ">= 2.2.1"
+  gem "kitchen-dokken", ">= 2.22.2", git: "https://github.com/chef/kitchen-dokken", branch: "test-kitchen:upstream-updates" # TODO: switch branch back to main once this PR is merged: https://github.com/chef/kitchen-dokken/pull/20
+  gem "kitchen-inspec", ">= 3.1" # Ensure support for latest TK 4.x
+  gem "kitchen-ec2", ">= 3.22.1"
+  gem "kitchen-google", ">= 2.6.2"
+  gem "kitchen-azurerm", ">= 1.13.6"
+  gem "kitchen-hyperv", ">= 0.10.3"
+  gem "kitchen-vcenter", ">= 2.12.3"
+  gem "chef", ">= 18.10.17" # Chef-CLI depends on chef. This ensures we are getting a newer version
   gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
@@ -48,10 +49,10 @@ group :integration do
 
   if artifactory_available
     source artifactory_url do
-      gem "kitchen-chef-enterprise"
+      gem "kitchen-chef-enterprise", ">= 1.2"
     end
   else
-    gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
+    gem "kitchen-chef-enterprise", ">= 1.2", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
 end
 
