@@ -22,7 +22,8 @@ end
 group :integration do
   gem "chef-cli"
   gem "kitchen-vagrant", ">= 2.2.1"
-  gem "kitchen-dokken", ">= 2.22.2", git: "https://github.com/chef/kitchen-dokken", branch: "test-kitchen:upstream-updates" # TODO: switch branch back to main once this PR is merged: https://github.com/chef/kitchen-dokken/pull/20
+  # TODO: switch back to chef repo once this PR is merged: https://github.com/chef/kitchen-dokken/pull/20
+  gem "kitchen-dokken", ">= 2.22.2", git: "https://github.com/test-kitchen/kitchen-dokken", branch: "upstream-updates" # git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", ">= 3.1" # Ensure support for latest TK 4.x
   gem "kitchen-ec2", ">= 3.22.1"
   gem "kitchen-google", ">= 2.6.2"
