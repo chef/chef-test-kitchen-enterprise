@@ -57,5 +57,5 @@ group :integration do
 end
 
 group :cookstyle do
-  gem "cookstyle", ">= 8.2", "< 9.0"
+  gem "cookstyle", ">= 8.2"
 end
