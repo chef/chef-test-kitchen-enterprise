@@ -74,7 +74,7 @@ jobs:
         ruby:
           - 3.4
     env:
-      BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}" # Needed for kitchen-chef-enterprise dependency
+      BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"  # Needed for kitchen-chef-enterprise dependency
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
