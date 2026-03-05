@@ -39,7 +39,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Verify Dokken
-        run: bundle exec kitchen verify ${{ matrix.os }}
+        run: bundle exec kitchen verify ${{ matrix.os }} -l debug
   # Commenting out for now until we can stabilize Vagrant on GH Actions runners
   # vagrant:
   #   runs-on: ubuntu-latest
@@ -125,7 +125,7 @@ jobs:
           sudo createhomedir -c -u ${{ env.machine_user }}
           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
       - name: Verify macOS
-        run: bundle exec kitchen verify ${{ matrix.os }}
+        run: bundle exec kitchen verify ${{ matrix.os }} -l debug
 
   windows:
     env:
@@ -163,7 +163,7 @@ jobs:
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
       - name: Verify Windows
-        run: bundle exec kitchen verify ${{ matrix.os }}
+        run: bundle exec kitchen verify ${{ matrix.os }} -l debug
 
   linux:
     env:
@@ -196,7 +196,7 @@ jobs:
           echo "${{ env.machine_user }} ALL=(ALL) NOPASSWD:ALL" | sudo tee -a /etc/sudoers
       - name: Verify Linux
         run: |
-          bundle exec kitchen verify ${{ matrix.os }}
+          bundle exec kitchen verify ${{ matrix.os }} -l debug
 
   windows-fips-ssh:
     env:
@@ -268,4 +268,4 @@ jobs:
           net user /add ${{ env.machine_user }} ${{ env.machine_pass }}
           net localgroup administrators ${{ env.machine_user }} /add
       - name: Verify Windows FIPS SSH
-        run: bundle exec kitchen verify ${{ matrix.os }}
+        run: bundle exec kitchen verify ${{ matrix.os }} -l debug
