@@ -21,6 +21,7 @@ end
 
 group :integration do
   gem "chef-cli"
+  gem "berkshelf", "~> 8.0"
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
