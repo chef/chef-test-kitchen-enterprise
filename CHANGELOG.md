@@ -1,17 +1,20 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.5 -->
-## [v2.0.5](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.5) (2026-02-19)
+<!-- latest_release 2.0.8 -->
+## [v2.0.8](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.8) (2026-03-12)
 
 #### Merged Pull Requests
-- Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611))
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -79,6 +82,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -103,6 +109,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -129,6 +138,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -153,6 +165,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -181,6 +196,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -205,6 +223,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -231,6 +252,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -255,6 +279,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -285,6 +312,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -309,6 +339,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -335,6 +368,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -359,6 +395,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -387,6 +426,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -411,6 +453,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -437,6 +482,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -461,6 +509,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -493,6 +544,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -517,6 +571,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -543,6 +600,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -567,6 +627,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -595,6 +658,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -619,6 +685,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -645,6 +714,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -669,6 +741,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -699,6 +774,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -723,6 +801,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -749,6 +830,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -773,6 +857,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -801,6 +888,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -825,6 +915,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -851,6 +944,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -875,6 +971,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -909,6 +1008,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -933,6 +1035,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -959,6 +1064,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -983,6 +1091,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1011,6 +1122,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1035,6 +1149,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1061,6 +1178,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1085,6 +1205,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1115,6 +1238,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1139,6 +1265,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1165,6 +1294,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1189,6 +1321,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1217,6 +1352,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1241,6 +1379,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1267,6 +1408,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1291,6 +1435,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1323,6 +1470,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1347,6 +1497,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1373,6 +1526,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1397,6 +1553,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1425,6 +1584,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1449,6 +1611,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1475,6 +1640,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1499,6 +1667,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1529,6 +1700,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1553,6 +1727,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1579,6 +1756,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1603,6 +1783,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1631,6 +1814,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1655,6 +1841,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1681,6 +1870,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1705,6 +1897,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1749,6 +1944,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1773,6 +1971,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1799,6 +2000,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1823,6 +2027,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1851,6 +2058,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1875,6 +2085,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1901,6 +2114,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1925,6 +2141,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1955,6 +2174,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -1979,6 +2201,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2005,6 +2230,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2029,6 +2257,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2057,6 +2288,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2081,6 +2315,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2107,6 +2344,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2131,6 +2371,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2163,6 +2406,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2187,6 +2433,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2213,6 +2462,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2237,6 +2489,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2265,6 +2520,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2289,6 +2547,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2315,6 +2576,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2339,6 +2603,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2369,6 +2636,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2393,6 +2663,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2419,6 +2692,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2443,6 +2719,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2471,6 +2750,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2495,6 +2777,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2521,6 +2806,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->
@@ -2545,6 +2833,9 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
+- Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
+- Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
 - Moving git dependency from package dep to build dep [#76](https://github.com/chef/chef-test-kitchen-enterprise/pull/76) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.5 -->
 - lint roller change for grype scan  [#73](https://github.com/chef/chef-test-kitchen-enterprise/pull/73) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.4 -->
 - [CHEF-28361] Integrate kitchen-plugins to chef-tke [#69](https://github.com/chef/chef-test-kitchen-enterprise/pull/69) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.3 -->

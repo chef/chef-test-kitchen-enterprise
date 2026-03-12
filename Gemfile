@@ -21,6 +21,7 @@ end
 
 group :integration do
   gem "chef-cli", ">= 6.1.25", git: "https://github.com/chef/chef-cli", branch: "main" # TODO: remove git reference once a new version is released to rubygems.org
+  gem "berkshelf", ">=8.0"
   gem "kitchen-vagrant", ">= 2.2.1"
   gem "kitchen-dokken", ">= 2.22.2", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", ">= 3.1" # Ensure support for latest TK 4.x
