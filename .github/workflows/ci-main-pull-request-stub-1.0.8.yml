@@ -5,21 +5,21 @@
 
 name: CI Pull Request on Main Branch
 
-on: 
+on:
   pull_request:
-    branches: [ main, release/** ]
+    branches: [main, release/**]
   push:
-    branches: [ main, release/** ]
+    branches: [main, release/**]
 
   workflow_dispatch:
 
 permissions:
   contents: read
-  
-env:
-  STUB_VERSION: "1.0.8" 
 
-jobs: 
+env:
+  STUB_VERSION: "1.0.8"
+
+jobs:
   echo_version:
     name: 'Echo stub version'
     runs-on: ubuntu-latest
@@ -39,7 +39,6 @@ jobs:
     steps:
       - name: 'Checkout repository'
         uses: actions/checkout@v4
-        
       - name: 'Detect version from file'
         id: set-version-from-file
         shell: bash
@@ -62,12 +61,11 @@ jobs:
         id: set-custom-metadata
       # GH API returns something like [{"property_name":"GABuildLanguage","value":"go"},{"property_name":"GABuildProfile","value":"cli"},{"property_name":"primaryApplication","value":"chef-360"}]'
         run: |
-          response=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/${{ github.repository }}/properties/values) 
+          response=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/${{ github.repository }}/properties/values)
 
           primaryApplication=$(echo "$response" | jq -r '.[] | select(.property_name=="primaryApplication") | .value')
           GABuildLanguage=$(echo "$response" | jq -r '.[] | select(.property_name=="GABuildLanguage") | .value')
           GABuildProfile=$(echo "$response" | jq -r '.[] | select(.property_name=="GABuildProfile") | .value')
-          
           echo "PRIMARY_APPLICATION=$primaryApplication" >> $GITHUB_ENV
           echo "GA_BUILD_LANGUAGE=$GABuildLanguage" >> $GITHUB_ENV
           echo "GA_BUILD_PROFILE=$GABuildProfile" >> $GITHUB_ENV
@@ -78,18 +76,18 @@ jobs:
           echo "applicationBuildProfile=${GABuildProfile}" >> $GITHUB_OUTPUT
         continue-on-error: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-    
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   call-ci-main-pr-check-pipeline:
     uses: chef/common-github-actions/.github/workflows/ci-main-pull-request.yml@main
     # needs: [detect-custom-metadata, detect-version-from-file]
     needs: [detect-custom-metadata]
     secrets: inherit
-    permissions: 
+    permissions:
       id-token: write
       contents: read
 
-    with:   
+    with:
       application: ${{ needs.detect-custom-metadata.outputs.primaryApplication }}
       visibility: ${{ github.event.repository.visibility }}   #  private, public, or internal
       # go-private-modules: GOPRIVATE for Go private modules, default is 'github.com/progress-platform-services/*
@@ -99,21 +97,21 @@ jobs:
       detect-version-source-type: 'file' # options include "none" (do not detect), "file", "github-tag" or "github-release"
       detect-version-source-parameter: '' # use for file name
       language: ${{ needs.detect-custom-metadata.outputs.appBuildLanguage }} # Go, Ruby, Rust, JavaScript, TypeScript, Python, Java, C#, PHP, other - used for build and SonarQube language setting
-      
+
       # complexity-checks, linting, trufflehog and trivy
       perform-complexity-checks: true
       # scc-output-filename: 'scc-output.txt'
       perform-language-linting: true    # Perform language-specific linting and pre-compilation checks
       perform-trufflehog-scan: true
       perform-trivy-scan: true
-             
+
       # perform application build and unit testing, will use custom repository properties when implemented for chef-primary-application, chef-build-profile, and chef-build-language
       build: true
       build-profile: ${{ needs.detect-custom-metadata.outputs.appBuildProfile }}
       unit-tests: false
       unit-test-output-path: "path/to/file.out"
       unit-test-command-override: ""
- 
+
       # BlackDuck SAST (Polaris) require a build or binary present in repo to do SAST testing
       # requires these secrets: POLARIS_SERVER_URL, POLARIS_ACCESS_TOKEN
       perform-blackduck-polaris: false
@@ -131,12 +129,12 @@ jobs:
       # polaris-config-path: ''   # Path to Detect configuration file, typically a file supplied at root level like ./detect-config.yml
       # polaris-coverity-config-path: ''  # Path to Coverity configuration file, typically a file supplied at root level like ./coverity.yml
       # polaris-coverity-args: '' # Additional Coverity arguments,can supply extra arguments like "--config-override capture.build.build-command=make
-      
+
       # perform SonarQube scan, with or without unit test coverage data
       # requires secrets SONAR_TOKEN and SONAR_HOST_URL (progress.sonar.com)
       perform-sonarqube-scan: false
       # perform-sonar-build: true
-      # build-profile: 'default' 
+      # build-profile: 'default'
       # report-unit-test-coverage: true
       perform-docker-scan: false  # scan Dockerfile and built images with Docker Scout or Trivy; see repo custom properties matching "container"
 
@@ -163,7 +161,7 @@ jobs:
 
       # generate and export Software Bill of Materials (SBOM) in various formats
       generate-sbom: true
-      export-github-sbom: true      # SPDX JSON artifact on job instance  
+      export-github-sbom: true      # SPDX JSON artifact on job instance
       generate-msft-sbom: false
       license_scout: false      # Run license scout for license compliance (uses .license_scout.yml)
 
@@ -172,7 +170,7 @@ jobs:
       blackduck-project-group-name: 'Chef-Agents' # typically one of (Chef), Chef-Agents, Chef-Automate, Chef-Chef360, Chef-Habitat, Chef-Infrastructure-Server, Chef-Shared-Services, Chef-Non-Product'
       blackduck-project-name: ${{ github.event.repository.name }} # BlackDuck project name, typically the repository name
       run-bundle-install: true
-  
+
       # udf1: 'default' # user defined flag 1
-      # udf2: 'default' # user defined flag 2 
-      # udf3: 'default' # user defined flag 3  
+      # udf2: 'default' # user defined flag 2
+      # udf3: 'default' # user defined flag 3
