@@ -15,7 +15,9 @@ env:
   machine_pass: Pass@word1
   SPEC_OPTS: --format progress
   CHEF_LICENSE: accept-no-persist
-  CHEF_LICENSE_SERVER: http://hosted-license-service-lb-8000-606952349.us-west-2.elb.amazonaws.com:8000/
+  CHEF_LICENSE_KEY: free-79df705d-b685-419a-8b68-88401f74ff72-3999
+  BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"  # Needed for kitchen-chef-enterprise dependency
+  BUNDLE_WITHOUT: "test cookstyle"
 
 jobs:
   dokken:
@@ -32,17 +34,10 @@ jobs:
           - ubuntu-2404
     steps:
       - uses: actions/checkout@v6
-      - name: Configure Git for private repo access
-        run: |
-          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
-      - name: Setup Machine
-        run: |
-          bundle config set --local with 'integration'
-          bundle install
+          bundler-cache: true
       - name: Verify Dokken
         run: bundle exec kitchen verify ${{ matrix.os }} -l debug
   # Commenting out for now until we can stabilize Vagrant on GH Actions runners
@@ -56,9 +51,6 @@ jobs:
   #       os:
   #         - almalinux-9
   #   steps:
-  #     - name: Configure Git for private repo access
-  #       run: |
-  #         git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
   #     - name: Install VirtualBox
   #       run: |
   #         wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -117,15 +109,10 @@ jobs:
           - localhost
     steps:
       - uses: actions/checkout@v6
-      - name: Configure Git for private repo access
-        run: |
-          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
-      - name: Install dependencies
-        run: bundle install
+          bundler-cache: true
       - name: Setup Machine
         run: |
           sudo dscl . -create /Users/${{ env.machine_user }}
@@ -166,14 +153,10 @@ jobs:
           New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
           # Enable Git long paths
           git config --global core.longpaths true
-          # Configure Git for private repo access
-          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
-      - name: Install dependencies
-        run: bundle install
+          bundler-cache: true
       - name: Setup Machine
         run: |
           winrm.cmd quickconfig -q
@@ -202,15 +185,10 @@ jobs:
           - localhost
     steps:
       - uses: actions/checkout@v6
-      - name: Configure Git for private repo access
-        run: |
-          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
-      - name: Install dependencies
-        run: bundle install
+          bundler-cache: true
       - name: Setup Machine
         run: |
           sudo useradd -m ${{ env.machine_user }}
@@ -246,14 +224,10 @@ jobs:
           New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
           # Enable Git long paths
           git config --global core.longpaths true
-          # Configure Git for private repo access
-          git config --global url."https://x-access-token:${{ secrets.GH_PRIVATE_REPO_TOKEN }}@github.com/".insteadOf "https://github.com/"
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: false
-      - name: Install dependencies
-        run: bundle install
+          bundler-cache: true
       - name: 'Enable FIPS via windows registry'
         run: |
           $OldErrorActionPreference = $ErrorActionPreference
