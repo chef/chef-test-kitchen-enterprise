@@ -15,7 +15,7 @@ env:
   machine_pass: Pass@word1
   SPEC_OPTS: --format progress
   CHEF_LICENSE: accept-no-persist
-  CHEF_LICENSE_KEY: free-79df705d-b685-419a-8b68-88401f74ff72-3999
+  CHEF_LICENSE_KEY: ${{ secrets.CHEF_LICENSE_KEY }}
   BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"  # Needed for kitchen-chef-enterprise dependency
   BUNDLE_WITHOUT: "test cookstyle"
 
