@@ -30,8 +30,6 @@ group :integration do
   gem "kitchen-azurerm"
   gem "kitchen-vcenter"
   gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
-  gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
-  gem "win32-process", platforms: :mingw
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -54,6 +52,12 @@ group :integration do
     end
   else
     gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
+  end
+
+  # Windows-specific gems for the chef-tke habitat pkg
+  if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
+    gem "win32-security"
+    gem "win32-process"
   end
 end
 
