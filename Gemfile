@@ -31,6 +31,7 @@ group :integration do
   gem "kitchen-vcenter"
   gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
   gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
+  gem "win32-process", platforms: :mingw
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
