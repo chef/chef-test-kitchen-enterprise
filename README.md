@@ -146,5 +146,6 @@ Apache License, Version 2.0 (see [LICENSE][license])
 [slack]: https://chefcommunity.slack.com/messages/testkitchen/details/
 [website]: https://kitchen.ci/
 
-# Copyright
+## Copyright
+
 See [COPYRIGHT.md](./COPYRIGHT.md).
