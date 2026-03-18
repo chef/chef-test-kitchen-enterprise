@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
-gemspec
+gemspec name: 'chef-test-kitchen-enterprise'
+gemspec name: 'test-kitchen' # Alias gemspec to satisfy transitive dependencies on test-kitchen
 
 gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "fix-circle-references", glob: "components/ruby/chef-licensing.gemspec" # TODO: remove when PR is merged https://github.com/chef/chef-licensing/pull/226
 
