@@ -25,7 +25,8 @@ require "chef-licensing"
 
 # Prevent real HTTP calls to the license detection service during unit tests.
 # Without this, LicenseKeyFetcher#initialize calls Context.license_keys which
-# triggers LicensingService::Local.detected? — a Faraday HTTP call with no timeout.
+# triggers LicensingService::Local.detected? Setting make_licensing_optional
+# bypasses this in chef-licensing.
 ChefLicensing.configure do |config|
   config.make_licensing_optional = true
 end
