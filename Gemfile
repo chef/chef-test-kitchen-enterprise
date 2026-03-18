@@ -1,10 +1,7 @@
 source "https://rubygems.org"
 
-gemspec name: 'chef-test-kitchen-enterprise'
+gemspec
 
-# Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
-# The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
-gem "test-kitchen", path: ".", glob: "test-kitchen.gemspec"
 gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "fix-circle-references", glob: "components/ruby/chef-licensing.gemspec" # TODO: remove when PR is merged https://github.com/chef/chef-licensing/pull/226
 
 group :test do
