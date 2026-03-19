@@ -26,7 +26,7 @@ end
 
 group :integration do
   gem "chef-cli"
-  gem "berkshelf", "~> 8.0" #, "<= 8.0.9" # Later versions had a pin for lower versions of ffi which is breaking our habitat builds
+  gem "berkshelf", "~> 8.0"
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
