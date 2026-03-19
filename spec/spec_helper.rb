@@ -21,6 +21,29 @@ require "fakefs/safe"
 require "minitest/autorun"
 require "mocha/minitest"
 require "tempfile"
+require "logger"
+
+# Avoid loading chef-licensing in unit tests; Ruby 3.4 emits a large circular
+# require warning storm inside that gem, which severely slows test boot.
+unless defined?(Kitchen::Licensing)
+  module Kitchen
+    module Licensing
+      ENTITLEMENT_ID = "test-entitlement".freeze
+
+      def self.configure_licensing; end
+    end
+  end
+end
+
+unless defined?(ChefLicensing::Config)
+  module ChefLicensing
+    module Config
+      def self.chef_entitlement_id
+        Kitchen::Licensing::ENTITLEMENT_ID
+      end
+    end
+  end
+end
 
 # Hack to sort results in `Dir.entries` only within the yielded block, to limit
 # the "behavior pollution" to other code. This was needed for Net::SCP, as
