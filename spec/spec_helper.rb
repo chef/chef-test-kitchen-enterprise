@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require "bundler/setup"
+
 gem "minitest"
 
 require "fakefs/safe"

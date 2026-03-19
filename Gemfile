@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 gemspec name: 'chef-test-kitchen-enterprise'
 
+# net-ssh 7.3.1 has a regression in Net::SSH::Test::Extensions::PacketStream#idle!
+# where StringIO#string= resets pos to 0 before self.pos = pos can restore it,
+# causing the ssh_spec wait loop to spin forever. Exclude until upstream fixes it.
+gem "net-ssh", "!= 7.3.1"
+
 # Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
 # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
 gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "main", glob: "test-kitchen.gemspec"
@@ -21,7 +26,7 @@ end
 
 group :integration do
   gem "chef-cli"
-  gem "berkshelf", "~> 8.0", "<= 8.0.9" # Later versions had a pin for lower versions of ffi which is breaking our habitat builds
+  gem "berkshelf", "~> 8.0" #, "<= 8.0.9" # Later versions had a pin for lower versions of ffi which is breaking our habitat builds
   gem "kitchen-vagrant"
   gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
   gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
