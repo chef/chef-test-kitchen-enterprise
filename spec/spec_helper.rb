@@ -21,14 +21,14 @@ require "fakefs/safe"
 require "minitest/autorun"
 require "mocha/minitest"
 require "tempfile"
-require "logger"
 
-# Avoid loading chef-licensing in unit tests; Ruby 3.4 emits a large circular
-# require warning storm inside that gem, which severely slows test boot.
+# Avoid loading chef-licensing in unit tests. Under newer Rubies this can emit
+# circular-require warnings and slow test startup substantially.
 unless defined?(Kitchen::Licensing)
   module Kitchen
     module Licensing
-      ENTITLEMENT_ID = "test-entitlement".freeze
+      PRODUCT_NAME = "Test Kitchen Enterprise" unless const_defined?(:PRODUCT_NAME)
+      ENTITLEMENT_ID = "x6f3bc76-a94f-4b6c-bc97-4b7ed2b045c0" unless const_defined?(:ENTITLEMENT_ID)
 
       def self.configure_licensing; end
     end
@@ -37,12 +37,18 @@ end
 
 unless defined?(ChefLicensing::Config)
   module ChefLicensing
-    module Config
-      def self.chef_entitlement_id
-        Kitchen::Licensing::ENTITLEMENT_ID
+    class Config
+      class << self
+        attr_accessor :chef_entitlement_id
+
+        def require_license_for
+          yield if block_given?
+        end
       end
     end
   end
+
+  ChefLicensing::Config.chef_entitlement_id = Kitchen::Licensing::ENTITLEMENT_ID
 end
 
 # Hack to sort results in `Dir.entries` only within the yielded block, to limit
