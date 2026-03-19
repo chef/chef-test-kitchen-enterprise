@@ -29,8 +29,8 @@ require "tempfile"
 unless defined?(Kitchen::Licensing)
   module Kitchen
     module Licensing
-      PRODUCT_NAME = "Test Kitchen Enterprise" unless const_defined?(:PRODUCT_NAME)
-      ENTITLEMENT_ID = "x6f3bc76-a94f-4b6c-bc97-4b7ed2b045c0" unless const_defined?(:ENTITLEMENT_ID)
+      PRODUCT_NAME = "Test Kitchen Enterprise".freeze unless const_defined?(:PRODUCT_NAME)
+      ENTITLEMENT_ID = "x6f3bc76-a94f-4b6c-bc97-4b7ed2b045c0".freeze unless const_defined?(:ENTITLEMENT_ID)
 
       def self.configure_licensing; end
     end
