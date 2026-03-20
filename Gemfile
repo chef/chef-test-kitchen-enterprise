@@ -8,9 +8,6 @@ gemspec name: 'test-kitchen' # Alias gemspec to satisfy transitive dependencies 
 # causing the ssh_spec wait loop to spin forever. Exclude until upstream fixes it.
 gem "net-ssh", "!= 7.3.1"
 
-# TODO: remove when PR is merged https://github.com/chef/chef-licensing/pull/226
-# gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "fix-circle-references", glob: "components/ruby/chef-licensing.gemspec"
-
 # Windows-specific gems for the chef-tke habitat pkg
 if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
   gem "win32-security"
