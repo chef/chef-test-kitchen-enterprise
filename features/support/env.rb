@@ -5,14 +5,6 @@ require "aruba/processes/spawn_process"
 require "kitchen"
 require "kitchen/cli"
 
-# Prevent real HTTP calls to the license detection service during cucumber tests.
-# kitchen requires chef-licensing at load time, which can trigger HTTP calls to
-# detect a local license server. Without this guard those calls block indefinitely
-# in CI where no license server is reachable.
-ChefLicensing.configure do |config|
-  config.make_licensing_optional = true
-end
-
 class ArubaHelper
   def initialize(argv, stdin = STDIN, stdout = STDOUT, stderr = STDERR, kernel = Kernel)
     @argv = argv

@@ -67,7 +67,6 @@ jobs:
   test:
     name: Unit Test with Ruby
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -85,4 +84,4 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Rake Test
-        run: bundle exec rake test --trace
+        run: bundle exec rake unit --trace

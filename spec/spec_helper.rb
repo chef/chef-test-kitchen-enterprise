@@ -21,15 +21,6 @@ require "fakefs/safe"
 require "minitest/autorun"
 require "mocha/minitest"
 require "tempfile"
-require "chef-licensing"
-
-# Prevent real HTTP calls to the license detection service during unit tests.
-# Without this, LicenseKeyFetcher#initialize calls Context.license_keys which
-# triggers LicensingService::Local.detected? Setting make_licensing_optional
-# bypasses this in chef-licensing.
-ChefLicensing.configure do |config|
-  config.make_licensing_optional = true
-end
 
 # Hack to sort results in `Dir.entries` only within the yielded block, to limit
 # the "behavior pollution" to other code. This was needed for Net::SCP, as
