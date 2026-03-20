@@ -2,6 +2,11 @@ source "https://rubygems.org"
 
 gemspec name: 'chef-test-kitchen-enterprise'
 
+# net-ssh 7.3.1 has a regression in Net::SSH::Test::Extensions::PacketStream#idle!
+# where StringIO#string= resets pos to 0 before self.pos = pos can restore it,
+# causing the ssh_spec wait loop to spin forever. Exclude until upstream fixes it.
+gem "net-ssh", "!= 7.3.1"
+
 # Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
 # The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
 gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "main", glob: "test-kitchen.gemspec"
@@ -30,7 +35,6 @@ group :integration do
   gem "kitchen-azurerm"
   gem "kitchen-vcenter"
   gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
-  gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -53,6 +57,12 @@ group :integration do
     end
   else
     gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
+  end
+
+  # Windows-specific gems for the chef-tke habitat pkg
+  if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
+    gem "win32-security"
+    gem "win32-process"
   end
 end
 

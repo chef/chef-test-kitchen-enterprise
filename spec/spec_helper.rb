@@ -15,12 +15,43 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require "bundler/setup"
+
 gem "minitest"
 
 require "fakefs/safe"
 require "minitest/autorun"
 require "mocha/minitest"
 require "tempfile"
+
+# Avoid loading chef-licensing in unit tests. Under newer Rubies this can emit
+# circular-require warnings and slow test startup substantially.
+unless defined?(Kitchen::Licensing)
+  module Kitchen
+    module Licensing
+      PRODUCT_NAME = "Test Kitchen Enterprise".freeze unless const_defined?(:PRODUCT_NAME)
+      ENTITLEMENT_ID = "x6f3bc76-a94f-4b6c-bc97-4b7ed2b045c0".freeze unless const_defined?(:ENTITLEMENT_ID)
+
+      def self.configure_licensing; end
+    end
+  end
+end
+
+unless defined?(ChefLicensing::Config)
+  module ChefLicensing
+    class Config
+      class << self
+        attr_accessor :chef_entitlement_id
+
+        def require_license_for
+          yield if block_given?
+        end
+      end
+    end
+  end
+
+  ChefLicensing::Config.chef_entitlement_id = Kitchen::Licensing::ENTITLEMENT_ID
+end
 
 # Hack to sort results in `Dir.entries` only within the yielded block, to limit
 # the "behavior pollution" to other code. This was needed for Net::SCP, as

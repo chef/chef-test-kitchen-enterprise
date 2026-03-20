@@ -50,20 +50,35 @@ function Invoke-Build {
         bundle config --local silence_root_warning 1
         Write-BuildLine " ** Using bundler to retrieve the Ruby dependencies"
         bundle install
+        if ($LASTEXITCODE -ne 0) {
+            throw "bundle install failed with exit code $LASTEXITCODE"
+        }
+
 	    bundle lock
         gem build chef-test-kitchen-enterprise.gemspec
 	    Write-BuildLine " ** Using gem to  install"
 	    gem install chef-test-kitchen-enterprise*.gem --no-document --force
+	    if ($LASTEXITCODE -ne 0) {
+	        throw "gem install chef-test-kitchen-enterprise failed with exit code $LASTEXITCODE"
+	    }
 
 	    # Build and install the test-kitchen alias gem to satisfy driver dependencies
 	    Write-BuildLine " ** Building test-kitchen alias gem"
 	    gem build test-kitchen.gemspec
 	    Write-BuildLine " ** Installing test-kitchen alias gem"
 	    gem install test-kitchen*.gem --no-document --force
+        if ($LASTEXITCODE -ne 0) {
+            throw "gem install test-kitchen failed with exit code $LASTEXITCODE"
+        }
         Write-BuildLine " ** Cleaning up lint_roller Gemfile.lock"
         ruby ./cleanup_lint_roller.rb
+        if ($LASTEXITCODE -ne 0) {
+            throw "cleanup_lint_roller.rb failed with exit code $LASTEXITCODE"
+        }
         ruby ./post-bundle-install.rb
-        If ($lastexitcode -ne 0) { Exit $lastexitcode }
+        if ($LASTEXITCODE -ne 0) {
+            throw "post-bundle-install.rb failed with exit code $LASTEXITCODE"
+        }
 
         # Install chef-official-distribution AFTER post-bundle-install
         Install-ChefOfficialDistribution
