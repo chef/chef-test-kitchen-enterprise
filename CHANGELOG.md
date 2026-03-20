@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.8 -->
-## [v2.0.8](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.8) (2026-03-12)
+<!-- latest_release 2.0.9 -->
+## [v2.0.9](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.9) (2026-03-20)
 
 #### Merged Pull Requests
-- Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -82,6 +83,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -109,6 +111,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -138,6 +141,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -165,6 +169,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -196,6 +201,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -223,6 +229,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -252,6 +259,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -279,6 +287,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -312,6 +321,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -339,6 +349,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -368,6 +379,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -395,6 +407,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -426,6 +439,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -453,6 +467,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -482,6 +497,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -509,6 +525,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -544,6 +561,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -571,6 +589,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -600,6 +619,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -627,6 +647,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -658,6 +679,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -685,6 +707,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -714,6 +737,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -741,6 +765,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -774,6 +799,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -801,6 +827,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -830,6 +857,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -857,6 +885,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -888,6 +917,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -915,6 +945,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -944,6 +975,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -971,6 +1003,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1008,6 +1041,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1035,6 +1069,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1064,6 +1099,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1091,6 +1127,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1122,6 +1159,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1149,6 +1187,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1178,6 +1217,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1205,6 +1245,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1238,6 +1279,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1265,6 +1307,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1294,6 +1337,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1321,6 +1365,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1352,6 +1397,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1379,6 +1425,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1408,6 +1455,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1435,6 +1483,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1470,6 +1519,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1497,6 +1547,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1526,6 +1577,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1553,6 +1605,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1584,6 +1637,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1611,6 +1665,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1640,6 +1695,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1667,6 +1723,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1700,6 +1757,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1727,6 +1785,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1756,6 +1815,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1783,6 +1843,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1814,6 +1875,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1841,6 +1903,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1870,6 +1933,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1897,6 +1961,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1944,6 +2009,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -1971,6 +2037,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2000,6 +2067,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2027,6 +2095,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2058,6 +2127,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2085,6 +2155,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2114,6 +2185,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2141,6 +2213,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2174,6 +2247,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2201,6 +2275,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2230,6 +2305,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2257,6 +2333,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2288,6 +2365,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2315,6 +2393,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2344,6 +2423,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2371,6 +2451,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2406,6 +2487,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2433,6 +2515,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2462,6 +2545,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2489,6 +2573,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2520,6 +2605,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2547,6 +2633,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2576,6 +2663,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2603,6 +2691,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2636,6 +2725,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2663,6 +2753,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2692,6 +2783,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2719,6 +2811,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2750,6 +2843,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2777,6 +2871,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2806,6 +2901,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
@@ -2833,6 +2929,7 @@ The following changes have been merged from upstream Test Kitchen (https://githu
 ### Merged Pull Requests
 
 #### Merged Pull Requests
+- CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07)) <!-- 2.0.9 -->
 - Onboarding sonarqube and enable blackduck scan [#67](https://github.com/chef/chef-test-kitchen-enterprise/pull/67) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.8 -->
 - Added the berkshelf to chef-tke [#79](https://github.com/chef/chef-test-kitchen-enterprise/pull/79) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.7 -->
 - Update Expeditor config to promote Habitat packages to current and base-2025 channels [#78](https://github.com/chef/chef-test-kitchen-enterprise/pull/78) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.6 -->
