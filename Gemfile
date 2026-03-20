@@ -9,7 +9,7 @@ gemspec name: 'test-kitchen' # Alias gemspec to satisfy transitive dependencies 
 gem "net-ssh", "!= 7.3.1"
 
 # TODO: remove when PR is merged https://github.com/chef/chef-licensing/pull/226
-gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "fix-circle-references", glob: "components/ruby/chef-licensing.gemspec"
+# gem "chef-licensing", git: "https://github.com/chef/chef-licensing", branch: "fix-circle-references", glob: "components/ruby/chef-licensing.gemspec"
 
 # Windows-specific gems for the chef-tke habitat pkg
 if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
@@ -52,7 +52,7 @@ group :integration do
   else
     gem "kitchen-chef-enterprise", ">= 1.2.3", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
-  gem "rake"
+  gem "rake" # needed for windows
 end
 
 group :cookstyle do
