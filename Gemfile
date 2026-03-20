@@ -52,6 +52,7 @@ group :integration do
   else
     gem "kitchen-chef-enterprise", ">= 1.2.3", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
+  gem "rake"
 end
 
 group :cookstyle do
@@ -59,7 +60,6 @@ group :cookstyle do
 end
 
 group :test do
-  gem "rake"
   gem "rb-readline"
   gem "aruba",     ">= 0.11", "< 3.0"
   gem "countloc",  ">= 0.4", "< 1.0"
