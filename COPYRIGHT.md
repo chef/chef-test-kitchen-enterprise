@@ -1,0 +1,3 @@
+# Copyright
+
+Copyright (c) 2024-2026 Progress Software Corporation and/or its subsidiaries or affiliates. All Rights Reserved.
