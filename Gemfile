@@ -1,36 +1,31 @@
 source "https://rubygems.org"
 
 gemspec name: 'chef-test-kitchen-enterprise'
+gemspec name: 'test-kitchen' # Alias gemspec to satisfy transitive dependencies on test-kitchen
 
-# Override transitive dependency on test-kitchen with chef-test-kitchen-enterprise
-# The git repo now includes a test-kitchen.gemspec alias to satisfy transitive dependencies
-gem "test-kitchen", git: "https://github.com/chef/chef-test-kitchen-enterprise", branch: "main", glob: "test-kitchen.gemspec"
+# net-ssh 7.3.1 has a regression in Net::SSH::Test::Extensions::PacketStream#idle!
+# where StringIO#string= resets pos to 0 before self.pos = pos can restore it,
+# causing the ssh_spec wait loop to spin forever. Exclude until upstream fixes it.
+gem "net-ssh", "!= 7.3.1"
 
-group :test do
-  gem "rake"
-  gem "rb-readline"
-  gem "aruba",     ">= 0.11", "< 3.0"
-  gem "countloc",  ">= 0.4", "< 1.0"
-  gem "cucumber",  ">= 9.2", "< 11"
-  gem "fakefs",    ">= 3.0", "< 4.0"
-  gem "maruku",    ">= 0.7", "< 1.0"
-  gem "minitest",  ">= 5.3", "< 7.0"
-  gem "mocha",     ">= 2.0", "< 4.0"
-  gem "irb"
+# Windows-specific gems for the chef-tke habitat pkg
+if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
+  gem "win32-security"
+  gem "win32-process"
 end
 
 group :integration do
-  gem "chef-cli"
-  gem "berkshelf", "~> 8.0"
-  gem "kitchen-vagrant"
-  gem "kitchen-dokken", git: "https://github.com/chef/kitchen-dokken", branch: "main"
-  gem "kitchen-inspec", ">= 3.1.0" # Ensure support for latest TK 4.x
-  gem "kitchen-ec2"
-  gem "kitchen-google"
-  gem "kitchen-azurerm"
-  gem "kitchen-vcenter"
-  gem "chef", ">= 18.9.4", "< 20.0" # Chef-CLI depends on chef. This ensures we are getting a newer version
-  gem "win32-security", platforms: :mingw  # Windows-specific gems for native driver support
+  gem "chef-cli", ">= 6.1.27"
+  gem "berkshelf", ">=8.1.21"
+  gem "kitchen-vagrant", ">= 2.2.1"
+  gem "kitchen-dokken", ">= 2.22.2", git: "https://github.com/chef/kitchen-dokken", branch: "main"
+  gem "kitchen-inspec", ">= 3.1" # Ensure support for latest TK 4.x
+  gem "kitchen-ec2", ">= 3.22.1"
+  gem "kitchen-google", ">= 2.6.2"
+  gem "kitchen-azurerm", ">= 1.13.6"
+  gem "kitchen-hyperv", ">= 0.10.3"
+  gem "kitchen-vcenter", ">= 2.12.3"
+  gem "chef", ">= 19.1" # Chef-CLI depends on chef. This ensures we are getting a newer version
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"
   artifactory_available = begin
@@ -49,13 +44,26 @@ group :integration do
 
   if artifactory_available
     source artifactory_url do
-      gem "kitchen-chef-enterprise"
+      gem "kitchen-chef-enterprise", ">= 1.2.3"
     end
   else
-    gem "kitchen-chef-enterprise", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
+    gem "kitchen-chef-enterprise", ">= 1.2.3", git: "https://github.com/chef/kitchen-chef-enterprise", branch: "main"
   end
+  gem "rake" # needed for windows
 end
 
 group :cookstyle do
   gem "cookstyle", ">= 8.2", "< 9.0"
+end
+
+group :test do
+  gem "rb-readline"
+  gem "aruba",     ">= 0.11", "< 3.0"
+  gem "countloc",  ">= 0.4", "< 1.0"
+  gem "cucumber",  ">= 9.2", "< 11"
+  gem "fakefs",    ">= 3.0", "< 4.0"
+  gem "maruku",    ">= 0.7", "< 1.0"
+  gem "minitest",  ">= 5.3", "< 7.0"
+  gem "mocha",     ">= 2.0", "< 4.0"
+  gem "irb"
 end
