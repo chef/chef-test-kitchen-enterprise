@@ -20,7 +20,7 @@ steps:
     agents:
       queue: default-privileged-aarch64
     plugins:
-    - docker#v3.5.0:
+      - docker#v3.5.0:
         image: chefes/omnibus-toolchain-ubuntu-2204:aarch64
         privileged: true
         propagate-environment: true
