@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.12 -->
-## [v2.0.12](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.12) (2026-04-02)
+<!-- latest_release unreleased -->
+## Unreleased
 
 #### Merged Pull Requests
-- add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda))
+- shift image config to the right [#85](https://github.com/chef/chef-test-kitchen-enterprise/pull/85) ([rishichawda](https://github.com/rishichawda))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- shift image config to the right [#85](https://github.com/chef/chef-test-kitchen-enterprise/pull/85) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
 - add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
 <!-- release_rollup -->
 
