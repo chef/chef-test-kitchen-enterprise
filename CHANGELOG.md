@@ -1,10 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release -->
+<!-- latest_release 2.0.12 -->
+## [v2.0.12](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.12) (2026-04-02)
+
+#### Merged Pull Requests
+- add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda))
 <!-- latest_release -->
 
 <!-- release_rollup -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
@@ -51,4 +59,3 @@
 - bump dokken driver and kitchen-chef-enterprise dep versions [#77](https://github.com/chef/chef-test-kitchen-enterprise/pull/77) ([Stromweld](https://github.com/Stromweld))
 - Adding NOTICE file to the hab pkg [#75](https://github.com/chef/chef-test-kitchen-enterprise/pull/75) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_stable_release -->
-
