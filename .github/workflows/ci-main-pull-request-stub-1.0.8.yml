@@ -105,6 +105,11 @@ jobs:
       perform-trufflehog-scan: true
       perform-trivy-scan: true
 
+      # grype vulnerability scanning
+      perform-grype-scan: true
+      grype-fail-on-high: true
+      grype-fail-on-critical: true
+
       # perform application build and unit testing, will use custom repository properties when implemented for chef-primary-application, chef-build-profile, and chef-build-language
       build: true
       build-profile: ${{ needs.detect-custom-metadata.outputs.appBuildProfile }}
@@ -130,6 +135,17 @@ jobs:
       # polaris-coverity-config-path: ''  # Path to Coverity configuration file, typically a file supplied at root level like ./coverity.yml
       # polaris-coverity-args: '' # Additional Coverity arguments,can supply extra arguments like "--config-override capture.build.build-command=make
 
+      # Perform Grype Scan on habitat packages
+      perform-grype-hab-scan: true
+      grype-hab-build-package: false
+      grype-hab-origin: 'chef'
+      grype-hab-package: 'chef-test-kitchen-enterprise'
+      grype-hab-version: ${{ needs.detect-custom-metadata.outputs.versionFromFile }}
+      grype-hab-channel: 'unstable'
+      grype-hab-scan-linux: true
+      grype-hab-scan-windows: true
+      grype-hab-scan-macos: false
+
       # perform SonarQube scan, with or without unit test coverage data
       # requires secrets SONAR_TOKEN and SONAR_HOST_URL (progress.sonar.com)
       perform-sonarqube-scan: false
@@ -146,17 +162,6 @@ jobs:
       # quality-service-name: 'YourServiceOrRepoName'
       # quality-junit-report: 'path/to/junit/report''
 
-      # perform Habitat-based and native packaging, publish to package repositories
-      package-binaries: false     # Package binaries (e.g., RPM, DEB, MSI, dpkg + signing + SHA)
-      habitat-build: false        # Create Habitat packages
-      publish-habitat-packages: false   # Publish Habitat packages to Builder
-      publish-habitat-hab_package: false # Chef Habitat package to install (e.g., core/nginx)
-      publish-habitat-hab_version: "1.0.0" # Chef Habitat package version (optional)
-      publish-habitat-hab_release: "20240101010101"  # Chef Habitat package release (optional)
-      publish-habitat-hab_channel: "stable"  # Chef Habitat package channel (e.g., stable, base, base-2025); default is stable
-      publish-habitat-hab_auth_token: ""   # Chef Habitat Builder authentication token (uses secret if not provided)
-      publish-habitat-runner_os: "ubuntu-latest"   # OS runner for Habitat package publishing job, can also be windows-latest
-      habitat-grype-scan: false  # Scan built Habitat packages with Grype for vulnerabilities
       publish-packages: false     # Publish packages (e.g., container from Dockerfile to ECR, go-releaser binary to releases page, omnibus to artifactory, gems, choco, homebrew, other app stores)
 
       # generate and export Software Bill of Materials (SBOM) in various formats
