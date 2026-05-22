@@ -105,3 +105,21 @@ Then filter structured fields from the Kitchen log:
 ```bash
 grep -E "op=verify status=|elapsed_ms=" .kitchen/logs/kitchen.log
 ```
+
+## Static Analysis
+CI already runs lint/static-analysis checks in `.github/workflows/lint.yml`.
+
+Local equivalents:
+
+```bash
+# Full Ruby static analysis
+bundle exec cookstyle --chefstyle --display-cop-names
+
+# Targeted path
+bundle exec cookstyle --chefstyle --display-cop-names lib/kitchen/verifier/dummy.rb spec/kitchen/verifier/dummy_spec.rb
+
+# Unit gate used by lint workflow
+bundle exec rake unit --trace
+```
+
+See `ai-track-docs/static-analysis.md` for the full Ex14 baseline and local runbook.
