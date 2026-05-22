@@ -38,3 +38,24 @@ _cache
 docs/public
 .idea/
 docs/.hugo_build.lock
+
+# Secret and credential hygiene
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+*.ovpn
+*.kubeconfig
+.npmrc
+.pypirc
+.aws/
+.azure/
+.gcp/
+**/secrets.yml
+**/credentials.yml
