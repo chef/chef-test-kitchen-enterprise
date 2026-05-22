@@ -67,6 +67,14 @@ describe Kitchen::Verifier::Dummy do
     it "sets :structured_logs to true by default" do
       _(verifier[:structured_logs]).must_equal true
     end
+
+    it "sets :failure_retries to 0 by default" do
+      _(verifier[:failure_retries]).must_equal 0
+    end
+
+    it "sets :retry_backoff_ms to 0 by default" do
+      _(verifier[:retry_backoff_ms]).must_equal 0
+    end
   end
 
   describe "#call" do
@@ -127,6 +135,24 @@ describe Kitchen::Verifier::Dummy do
       verifier.call(state)
 
       _(logged_output.string).wont_match(/op=verify status=success elapsed_ms=\d+(\.\d+)?/)
+    end
+
+    it "retries failed verify when :failure_retries is enabled" do
+      config[:fail] = true
+      config[:failure_retries] = 1
+      verifier.expects(:fail_verify!).twice.raises(Kitchen::ActionFailed.new("boom"))
+
+      _ { verifier.call(state) }.must_raise Kitchen::ActionFailed
+    end
+
+    it "applies retry backoff when configured" do
+      config[:fail] = true
+      config[:failure_retries] = 1
+      config[:retry_backoff_ms] = 25
+      verifier.expects(:sleep).with(0.025).once
+      verifier.expects(:fail_verify!).twice.raises(Kitchen::ActionFailed.new("boom"))
+
+      _ { verifier.call(state) }.must_raise Kitchen::ActionFailed
     end
   end
 end

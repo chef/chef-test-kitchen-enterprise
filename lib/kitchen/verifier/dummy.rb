@@ -33,6 +33,8 @@ module Kitchen
       default_config :sleep, 0
       default_config :random_failure, false
       default_config :structured_logs, true
+      default_config :failure_retries, 0
+      default_config :retry_backoff_ms, 0
 
       # (see Base#call)
       def call(state)
@@ -42,8 +44,7 @@ module Kitchen
         begin
           validate_state!(state)
           info("[#{name}] Verify on instance=#{instance} with state=#{state}")
-          sleep_if_set
-          failure_if_set
+          run_verify_with_retries
           debug("[#{name}] Verify completed (#{config[:sleep]}s).")
         rescue StandardError
           status = "failed"
@@ -74,6 +75,28 @@ module Kitchen
         elsif config[:random_failure] && randomly_fail?
           debug("Random failure for Verifier #{name}.")
           fail_verify!
+        end
+      end
+
+      # Execute verify behavior with optional retry/backoff for transient
+      # failures. Defaults keep existing behavior (no retries).
+      #
+      # @api private
+      def run_verify_with_retries
+        retries = Integer(config[:failure_retries] || 0)
+        retries = 0 if retries.negative?
+        attempts = 0
+
+        begin
+          sleep_if_set
+          failure_if_set
+        rescue ActionFailed
+          attempts += 1
+          raise if attempts > retries
+
+          backoff_seconds = [config[:retry_backoff_ms].to_f, 0.0].max / 1000.0
+          sleep(backoff_seconds) if backoff_seconds.positive?
+          retry
         end
       end
 

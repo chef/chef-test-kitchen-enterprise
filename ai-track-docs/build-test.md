@@ -94,6 +94,10 @@ Feature flag:
 - `structured_logs` (default `true`) on `Kitchen::Verifier::Dummy`
 - Set `structured_logs: false` in verifier config to disable structured log emission.
 
+Resilience settings (default behavior unchanged):
+- `failure_retries` (default `0`): retry count for `ActionFailed` in dummy verify path.
+- `retry_backoff_ms` (default `0`): backoff between retries in milliseconds.
+
 Run with log output enabled:
 
 ```bash
