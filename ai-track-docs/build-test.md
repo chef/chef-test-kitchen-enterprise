@@ -58,3 +58,21 @@ bundle exec cucumber features/some_feature.feature
 	- Prefer tagged releases over `branch: main` for reproducibility when feasible.
 
 See `ai-track-docs/dependency-hygiene.md` for Ex7-specific baseline notes and proposals.
+
+## Viewing Structured Logs
+Structured verifier logs include consistent key/value fields:
+- `op`
+- `status`
+- `elapsed_ms`
+
+Run with log output enabled:
+
+```bash
+KITCHEN_LOG=info bundle exec kitchen verify <instance>
+```
+
+Then filter structured fields from the Kitchen log:
+
+```bash
+grep -E "op=verify status=|elapsed_ms=" .kitchen/logs/kitchen.log
+```

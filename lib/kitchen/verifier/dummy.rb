@@ -35,11 +35,22 @@ module Kitchen
 
       # (see Base#call)
       def call(state)
-        validate_state!(state)
-        info("[#{name}] Verify on instance=#{instance} with state=#{state}")
-        sleep_if_set
-        failure_if_set
-        debug("[#{name}] Verify completed (#{config[:sleep]}s).")
+        started_at = monotonic_time
+        status = "success"
+
+        begin
+          validate_state!(state)
+          info("[#{name}] Verify on instance=#{instance} with state=#{state}")
+          sleep_if_set
+          failure_if_set
+          debug("[#{name}] Verify completed (#{config[:sleep]}s).")
+        rescue StandardError
+          status = "failed"
+          raise
+        ensure
+          elapsed_ms = ((monotonic_time - started_at) * 1000.0).round(3)
+          info("op=verify status=#{status} elapsed_ms=#{elapsed_ms}")
+        end
       end
 
       private
@@ -90,6 +101,14 @@ module Kitchen
       # @api private
       def randomly_fail?
         [true, false].sample
+      end
+
+      # Monotonic clock helper for elapsed-time calculations.
+      #
+      # @return [Float]
+      # @api private
+      def monotonic_time
+        Process.clock_gettime(Process::CLOCK_MONOTONIC)
       end
     end
   end

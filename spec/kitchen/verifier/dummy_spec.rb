@@ -110,5 +110,11 @@ describe Kitchen::Verifier::Dummy do
 
       _(logged_output.string).must_match(/^.+ INFO .+ \[Dummy\] Verify on .+$/)
     end
+
+    it "logs structured verify fields" do
+      verifier.call(state)
+
+      _(logged_output.string).must_match(/op=verify status=success elapsed_ms=\d+(\.\d+)?/)
+    end
   end
 end
