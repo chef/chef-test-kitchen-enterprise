@@ -90,6 +90,10 @@ Structured verifier logs include consistent key/value fields:
 - `status`
 - `elapsed_ms`
 
+Feature flag:
+- `structured_logs` (default `true`) on `Kitchen::Verifier::Dummy`
+- Set `structured_logs: false` in verifier config to disable structured log emission.
+
 Run with log output enabled:
 
 ```bash

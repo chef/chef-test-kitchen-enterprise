@@ -32,6 +32,7 @@ module Kitchen
 
       default_config :sleep, 0
       default_config :random_failure, false
+      default_config :structured_logs, true
 
       # (see Base#call)
       def call(state)
@@ -49,7 +50,7 @@ module Kitchen
           raise
         ensure
           elapsed_ms = ((monotonic_time - started_at) * 1000.0).round(3)
-          info("op=verify status=#{status} elapsed_ms=#{elapsed_ms}")
+          emit_structured_log(status, elapsed_ms)
         end
       end
 
@@ -101,6 +102,17 @@ module Kitchen
       # @api private
       def randomly_fail?
         [true, false].sample
+      end
+
+      # Emit structured verify log line when feature flag is enabled.
+      #
+      # @param status [String]
+      # @param elapsed_ms [Float]
+      # @api private
+      def emit_structured_log(status, elapsed_ms)
+        return unless config[:structured_logs]
+
+        info("op=verify status=#{status} elapsed_ms=#{elapsed_ms}")
       end
 
       # Monotonic clock helper for elapsed-time calculations.

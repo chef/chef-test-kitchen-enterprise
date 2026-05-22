@@ -63,6 +63,10 @@ describe Kitchen::Verifier::Dummy do
     it "sets :random_failure to false by default" do
       _(verifier[:random_failure]).must_equal false
     end
+
+    it "sets :structured_logs to true by default" do
+      _(verifier[:structured_logs]).must_equal true
+    end
   end
 
   describe "#call" do
@@ -112,9 +116,17 @@ describe Kitchen::Verifier::Dummy do
     end
 
     it "logs structured verify fields" do
+      config[:structured_logs] = true
       verifier.call(state)
 
       _(logged_output.string).must_match(/op=verify status=success elapsed_ms=\d+(\.\d+)?/)
+    end
+
+    it "does not log structured verify fields when feature flag is disabled" do
+      config[:structured_logs] = false
+      verifier.call(state)
+
+      _(logged_output.string).wont_match(/op=verify status=success elapsed_ms=\d+(\.\d+)?/)
     end
   end
 end
