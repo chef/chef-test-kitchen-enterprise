@@ -86,6 +86,13 @@ describe Kitchen::Verifier::Dummy do
       _ { verifier.call(state) }.must_raise Kitchen::ActionFailed
     end
 
+    it "does not raise when :random_failure is set and random check is false" do
+      config[:random_failure] = true
+      verifier.stubs(:randomly_fail?).returns(false)
+
+      verifier.call(state)
+    end
+
     it "logs a converge event to INFO" do
       verifier.call(state)
 
