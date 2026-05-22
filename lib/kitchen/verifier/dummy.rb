@@ -51,6 +51,7 @@ module Kitchen
       end
 
       # Simulate a failure in an action, if set in the config.
+      # Priority is explicit failure (`:fail`) over random failure.
       #
       # @api private
       def failure_if_set
@@ -63,6 +64,10 @@ module Kitchen
         end
       end
 
+      # Raise a verify-specific ActionFailed with a stable message.
+      #
+      # @raise [ActionFailed]
+      # @api private
       def fail_verify!
         raise ActionFailed, "Action #verify failed for #{instance.to_str}."
       end
