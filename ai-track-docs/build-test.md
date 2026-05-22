@@ -42,6 +42,31 @@ bundle exec cucumber features/some_feature.feature
 - Run `rake quality` before opening a PR.
 - Include failing and passing command output snippets in PR evidence when relevant.
 
+## CI Baseline
+Hosted CI exists in this repository (for example [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) and Expeditor pipelines). For reliable local parity, run:
+
+```bash
+./support/ci-baseline.sh
+```
+
+What it does:
+- sets deterministic CI-like environment variables
+- configures local bundler path and installs deps
+- runs unit tests (`bundle exec rake unit`)
+- runs focused verifier regression spec
+
+Optional style step:
+- set `RUN_STYLE=1` to include `bundle exec rake style`
+
+Fast path when dependencies are already installed:
+
+```bash
+SKIP_BUNDLE_INSTALL=1 ./support/ci-baseline.sh
+
+# Include style checks when local tooling supports it
+RUN_STYLE=1 SKIP_BUNDLE_INSTALL=1 ./support/ci-baseline.sh
+```
+
 ## Dependency Notes
 - Core manifests:
 	- `Gemfile`
