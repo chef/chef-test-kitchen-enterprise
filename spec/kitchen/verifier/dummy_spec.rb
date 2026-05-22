@@ -66,6 +66,11 @@ describe Kitchen::Verifier::Dummy do
   end
 
   describe "#call" do
+    it "raises ArgumentError when state is not a Hash" do
+      error = _ { verifier.call("not-a-hash") }.must_raise ArgumentError
+      _(error.message).must_equal "state must be a Hash"
+    end
+
     it "calls sleep if :sleep value is greater than 0" do
       config[:sleep] = 12.5
       verifier.expects(:sleep).with(12.5).returns(true)

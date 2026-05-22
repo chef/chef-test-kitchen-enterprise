@@ -35,6 +35,7 @@ module Kitchen
 
       # (see Base#call)
       def call(state)
+        validate_state!(state)
         info("[#{name}] Verify on instance=#{instance} with state=#{state}")
         sleep_if_set
         failure_if_set
@@ -62,6 +63,17 @@ module Kitchen
           debug("Random failure for Verifier #{name}.")
           fail_verify!
         end
+      end
+
+      # Ensure the public call boundary receives the expected state type.
+      #
+      # @param state [Hash]
+      # @raise [ArgumentError]
+      # @api private
+      def validate_state!(state)
+        return if state.is_a?(Hash)
+
+        raise ArgumentError, "state must be a Hash"
       end
 
       # Raise a verify-specific ActionFailed with a stable message.
