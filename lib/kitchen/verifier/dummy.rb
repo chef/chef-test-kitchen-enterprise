@@ -56,11 +56,15 @@ module Kitchen
       def failure_if_set
         if config[:fail]
           debug("Failure for Verifier #{name}.")
-          raise ActionFailed, "Action #verify failed for #{instance.to_str}."
+          fail_verify!
         elsif config[:random_failure] && randomly_fail?
           debug("Random failure for Verifier #{name}.")
-          raise ActionFailed, "Action #verify failed for #{instance.to_str}."
+          fail_verify!
         end
+      end
+
+      def fail_verify!
+        raise ActionFailed, "Action #verify failed for #{instance.to_str}."
       end
 
       # Determine whether or not to randomly fail.

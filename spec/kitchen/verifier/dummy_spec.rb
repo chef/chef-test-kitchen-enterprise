@@ -79,6 +79,13 @@ describe Kitchen::Verifier::Dummy do
       _ { verifier.call(state) }.must_raise Kitchen::ActionFailed
     end
 
+    it "raises ActionFailed with a stable message if :fail is set" do
+      config[:fail] = true
+
+      error = _ { verifier.call(state) }.must_raise Kitchen::ActionFailed
+      _(error.message).must_equal "Action #verify failed for instance."
+    end
+
     it "randomly raises ActionFailed if :random_failure is set" do
       config[:random_failure] = true
       verifier.stubs(:randomly_fail?).returns(true)
