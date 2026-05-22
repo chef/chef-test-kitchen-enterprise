@@ -1,0 +1,29 @@
+flowchart TD
+    A[User or CI] --> B[kitchen CLI]
+    B --> C[Config Loader]
+    C --> D[Instance Matrix\nSuite x Platform]
+
+    D --> E[Driver]
+    D --> F[Provisioner]
+    D --> G[Transport]
+    D --> H[Verifier]
+
+    E --> I[(Target Infra)]
+    G --> I
+    F --> I
+    H --> I
+
+    I --> J[Test Results]
+    J --> K[Reports and Exit Code]
+
+    subgraph Codebase
+      L[lib/kitchen]
+      M[spec]
+      N[features]
+      O[docs]
+    end
+
+    B -. implemented in .-> L
+    J -. validated by .-> M
+    J -. validated by .-> N
+    K -. documented in .-> O
