@@ -54,6 +54,11 @@ module Kitchen
       default_config :uploads, {}
       default_config :downloads, {}
 
+      # Agentless mode configuration block parsed from kitchen.yml.
+      # When set, enables the dual-node topology where chef-client runs on a
+      # source container and targets remote nodes via --target mode.
+      default_config :agentless, nil
+
       expand_path_for :test_base_path
 
       # Constructs a new provisioner by providing a configuration hash.
@@ -61,6 +66,13 @@ module Kitchen
       # @param config [Hash] initial provided configuration
       def initialize(config = {})
         init_config(config)
+      end
+
+      # Returns true when the provisioner is configured for agentless mode.
+      #
+      # @return [Boolean]
+      def agentless_mode?
+        !config[:agentless].nil?
       end
 
       # Runs the provisioner on the instance.
