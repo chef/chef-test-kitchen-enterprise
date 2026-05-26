@@ -192,6 +192,7 @@ The `agenless_mode_arch/` directory (note: intentional typo in dirname) contains
 | Story branch format | `CHEF-XXXXX-<short-description>` |
 | PR target | `agentless-dev` (NOT `main`) |
 | PR title format | `[CHEF-XXXXX] <short description>` |
+| PR labels | Must include `ai-assisted` label |
 | Final merge to `main` | Only after full epic sign-off |
 
 **Never raise a PR directly to `main` for agentless work.**
