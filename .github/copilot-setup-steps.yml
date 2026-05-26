@@ -1,0 +1,9 @@
+steps:
+  - name: Install Ruby dependencies
+    run: bundle install
+
+  - name: Verify unit tests run
+    run: bundle exec rspec --no-color || true
+
+  - name: Verify linter
+    run: bundle exec rubocop --no-color || true
