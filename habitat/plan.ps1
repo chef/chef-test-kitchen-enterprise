@@ -127,6 +127,15 @@ function Invoke-Install {
         & $rubyExe $appbundler $project_root "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
         if ($LASTEXITCODE -ne 0) { Exit $LASTEXITCODE }
 
+        Write-BuildLine "** patching generated binstubs for Habitat runtime env"
+        $binstubPatch = Get-Content "$PLAN_CONTEXT\binstub_patch.bat" -Raw
+        Get-ChildItem -Path "$pkg_prefix\bin\*.bat" -File | ForEach-Object {
+            $binstubPath = $_.FullName
+            $binstubContent = Get-Content $binstubPath -Raw
+            $binstubContent = $binstubContent -replace '(?im)^@ECHO OFF', "@ECHO OFF`r`n$binstubPatch"
+            Set-Content -Path $binstubPath -Value $binstubContent -Encoding ASCII -NoNewline
+        }
+
 	Write-BuildLine " ** Build and install complete"
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
