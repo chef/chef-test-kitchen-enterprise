@@ -9,7 +9,7 @@ $env:HAB_BLDR_CHANNEL = 'base-2025'
 $env:HAB_REFRESH_CHANNEL = "base-2025"
 $env:CHEF_LICENSE = 'accept-no-persist'
 $env:HAB_LICENSE = 'accept-no-persist'
-$HabitatVersion = if ($env:HAB_VERSION) { $env:HAB_VERSION } else { '1.6.1245' }
+$HabitatVersion = $env:HAB_VERSION
 $Plan = 'chef-test-kitchen-enterprise'
 
 Write-Host "--- system details"
@@ -29,15 +29,26 @@ function Stop-HabProcess {
 # Installing Habitat
 function Install-Habitat {
   param(
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [string]$Version
   )
-  Write-Host "Downloading and installing Habitat version $Version..."
+  if ($Version) {
+    Write-Host "Downloading and installing Habitat version $Version..."
+  }
+  else {
+    Write-Host "Downloading and installing latest Habitat version..."
+  }
   $installScriptUrl = 'https://raw.githubusercontent.com/habitat-sh/habitat/main/components/hab/install.ps1'
-  $installScriptPath = Join-Path $env:TEMP "hab-install-$Version.ps1"
+  $scriptSuffix = if ($Version) { $Version } else { "latest" }
+  $installScriptPath = Join-Path $env:TEMP "hab-install-$scriptSuffix.ps1"
   Invoke-WebRequest -Uri $installScriptUrl -OutFile $installScriptPath
   try {
-    & $installScriptPath -Version $Version
+    if ($Version) {
+      & $installScriptPath -Version $Version
+    }
+    else {
+      & $installScriptPath
+    }
   }
   finally {
     Remove-Item $installScriptPath -Force -ErrorAction SilentlyContinue

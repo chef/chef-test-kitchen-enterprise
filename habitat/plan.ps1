@@ -111,33 +111,21 @@ function Invoke-Install {
             Exit 1
         }
 
-        # Set GEM_PATH to include both vendor and the system gem paths
+        # Ensure appbundler and installed gems resolve from the packaged vendor path.
         $env:GEM_PATH = "$pkg_prefix/vendor"
         $env:GEM_HOME = "$pkg_prefix/vendor"
 
-        # Create bin directory if it doesn't exist
         if (-not (Test-Path "$pkg_prefix/bin")) {
             New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
         }
 
-        # Find the gem and create wrapper for kitchen binary
-        $kitchenGemDir = Get-ChildItem "$pkg_prefix/vendor/gems" -Filter "chef-test-kitchen-enterprise-*" -Directory | Select-Object -First 1
-        if ($kitchenGemDir) {
-            Write-BuildLine "** Found gem directory: $($kitchenGemDir.FullName)"
-            $realKitchenBin = "$($kitchenGemDir.FullName)/bin/kitchen"
-            if (Test-Path $realKitchenBin) {
-                Write-BuildLine "** Creating wrapper for kitchen binary"
+        $rubyPkgPath = (& hab pkg path core/ruby3_4-plus-devkit).Trim()
+        $rubyExe = Join-Path $rubyPkgPath "bin\ruby.exe"
+        $appbundler = Join-Path $pkg_prefix "vendor\bin\appbundler"
 
-                # Remove any existing kitchen files in bin directory
-                Remove-Item "$pkg_prefix/bin/kitchen" -Force -ErrorAction SilentlyContinue
-                Remove-Item "$pkg_prefix/bin/kitchen.bat" -Force -ErrorAction SilentlyContinue
-
-                # Remove kitchen from vendor/bin if it exists (to avoid conflicts)
-                Remove-Item "$pkg_prefix/vendor/bin/kitchen" -Force -ErrorAction SilentlyContinue
-
-                Wrap-KitchenBinary "$pkg_prefix/bin/kitchen" $realKitchenBin
-            }
-        }
+        Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins"
+        & $rubyExe $appbundler $project_root "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
+        if ($LASTEXITCODE -ne 0) { Exit $LASTEXITCODE }
 
 	Write-BuildLine " ** Build and install complete"
 
@@ -145,52 +133,6 @@ function Invoke-Install {
     } finally {
         Pop-Location
     }
-}
-
-function Wrap-KitchenBinary {
-    param(
-        [string]$WrapperPath,
-        [string]$RealBinPath
-    )
-
-    Write-BuildLine "Creating wrapper script at $WrapperPath"
-
-    # Get the path from PKG_PREFIX to the gem directory
-    $kitchenBinPath = "vendor\gems\$($pkg_name)-$($pkg_version)\bin\kitchen"
-
-    # Create a batch wrapper script that sets up the environment using runtime paths
-    $wrapperContent = @"
-@echo off
-setlocal enabledelayedexpansion
-REM Wrapper script for Test Kitchen Enterprise
-REM Sets up Ruby gem environment and executes kitchen
-
-REM Get the package prefix from the script location
-for %%I in ("%~dp0..") do set "PKG_PREFIX=%%~fI"
-
-REM Use hab to find the Ruby installation path
-for /f "delims=" %%i in ('hab pkg path core/ruby3_4-plus-devkit 2^>nul') do set "RUBY_PATH=%%i"
-
-if not defined RUBY_PATH (
-    echo ERROR: Could not find Ruby installation. Run: hab pkg install core/ruby3_4-plus-devkit
-    exit /b 1
-)
-
-REM Set Ruby paths for gem loading - include both vendor and Ruby system gems
-set "GEM_HOME=%PKG_PREFIX%\vendor"
-set "GEM_PATH=%PKG_PREFIX%\vendor;%RUBY_PATH%\lib\ruby\gems\3.4.0"
-
-REM Set encoding to UTF-8 to handle non-ASCII characters
-set "RUBYOPT=-Eutf-8"
-
-REM Execute the real kitchen binary with ruby
-"%RUBY_PATH%\bin\ruby.exe" "%PKG_PREFIX%\$kitchenBinPath" %*
-"@
-
-    # On Windows, only create .bat file for compatibility
-    Set-Content -Path "$WrapperPath.bat" -Value $wrapperContent -Encoding ASCII
-
-    Write-BuildLine "Wrapper created successfully at $WrapperPath.bat"
 }
 
 function Invoke-After {
@@ -206,6 +148,9 @@ function Invoke-After {
     # Remove the byproducts of compiling gems with extensions
     Get-ChildItem $pkg_prefix/vendor/gems -Include @("gem_make.out", "mkmf.log", "Makefile") -File -Recurse `
         | Remove-Item -Force
+    # Remove vendored .github directories to reduce scanner false positives.
+    Get-ChildItem $pkg_prefix/vendor -Filter ".github" -Directory -Recurse -ErrorAction SilentlyContinue `
+        | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
 }
 
 function Install-ChefOfficialDistribution {
