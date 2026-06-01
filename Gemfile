@@ -56,6 +56,10 @@ group :cookstyle do
   gem "cookstyle", ">= 8.2", "< 9.0"
 end
 
+group :packaging do
+  gem "appbundler"
+end
+
 group :test do
   gem "rb-readline"
   gem "aruba",     ">= 0.11", "< 3.0"
