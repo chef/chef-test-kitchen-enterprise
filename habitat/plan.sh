@@ -55,6 +55,11 @@ do_build() {
   bundle config --local silence_root_warning 1
 
   bundle install
+  # appbundler requires Gemfile.lock in BUNDLE_DIR. Generate it only when missing
+  # so this stays aligned with chef pattern if a lockfile is later committed.
+  if [[ ! -f Gemfile.lock ]]; then
+    bundle lock
+  fi
   ruby ./cleanup_lint_roller.rb
   ruby ./post-bundle-install.rb
 
