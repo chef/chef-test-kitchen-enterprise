@@ -9,7 +9,6 @@ $env:HAB_BLDR_CHANNEL = 'base-2025'
 $env:HAB_REFRESH_CHANNEL = "base-2025"
 $env:CHEF_LICENSE = 'accept-no-persist'
 $env:HAB_LICENSE = 'accept-no-persist'
-$HabitatVersion = $env:HAB_VERSION
 $Plan = 'chef-test-kitchen-enterprise'
 
 Write-Host "--- system details"
@@ -28,31 +27,8 @@ function Stop-HabProcess {
 
 # Installing Habitat
 function Install-Habitat {
-  param(
-    [Parameter(Mandatory = $false)]
-    [string]$Version
-  )
-  if ($Version) {
-    Write-Host "Downloading and installing Habitat version $Version..."
-  }
-  else {
-    Write-Host "Downloading and installing latest Habitat version..."
-  }
-  $installScriptUrl = 'https://raw.githubusercontent.com/habitat-sh/habitat/main/components/hab/install.ps1'
-  $scriptSuffix = if ($Version) { $Version } else { "latest" }
-  $installScriptPath = Join-Path $env:TEMP "hab-install-$scriptSuffix.ps1"
-  Invoke-WebRequest -Uri $installScriptUrl -OutFile $installScriptPath
-  try {
-    if ($Version) {
-      & $installScriptPath -Version $Version
-    }
-    else {
-      & $installScriptPath
-    }
-  }
-  finally {
-    Remove-Item $installScriptPath -Force -ErrorAction SilentlyContinue
-  }
+  Write-Host "Downloading and installing Habitat..."
+  Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/habitat-sh/habitat/main/components/hab/install.ps1'))
 }
 
 try {
@@ -75,7 +51,7 @@ catch {
       }
   }
 
-  Install-Habitat -Version $HabitatVersion
+  Install-Habitat
 }
 finally {
   Write-Host "******************************************************************"
@@ -92,9 +68,6 @@ Write-Host "--- Generating fake origin key"
 hab origin key generate $env:HAB_ORIGIN
 
 Write-Host "--- Building $Plan"
-Write-Host "******************************************************************"
-Write-Host "** What is My Project Root as determined by git rev? $(git rev-parse --show-toplevel)"
-Write-Host "******************************************************************"
 $project_root = "$(git rev-parse --show-toplevel)"
 Set-Location $project_root
 
