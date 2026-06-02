@@ -36,6 +36,7 @@ function Invoke-Build {
         $env:Path += ";c:\\Program Files\\Git\\bin"
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
+        $env:CHEF_TEST_KITCHEN_ENTERPRISE = "true"
 
         Write-BuildLine " ** Enabling Windows long path support"
         # Enable Git long paths for bundler git operations
@@ -107,6 +108,7 @@ function Invoke-Install {
 
     try {
         Push-Location $pkg_prefix
+        $env:CHEF_TEST_KITCHEN_ENTERPRISE = "true"
         if (-not (Test-Path "$pkg_prefix/Gemfile.lock")) {
             Write-BuildLine "ERROR: Gemfile.lock still not found in $pkg_prefix"
             Exit 1
