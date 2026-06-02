@@ -91,24 +91,40 @@ function Invoke-Install {
                      "*/latest", "latest",
                      "*/JSON-Schema-Test-Suite", "JSON-Schema-Test-Suite")
 
-    # Ensure Gemfile.lock is copied to the package root (it's in src/ subdirectory)
-    Write-BuildLine "** Checking for Gemfile.lock at $HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock"
-    if (Test-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock") {
-        Write-BuildLine "** Copying Gemfile.lock to $pkg_prefix/Gemfile.lock"
-        Copy-Item -Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock" -Destination "$pkg_prefix/Gemfile.lock" -Force
-    } else {
-        Write-BuildLine "** Gemfile.lock not found at expected location, checking alternatives..."
-        Get-ChildItem "$HAB_CACHE_SRC_PATH/$pkg_dirname" -Filter "Gemfile.lock" -Recurse | ForEach-Object {
-            Write-BuildLine "** Found Gemfile.lock at: $($_.FullName)"
-            Copy-Item -Path $_.FullName -Destination "$pkg_prefix/Gemfile.lock" -Force
-        }
+    # Ensure we use the project lockfile (not lockfiles from vendored gems).
+    $projectGemfileLockCandidates = @(
+        "$HAB_CACHE_SRC_PATH/$pkg_dirname/Gemfile.lock",
+        "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock",
+        "$project_root/Gemfile.lock"
+    )
+    $projectGemfileLock = $projectGemfileLockCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if (-not $projectGemfileLock) {
+        Write-BuildLine "ERROR: Project Gemfile.lock not found in expected locations"
+        Exit 1
     }
+    Write-BuildLine "** Using project Gemfile.lock from: $projectGemfileLock"
+    Copy-Item -Path $projectGemfileLock -Destination "$pkg_prefix/Gemfile.lock" -Force
 
     try {
         Push-Location $pkg_prefix
         if (-not (Test-Path "$pkg_prefix/Gemfile.lock")) {
             Write-BuildLine "ERROR: Gemfile.lock still not found in $pkg_prefix"
             Exit 1
+        }
+
+        $bundleGemfileCandidates = @(
+            "$HAB_CACHE_SRC_PATH/$pkg_dirname/Gemfile",
+            "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile",
+            "$pkg_prefix/Gemfile"
+        )
+        $env:BUNDLE_GEMFILE = $bundleGemfileCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+        if (-not $env:BUNDLE_GEMFILE) {
+            Write-BuildLine "ERROR: Project Gemfile not found in expected locations"
+            Exit 1
+        }
+        $bundleDir = Split-Path -Parent $env:BUNDLE_GEMFILE
+        if (-not (Test-Path (Join-Path $bundleDir "Gemfile.lock"))) {
+            Copy-Item -Path "$pkg_prefix/Gemfile.lock" -Destination (Join-Path $bundleDir "Gemfile.lock") -Force
         }
 
         # Ensure appbundler and installed gems resolve from the packaged vendor path.
@@ -124,7 +140,7 @@ function Invoke-Install {
         $appbundler = Join-Path $pkg_prefix "vendor\bin\appbundler"
 
         Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins"
-        & $rubyExe $appbundler $project_root "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
+        & $rubyExe $appbundler $bundleDir "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
         if ($LASTEXITCODE -ne 0) { Exit $LASTEXITCODE }
 
         Write-BuildLine "** patching generated binstubs for Habitat runtime env"

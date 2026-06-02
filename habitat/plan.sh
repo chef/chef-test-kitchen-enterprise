@@ -88,6 +88,12 @@ do_install() {
 
   make_pkg_official_distrib
 
+  # appbundler requires Gemfile.lock in the same BUNDLE_DIR we pass below.
+  if [[ ! -f "$HAB_CACHE_SRC_PATH/$pkg_dirname/Gemfile.lock" ]]; then
+    build_line "Gemfile.lock missing in $HAB_CACHE_SRC_PATH/$pkg_dirname; generating it now"
+    (cd "$HAB_CACHE_SRC_PATH/$pkg_dirname" && bundle lock)
+  fi
+
   build_line "Generating appbundler binstubs with precise version pins"
   "$(pkg_path_for $_ruby_pkg)/bin/ruby" "$pkg_prefix/vendor/bin/appbundler" "$HAB_CACHE_SRC_PATH/$pkg_dirname" "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
 
