@@ -131,8 +131,19 @@ function Invoke-Install {
         }
 
         # Ensure appbundler and installed gems resolve from the packaged vendor path.
-        $env:GEM_PATH = "$pkg_prefix/vendor"
+        if ([string]::IsNullOrEmpty($env:GEM_PATH)) {
+            $env:GEM_PATH = "$pkg_prefix/vendor"
+        } else {
+            $env:GEM_PATH = "$pkg_prefix/vendor;$env:GEM_PATH"
+        }
         $env:GEM_HOME = "$pkg_prefix/vendor"
+
+        & gem list -i "^racc$" | Out-Null
+        if ($LASTEXITCODE -ne 0) {
+            Write-BuildLine "** Installing racc gem for appbundler lockfile generation"
+            gem install racc --no-document --force --install-dir "$env:GEM_HOME" --ignore-dependencies
+            if ($LASTEXITCODE -ne 0) { Exit $LASTEXITCODE }
+        }
 
         if (-not (Test-Path "$pkg_prefix/bin")) {
             New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
