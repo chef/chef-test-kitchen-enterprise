@@ -42,6 +42,7 @@ Extensions to the TKE core to support an `agentless:` block in `kitchen.yml` and
 8. **ERB dynamic target lists**: leverage existing ERB-in-YAML pipeline for `remote_nodes`
 
 ### kitchen.yml structure
+
 ```yaml
 driver:
   name: kitchen-dokken
@@ -63,6 +64,7 @@ provisioner:
 ```
 
 ### credentials.yml credential source types (in scope)
+
 - `inline` — plaintext SSH/WinRM (must warn; OWASP-compliant)
 - `credential-file` — copy credentials file to source at `~/.chef/credentials`; supports passphrase encryption
 - `databag` — reference databag on source node for cookbooks that shell out to infra-client
@@ -71,7 +73,7 @@ provisioner:
 
 ## Architecture: Dual-Node Topology
 
-```
+```shell
 Kitchen::Instance (existing — extended, not replaced)
   ├── driver:      Dokken  (manages SOURCE container)
   ├── provisioner: ChefInfraAgentless  [in kitchen-chef-enterprise]
@@ -86,7 +88,7 @@ Kitchen::Instance (existing — extended, not replaced)
 
 ### Full Lifecycle Sequence
 
-```
+```shell
 kitchen create:
   → Dokken spins up SOURCE container
   → If remote_node.mode == :container → Dokken also spins up remote containers

@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -54,6 +54,11 @@ module Kitchen
       default_config :uploads, {}
       default_config :downloads, {}
 
+      # Agentless mode configuration block parsed from kitchen.yml.
+      # When set, enables the dual-node topology where chef-client runs on a
+      # source container and targets remote nodes via --target mode.
+      default_config :agentless, nil
+
       expand_path_for :test_base_path
 
       # Constructs a new provisioner by providing a configuration hash.
@@ -63,11 +68,17 @@ module Kitchen
         init_config(config)
       end
 
+      # Returns true when the provisioner is configured for agentless mode.
+      #
+      # @return [Boolean]
+      def agentless_mode?
+        !config[:agentless].nil?
+      end
+
       # Runs the provisioner on the instance.
       #
       # @param state [Hash] mutable instance state
       # @raise [ActionFailed] if the action could not be completed
-      # rubocop:disable Metrics/AbcSize
       def call(state)
         create_sandbox
 
@@ -128,7 +139,7 @@ module Kitchen
       #
       # @param state [Hash] mutable instance state
       # @returns [Boolean] Return true if a problem is found.
-      def doctor(state)
+      def doctor(_state)
         false
       end
 
@@ -301,17 +312,13 @@ module Kitchen
         @install_script_path = File.join(sandbox_path, "install_script.ps1")
 
         debug("Creating install script at #{@install_script_path}")
-        File.open(@install_script_path, "wb") do |file|
-          file.write(command)
-        end
+        File.binwrite(@install_script_path, command)
 
         # Make script executable locally
         FileUtils.chmod(0755, @install_script_path) unless windows_os?
       end
 
-      def install_script_path
-        @install_script_path
-      end
+      attr_reader :install_script_path
 
       # Returns a command to execute a script on the remote host.
       #

@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2012, 2013, 2014 Fletcher Nichol
+# Copyright:: (C) 2012, 2013, 2014 Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,6 +25,10 @@ require_relative "kitchen/util"
 
 require_relative "kitchen/provisioner"
 require_relative "kitchen/provisioner/base"
+require_relative "kitchen/agentless/warnings"
+require_relative "kitchen/agentless/remote_node"
+require_relative "kitchen/agentless/credential_resolver"
+require_relative "kitchen/agentless/context"
 require_relative "kitchen/color"
 require_relative "kitchen/collection"
 require_relative "kitchen/config"
