@@ -93,9 +93,9 @@ function Invoke-Install {
 
     # Ensure we use the project lockfile (not lockfiles from vendored gems).
     $projectGemfileLockCandidates = @(
-        "$HAB_CACHE_SRC_PATH/$pkg_dirname/Gemfile.lock",
-        "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile.lock",
-        "$project_root/Gemfile.lock"
+        (Join-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname" "Gemfile.lock"),
+        (Join-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src" "Gemfile.lock"),
+        (Join-Path $project_root "Gemfile.lock")
     )
     $projectGemfileLock = $projectGemfileLockCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $projectGemfileLock) {
@@ -103,7 +103,7 @@ function Invoke-Install {
         Exit 1
     }
     Write-BuildLine "** Using project Gemfile.lock from: $projectGemfileLock"
-    Copy-Item -Path $projectGemfileLock -Destination "$pkg_prefix/Gemfile.lock" -Force
+    Copy-Item -Path $projectGemfileLock -Destination (Join-Path $pkg_prefix "Gemfile.lock") -Force
 
     try {
         Push-Location $pkg_prefix
@@ -113,9 +113,10 @@ function Invoke-Install {
         }
 
         $bundleGemfileCandidates = @(
-            "$HAB_CACHE_SRC_PATH/$pkg_dirname/Gemfile",
-            "$HAB_CACHE_SRC_PATH/$pkg_dirname/src/Gemfile",
-            "$pkg_prefix/Gemfile"
+            (Join-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname" "Gemfile"),
+            (Join-Path "$HAB_CACHE_SRC_PATH/$pkg_dirname/src" "Gemfile"),
+            (Join-Path $project_root "Gemfile"),
+            (Join-Path $pkg_prefix "Gemfile")
         )
         $env:BUNDLE_GEMFILE = $bundleGemfileCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
         if (-not $env:BUNDLE_GEMFILE) {
