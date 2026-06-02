@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'remote_node'
+require_relative "remote_node"
 
 module Kitchen
   module Agentless
@@ -33,7 +33,7 @@ module Kitchen
     # This class is responsible for schema parsing and validation only.
     # Node assignment logic is deferred to CHEF-34610.
     class Context
-      VALID_PARALLEL_MODES = %w(enabled disabled auto).freeze
+      VALID_PARALLEL_MODES = %w{enabled disabled auto}.freeze
 
       attr_reader :parallel_mode, :remote_nodes, :assignment_form
 
@@ -50,8 +50,8 @@ module Kitchen
       # @param config [Hash] the parsed `agentless:` block
       def initialize(config)
         @config = config || {}
-        @parallel_mode  = (@config['parallel-mode'] || @config[:"parallel-mode"] || 'disabled').to_s
-        raw_nodes       = @config['remote_nodes'] || @config[:remote_nodes]
+        @parallel_mode  = (@config["parallel-mode"] || @config[:"parallel-mode"] || "disabled").to_s
+        raw_nodes       = @config["remote_nodes"] || @config[:remote_nodes]
         @assignment_form, @remote_nodes = parse_remote_nodes(raw_nodes)
       end
 
@@ -83,7 +83,7 @@ module Kitchen
           [:pool, nodes]
         elsif raw.is_a?(Hash)
           nodes = raw.map do |instance_name, entry|
-            merged = (entry || {}).merge('name' => instance_name.to_s)
+            merged = (entry || {}).merge("name" => instance_name.to_s)
             RemoteNode.new(merged)
           end
           [:explicit, nodes]
@@ -97,14 +97,14 @@ module Kitchen
 
         raise Kitchen::UserError,
           "agentless.parallel-mode '#{parallel_mode}' is invalid. " \
-          "Valid values: #{VALID_PARALLEL_MODES.join(', ')}"
+          "Valid values: #{VALID_PARALLEL_MODES.join(", ")}"
       end
 
       def validate_remote_nodes_present!
         return unless remote_nodes.empty?
 
         raise Kitchen::UserError,
-          'agentless.remote_nodes must contain at least one node'
+          "agentless.remote_nodes must contain at least one node"
       end
     end
   end

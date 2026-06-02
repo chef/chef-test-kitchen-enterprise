@@ -17,7 +17,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative 'warnings'
+require_relative "warnings"
 
 module Kitchen
   module Agentless
@@ -28,8 +28,8 @@ module Kitchen
     #   - `:container` — TKE spins up a Docker container as the target
     #   - `:real`      — TKE connects to a pre-existing node via SSH/WinRM
     class RemoteNode
-      VALID_MODES = %w(container real).freeze
-      VALID_CREDENTIAL_PASSING_MODES = %w(pass-by-env-var pass-cmd-line pass-by-creds-file).freeze
+      VALID_MODES = %w{container real}.freeze
+      VALID_CREDENTIAL_PASSING_MODES = %w{pass-by-env-var pass-cmd-line pass-by-creds-file}.freeze
 
       attr_reader :name, :mode, :image, :fqdn, :endpoint,
         :credential_map_file, :credential_passing_mode,
@@ -38,24 +38,24 @@ module Kitchen
       # @param config [Hash] a single entry from the remote_nodes Array
       # @raise [Kitchen::UserError] if required fields are missing or invalid
       def initialize(config)
-        @name                    = config['name'] || config[:name]
-        @mode                    = config['test-kitchen-mode'] || config[:"test-kitchen-mode"]
-        @image                   = config['test-kitchen-image'] || config[:"test-kitchen-image"]
-        @fqdn                    = config['fqdn'] || config[:fqdn]
-        @endpoint                = config['endpoint'] || config[:endpoint]
-        @credential_map_file     = config['credential-map-file'] || config[:"credential-map-file"]
-        @credential_passing_mode = config['credential-passing-mode'] || config[:"credential-passing-mode"]
-        @compliance_mode_cred_file = config['compliance-mode-cred-file'] || config[:"compliance-mode-cred-file"]
+        @name                    = config["name"] || config[:name]
+        @mode                    = config["test-kitchen-mode"] || config[:"test-kitchen-mode"]
+        @image                   = config["test-kitchen-image"] || config[:"test-kitchen-image"]
+        @fqdn                    = config["fqdn"] || config[:fqdn]
+        @endpoint                = config["endpoint"] || config[:endpoint]
+        @credential_map_file     = config["credential-map-file"] || config[:"credential-map-file"]
+        @credential_passing_mode = config["credential-passing-mode"] || config[:"credential-passing-mode"]
+        @compliance_mode_cred_file = config["compliance-mode-cred-file"] || config[:"compliance-mode-cred-file"]
       end
 
       # @return [Boolean] true if this node is managed as a Docker container
       def container_mode?
-        mode == 'container'
+        mode == "container"
       end
 
       # @return [Boolean] true if this node is a pre-existing real machine
       def real_mode?
-        mode == 'real'
+        mode == "real"
       end
 
       # Validates that all required fields are present and values are legal.
@@ -77,7 +77,7 @@ module Kitchen
 
         raise Kitchen::UserError,
           "Remote node '#{name}' has invalid test-kitchen-mode '#{mode}'. " \
-          "Valid values: #{VALID_MODES.join(', ')}"
+          "Valid values: #{VALID_MODES.join(", ")}"
       end
 
       def validate_container_fields!
@@ -104,7 +104,7 @@ module Kitchen
 
         raise Kitchen::UserError,
           "Remote node '#{name}' has invalid credential-passing-mode '#{credential_passing_mode}'. " \
-          "Valid values: #{VALID_CREDENTIAL_PASSING_MODES.join(', ')}"
+          "Valid values: #{VALID_CREDENTIAL_PASSING_MODES.join(", ")}"
       end
     end
   end

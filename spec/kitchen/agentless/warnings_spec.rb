@@ -17,26 +17,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../../spec_helper'
-require 'kitchen/agentless/warnings'
+require_relative "../../spec_helper"
+require "kitchen/agentless/warnings"
 
 describe Kitchen::Agentless::Warnings do
-  it 'defines INLINE_PLAINTEXT_WARNING with OWASP reference' do
-    _(Kitchen::Agentless::Warnings::INLINE_PLAINTEXT_WARNING).must_include 'OWASP'
-    _(Kitchen::Agentless::Warnings::INLINE_PLAINTEXT_WARNING).must_include 'plaintext'
+  it "defines INLINE_PLAINTEXT_WARNING with OWASP reference" do
+    _(Kitchen::Agentless::Warnings::INLINE_PLAINTEXT_WARNING).must_include "OWASP"
+    _(Kitchen::Agentless::Warnings::INLINE_PLAINTEXT_WARNING).must_include "plaintext"
   end
 
-  it 'defines CMDLINE_PASSING_WARNING with OWASP reference' do
-    _(Kitchen::Agentless::Warnings::CMDLINE_PASSING_WARNING).must_include 'OWASP'
-    _(Kitchen::Agentless::Warnings::CMDLINE_PASSING_WARNING).must_include 'command-line'
+  it "defines CMDLINE_PASSING_WARNING with OWASP reference" do
+    _(Kitchen::Agentless::Warnings::CMDLINE_PASSING_WARNING).must_include "OWASP"
+    _(Kitchen::Agentless::Warnings::CMDLINE_PASSING_WARNING).must_include "command-line"
   end
 
-  it 'defines ENVVAR_PASSING_WARNING with OWASP reference' do
-    _(Kitchen::Agentless::Warnings::ENVVAR_PASSING_WARNING).must_include 'OWASP'
-    _(Kitchen::Agentless::Warnings::ENVVAR_PASSING_WARNING).must_include 'environment'
+  it "defines ENVVAR_PASSING_WARNING with OWASP reference" do
+    _(Kitchen::Agentless::Warnings::ENVVAR_PASSING_WARNING).must_include "OWASP"
+    _(Kitchen::Agentless::Warnings::ENVVAR_PASSING_WARNING).must_include "environment"
   end
 
-  it 'all warning constants are frozen strings' do
+  it "all warning constants are frozen strings" do
     _(Kitchen::Agentless::Warnings::INLINE_PLAINTEXT_WARNING).must_be :frozen?
     _(Kitchen::Agentless::Warnings::CMDLINE_PASSING_WARNING).must_be :frozen?
     _(Kitchen::Agentless::Warnings::ENVVAR_PASSING_WARNING).must_be :frozen?

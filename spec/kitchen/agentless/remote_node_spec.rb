@@ -17,179 +17,179 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require_relative '../../spec_helper'
-require 'kitchen'
-require 'kitchen/agentless/remote_node'
+require_relative "../../spec_helper"
+require "kitchen"
+require "kitchen/agentless/remote_node"
 
 describe Kitchen::Agentless::RemoteNode do
   def container_config(overrides = {})
     {
-      'name' => 'ecommerce1',
-      'test-kitchen-mode' => 'container',
-      'test-kitchen-image' => 'dokken/ubuntu-24.04',
-      'credential-map-file' => 'test/credentials.yml',
-      'credential-passing-mode' => 'pass-by-creds-file',
+      "name" => "ecommerce1",
+      "test-kitchen-mode" => "container",
+      "test-kitchen-image" => "dokken/ubuntu-24.04",
+      "credential-map-file" => "test/credentials.yml",
+      "credential-passing-mode" => "pass-by-creds-file",
     }.merge(overrides)
   end
 
   def real_config(overrides = {})
     {
-      'name' => 'prod-node1',
-      'test-kitchen-mode' => 'real',
-      'endpoint' => '192.168.1.100:22',
-      'credential-map-file' => 'test/credentials.yml',
-      'credential-passing-mode' => 'pass-cmd-line',
+      "name" => "prod-node1",
+      "test-kitchen-mode" => "real",
+      "endpoint" => "192.168.1.100:22",
+      "credential-map-file" => "test/credentials.yml",
+      "credential-passing-mode" => "pass-cmd-line",
     }.merge(overrides)
   end
 
-  describe 'attribute readers' do
+  describe "attribute readers" do
     let(:node) { Kitchen::Agentless::RemoteNode.new(container_config) }
 
-    it 'reads name' do
-      _(node.name).must_equal 'ecommerce1'
+    it "reads name" do
+      _(node.name).must_equal "ecommerce1"
     end
 
-    it 'reads mode' do
-      _(node.mode).must_equal 'container'
+    it "reads mode" do
+      _(node.mode).must_equal "container"
     end
 
-    it 'reads image' do
-      _(node.image).must_equal 'dokken/ubuntu-24.04'
+    it "reads image" do
+      _(node.image).must_equal "dokken/ubuntu-24.04"
     end
 
-    it 'reads credential_map_file' do
-      _(node.credential_map_file).must_equal 'test/credentials.yml'
+    it "reads credential_map_file" do
+      _(node.credential_map_file).must_equal "test/credentials.yml"
     end
 
-    it 'reads credential_passing_mode' do
-      _(node.credential_passing_mode).must_equal 'pass-by-creds-file'
+    it "reads credential_passing_mode" do
+      _(node.credential_passing_mode).must_equal "pass-by-creds-file"
     end
 
-    it 'reads optional fqdn as nil when not set' do
+    it "reads optional fqdn as nil when not set" do
       _(node.fqdn).must_be_nil
     end
 
-    it 'reads optional compliance_mode_cred_file as nil when not set' do
+    it "reads optional compliance_mode_cred_file as nil when not set" do
       _(node.compliance_mode_cred_file).must_be_nil
     end
   end
 
-  describe '#container_mode?' do
-    it 'returns true for container mode' do
+  describe "#container_mode?" do
+    it "returns true for container mode" do
       node = Kitchen::Agentless::RemoteNode.new(container_config)
       _(node.container_mode?).must_equal true
     end
 
-    it 'returns false for real mode' do
+    it "returns false for real mode" do
       node = Kitchen::Agentless::RemoteNode.new(real_config)
       _(node.container_mode?).must_equal false
     end
   end
 
-  describe '#real_mode?' do
-    it 'returns true for real mode' do
+  describe "#real_mode?" do
+    it "returns true for real mode" do
       node = Kitchen::Agentless::RemoteNode.new(real_config)
       _(node.real_mode?).must_equal true
     end
 
-    it 'returns false for container mode' do
+    it "returns false for container mode" do
       node = Kitchen::Agentless::RemoteNode.new(container_config)
       _(node.real_mode?).must_equal false
     end
   end
 
-  describe '#validate!' do
-    describe 'valid configs' do
-      it 'passes for a valid container node' do
+  describe "#validate!" do
+    describe "valid configs" do
+      it "passes for a valid container node" do
         node = Kitchen::Agentless::RemoteNode.new(container_config)
         _(proc { node.validate! }).must_be_silent
       end
 
-      it 'passes for a valid real node' do
+      it "passes for a valid real node" do
         node = Kitchen::Agentless::RemoteNode.new(real_config)
         _(proc { node.validate! }).must_be_silent
       end
 
-      it 'passes with optional fqdn set' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('fqdn' => 'host.myco.com'))
+      it "passes with optional fqdn set" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("fqdn" => "host.myco.com"))
         _(proc { node.validate! }).must_be_silent
       end
 
-      it 'accepts all valid credential-passing-modes' do
-        %w(pass-by-env-var pass-cmd-line pass-by-creds-file).each do |mode|
-          node = Kitchen::Agentless::RemoteNode.new(container_config('credential-passing-mode' => mode))
+      it "accepts all valid credential-passing-modes" do
+        %w{pass-by-env-var pass-cmd-line pass-by-creds-file}.each do |mode|
+          node = Kitchen::Agentless::RemoteNode.new(container_config("credential-passing-mode" => mode))
           _(proc { node.validate! }).must_be_silent
         end
       end
     end
 
-    describe 'missing name' do
-      it 'raises UserError when name is nil' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('name' => nil))
+    describe "missing name" do
+      it "raises UserError when name is nil" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("name" => nil))
         _(proc { node.validate! }).must_raise Kitchen::UserError
       end
 
-      it 'raises UserError when name is empty string' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('name' => ''))
-        _(proc { node.validate! }).must_raise Kitchen::UserError
-      end
-    end
-
-    describe 'invalid mode' do
-      it 'raises UserError for unknown mode' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('test-kitchen-mode' => 'virtual'))
-        err = _(proc { node.validate! }).must_raise Kitchen::UserError
-        _(err.message).must_include 'virtual'
-        _(err.message).must_include 'container'
-        _(err.message).must_include 'real'
-      end
-
-      it 'raises UserError when mode is nil' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('test-kitchen-mode' => nil))
+      it "raises UserError when name is empty string" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("name" => ""))
         _(proc { node.validate! }).must_raise Kitchen::UserError
       end
     end
 
-    describe 'container mode missing image' do
-      it 'raises UserError when test-kitchen-image is absent' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('test-kitchen-image' => nil))
+    describe "invalid mode" do
+      it "raises UserError for unknown mode" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("test-kitchen-mode" => "virtual"))
         err = _(proc { node.validate! }).must_raise Kitchen::UserError
-        _(err.message).must_include 'test-kitchen-image'
+        _(err.message).must_include "virtual"
+        _(err.message).must_include "container"
+        _(err.message).must_include "real"
+      end
+
+      it "raises UserError when mode is nil" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("test-kitchen-mode" => nil))
+        _(proc { node.validate! }).must_raise Kitchen::UserError
       end
     end
 
-    describe 'real mode missing endpoint' do
-      it 'raises UserError when endpoint is absent' do
-        node = Kitchen::Agentless::RemoteNode.new(real_config('endpoint' => nil))
+    describe "container mode missing image" do
+      it "raises UserError when test-kitchen-image is absent" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("test-kitchen-image" => nil))
         err = _(proc { node.validate! }).must_raise Kitchen::UserError
-        _(err.message).must_include 'endpoint'
+        _(err.message).must_include "test-kitchen-image"
       end
     end
 
-    describe 'missing credential-map-file' do
-      it 'raises UserError' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('credential-map-file' => nil))
+    describe "real mode missing endpoint" do
+      it "raises UserError when endpoint is absent" do
+        node = Kitchen::Agentless::RemoteNode.new(real_config("endpoint" => nil))
         err = _(proc { node.validate! }).must_raise Kitchen::UserError
-        _(err.message).must_include 'credential-map-file'
+        _(err.message).must_include "endpoint"
       end
     end
 
-    describe 'invalid credential-passing-mode' do
-      it 'raises UserError for unknown mode' do
-        node = Kitchen::Agentless::RemoteNode.new(container_config('credential-passing-mode' => 'pass-by-magic'))
+    describe "missing credential-map-file" do
+      it "raises UserError" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("credential-map-file" => nil))
         err = _(proc { node.validate! }).must_raise Kitchen::UserError
-        _(err.message).must_include 'pass-by-magic'
+        _(err.message).must_include "credential-map-file"
       end
     end
 
-    describe 'symbol key support' do
-      it 'accepts symbol keys as well as string keys' do
+    describe "invalid credential-passing-mode" do
+      it "raises UserError for unknown mode" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("credential-passing-mode" => "pass-by-magic"))
+        err = _(proc { node.validate! }).must_raise Kitchen::UserError
+        _(err.message).must_include "pass-by-magic"
+      end
+    end
+
+    describe "symbol key support" do
+      it "accepts symbol keys as well as string keys" do
         config = {
-          name: 'sym-node',
-          "test-kitchen-mode": 'container',
-          "test-kitchen-image": 'dokken/ubuntu-24.04',
-          "credential-map-file": 'test/creds.yml',
-          "credential-passing-mode": 'pass-by-creds-file',
+          name: "sym-node",
+          "test-kitchen-mode": "container",
+          "test-kitchen-image": "dokken/ubuntu-24.04",
+          "credential-map-file": "test/creds.yml",
+          "credential-passing-mode": "pass-by-creds-file",
         }
         node = Kitchen::Agentless::RemoteNode.new(config)
         _(proc { node.validate! }).must_be_silent
