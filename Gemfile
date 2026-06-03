@@ -63,7 +63,8 @@ group :test do
   gem "cucumber",  ">= 9.2", "< 11"
   gem "fakefs",    ">= 3.0", "< 4.0"
   gem "maruku",    ">= 0.7", "< 1.0"
-  gem "minitest",  ">= 5.3", "< 7.0"
+  # Constrained to < 6.0 because activesupport 7.2.3.1+ requires minitest < 6
+  gem "minitest",  ">= 5.3", "< 6.0"
   gem "mocha",     ">= 2.0", "< 4.0"
   gem "irb"
 end
