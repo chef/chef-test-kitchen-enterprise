@@ -30,10 +30,15 @@ module Kitchen
     class RemoteNode
       VALID_MODES = %w{container real}.freeze
       VALID_CREDENTIAL_PASSING_MODES = %w{pass-by-env-var pass-cmd-line pass-by-creds-file}.freeze
+      VALID_TRANSPORTS = %w{ssh winrm}.freeze
+
+      # Default ports for each transport protocol (used for validation hints).
+      WINRM_DEFAULT_PORT = 5985
+      SSH_DEFAULT_PORT   = 22
 
       attr_reader :name, :mode, :image, :fqdn, :endpoint,
         :credential_map_file, :credential_passing_mode,
-        :compliance_mode_cred_file
+        :compliance_mode_cred_file, :transport
 
       # @param config [Hash] a single entry from the remote_nodes Array
       # @raise [Kitchen::UserError] if required fields are missing or invalid
@@ -46,6 +51,7 @@ module Kitchen
         @credential_map_file     = config["credential-map-file"] || config[:"credential-map-file"]
         @credential_passing_mode = config["credential-passing-mode"] || config[:"credential-passing-mode"]
         @compliance_mode_cred_file = config["compliance-mode-cred-file"] || config[:"compliance-mode-cred-file"]
+        @transport = (config["transport"] || config[:transport])&.to_s
       end
 
       # @return [Boolean] true if this node is managed as a Docker container
@@ -58,6 +64,18 @@ module Kitchen
         mode == "real"
       end
 
+      # @return [Boolean] true if the transport for this node is WinRM.
+      # When `transport` is not explicitly set, the transport is determined
+      # by the credentials file; this returns false in that case.
+      def winrm?
+        transport == "winrm"
+      end
+
+      # @return [Boolean] true if the transport for this node is SSH (or unset).
+      def ssh?
+        transport.nil? || transport == "ssh"
+      end
+
       # Validates that all required fields are present and values are legal.
       #
       # @raise [Kitchen::UserError] with a descriptive message on failure
@@ -65,12 +83,22 @@ module Kitchen
         raise Kitchen::UserError, "Remote node is missing required field 'name'" if name.nil? || name.empty?
 
         validate_mode!
+        validate_transport!
         validate_container_fields! if container_mode?
         validate_real_fields! if real_mode?
         validate_credential_fields!
       end
 
       private
+
+      def validate_transport!
+        return if transport.nil?
+        return if VALID_TRANSPORTS.include?(transport)
+
+        raise Kitchen::UserError,
+          "Remote node '#{name}' has invalid transport '#{transport}'. " \
+          "Valid values: #{VALID_TRANSPORTS.join(", ")}"
+      end
 
       def validate_mode!
         return if VALID_MODES.include?(mode)
