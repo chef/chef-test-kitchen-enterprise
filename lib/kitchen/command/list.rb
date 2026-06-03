@@ -1,7 +1,7 @@
 #
 # Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2013, Fletcher Nichol
+# Copyright:: (C) 2013, Fletcher Nichol
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ module Kitchen
           puts JSON.pretty_generate(Array(result).map { |r| to_hash(r) })
         else
           list_table(result)
+          list_remote_nodes(result)
         end
       end
 
@@ -118,7 +119,7 @@ module Kitchen
       # @param result [Hash{Symbol => String}] hash of a single instance
       # @api private
       def to_hash(result)
-        {
+        h = {
           instance: result.name,
           driver: result.driver.name,
           provisioner: result.provisioner.name,
@@ -127,6 +128,70 @@ module Kitchen
           last_action: result.last_action,
           last_error: result.last_error,
         }
+        if result.provisioner.respond_to?(:agentless_node_status)
+          h[:remote_nodes] = result.provisioner.agentless_node_status
+        end
+        h
+      end
+
+      # Prints a "Remote Nodes" sub-table for each instance whose provisioner
+      # supports {#agentless_node_status}.  Called after the main instance table.
+      #
+      # Outputs nothing if no instance is running in agentless mode or if all
+      # provisioners return an empty node list.
+      #
+      # @param result [Array<Instance>] array of instances from parse_subcommand
+      # @api private
+      def list_remote_nodes(result)
+        agentless_instances = Array(result).select do |i|
+          i.provisioner.respond_to?(:agentless_node_status)
+        end
+        return if agentless_instances.empty?
+
+        agentless_instances.each do |instance|
+          nodes = instance.provisioner.agentless_node_status
+          next if nodes.nil? || nodes.empty?
+
+          puts ""
+          puts colorize("Remote Nodes: #{instance.name}", :green)
+
+          table = [[
+            colorize("Node", :green),
+            colorize("Mode", :green),
+            colorize("Endpoint", :green),
+            colorize("Credentials", :green),
+            colorize("Status", :green),
+            colorize("Last Converge", :green),
+          ]]
+
+          nodes.each do |n|
+            table << [
+              color_pad(n[:name].to_s),
+              color_pad(n[:mode].to_s),
+              color_pad(n[:endpoint].to_s),
+              color_pad(n[:credentials_provisioned] ? "Provisioned" : "<None>"),
+              format_node_status(n[:status].to_s),
+              color_pad(n[:last_converge].to_s),
+            ]
+          end
+
+          print_table(table)
+        end
+      end
+
+      # Format and color a remote node status string.
+      #
+      # @param status [String]
+      # @return [String]
+      # @api private
+      def format_node_status(status)
+        case status
+        when "Converged"     then colorize("Converged", :magenta)
+        when "Set Up"        then colorize("Set Up", :blue)
+        when "Created"       then colorize("Created", :cyan)
+        when "<Not Created>" then colorize("<Not Created>", :red)
+        else colorize(status, :white)
+        end
       end
 
       # Outputs a formatted display table.
