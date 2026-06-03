@@ -152,12 +152,20 @@ describe Kitchen::Agentless::Context do
     it "raises UserError when remote_nodes is empty" do
       config = { "remote_nodes" => [] }
       ctx = Kitchen::Agentless::Context.new(config)
-      _(proc { ctx.validate! }).must_raise Kitchen::UserError
+      err = _(proc { ctx.validate! }).must_raise Kitchen::UserError
+      _(err.message).must_match(/remote_nodes must contain at least one node/)
     end
 
     it "raises UserError when remote_nodes is absent" do
       ctx = Kitchen::Agentless::Context.new({})
       _(proc { ctx.validate! }).must_raise Kitchen::UserError
+    end
+
+    it "mentions ERB templating in the empty remote_nodes error message" do
+      config = { "remote_nodes" => [] }
+      ctx = Kitchen::Agentless::Context.new(config)
+      err = _(proc { ctx.validate! }).must_raise Kitchen::UserError
+      _(err.message).must_match(/ERB/)
     end
 
     it "propagates UserError from invalid RemoteNode" do

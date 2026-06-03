@@ -104,7 +104,10 @@ module Kitchen
         return unless remote_nodes.empty?
 
         raise Kitchen::UserError,
-          "agentless.remote_nodes must contain at least one node"
+          "agentless.remote_nodes must contain at least one node. " \
+          "If you are using ERB templating to generate the node list, verify that " \
+          "your ERB expression evaluates to a non-empty Array or Hash at runtime " \
+          "(e.g., check that required environment variables or files are present)."
       end
     end
   end
