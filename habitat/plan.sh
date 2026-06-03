@@ -54,7 +54,7 @@ do_build() {
   bundle config --local silence_root_warning 1
 
   bundle install
-  ruby ./cleanup_lint_roller.rb
+  ruby ./cleanup_gem_lockfiles.rb
   ruby ./post-bundle-install.rb
 
   gem build chef-test-kitchen-enterprise.gemspec
@@ -127,6 +127,11 @@ make_pkg_official_distrib() {
   gem source --add "https://artifactory-internal.ps.chef.co/artifactory/omnibus-gems-local/"
   gem install chef-official-distribution --no-document --install-dir "$GEM_HOME" --ignore-dependencies
   gem sources -r "https://artifactory-internal.ps.chef.co/artifactory/omnibus-gems-local/"
+}
+
+do_after() {
+  # Remove .github directories from vendored gems to reduce package size and avoid scanner noise
+  find "$pkg_prefix/vendor/gems" -name ".github" -type d -exec rm -rf {} + 2>/dev/null || true
 }
 
 do_strip() {

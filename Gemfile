@@ -15,7 +15,9 @@ if RUBY_PLATFORM.match?(/mswin|mingw|windows/)
 end
 
 group :integration do
-  gem "chef-cli", ">= 6.1.27"
+  # Point to branch that fixes addressable constraint to >= 2.9.0 (GHSA-h27x-rffw-24p4 - High CVE)
+  # TODO: Switch back to ">= 6.1.27" once nikhil-CHEF-35087-scan-fix is merged into chef-cli
+  gem "chef-cli", git: "https://github.com/chef/chef-cli", branch: "nikhil-CHEF-35087-scan-fix"
   gem "berkshelf", ">=8.1.21"
   gem "kitchen-vagrant", ">= 2.2.1"
   gem "kitchen-dokken", ">= 2.22.2", git: "https://github.com/chef/kitchen-dokken", branch: "main"
@@ -24,6 +26,10 @@ group :integration do
   gem "kitchen-google", ">= 2.6.2"
   gem "kitchen-azurerm", ">= 1.13.6"
   gem "kitchen-hyperv", ">= 0.10.3"
+  # train 3.16.3+ enforces activesupport >= 7.2.3.1, fixing GHSA-2j26-frm8-cmj9,
+  # GHSA-cg4j-q9v8-6v38, and GHSA-89vf-4333-qx8v. Without this constraint, bundler
+  # resolves to train 3.16.2 which only requires activesupport >= 7.2.2.1 (vulnerable).
+  gem "train", ">= 3.16.3"
   gem "kitchen-vcenter", ">= 2.12.3"
   gem "chef", ">= 19.1" # Chef-CLI depends on chef. This ensures we are getting a newer version
   # Check if Artifactory is accessible, otherwise use GitHub
