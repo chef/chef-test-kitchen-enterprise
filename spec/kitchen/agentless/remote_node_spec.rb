@@ -167,18 +167,40 @@ describe Kitchen::Agentless::RemoteNode do
     end
 
     describe "missing credential-map-file" do
-      it "raises UserError" do
-        node = Kitchen::Agentless::RemoteNode.new(container_config("credential-map-file" => nil))
+      it "raises UserError for real-mode nodes" do
+        node = Kitchen::Agentless::RemoteNode.new(
+          "name" => "real-node",
+          "test-kitchen-mode" => "real",
+          "endpoint" => "10.0.0.1:22",
+          "credential-map-file" => nil,
+          "credential-passing-mode" => "pass-by-creds-file"
+        )
         err = _(proc { node.validate! }).must_raise Kitchen::UserError
         _(err.message).must_include "credential-map-file"
+      end
+
+      it "does NOT raise for container-mode nodes (no credentials required)" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("credential-map-file" => nil))
+        _(proc { node.validate! }).must_be_silent
       end
     end
 
     describe "invalid credential-passing-mode" do
-      it "raises UserError for unknown mode" do
-        node = Kitchen::Agentless::RemoteNode.new(container_config("credential-passing-mode" => "pass-by-magic"))
+      it "raises UserError for unknown mode on real-mode nodes" do
+        node = Kitchen::Agentless::RemoteNode.new(
+          "name" => "real-node",
+          "test-kitchen-mode" => "real",
+          "endpoint" => "10.0.0.1:22",
+          "credential-map-file" => "test/creds.yml",
+          "credential-passing-mode" => "pass-by-magic"
+        )
         err = _(proc { node.validate! }).must_raise Kitchen::UserError
         _(err.message).must_include "pass-by-magic"
+      end
+
+      it "does NOT raise for container-mode nodes even with unknown passing mode" do
+        node = Kitchen::Agentless::RemoteNode.new(container_config("credential-passing-mode" => "pass-by-magic"))
+        _(proc { node.validate! }).must_be_silent
       end
     end
 

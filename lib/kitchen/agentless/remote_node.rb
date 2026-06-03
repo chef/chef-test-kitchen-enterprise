@@ -123,6 +123,11 @@ module Kitchen
       end
 
       def validate_credential_fields!
+        # Container mode uses docker:// transport — no credentials needed.
+        # credential-map-file and credential-passing-mode are ignored for
+        # container nodes.
+        return if container_mode?
+
         if credential_map_file.nil? || credential_map_file.empty?
           raise Kitchen::UserError,
             "Remote node '#{name}' is missing required field 'credential-map-file'"
