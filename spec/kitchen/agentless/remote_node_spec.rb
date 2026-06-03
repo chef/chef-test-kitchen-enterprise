@@ -195,5 +195,69 @@ describe Kitchen::Agentless::RemoteNode do
         _(proc { node.validate! }).must_be_silent
       end
     end
+
+    describe "WinRM transport support" do
+      let(:winrm_real_config) do
+        {
+          "name" => "win-server-1",
+          "test-kitchen-mode" => "real",
+          "transport" => "winrm",
+          "endpoint" => "10.0.0.5:5985",
+          "credential-map-file" => "test/creds.yml",
+          "credential-passing-mode" => "pass-by-creds-file",
+        }
+      end
+
+      it "accepts transport: winrm" do
+        node = Kitchen::Agentless::RemoteNode.new(winrm_real_config)
+        _(node.transport).must_equal "winrm"
+        _(proc { node.validate! }).must_be_silent
+      end
+
+      it "winrm? returns true for transport: winrm" do
+        node = Kitchen::Agentless::RemoteNode.new(winrm_real_config)
+        _(node.winrm?).must_equal true
+        _(node.ssh?).must_equal false
+      end
+
+      it "accepts transport: ssh explicitly" do
+        config = winrm_real_config.merge("transport" => "ssh", "endpoint" => "10.0.0.5:22")
+        node = Kitchen::Agentless::RemoteNode.new(config)
+        _(node.transport).must_equal "ssh"
+        _(node.ssh?).must_equal true
+        _(node.winrm?).must_equal false
+      end
+
+      it "ssh? returns true when transport is not set" do
+        config = winrm_real_config.reject { |k, _| k == "transport" }
+        node = Kitchen::Agentless::RemoteNode.new(config)
+        _(node.transport).must_be_nil
+        _(node.ssh?).must_equal true
+        _(node.winrm?).must_equal false
+      end
+
+      it "raises UserError for an invalid transport value" do
+        config = winrm_real_config.merge("transport" => "rdp")
+        node = Kitchen::Agentless::RemoteNode.new(config)
+        err = _(proc { node.validate! }).must_raise Kitchen::UserError
+        _(err.message).must_include "rdp"
+        _(err.message).must_include "ssh"
+        _(err.message).must_include "winrm"
+      end
+
+      it "accepts WinRM container-mode node" do
+        config = {
+          "name" => "win-ctr",
+          "test-kitchen-mode" => "container",
+          "transport" => "winrm",
+          "test-kitchen-image" => "mcr.microsoft.com/windows/servercore:ltsc2022",
+          "credential-map-file" => "test/creds.yml",
+          "credential-passing-mode" => "pass-by-creds-file",
+        }
+        node = Kitchen::Agentless::RemoteNode.new(config)
+        _(node.winrm?).must_equal true
+        _(proc { node.validate! }).must_be_silent
+      end
+    end
   end
 end
