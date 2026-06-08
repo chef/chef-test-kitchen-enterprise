@@ -36,7 +36,6 @@ function Invoke-Build {
         $env:Path += ";c:\\Program Files\\Git\\bin"
         Push-Location $project_root
         $env:GEM_HOME = "$HAB_CACHE_SRC_PATH/$pkg_dirname/vendor"
-        $env:CHEF_TEST_KITCHEN_ENTERPRISE = "true"
 
         Write-BuildLine " ** Enabling Windows long path support"
         # Enable Git long paths for bundler git operations
@@ -130,20 +129,9 @@ function Invoke-Install {
             Copy-Item -Path "$pkg_prefix/Gemfile.lock" -Destination (Join-Path $bundleDir "Gemfile.lock") -Force
         }
 
-        # Ensure appbundler and installed gems resolve from the packaged vendor path.
-        if ([string]::IsNullOrEmpty($env:GEM_PATH)) {
-            $env:GEM_PATH = "$pkg_prefix/vendor"
-        } else {
-            $env:GEM_PATH = "$pkg_prefix/vendor;$env:GEM_PATH"
-        }
+        # Resolve all gems from the packaged vendor path.
+        $env:GEM_PATH = "$pkg_prefix/vendor"
         $env:GEM_HOME = "$pkg_prefix/vendor"
-
-        & gem list -i "^racc$" | Out-Null
-        if ($LASTEXITCODE -ne 0) {
-            Write-BuildLine "** Installing racc gem for appbundler lockfile generation"
-            gem install racc --no-document --force --install-dir "$env:GEM_HOME" --ignore-dependencies
-            if ($LASTEXITCODE -ne 0) { Exit $LASTEXITCODE }
-        }
 
         if (-not (Test-Path "$pkg_prefix/bin")) {
             New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
@@ -187,9 +175,6 @@ function Invoke-After {
     # Remove the byproducts of compiling gems with extensions
     Get-ChildItem $pkg_prefix/vendor/gems -Include @("gem_make.out", "mkmf.log", "Makefile") -File -Recurse `
         | Remove-Item -Force
-    # Remove vendored .github directories to reduce scanner false positives.
-    Get-ChildItem $pkg_prefix/vendor -Filter ".github" -Directory -Recurse -ErrorAction SilentlyContinue `
-        | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
 }
 
 function Install-ChefOfficialDistribution {
