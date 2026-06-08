@@ -59,7 +59,7 @@ do_build() {
   if [[ ! -f Gemfile.lock ]]; then
     bundle lock
   fi
-  ruby ./cleanup_lint_roller.rb
+  ruby ./cleanup_gem_lockfiles.rb
   ruby ./post-bundle-install.rb
 
   gem build chef-test-kitchen-enterprise.gemspec
