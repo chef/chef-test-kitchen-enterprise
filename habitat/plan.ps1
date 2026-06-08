@@ -129,16 +129,19 @@ function Invoke-Install {
             Copy-Item -Path "$pkg_prefix/Gemfile.lock" -Destination (Join-Path $bundleDir "Gemfile.lock") -Force
         }
 
-        # Resolve all gems from the packaged vendor path.
-        $env:GEM_PATH = "$pkg_prefix/vendor"
+        $rubyPkgPath = (& hab pkg path core/ruby3_4-plus-devkit).Trim()
+        $rubyExe = Join-Path $rubyPkgPath "bin\ruby.exe"
+        $defaultGemPath = & $rubyExe -e "require 'rubygems'; print Gem.default_dir"
+
+        # Keep packaged gems first, but include Ruby default gems so appbundler can
+        # resolve stdlib-shipped gems (for example racc on Ruby 3.4).
+        $env:GEM_PATH = "$pkg_prefix/vendor;$defaultGemPath"
         $env:GEM_HOME = "$pkg_prefix/vendor"
 
         if (-not (Test-Path "$pkg_prefix/bin")) {
             New-Item -ItemType Directory -Path "$pkg_prefix/bin" | Out-Null
         }
 
-        $rubyPkgPath = (& hab pkg path core/ruby3_4-plus-devkit).Trim()
-        $rubyExe = Join-Path $rubyPkgPath "bin\ruby.exe"
         $appbundler = Join-Path $pkg_prefix "vendor\bin\appbundler"
 
         Write-BuildLine "** generating binstubs for chef-test-kitchen-enterprise with precise version pins"
