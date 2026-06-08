@@ -12,7 +12,6 @@ pkg_bin_dirs=(
 pkg_build_deps=(
   core/make
   core/bash
-  core/sed
   core/gcc
   core/git
 )
