@@ -60,7 +60,6 @@ end
 
 group :packaging do
   gem "appbundler"
-  gem "racc"
 end
 
 group :test do
