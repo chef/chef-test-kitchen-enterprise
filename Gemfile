@@ -75,4 +75,3 @@ group :test do
   gem "mocha",     ">= 2.0", "< 4.0"
   gem "irb"
 end
-gem "chef-test-kitchen-enterprise"
