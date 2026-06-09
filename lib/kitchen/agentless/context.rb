@@ -28,6 +28,8 @@ module Kitchen
     #   - **Array** (Pool Mode): nodes are assigned round-robin to Kitchen instances.
     #     Assignment strategy is implemented in CHEF-34610.
     #   - **Hash** (Explicit Mode): nodes keyed by instance name.
+    #     Each value may be a single Hash (one node) or an Array of Hashes
+    #     (multiple nodes for the same instance).
     #     Assignment strategy is implemented in CHEF-34610.
     #
     # This class is responsible for schema parsing and validation only.
@@ -82,9 +84,28 @@ module Kitchen
           nodes = raw.map { |entry| RemoteNode.new(entry) }
           [:pool, nodes]
         elsif raw.is_a?(Hash)
-          nodes = raw.map do |instance_name, entry|
-            merged = (entry || {}).merge("name" => instance_name.to_s)
-            RemoteNode.new(merged)
+          nodes = raw.flat_map do |instance_name, value|
+            key = instance_name.to_s
+            entries = value.is_a?(Array) ? value : [value]
+
+            raise Kitchen::UserError,
+              "agentless.remote_nodes['#{key}'] must not be an empty Array" if entries.empty?
+
+            entries.each_with_index.map do |entry, idx|
+              raise Kitchen::UserError,
+                "agentless.remote_nodes['#{key}'][#{idx}] must be a Hash, got #{entry.class}" unless entry.is_a?(Hash)
+
+              multi = entries.size > 1
+              # Use a meaningful name: explicit per-entry 'name' field, or synthesise one.
+              node_name = entry["name"] || entry[:name] || (multi ? "#{key}[#{idx}]" : key)
+              node_id   = multi ? "#{key}[#{idx}]" : key
+              merged    = entry.merge(
+                "name"           => node_name,
+                "node_id"        => node_id,
+                "assignment_key" => key
+              )
+              RemoteNode.new(merged)
+            end
           end
           [:explicit, nodes]
         else

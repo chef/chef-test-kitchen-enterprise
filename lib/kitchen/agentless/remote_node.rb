@@ -36,7 +36,7 @@ module Kitchen
       WINRM_DEFAULT_PORT = 5985
       SSH_DEFAULT_PORT   = 22
 
-      attr_reader :name, :mode, :image, :fqdn, :endpoint,
+      attr_reader :name, :node_id, :assignment_key, :mode, :image, :fqdn, :endpoint,
         :credential_map_file, :credential_passing_mode,
         :compliance_mode_cred_file, :transport
 
@@ -44,6 +44,14 @@ module Kitchen
       # @raise [Kitchen::UserError] if required fields are missing or invalid
       def initialize(config)
         @name                    = config["name"] || config[:name]
+        # node_id uniquely identifies this node in state files and logs.
+        # For single-node explicit entries it equals name; for multi-node
+        # explicit entries (Array value) it is "<instance_key>[<index>]".
+        @node_id                 = config["node_id"] || config[:node_id] || @name
+        # assignment_key is the kitchen instance name used for explicit lookup.
+        # Equals name for single-node entries; equals the instance key for
+        # multi-node entries where name may differ from the instance key.
+        @assignment_key          = config["assignment_key"] || config[:assignment_key] || @name
         @mode                    = config["test-kitchen-mode"] || config[:"test-kitchen-mode"]
         @image                   = config["test-kitchen-image"] || config[:"test-kitchen-image"]
         @fqdn                    = config["fqdn"] || config[:fqdn]
