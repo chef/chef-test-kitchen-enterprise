@@ -1,18 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.13 -->
-## [v2.0.13](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.13) (2026-06-04)
+<!-- latest_release 2.0.14 -->
+## [v2.0.14](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.14) (2026-06-09)
 
 #### Merged Pull Requests
-- CHEF-34831: Fix security scan findings in gem dependencies [#108](https://github.com/chef/chef-test-kitchen-enterprise/pull/108) ([nikhil2611](https://github.com/nikhil2611))
-- shift image config to the right [#85](https://github.com/chef/chef-test-kitchen-enterprise/pull/85) ([rishichawda](https://github.com/rishichawda))
+- CHEF-35087 - Use appbundler in hab packaging and install latest Habitat in Windows test [#106](https://github.com/chef/chef-test-kitchen-enterprise/pull/106) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-35087 - Use appbundler in hab packaging and install latest Habitat in Windows test [#106](https://github.com/chef/chef-test-kitchen-enterprise/pull/106) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.14 -->
 - CHEF-34831: Fix security scan findings in gem dependencies [#108](https://github.com/chef/chef-test-kitchen-enterprise/pull/108) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.13 -->
 - shift image config to the right [#85](https://github.com/chef/chef-test-kitchen-enterprise/pull/85) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
 - add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
