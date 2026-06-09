@@ -54,6 +54,11 @@ do_build() {
   bundle config --local silence_root_warning 1
 
   bundle install
+  # appbundler requires Gemfile.lock in BUNDLE_DIR. Generate it only when missing
+  # so this stays aligned with chef pattern if a lockfile is later committed.
+  if [[ ! -f Gemfile.lock ]]; then
+    bundle lock
+  fi
   ruby ./cleanup_gem_lockfiles.rb
   ruby ./post-bundle-install.rb
 
@@ -82,43 +87,24 @@ do_install() {
 
   make_pkg_official_distrib
 
-  wrap_ruby_kitchen
+  # appbundler requires Gemfile.lock in the same BUNDLE_DIR we pass below.
+  if [[ ! -f "$HAB_CACHE_SRC_PATH/$pkg_dirname/Gemfile.lock" ]]; then
+    build_line "Gemfile.lock missing in $HAB_CACHE_SRC_PATH/$pkg_dirname; generating it now"
+    (cd "$HAB_CACHE_SRC_PATH/$pkg_dirname" && bundle lock)
+  fi
+
+  build_line "Generating appbundler binstubs with precise version pins"
+  "$(pkg_path_for $_ruby_pkg)/bin/ruby" "$pkg_prefix/vendor/bin/appbundler" "$HAB_CACHE_SRC_PATH/$pkg_dirname" "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
+
+  build_line "Patching generated binstubs for Habitat runtime env"
+  for binstub in "$pkg_prefix"/bin/*; do
+    if [[ -f "$binstub" ]]; then
+      sed -i "/require \"rubygems\"/r $PLAN_CONTEXT/binstub_patch.rb" "$binstub"
+    fi
+  done
+
   set_runtime_env "GEM_PATH" "${pkg_prefix}/vendor"
-}
-
-wrap_ruby_kitchen() {
-  local bin="$pkg_prefix/bin/kitchen"
-  local real_bin="$GEM_HOME/gems/chef-test-kitchen-enterprise-$(pkg_version)/bin/kitchen"
-  wrap_bin_with_ruby "$bin" "$real_bin"
-}
-
-wrap_bin_with_ruby() {
-  local bin="$1"
-  local real_bin="$2"
-  local ruby_default_gem_dir
-
-  # Include the packaged Ruby's default gem directory in GEM_PATH.
-  ruby_default_gem_dir="$(env -u GEM_HOME -u GEM_PATH "$(pkg_path_for $_ruby_pkg)/bin/ruby" -rrubygems -e 'puts Gem.default_dir')"
-  build_line "Detected Ruby default gem dir: ${ruby_default_gem_dir}"
-
-  build_line "Adding wrapper $bin to $real_bin"
-  cat <<EOF > "$bin"
-#!$(pkg_path_for core/bash)/bin/bash
-set -e
-
-# Set binary path that allows chef-test-kitchen-enterprise to use non-Hab pkg binaries
-export PATH="/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:\$PATH"
-
-# Set Ruby paths defined from 'do_setup_environment()'
-export GEM_HOME="$pkg_prefix/vendor"
-export GEM_PATH="\$GEM_HOME:${ruby_default_gem_dir}"
-
-# Set encoding to UTF-8 to handle non-ASCII characters in gem files
-export RUBYOPT="-Eutf-8"
-
-exec $(pkg_path_for $_ruby_pkg)/bin/ruby $real_bin \$@
-EOF
-  chmod -v 755 "$bin"
+  set_runtime_env "APPBUNDLER_ALLOW_RVM" "true"
 }
 
 make_pkg_official_distrib() {
@@ -130,8 +116,8 @@ make_pkg_official_distrib() {
 }
 
 do_after() {
-  # Remove .github directories from vendored gems to reduce package size and avoid scanner noise
-  find "$pkg_prefix/vendor/gems" -name ".github" -type d -exec rm -rf {} + 2>/dev/null || true
+  build_line "Removing .github directories from vendored gems"
+  find "$pkg_prefix/vendor" -type d -name ".github" -exec rm -rf {} + 2>/dev/null || true
 }
 
 do_strip() {

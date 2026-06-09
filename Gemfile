@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 
 gemspec name: 'chef-test-kitchen-enterprise'
-gemspec name: 'test-kitchen' # Alias gemspec to satisfy transitive dependencies on test-kitchen
+# The alias gemspec is present in the repository root, but not inside the
+# installed chef-test-kitchen-enterprise gem payload used by appbundler.
+gemspec name: 'test-kitchen' if File.exist?(File.expand_path('test-kitchen.gemspec', __dir__))
 
 # net-ssh 7.3.1 has a regression in Net::SSH::Test::Extensions::PacketStream#idle!
 # where StringIO#string= resets pos to 0 before self.pos = pos can restore it,
@@ -54,6 +56,10 @@ end
 
 group :cookstyle do
   gem "cookstyle", ">= 8.2", "< 9.0"
+end
+
+group :packaging do
+  gem "appbundler"
 end
 
 group :test do
