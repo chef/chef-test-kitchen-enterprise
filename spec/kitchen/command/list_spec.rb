@@ -47,20 +47,27 @@ module Kitchen
       # Helpers
       # ---------------------------------------------------------------------------
 
-      # Stub a provisioner that does NOT have agentless_node_status (standard).
+      # Stub a provisioner that does NOT have agentless support (standard).
       def stub_standard_provisioner(name = "ChefInfra")
         p = stub
         p.stubs(:name).returns(name)
+        p.stubs(:respond_to?).with(:render_list_section).returns(false)
+        p.stubs(:respond_to?).with(:render_pool_overflow_section).returns(false)
         p.stubs(:respond_to?).with(:agentless_node_status).returns(false)
         p
       end
 
-      # Stub an agentless provisioner with the given node list.
+      # Stub an agentless provisioner. render_list_section delegates to the shell
+      # via KCAI; here we just stub it to be a no-op so we can verify it is called.
       def stub_agentless_provisioner(nodes, name = "ChefInfraAgentless")
         p = stub
         p.stubs(:name).returns(name)
+        p.stubs(:respond_to?).with(:render_list_section).returns(true)
+        p.stubs(:respond_to?).with(:render_pool_overflow_section).returns(true)
         p.stubs(:respond_to?).with(:agentless_node_status).returns(true)
         p.stubs(:agentless_node_status).returns(nodes)
+        p.stubs(:render_list_section)
+        p.stubs(:render_pool_overflow_section)
         p
       end
 
@@ -96,163 +103,66 @@ module Kitchen
       end
 
       # ---------------------------------------------------------------------------
-      # #list_remote_nodes — display path
+      # #list_remote_nodes — delegation to provisioner
       # ---------------------------------------------------------------------------
 
       describe "#list_remote_nodes" do
         it "outputs nothing when no instances use an agentless provisioner" do
           prov = stub_standard_provisioner
           instances = [stub_instance("default-ubuntu-2404", prov)]
-          cmd, shell = build_list_cmd(instances)
+          cmd, _shell = build_list_cmd(instances)
+          prov.expects(:render_list_section).never
           cmd.send(:list_remote_nodes, instances)
-          _(shell.table_calls).must_be_empty
         end
 
-        it "outputs nothing when the agentless provisioner returns an empty array" do
-          prov = stub_agentless_provisioner([])
-          instances = [stub_instance("default-ubuntu-2404", prov)]
-          cmd, shell = build_list_cmd(instances)
-          cmd.send(:list_remote_nodes, instances)
-          _(shell.table_calls).must_be_empty
-        end
-
-        it "calls print_table once for an agentless instance with nodes" do
-          nodes = [
-            {
-              name: "edge1", mode: "container", endpoint: "172.17.0.3:22",
-              credentials: "Configured", last_converge: "-", status: "Set Up"
-            },
-          ]
+        it "calls render_list_section on each agentless provisioner" do
+          nodes = [{ name: "edge1", node_id: "id1", mode: "container",
+                     endpoint: "172.17.0.3:22", credentials: "Configured",
+                     last_converge: "-", status: "Created" }]
           prov = stub_agentless_provisioner(nodes)
           instance = stub_instance("default-ubuntu-2404", prov)
           cmd, shell = build_list_cmd([instance])
+          expected_map = { "id1" => "default-ubuntu-2404" }
+          prov.expects(:render_list_section).with(shell, "default-ubuntu-2404", expected_map)
           cmd.send(:list_remote_nodes, [instance])
-          # One print_table call for the one agentless instance
-          _(shell.table_calls.size).must_equal 1
         end
 
-        it "prints a table with one data row per remote node (plus a header row)" do
-          nodes = [
-            {
-              name: "node-a", mode: "real", endpoint: "10.0.0.1:22",
-              credentials: "<None>", last_converge: "-", status: "Created"
-            },
-            {
-              name: "node-b", mode: "container", endpoint: "172.17.0.4:22",
-              credentials: "Configured", last_converge: "2026-01-01T00:00:00Z", status: "Converged"
-            },
-          ]
-          prov = stub_agentless_provisioner(nodes)
-          instance = stub_instance("default-ubuntu-2404", prov)
-          cmd, shell = build_list_cmd([instance])
-          cmd.send(:list_remote_nodes, [instance])
+        it "builds a first_seen map across instances and passes it to each provisioner" do
+          node_id = "shared-node-id"
+          nodes_a = [{ name: "n1", node_id: node_id, mode: "container",
+                       endpoint: "-", credentials: "Container Key",
+                       last_converge: "-", status: "<Not Created>" }]
+          nodes_b = [{ name: "n1", node_id: node_id, mode: "container",
+                       endpoint: "-", credentials: "Container Key",
+                       last_converge: "-", status: "<Not Created>" }]
+          prov_a = stub_agentless_provisioner(nodes_a)
+          prov_b = stub_agentless_provisioner(nodes_b)
+          inst_a = stub_instance("default-ubuntu-2404", prov_a)
+          inst_b = stub_instance("default-almalinux-9", prov_b)
+          cmd, shell = build_list_cmd([inst_a, inst_b])
 
-          # 1 header row + 2 data rows
-          rows = shell.table_calls.first
-          _(rows.size).must_equal 3
-          # Node names appear in data rows
-          data_rows = rows.drop(1)
-          _(data_rows.any? { |r| r.first.to_s.include?("node-a") }).must_equal true
-          _(data_rows.any? { |r| r.first.to_s.include?("node-b") }).must_equal true
+          expected_map = { node_id => "default-ubuntu-2404" }
+          prov_a.expects(:render_list_section).with(shell, "default-ubuntu-2404", expected_map)
+          prov_b.expects(:render_list_section).with(shell, "default-almalinux-9", expected_map)
+
+          cmd.send(:list_remote_nodes, [inst_a, inst_b])
         end
 
-        it "shows 'Configured' in the credentials column for real nodes with credential-map-file" do
-          nodes = [
-            {
-              name: "n1", mode: "real", endpoint: "10.0.0.1:22",
-              credentials: "Configured", last_converge: "-", status: "Set Up"
-            },
-          ]
-          prov = stub_agentless_provisioner(nodes)
-          instance = stub_instance("default-ubuntu-2404", prov)
-          cmd, shell = build_list_cmd([instance])
-          cmd.send(:list_remote_nodes, [instance])
-
-          data_row = shell.table_calls.first[1] # first data row (after header)
-          _(data_row.any? { |c| c.to_s.include?("Configured") }).must_equal true
-        end
-
-        it "shows '<None>' in the credentials column for real nodes without credential-map-file" do
-          nodes = [
-            {
-              name: "n1", mode: "real", endpoint: "10.0.0.1:22",
-              credentials: "<None>", last_converge: "-", status: "Created"
-            },
-          ]
-          prov = stub_agentless_provisioner(nodes)
-          instance = stub_instance("default-ubuntu-2404", prov)
-          cmd, shell = build_list_cmd([instance])
-          cmd.send(:list_remote_nodes, [instance])
-
-          data_row = shell.table_calls.first[1]
-          _(data_row.any? { |c| c.to_s.include?("<None>") }).must_equal true
-        end
-
-        it "calls print_table once per agentless instance with nodes" do
-          nodes1 = [{ name: "n1", mode: "container", endpoint: "172.17.0.2:22",
-                      credentials: "Container Key", last_converge: "-", status: "Set Up" }]
-          nodes2 = [{ name: "n2", mode: "real", endpoint: "10.0.0.2:22",
-                      credentials: "<None>", last_converge: "-", status: "<Not Created>" }]
+        it "skips standard instances — only calls render on agentless provisioners" do
+          nodes = [{ name: "n1", node_id: "id1", mode: "container",
+                     endpoint: "-", credentials: "Container Key",
+                     last_converge: "-", status: "<Not Created>" }]
+          std_prov = stub_standard_provisioner
+          agl_prov = stub_agentless_provisioner(nodes)
           instances = [
-            stub_instance("default-ubuntu-2404", stub_agentless_provisioner(nodes1)),
-            stub_instance("default-almalinux-9", stub_agentless_provisioner(nodes2)),
+            stub_instance("default-ubuntu-2404", std_prov),
+            stub_instance("default-almalinux-9", agl_prov),
           ]
           cmd, shell = build_list_cmd(instances)
+          expected_map = { "id1" => "default-almalinux-9" }
+          std_prov.expects(:render_list_section).never
+          agl_prov.expects(:render_list_section).with(shell, "default-almalinux-9", expected_map)
           cmd.send(:list_remote_nodes, instances)
-          _(shell.table_calls.size).must_equal 2
-        end
-
-        it "skips standard instances — only prints tables for agentless ones" do
-          agentless_nodes = [{ name: "n1", mode: "container", endpoint: "-",
-                               credentials: "Container Key", last_converge: "-", status: "<Not Created>" }]
-          instances = [
-            stub_instance("default-ubuntu-2404", stub_standard_provisioner),
-            stub_instance("default-almalinux-9", stub_agentless_provisioner(agentless_nodes)),
-          ]
-          cmd, shell = build_list_cmd(instances)
-          cmd.send(:list_remote_nodes, instances)
-          # Only one print_table call (for the agentless instance)
-          _(shell.table_calls.size).must_equal 1
-        end
-      end
-
-      # ---------------------------------------------------------------------------
-      # #format_node_status
-      # ---------------------------------------------------------------------------
-
-      describe "#format_node_status" do
-        let(:cmd) do
-          c = List.allocate
-          c.instance_variable_set(:@shell, TestShell.new)
-          c
-        end
-
-        it "returns 'Converged' for Converged status" do
-          _(cmd.send(:format_node_status, "Converged")).must_equal "Converged"
-        end
-
-        it "returns 'Set Up' for Set Up status" do
-          _(cmd.send(:format_node_status, "Set Up")).must_equal "Set Up"
-        end
-
-        it "returns 'Created' for Created status" do
-          _(cmd.send(:format_node_status, "Created")).must_equal "Created"
-        end
-
-        it "returns 'Ready' for Ready status (real nodes post-create)" do
-          _(cmd.send(:format_node_status, "Ready")).must_equal "Ready"
-        end
-
-        it "returns '<Not Created>' for <Not Created> status" do
-          _(cmd.send(:format_node_status, "<Not Created>")).must_equal "<Not Created>"
-        end
-
-        it "returns 'Not Set Up' for Not Set Up status (real nodes pre-create)" do
-          _(cmd.send(:format_node_status, "Not Set Up")).must_equal "Not Set Up"
-        end
-
-        it "returns the raw string for an unknown status" do
-          _(cmd.send(:format_node_status, "SomethingElse")).must_equal "SomethingElse"
         end
       end
 

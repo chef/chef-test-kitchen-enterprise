@@ -1305,6 +1305,81 @@ describe Kitchen::Instance do
     end
   end
 
+  describe "provisioner lifecycle hooks via perform_action" do
+    let(:hooked_provisioner) do
+      p = provisioner.dup
+      p.instance_variable_set(:@hooks_called, [])
+      p.define_singleton_method(:before_create)  { |_s| @hooks_called << :before_create }
+      p.define_singleton_method(:after_create)   { |_s| @hooks_called << :after_create }
+      p.define_singleton_method(:before_destroy) { |_s| @hooks_called << :before_destroy }
+      p.define_singleton_method(:after_destroy)  { |_s| @hooks_called << :after_destroy }
+      p.define_singleton_method(:hooks_called)   { @hooks_called }
+      p
+    end
+
+    let(:hooked_instance) do
+      Kitchen::Instance.new(
+        suite: suite,
+        platform: platform,
+        driver: driver,
+        provisioner: hooked_provisioner,
+        verifier: verifier,
+        transport: transport,
+        state_file: state_file,
+        lifecycle_hooks: lifecycle_hooks
+      )
+    end
+
+    it "calls provisioner.before_create before driver.create" do
+      order = []
+      hooked_provisioner.define_singleton_method(:before_create) { |_s| order << :before_create }
+      driver.define_singleton_method(:create)                    { |_s| order << :driver_create }
+
+      hooked_instance.create
+
+      _(order).must_equal %i{before_create driver_create}
+    end
+
+    it "calls provisioner.after_create after driver.create" do
+      order = []
+      driver.define_singleton_method(:create)                   { |_s| order << :driver_create }
+      hooked_provisioner.define_singleton_method(:after_create) { |_s| order << :after_create }
+
+      hooked_instance.create
+
+      _(order).must_equal %i{driver_create after_create}
+    end
+
+    it "calls provisioner.before_destroy before driver.destroy" do
+      order = []
+      hooked_provisioner.define_singleton_method(:before_destroy) { |_s| order << :before_destroy }
+      driver.define_singleton_method(:destroy)                    { |_s| order << :driver_destroy }
+
+      hooked_instance.destroy
+
+      _(order).must_equal %i{before_destroy driver_destroy}
+    end
+
+    it "calls provisioner.after_destroy after driver.destroy" do
+      order = []
+      driver.define_singleton_method(:destroy)                   { |_s| order << :driver_destroy }
+      hooked_provisioner.define_singleton_method(:after_destroy) { |_s| order << :after_destroy }
+
+      hooked_instance.destroy
+
+      _(order).must_equal %i{driver_destroy after_destroy}
+    end
+
+    it "does not call before_create when provisioner does not respond to it" do
+      # default provisioner (no hooks defined) — must not raise
+      instance.create
+    end
+
+    it "does not call before_destroy when provisioner does not respond to it" do
+      instance.destroy
+    end
+  end
+
   describe Kitchen::Instance::FSM do
     let(:fsm) { Kitchen::Instance::FSM }
 
