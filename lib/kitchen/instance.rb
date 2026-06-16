@@ -402,22 +402,13 @@ module Kitchen
 
     # Perform the create action.
     #
-    # After the driver creates the instance, calls +provisioner.after_create(state)+
-    # if the provisioner responds to that method. This allows agentless provisioners
-    # to record remote-node state and log topology details immediately after the
-    # source container is available.
+    # Perform the create action.
     #
     # @see Driver::Base#create
     # @return [self] this instance, used to chain actions
     # @api private
     def create_action
-      banner "Creating #{to_str}..."
-      elapsed = action(:create) do |state|
-        driver.create(state)
-        provisioner.after_create(state) if provisioner.respond_to?(:after_create)
-      end
-      info("Finished creating #{to_str} #{Util.duration(elapsed.real)}.")
-      self
+      perform_action(:create, "Creating")
     end
 
     # Perform the converge action.
@@ -443,8 +434,8 @@ module Kitchen
     # Perform the setup action.
     #
     # For legacy SSH-base drivers the original setup path is preserved. For all
-    # other drivers, calls +provisioner.setup(state)+ when the provisioner
-    # responds to that method. This allows agentless provisioners to upload
+    # other drivers, calls +provisioner.after_setup(state)+ when the provisioner
+    # responds to that method. This allows provisioner plugins to upload
     # credentials and perform any pre-converge source-container preparation.
     #
     # @see Driver::Base#setup
@@ -454,7 +445,7 @@ module Kitchen
       banner "Setting up #{to_str}..."
       elapsed = action(:setup) do |state|
         legacy_ssh_base_setup(state) if legacy_ssh_base_driver?
-        provisioner.setup(state) if provisioner.respond_to?(:setup)
+        provisioner.after_setup(state) if provisioner.respond_to?(:after_setup)
       end
       info("Finished setting up #{to_str} #{Util.duration(elapsed.real)}.")
       self
@@ -498,36 +489,33 @@ module Kitchen
 
     # Perform the destroy action.
     #
-    # Calls +provisioner.before_destroy(state)+ when the provisioner responds
-    # to that method, giving agentless provisioners a chance to remove uploaded
-    # credentials from the source container before it is torn down. The driver
-    # destroy and state-file cleanup are then performed in the normal way.
-    #
     # @see Driver::Base#destroy
     # @return [self] this instance, used to chain actions
     # @api private
     def destroy_action
-      banner "Destroying #{to_str}..."
-      elapsed = action(:destroy) do |state|
-        provisioner.before_destroy(state) if provisioner.respond_to?(:before_destroy)
-        driver.destroy(state)
-      end
-      info("Finished destroying #{to_str} #{Util.duration(elapsed.real)}.")
-      state_file.destroy
-      self
+      perform_action(:destroy, "Destroying") { state_file.destroy }
     end
 
     # Perform an arbitrary action and provide useful logging.
     #
+    # Calls +provisioner.before_<verb>(state)+ before the driver action and
+    # +provisioner.after_<verb>(state)+ after it, when the provisioner responds
+    # to those methods. This allows provisioner plugins to hook any lifecycle
+    # phase without modifying this class.
+    #
     # @param verb [Symbol] the action to be performed
     # @param output_verb [String] a verb representing the action, suitable for
     #   use in output logging
-    # @yield perform optional work just after action has complted
+    # @yield perform optional work just after action has completed
     # @return [self] this instance, used to chain actions
     # @api private
     def perform_action(verb, output_verb)
       banner "#{output_verb} #{to_str}..."
-      elapsed = action(verb) { |state| driver.public_send(verb, state) }
+      elapsed = action(verb) do |state|
+        provisioner.public_send(:"before_#{verb}", state) if provisioner.respond_to?(:"before_#{verb}")
+        driver.public_send(verb, state)
+        provisioner.public_send(:"after_#{verb}", state) if provisioner.respond_to?(:"after_#{verb}")
+      end
       info("Finished #{output_verb.downcase} #{to_str}" \
         " #{Util.duration(elapsed.real)}.")
       yield if block_given?

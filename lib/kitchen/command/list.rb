@@ -17,6 +17,7 @@
 
 require_relative "../command"
 require "json" unless defined?(JSON)
+require "set" unless defined?(Set)
 
 module Kitchen
   module Command
@@ -136,134 +137,44 @@ module Kitchen
       end
 
       # Prints a "Remote Nodes" sub-table for each instance whose provisioner
-      # supports {#agentless_node_status}.  Called after the main instance table.
+      # supports {#render_list_section}. Called after the main instance table.
       #
-      # When the same pool node is assigned to multiple instances (pool smaller
-      # than instance count), subsequent occurrences show a "(shared with X)"
-      # annotation instead of repeating the full row.
+      # Builds a cross-instance shared-node map (node_id → first instance name)
+      # so pool nodes assigned to multiple instances are annotated correctly,
+      # then delegates all rendering to the provisioner.
       #
-      # Outputs nothing if no instance is running in agentless mode or if all
-      # provisioners return an empty node list.
+      # Outputs nothing if no instance uses an agentless provisioner.
       #
       # @param result [Array<Instance>] array of instances from parse_subcommand
       # @api private
       def list_remote_nodes(result)
-        agentless_instances = Array(result).select do |i|
-          i.provisioner.respond_to?(:agentless_node_status)
-        end
-        return if agentless_instances.empty?
+        agentless = Array(result).select { |i| i.provisioner.respond_to?(:render_list_section) }
+        return if agentless.empty?
 
-        # Build node_id → first instance name for shared-node detection.
-        node_first_seen = {}
-        agentless_instances.each do |inst|
-          (inst.provisioner.agentless_node_status || []).each do |n|
-            node_first_seen[n[:node_id]] ||= inst.name
-          end
+        first_seen = agentless.each_with_object({}) do |i, map|
+          (i.provisioner.agentless_node_status || []).each { |n| map[n[:node_id]] ||= i.name }
         end
 
-        agentless_instances.each do |instance|
-          nodes = instance.provisioner.agentless_node_status
-          next if nodes.nil? || nodes.empty?
-
-          puts ""
-          puts colorize("Remote Nodes: #{instance.name}", :green)
-
-          table = [[
-            colorize("Node", :green),
-            colorize("Mode", :green),
-            colorize("Endpoint", :green),
-            colorize("Credentials", :green),
-            colorize("Status", :green),
-            colorize("Last Converge", :green),
-          ]]
-
-          nodes.each do |n|
-            first_seen = node_first_seen[n[:node_id]]
-            shared     = first_seen && first_seen != instance.name
-
-            if shared
-              table << [
-                color_pad("#{n[:name]} (shared with #{first_seen})"),
-                color_pad(n[:mode].to_s),
-                color_pad("-"),
-                color_pad("-"),
-                colorize("Shared", :yellow),
-                color_pad("-"),
-              ]
-            else
-              table << [
-                color_pad(n[:name].to_s),
-                color_pad(n[:mode].to_s),
-                color_pad(n[:endpoint].to_s),
-                color_pad(n[:credentials].to_s),
-                format_node_status(n[:status].to_s),
-                color_pad(n[:last_converge].to_s),
-              ]
-            end
-          end
-
-          print_table(table)
-        end
+        agentless.each { |i| i.provisioner.render_list_section(shell, i.name, first_seen) }
       end
 
-      # Prints an "Unused Pool Nodes" section listing pool nodes that are not
-      # assigned to any Kitchen instance in the current run.
+      # Prints an "Unused Pool Nodes" section for pool nodes not assigned to
+      # any Kitchen instance in the current run.
       #
-      # Only appears when at least one provisioner is in pool mode AND the pool
-      # contains more nodes than there are instances.
+      # Delegates rendering to the first pool-aware provisioner found.
       #
       # @param result [Array<Instance>] array of instances from parse_subcommand
       # @api private
       def list_unused_pool_nodes(result)
-        pool_instances = Array(result).select do |i|
-          i.provisioner.respond_to?(:all_pool_nodes) &&
-            !i.provisioner.all_pool_nodes.nil?
+        inst = Array(result).detect { |i| i.provisioner.respond_to?(:render_pool_overflow_section) }
+        return unless inst
+
+        assigned = Array(result).each_with_object(Set.new) do |i, s|
+          next unless i.provisioner.respond_to?(:agentless_node_status)
+
+          i.provisioner.agentless_node_status.each { |n| s << n[:name] }
         end
-        return if pool_instances.empty?
-
-        assigned_names = pool_instances.flat_map do |i|
-          i.provisioner.agentless_node_status.map { |n| n[:name] }
-        end.to_set
-
-        all_nodes = pool_instances.first.provisioner.all_pool_nodes
-        unused    = all_nodes.reject { |n| assigned_names.include?(n[:name]) }
-        return if unused.empty?
-
-        puts ""
-        puts colorize("Unused Pool Nodes", :yellow)
-
-        table = [[
-          colorize("Node", :yellow),
-          colorize("Mode", :yellow),
-          colorize("Endpoint", :yellow),
-        ]]
-
-        unused.each do |n|
-          table << [
-            color_pad(n[:name].to_s),
-            color_pad(n[:mode].to_s),
-            color_pad(n[:endpoint].to_s),
-          ]
-        end
-
-        print_table(table)
-      end
-
-      # Format and color a remote node status string.
-      #
-      # @param status [String]
-      # @return [String]
-      # @api private
-      def format_node_status(status)
-        case status
-        when "Converged"     then colorize("Converged", :magenta)
-        when "Set Up"        then colorize("Set Up", :blue)
-        when "Created"       then colorize("Created", :cyan)
-        when "Ready"         then colorize("Ready", :green)
-        when "<Not Created>" then colorize("<Not Created>", :red)
-        when "Not Set Up"    then colorize("Not Set Up", :yellow)
-        else colorize(status, :white)
-        end
+        inst.provisioner.render_pool_overflow_section(shell, assigned)
       end
 
       # Outputs a formatted display table.
