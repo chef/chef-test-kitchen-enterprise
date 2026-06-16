@@ -1337,7 +1337,7 @@ describe Kitchen::Instance do
 
       hooked_instance.create
 
-      _(order).must_equal %i[before_create driver_create]
+      _(order).must_equal %i{before_create driver_create}
     end
 
     it "calls provisioner.after_create after driver.create" do
@@ -1347,7 +1347,7 @@ describe Kitchen::Instance do
 
       hooked_instance.create
 
-      _(order).must_equal %i[driver_create after_create]
+      _(order).must_equal %i{driver_create after_create}
     end
 
     it "calls provisioner.before_destroy before driver.destroy" do
@@ -1357,7 +1357,7 @@ describe Kitchen::Instance do
 
       hooked_instance.destroy
 
-      _(order).must_equal %i[before_destroy driver_destroy]
+      _(order).must_equal %i{before_destroy driver_destroy}
     end
 
     it "calls provisioner.after_destroy after driver.destroy" do
@@ -1367,7 +1367,7 @@ describe Kitchen::Instance do
 
       hooked_instance.destroy
 
-      _(order).must_equal %i[driver_destroy after_destroy]
+      _(order).must_equal %i{driver_destroy after_destroy}
     end
 
     it "does not call before_create when provisioner does not respond to it" do
