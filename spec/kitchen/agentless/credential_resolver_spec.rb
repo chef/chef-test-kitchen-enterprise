@@ -187,12 +187,54 @@ describe Kitchen::Agentless::CredentialResolver do
         _(err.message).must_include "ssh-user"
       end
 
-      it "raises UserError when ssh-pass is absent" do
+      it "raises UserError when neither ssh-pass nor ssh-key-file is present" do
         entry = inline_ssh_entry.reject { |k, _| k == "ssh-pass" }
         path = write_credentials({ "remote-nodes" => [entry] })
         resolver = Kitchen::Agentless::CredentialResolver.new(path)
         err = _(proc { resolver.resolve("node1") }).must_raise Kitchen::UserError
         _(err.message).must_include "ssh-pass"
+      end
+    end
+
+    describe "inline SSH with ssh-key-file" do
+      it "accepts ssh-key-file as alternative to ssh-pass" do
+        key_file = Tempfile.new(["test_key", ".pem"])
+        key_file.write("-----BEGIN RSA PRIVATE KEY-----\nfakekey\n-----END RSA PRIVATE KEY-----")
+        key_file.flush
+        entry = { "name" => "node1", "credential-source-type" => "inline",
+                  "transport" => "ssh", "ssh-user" => "admin",
+                  "ssh-key-file" => key_file.path }
+        path = write_credentials({ "remote-nodes" => [entry] })
+        resolver = Kitchen::Agentless::CredentialResolver.new(path)
+        result = resolver.resolve("node1")
+        _(result["ssh-key-file"]).must_equal key_file.path
+        key_file.close
+        key_file.unlink
+      end
+
+      it "raises UserError when ssh-key-file path does not exist" do
+        entry = { "name" => "node1", "credential-source-type" => "inline",
+                  "transport" => "ssh", "ssh-user" => "admin",
+                  "ssh-key-file" => "/nonexistent/path/to/key.pem" }
+        path = write_credentials({ "remote-nodes" => [entry] })
+        resolver = Kitchen::Agentless::CredentialResolver.new(path)
+        err = _(proc { resolver.resolve("node1") }).must_raise Kitchen::UserError
+        _(err.message).must_include "ssh-key-file"
+        _(err.message).must_include "/nonexistent/path/to/key.pem"
+      end
+
+      it "raises UserError when ssh-user is absent even with ssh-key-file" do
+        key_file = Tempfile.new(["test_key", ".pem"])
+        key_file.write("-----BEGIN RSA PRIVATE KEY-----\nfakekey\n-----END RSA PRIVATE KEY-----")
+        key_file.flush
+        entry = { "name" => "node1", "credential-source-type" => "inline",
+                  "transport" => "ssh", "ssh-key-file" => key_file.path }
+        path = write_credentials({ "remote-nodes" => [entry] })
+        resolver = Kitchen::Agentless::CredentialResolver.new(path)
+        err = _(proc { resolver.resolve("node1") }).must_raise Kitchen::UserError
+        _(err.message).must_include "ssh-user"
+        key_file.close
+        key_file.unlink
       end
     end
 

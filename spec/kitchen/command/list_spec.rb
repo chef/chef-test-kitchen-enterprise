@@ -120,7 +120,7 @@ module Kitchen
           nodes = [
             {
               name: "edge1", mode: "container", endpoint: "172.17.0.3:22",
-              credentials_provisioned: true, last_converge: "-", status: "Set Up"
+              credentials: "Configured", last_converge: "-", status: "Set Up"
             },
           ]
           prov = stub_agentless_provisioner(nodes)
@@ -135,11 +135,11 @@ module Kitchen
           nodes = [
             {
               name: "node-a", mode: "real", endpoint: "10.0.0.1:22",
-              credentials_provisioned: false, last_converge: "-", status: "Created"
+              credentials: "<None>", last_converge: "-", status: "Created"
             },
             {
               name: "node-b", mode: "container", endpoint: "172.17.0.4:22",
-              credentials_provisioned: true, last_converge: "2026-01-01T00:00:00Z", status: "Converged"
+              credentials: "Configured", last_converge: "2026-01-01T00:00:00Z", status: "Converged"
             },
           ]
           prov = stub_agentless_provisioner(nodes)
@@ -156,11 +156,11 @@ module Kitchen
           _(data_rows.any? { |r| r.first.to_s.include?("node-b") }).must_equal true
         end
 
-        it "shows 'Provisioned' in the credentials column when credentials_provisioned is true" do
+        it "shows 'Configured' in the credentials column for real nodes with credential-map-file" do
           nodes = [
             {
               name: "n1", mode: "real", endpoint: "10.0.0.1:22",
-              credentials_provisioned: true, last_converge: "-", status: "Set Up"
+              credentials: "Configured", last_converge: "-", status: "Set Up"
             },
           ]
           prov = stub_agentless_provisioner(nodes)
@@ -169,14 +169,14 @@ module Kitchen
           cmd.send(:list_remote_nodes, [instance])
 
           data_row = shell.table_calls.first[1] # first data row (after header)
-          _(data_row.any? { |c| c.to_s.include?("Provisioned") }).must_equal true
+          _(data_row.any? { |c| c.to_s.include?("Configured") }).must_equal true
         end
 
-        it "shows '<None>' in the credentials column when credentials_provisioned is false" do
+        it "shows '<None>' in the credentials column for real nodes without credential-map-file" do
           nodes = [
             {
               name: "n1", mode: "real", endpoint: "10.0.0.1:22",
-              credentials_provisioned: false, last_converge: "-", status: "Created"
+              credentials: "<None>", last_converge: "-", status: "Created"
             },
           ]
           prov = stub_agentless_provisioner(nodes)
@@ -190,9 +190,9 @@ module Kitchen
 
         it "calls print_table once per agentless instance with nodes" do
           nodes1 = [{ name: "n1", mode: "container", endpoint: "172.17.0.2:22",
-                      credentials_provisioned: true, last_converge: "-", status: "Set Up" }]
+                      credentials: "Container Key", last_converge: "-", status: "Set Up" }]
           nodes2 = [{ name: "n2", mode: "real", endpoint: "10.0.0.2:22",
-                      credentials_provisioned: false, last_converge: "-", status: "<Not Created>" }]
+                      credentials: "<None>", last_converge: "-", status: "<Not Created>" }]
           instances = [
             stub_instance("default-ubuntu-2404", stub_agentless_provisioner(nodes1)),
             stub_instance("default-almalinux-9", stub_agentless_provisioner(nodes2)),
@@ -204,7 +204,7 @@ module Kitchen
 
         it "skips standard instances — only prints tables for agentless ones" do
           agentless_nodes = [{ name: "n1", mode: "container", endpoint: "-",
-                               credentials_provisioned: false, last_converge: "-", status: "<Not Created>" }]
+                               credentials: "Container Key", last_converge: "-", status: "<Not Created>" }]
           instances = [
             stub_instance("default-ubuntu-2404", stub_standard_provisioner),
             stub_instance("default-almalinux-9", stub_agentless_provisioner(agentless_nodes)),
@@ -239,8 +239,16 @@ module Kitchen
           _(cmd.send(:format_node_status, "Created")).must_equal "Created"
         end
 
+        it "returns 'Ready' for Ready status (real nodes post-create)" do
+          _(cmd.send(:format_node_status, "Ready")).must_equal "Ready"
+        end
+
         it "returns '<Not Created>' for <Not Created> status" do
           _(cmd.send(:format_node_status, "<Not Created>")).must_equal "<Not Created>"
+        end
+
+        it "returns 'Not Set Up' for Not Set Up status (real nodes pre-create)" do
+          _(cmd.send(:format_node_status, "Not Set Up")).must_equal "Not Set Up"
         end
 
         it "returns the raw string for an unknown status" do
@@ -268,7 +276,7 @@ module Kitchen
 
         it "includes remote_nodes for an agentless provisioner" do
           nodes = [{ name: "n1", mode: "container", endpoint: "-",
-                     credentials_provisioned: false, last_converge: "-", status: "<Not Created>" }]
+                     credentials: "<None>", last_converge: "-", status: "<Not Created>" }]
           prov = stub_agentless_provisioner(nodes)
           instance = stub_instance("default-ubuntu-2404", prov, last_action: "converge")
           h = cmd.send(:to_hash, instance)

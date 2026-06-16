@@ -146,10 +146,25 @@ module Kitchen
 
       def validate_inline!(entry)
         if entry["transport"] == "ssh"
-          missing = %w{ssh-user ssh-pass}.reject { |k| entry[k] }
-          unless missing.empty?
+          # Must supply ssh-user plus exactly one of: ssh-pass or ssh-key-file
+          unless entry["ssh-user"]
             raise Kitchen::UserError,
-              "Inline SSH credential entry '#{entry["name"]}' is missing: #{missing.join(", ")}"
+              "Inline SSH credential entry '#{entry["name"]}' is missing 'ssh-user'"
+          end
+
+          has_pass = !entry["ssh-pass"].nil? && !entry["ssh-pass"].to_s.empty?
+          has_key  = !entry["ssh-key-file"].nil? && !entry["ssh-key-file"].to_s.empty?
+
+          unless has_pass || has_key
+            raise Kitchen::UserError,
+              "Inline SSH credential entry '#{entry["name"]}' must supply either " \
+              "'ssh-pass' (password) or 'ssh-key-file' (path to private key)"
+          end
+
+          if has_key && !File.exist?(entry["ssh-key-file"])
+            raise Kitchen::UserError,
+              "Inline SSH credential entry '#{entry["name"]}': " \
+              "ssh-key-file '#{entry["ssh-key-file"]}' does not exist"
           end
         elsif entry["transport"] == "winrm"
           missing = %w{winrm-user winrm-pass}.reject { |k| entry[k] }

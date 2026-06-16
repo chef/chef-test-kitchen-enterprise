@@ -88,12 +88,16 @@ module Kitchen
             key = instance_name.to_s
             entries = value.is_a?(Array) ? value : [value]
 
-            raise Kitchen::UserError,
-              "agentless.remote_nodes['#{key}'] must not be an empty Array" if entries.empty?
+            if entries.empty?
+              raise Kitchen::UserError,
+                "agentless.remote_nodes['#{key}'] must not be an empty Array"
+            end
 
             entries.each_with_index.map do |entry, idx|
-              raise Kitchen::UserError,
-                "agentless.remote_nodes['#{key}'][#{idx}] must be a Hash, got #{entry.class}" unless entry.is_a?(Hash)
+              unless entry.is_a?(Hash)
+                raise Kitchen::UserError,
+                  "agentless.remote_nodes['#{key}'][#{idx}] must be a Hash, got #{entry.class}"
+              end
 
               multi = entries.size > 1
               # Use a meaningful name: explicit per-entry 'name' field, or synthesise one.

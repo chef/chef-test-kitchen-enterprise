@@ -25,7 +25,7 @@ module Kitchen
       # Warning issued when credentials are stored as plaintext inline in credentials.yml.
       # Corresponds to OWASP A02:2021 - Cryptographic Failures.
       INLINE_PLAINTEXT_WARNING = <<~MSG
-        [TKE SECURITY WARNING] Plaintext credentials detected in credentials.yml.
+        [Chef-TKE SECURITY WARNING] Plaintext credentials detected in credentials.yml.
         Storing SSH/WinRM passwords in plaintext violates OWASP A02:2021 (Cryptographic Failures).
         Recommendation: Use 'credential-file' with passphrase encryption instead.
         See: https://owasp.org/Top10/A02_2021-Cryptographic_Failures/
@@ -34,7 +34,7 @@ module Kitchen
       # Warning issued when credentials are passed via command-line arguments,
       # which may be visible in process listings.
       CMDLINE_PASSING_WARNING = <<~MSG
-        [TKE SECURITY WARNING] Credentials are being passed via command-line arguments.
+        [Chef-TKE SECURITY WARNING] Credentials are being passed via command-line arguments.
         Command-line arguments may be visible to other users via process listings (e.g., ps aux).
         This violates OWASP A02:2021 (Cryptographic Failures) by exposing secrets in process state.
         Recommendation: Use 'pass-by-creds-file' to reduce credential exposure.
@@ -43,7 +43,7 @@ module Kitchen
 
       # Warning issued when credentials are passed via environment variables.
       ENVVAR_PASSING_WARNING = <<~MSG
-        [TKE SECURITY WARNING] Credentials are being passed via environment variables.
+        [Chef-TKE SECURITY WARNING] Credentials are being passed via environment variables.
         Environment variables may be leaked via /proc, debug output, or child processes.
         This violates OWASP A02:2021 (Cryptographic Failures) by exposing secrets in the process environment.
         Recommendation: Use 'pass-by-creds-file' to reduce credential exposure.
