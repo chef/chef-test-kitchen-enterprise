@@ -1,25 +1,23 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.15 -->
-## [v2.0.15](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.15) (2026-06-17)
-
-#### Merged Pull Requests
-- CHEF-34832 - Updated NOTICE for upcoming chef-tke release [#115](https://github.com/chef/chef-test-kitchen-enterprise/pull/115) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_release -->
 <!-- latest_release -->
 
 <!-- release_rollup -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- CHEF-34832 - Updated NOTICE for upcoming chef-tke release [#115](https://github.com/chef/chef-test-kitchen-enterprise/pull/115) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.15 -->
-- CHEF-35087 - Use appbundler in hab packaging and install latest Habitat in Windows test [#106](https://github.com/chef/chef-test-kitchen-enterprise/pull/106) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.14 -->
-- CHEF-34831: Fix security scan findings in gem dependencies [#108](https://github.com/chef/chef-test-kitchen-enterprise/pull/108) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.13 -->
-- shift image config to the right [#85](https://github.com/chef/chef-test-kitchen-enterprise/pull/85) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
-- add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda)) <!-- 2.0.12 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v2.0.15](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.15) (2026-06-18)
+
+#### Merged Pull Requests
+- add arm build/upload and promotion pipeline [#84](https://github.com/chef/chef-test-kitchen-enterprise/pull/84) ([rishichawda](https://github.com/rishichawda))
+- shift image config to the right [#85](https://github.com/chef/chef-test-kitchen-enterprise/pull/85) ([rishichawda](https://github.com/rishichawda))
+- CHEF-34831: Fix security scan findings in gem dependencies [#108](https://github.com/chef/chef-test-kitchen-enterprise/pull/108) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-35087 - Use appbundler in hab packaging and install latest Habitat in Windows test [#106](https://github.com/chef/chef-test-kitchen-enterprise/pull/106) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-34832 - Updated NOTICE for upcoming chef-tke release [#115](https://github.com/chef/chef-test-kitchen-enterprise/pull/115) ([nikhil2611](https://github.com/nikhil2611))
+<!-- latest_stable_release -->
+
 ## [v2.0.11](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.11) (2026-03-26)
 
 #### Merged Pull Requests
@@ -62,4 +60,3 @@
 - CHEF-29316- Create CODE_OF_CONDUCT.md file  [#62](https://github.com/chef/chef-test-kitchen-enterprise/pull/62) ([Saburesh07](https://github.com/Saburesh07))
 - bump dokken driver and kitchen-chef-enterprise dep versions [#77](https://github.com/chef/chef-test-kitchen-enterprise/pull/77) ([Stromweld](https://github.com/Stromweld))
 - Adding NOTICE file to the hab pkg [#75](https://github.com/chef/chef-test-kitchen-enterprise/pull/75) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
