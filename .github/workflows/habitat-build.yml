@@ -44,8 +44,11 @@ jobs:
         run: hab origin key generate "$HAB_ORIGIN"
 
       - name: Build Habitat Package
+        env:
+          BUNDLE_GITHUB__COM: x-access-token:${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
           hab pkg build habitat/aarch64-darwin
 
       - name: Install Habitat Package
