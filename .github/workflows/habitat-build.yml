@@ -45,10 +45,9 @@ jobs:
 
       - name: Build Habitat Package
         env:
-          BUNDLE_GITHUB__COM: x-access-token:${{ secrets.GITHUB_TOKEN }}
+          BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
           hab pkg build habitat/aarch64-darwin
 
       - name: Install Habitat Package
