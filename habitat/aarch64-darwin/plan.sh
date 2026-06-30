@@ -70,30 +70,38 @@ do_build() {
   export GEM_SPEC_CACHE="$HAB_CACHE_SRC_PATH/$pkg_dirname/.gem/specs"
   mkdir -p "$GEM_SPEC_CACHE"
 
-  # Install all gems directly from the vendor/bundle cache (.gem files).
-  # This bypasses bundler entirely, avoiding the BUNDLE_WITHOUT/appbundler issue.
-  # Native extensions are compiled by gem install as each gem is installed.
-  ruby_ver=$(ls vendor/bundle/ruby/ | sort | tail -n1)
-  build_line "Installing gems from vendor/bundle/ruby/${ruby_ver}/cache/ into GEM_HOME"
-  mkdir -p "$GEM_HOME/cache"
-  cp -n "vendor/bundle/ruby/${ruby_ver}/cache/"*.gem "$GEM_HOME/cache/" 2>/dev/null || true
+  ruby_ver=$(ls vendor/bundle/ruby/ 2>/dev/null | sort | tail -n1)
+  if [[ -n "$ruby_ver" ]] && [[ -d "vendor/bundle/ruby/${ruby_ver}/cache" ]]; then
+    # Local studio build: vendor cache is available — install gems directly from .gem files.
+    # This bypasses bundler entirely, avoiding BUNDLE_WITHOUT/appbundler version conflicts.
+    build_line "Installing gems from vendor/bundle/ruby/${ruby_ver}/cache/ into GEM_HOME"
+    mkdir -p "$GEM_HOME/cache"
+    cp -n "vendor/bundle/ruby/${ruby_ver}/cache/"*.gem "$GEM_HOME/cache/" 2>/dev/null || true
 
-  gem_count=$(ls "$GEM_HOME/cache/"*.gem 2>/dev/null | wc -l)
-  build_line "Installing ${gem_count} gems from cache into GEM_HOME"
-  # Install libyajl2 first — ffi-yajl's extconf.rb does `require "libyajl2"` at compile time.
-  gem install --local --no-document --force --ignore-dependencies "$GEM_HOME/cache/libyajl2-"*.gem
-  # Install the rest using xargs batches to avoid ARG_MAX limits.
-  ls "$GEM_HOME/cache/"*.gem | grep -v libyajl2 | xargs -n 10 gem install --local --no-document --force --ignore-dependencies
+    gem_count=$(ls "$GEM_HOME/cache/"*.gem 2>/dev/null | wc -l)
+    build_line "Installing ${gem_count} gems from cache into GEM_HOME"
+    # Install libyajl2 first — ffi-yajl's extconf.rb does `require "libyajl2"` at compile time.
+    gem install --local --no-document --force --ignore-dependencies "$GEM_HOME/cache/libyajl2-"*.gem
+    # Install the rest in batches to avoid ARG_MAX limits.
+    ls "$GEM_HOME/cache/"*.gem | grep -v libyajl2 | xargs -n 10 gem install --local --no-document --force --ignore-dependencies
 
-  # Pre-seed git gems (kitchen-chef-enterprise, kitchen-dokken) into GEM_HOME/bundler/gems/
-  # so post-bundle-install.rb can find and rebuild them.
-  if [[ -d "vendor/bundle/ruby/${ruby_ver}/bundler/gems" ]]; then
-    mkdir -p "$GEM_HOME/bundler/gems"
-    cp -Rn "vendor/bundle/ruby/${ruby_ver}/bundler/gems/"* "$GEM_HOME/bundler/gems/" 2>/dev/null || true
+    # Pre-seed git gems (kitchen-chef-enterprise, kitchen-dokken) into GEM_HOME/bundler/gems/
+    # so post-bundle-install.rb can find and rebuild them.
+    if [[ -d "vendor/bundle/ruby/${ruby_ver}/bundler/gems" ]]; then
+      mkdir -p "$GEM_HOME/bundler/gems"
+      cp -Rn "vendor/bundle/ruby/${ruby_ver}/bundler/gems/"* "$GEM_HOME/bundler/gems/" 2>/dev/null || true
+    fi
+
+    rm -f .bundle/config
+  else
+    # CI/fresh-checkout build: no vendor cache — download and install via bundler.
+    build_line "No vendor cache found; installing gems via bundle install"
+    bundle config --local without "deploy maintenance test cookstyle"
+    bundle config --local jobs 4
+    bundle config --local retry 5
+    bundle config --local silence_root_warning 1
+    bundle install
   fi
-
-  # No bundle install needed — gems are installed directly above.
-  rm -f .bundle/config
 
   # Update Gemfile.lock to reflect the current package version.
   # Appbundler reads the lockfile to pin gem versions; if it's stale it raises
