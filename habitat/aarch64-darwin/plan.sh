@@ -51,17 +51,6 @@ do_prepare() {
   build_line "Setting up build environment for native extensions"
   export CC="$(pkg_path_for core/clang)/bin/clang"
   export CXX="$(pkg_path_for core/clang)/bin/clang++"
-
-  # Redirect HOME to the build tree so git/bundler use a writable config dir.
-  export HOME="$HAB_CACHE_SRC_PATH/$pkg_dirname"
-  mkdir -p "$HOME"
-
-  # If a GitHub token is provided, write a .gitconfig URL rewrite so that
-  # core/git inside the studio can clone private repos (kitchen-chef-enterprise).
-  if [[ -n "${KITCHEN_CHEF_ENT_TOKEN:-}" ]]; then
-    build_line "Configuring git credentials for private GitHub repos"
-    git config --global url."https://x-access-token:${KITCHEN_CHEF_ENT_TOKEN}@github.com/".insteadOf "https://github.com/"
-  fi
 }
 
 do_build() {
@@ -81,11 +70,33 @@ do_build() {
   export GEM_SPEC_CACHE="$HAB_CACHE_SRC_PATH/$pkg_dirname/.gem/specs"
   mkdir -p "$GEM_SPEC_CACHE"
 
-  bundle config --local without "deploy maintenance test cookstyle"
-  bundle config --local jobs 4
-  bundle config --local retry 5
-  bundle config --local silence_root_warning 1
-  bundle install
+  # The Habitat studio on macOS resets HOME and git credentials, so bundle install
+  # cannot authenticate to private GitHub repos (kitchen-chef-enterprise). Gems are
+  # pre-installed into vendor/bundle by the workflow's "Bundle Install" step (outside
+  # the studio, using system Ruby with PAT auth). For local dev: run
+  # `bundle install --path vendor/bundle` before `hab studio build`.
+  ruby_ver=$(ls vendor/bundle/ruby/ 2>/dev/null | sort | tail -n1)
+  if [[ -z "$ruby_ver" ]] || [[ ! -d "vendor/bundle/ruby/${ruby_ver}/cache" ]]; then
+    exit_with "vendor/bundle not found. Run 'bundle install --path vendor/bundle' before building." 1
+  fi
+
+  build_line "Installing gems from vendor/bundle/ruby/${ruby_ver}/cache/ into GEM_HOME"
+  mkdir -p "$GEM_HOME/cache"
+  cp -n "vendor/bundle/ruby/${ruby_ver}/cache/"*.gem "$GEM_HOME/cache/" 2>/dev/null || true
+
+  gem_count=$(ls "$GEM_HOME/cache/"*.gem 2>/dev/null | wc -l | tr -d ' ')
+  build_line "Installing ${gem_count} gems from cache into GEM_HOME"
+  # Install libyajl2 first — ffi-yajl's extconf.rb does `require "libyajl2"` at compile time.
+  gem install --local --no-document --force --ignore-dependencies "$GEM_HOME/cache/libyajl2-"*.gem
+  # Install the rest in batches to avoid ARG_MAX limits.
+  ls "$GEM_HOME/cache/"*.gem | grep -v libyajl2 | xargs -n 10 gem install --local --no-document --force --ignore-dependencies
+
+  # Seed git gems (kitchen-chef-enterprise, kitchen-dokken) into bundler/gems/
+  # so post-bundle-install.rb can find and rebuild their extensions.
+  if [[ -d "vendor/bundle/ruby/${ruby_ver}/bundler/gems" ]]; then
+    mkdir -p "$GEM_HOME/bundler/gems"
+    cp -Rn "vendor/bundle/ruby/${ruby_ver}/bundler/gems/"* "$GEM_HOME/bundler/gems/" 2>/dev/null || true
+  fi
 
   # Update Gemfile.lock to reflect the current package version.
   # Appbundler reads the lockfile to pin gem versions; if it's stale it raises
