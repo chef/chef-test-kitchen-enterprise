@@ -43,20 +43,14 @@ jobs:
       - name: Generate Habitat Origin Key
         run: hab origin key generate "$HAB_ORIGIN"
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.4"
-
-      - name: Bundle Install
-        env:
-          BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"
-        run: |
-          bundle config set path vendor/bundle
-          bundle config set without "deploy maintenance test cookstyle"
-          bundle install --jobs 4 --retry 5
-
       - name: Build Habitat Package
+        env:
+          # GIT_CONFIG_* env vars are read by any git binary (including core/git inside
+          # the Habitat studio) and rewrite github.com URLs to include the PAT so that
+          # bundle install can clone private git-sourced gems (kitchen-chef-enterprise).
+          GIT_CONFIG_COUNT: "1"
+          GIT_CONFIG_KEY_0: "url.https://x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}@github.com/.insteadOf"
+          GIT_CONFIG_VALUE_0: "https://github.com/"
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           hab pkg build habitat/aarch64-darwin
