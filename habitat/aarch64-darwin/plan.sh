@@ -51,6 +51,17 @@ do_prepare() {
   build_line "Setting up build environment for native extensions"
   export CC="$(pkg_path_for core/clang)/bin/clang"
   export CXX="$(pkg_path_for core/clang)/bin/clang++"
+
+  # Redirect HOME to the build tree so git/bundler use a writable config dir.
+  export HOME="$HAB_CACHE_SRC_PATH/$pkg_dirname"
+  mkdir -p "$HOME"
+
+  # If a GitHub token is provided, write a .gitconfig URL rewrite so that
+  # core/git inside the studio can clone private repos (kitchen-chef-enterprise).
+  if [[ -n "${KITCHEN_CHEF_ENT_TOKEN:-}" ]]; then
+    build_line "Configuring git credentials for private GitHub repos"
+    git config --global url."https://x-access-token:${KITCHEN_CHEF_ENT_TOKEN}@github.com/".insteadOf "https://github.com/"
+  fi
 }
 
 do_build() {
