@@ -194,7 +194,7 @@ bundle exec rake quality
 
 ## Code Conventions
 
-- **Linter:** Chefstyle (`bundle exec chefstyle lib/ spec/`)
+- **Linter:** Chefstyle (`bundle exec cookstyle --chefstyle -a` — auto-corrects)
 - **Ruby:** 3.1+
 - **Test framework:** Minitest + Mocha
 - **Error classes:** `Kitchen::UserError` (user errors), `Kitchen::ClientError` (internal errors)
