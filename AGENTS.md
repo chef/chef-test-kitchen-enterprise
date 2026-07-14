@@ -36,6 +36,7 @@ Full wave plan: `CHEF-23408-WAVE-PLAN.md` in this repo.
 ## Development Workflow Rules
 
 ### Branch Strategy
+
 - **All feature branches must be checked out from `agentless-dev-latest`**
 - **All PRs must target `agentless-dev-latest`** (never `main` directly)
 - Branch naming: `<JIRA-KEY>` — e.g. `CHEF-27348`, `CHEF-36826`
@@ -48,7 +49,9 @@ git checkout -b CHEF-XXXXX
 ```
 
 ### PR Requirements
+
 Every PR must have:
+
 - **`ai-assisted` label** (mandatory, no exceptions)
 - Base branch: `agentless-dev-latest`
 - Title: `CHEF-XXXXX: <description>`
@@ -67,7 +70,7 @@ gh pr create \
 
 ## Repository Structure
 
-```
+```text
 chef-test-kitchen-enterprise/
 ├── bin/
 │   └── kitchen                  # CLI entry point (rarely changed)
@@ -104,11 +107,13 @@ chef-test-kitchen-enterprise/
 **Goal:** Remove all agentless-specific code from TKE core, ensuring non-agentless kitchen.yml files continue to work unchanged.
 
 **What to delete:**
+
 ```bash
 rm -rf lib/kitchen/agentless/
 ```
 
 **What to remove from `lib/kitchen/provisioner/base.rb`:**
+
 ```ruby
 # Remove these:
 default_config :agentless, {}
@@ -119,6 +124,7 @@ end
 ```
 
 **Verification:**
+
 ```bash
 bundle exec rake test   # all existing tests must still pass
 ```
