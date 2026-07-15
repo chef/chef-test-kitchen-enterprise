@@ -70,14 +70,16 @@ do_build() {
   export GEM_SPEC_CACHE="$HAB_CACHE_SRC_PATH/$pkg_dirname/.gem/specs"
   mkdir -p "$GEM_SPEC_CACHE"
 
-  # The Habitat studio on macOS resets HOME and git credentials, so bundle install
-  # cannot authenticate to private GitHub repos (kitchen-chef-enterprise). Gems are
-  # pre-installed into vendor/bundle by the workflow's "Bundle Install" step (outside
-  # the studio, using system Ruby with PAT auth). For local dev: run
-  # `bundle install --path vendor/bundle` before `hab studio build`.
+  # Prefer a pre-populated vendor/bundle cache from CI/local setup, but generate it
+  # here when missing so studio builds can proceed without a separate prep step.
   ruby_ver=$(ls vendor/bundle/ruby/ 2>/dev/null | sort | tail -n1)
   if [[ -z "$ruby_ver" ]] || [[ ! -d "vendor/bundle/ruby/${ruby_ver}/cache" ]]; then
-    exit_with "vendor/bundle not found. Run 'bundle install --path vendor/bundle' before building." 1
+    build_line "vendor/bundle cache not found; running bundle install --path vendor/bundle"
+    bundle install --path vendor/bundle || exit_with "bundle install failed while creating vendor/bundle" 1
+    ruby_ver=$(ls vendor/bundle/ruby/ 2>/dev/null | sort | tail -n1)
+    if [[ -z "$ruby_ver" ]] || [[ ! -d "vendor/bundle/ruby/${ruby_ver}/cache" ]]; then
+      exit_with "vendor/bundle cache still missing after bundle install" 1
+    fi
   fi
 
   build_line "Installing gems from vendor/bundle/ruby/${ruby_ver}/cache/ into GEM_HOME"
