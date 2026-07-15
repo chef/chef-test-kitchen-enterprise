@@ -44,7 +44,7 @@ module Kitchen
             run_command(run_from_file_command(command))
             close
           else
-            run_command(command)
+            run_command(command, environment: ruby_env_sanitized)
           end
         end
 
@@ -123,6 +123,23 @@ module Kitchen
           else
             false
           end
+        end
+
+        # Ruby/Bundler env vars set by TKE's hab binstub (via binstub_patch.rb).
+        # These must not leak into target-side subprocesses: each hab package
+        # (e.g. chef-infra-client) manages its own gem environment via its own
+        # binstub_patch.rb. When TKE's GEM_PATH and APPBUNDLER_ALLOW_RVM are
+        # inherited, the target package's binstub_patch guard is bypassed and
+        # gem activation fails with version mismatches.
+        RUBY_ENV_VARS = %w{GEM_PATH GEM_HOME GEM_SPEC_CACHE BUNDLE_GEMFILE
+                           BUNDLE_BIN_PATH BUNDLE_PATH RUBYLIB RUBYOPT
+                           APPBUNDLER_ALLOW_RVM}.freeze
+
+        # Returns an environment hash that unsets Ruby/Bundler vars for the
+        # subprocess. Mixlib::ShellOut treats nil values as "unset this var".
+        # TKE's own process ENV is not mutated.
+        def ruby_env_sanitized
+          RUBY_ENV_VARS.to_h { |var| [var, nil] }
         end
       end
 
