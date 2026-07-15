@@ -49,5 +49,15 @@ module Kitchen
         assert_equal false, cli.config.log_overwrite
       end
     end
+
+    describe "destroy options" do
+      it "defines keep_agentless_source for destroy" do
+        option = CLI.all_tasks["destroy"].options[:keep_agentless_source]
+
+        _(option).wont_be_nil
+        _(option.aliases).must_include "-k"
+        _(option.default).must_equal false
+      end
+    end
   end
 end
