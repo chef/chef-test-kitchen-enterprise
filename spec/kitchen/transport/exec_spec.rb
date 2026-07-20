@@ -110,7 +110,7 @@ describe Kitchen::Transport::Exec::Connection do
 
   describe "#execute" do
     it "runs the command" do
-      connection.expects(:run_command).with("do the thing")
+      connection.expects(:run_command).with("do the thing", environment: Kitchen::Transport::Exec::Connection::RUBY_ENV_VARS.to_h { |v| [v, nil] })
       connection.execute("do the thing")
     end
 
