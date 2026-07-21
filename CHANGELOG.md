@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.16 -->
-## [v2.0.16](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.16) (2026-07-15)
+<!-- latest_release 2.0.17 -->
+## [v2.0.17](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.17) (2026-07-21)
 
 #### Merged Pull Requests
-- Fix GEM_PATH leak into target-side subprocesses in exec transport [#120](https://github.com/chef/chef-test-kitchen-enterprise/pull/120) ([neha-p6](https://github.com/neha-p6))
+- [CHEF-34634][CHEF-34736] Added plan file for Mac arm habitat pkg [#118](https://github.com/chef/chef-test-kitchen-enterprise/pull/118) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- [CHEF-34634][CHEF-34736] Added plan file for Mac arm habitat pkg [#118](https://github.com/chef/chef-test-kitchen-enterprise/pull/118) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.17 -->
 - Fix GEM_PATH leak into target-side subprocesses in exec transport [#120](https://github.com/chef/chef-test-kitchen-enterprise/pull/120) ([neha-p6](https://github.com/neha-p6)) <!-- 2.0.16 -->
 <!-- release_rollup -->
 
