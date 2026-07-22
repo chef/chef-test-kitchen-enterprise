@@ -12,7 +12,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  workflow-change-guard:
+    uses: ./.github/workflows/workflow-change-guard.yml
+
   habitat-plan:
+    needs: workflow-change-guard
     strategy:
       fail-fast: false
       matrix:
