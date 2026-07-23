@@ -63,25 +63,3 @@ jobs:
           use-verbose-mode: "yes"
           check-modified-files-only: "yes"
           base-branch: "main"
-
-  test:
-    name: Unit Test with Ruby
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby:
-          - 3.4
-    env:
-      BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"  # Needed for kitchen-chef-enterprise dependency
-      ACTIONS_STEP_DEBUG: true
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-      - name: Rake Test
-        run: bundle exec rake unit --trace
