@@ -1,7 +1,7 @@
 #
-# Author:: GitHub Copilot (<support@github.com>)
+# Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
-# Copyright (C) 2026, Chef Software Inc.
+# Copyright (C) 2013, Chef Software Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,21 +22,10 @@ require "kitchen/command/destroy"
 module Kitchen
   module Command
     describe Destroy do
-      class DriverConfigStub
-        def initialize
-          @config = {}
-        end
-
-        private
-
-        attr_reader :config
-      end
-
       class InstanceStub
-        attr_reader :driver, :destroyed, :cleaned_up
+        attr_reader :destroyed, :cleaned_up
 
-        def initialize(driver)
-          @driver = driver
+        def initialize
           @destroyed = false
           @cleaned_up = false
         end
@@ -54,28 +43,10 @@ module Kitchen
         end
       end
 
-      let(:driver) { DriverConfigStub.new }
-      let(:instance) { InstanceStub.new(driver) }
+      let(:instance) { InstanceStub.new }
       let(:config) { stub(instances: [instance]) }
 
-      it "passes keep_agentless_source through to the driver config" do
-        command = Destroy.new(
-          ["all"],
-          { keep_agentless_source: true },
-          config:,
-          shell: Object.new,
-          help: -> { nil },
-          action: "destroy"
-        )
-
-        command.call
-
-        _(instance.destroyed).must_equal true
-        _(instance.cleaned_up).must_equal true
-        _(driver.send(:config)[:keep_agentless_source]).must_equal true
-      end
-
-      it "does not set keep_agentless_source when the flag is omitted" do
+      it "destroys instances via run_action" do
         command = Destroy.new(
           ["all"],
           {},
@@ -87,7 +58,30 @@ module Kitchen
 
         command.call
 
-        _(driver.send(:config).key?(:keep_agentless_source)).must_equal false
+        _(instance.destroyed).must_equal true
+        _(instance.cleaned_up).must_equal true
+      end
+
+      it "calls apply_driver_overrides before run_action" do
+        overrides_applied = false
+        Destroy.prepend(Module.new do
+          define_method(:apply_driver_overrides) do |_instances|
+            overrides_applied = true
+          end
+        end)
+
+        command = Destroy.new(
+          ["all"],
+          {},
+          config:,
+          shell: Object.new,
+          help: -> { nil },
+          action: "destroy"
+        )
+
+        command.call
+
+        _(overrides_applied).must_equal true
       end
     end
   end

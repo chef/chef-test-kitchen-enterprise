@@ -36,7 +36,6 @@ module Kitchen
           puts JSON.pretty_generate(Array(result).map { |r| to_hash(r) })
         else
           list_table(result)
-          render_source_info(Array(result))
         end
       end
 
@@ -112,26 +111,6 @@ module Kitchen
         ]
         table += Array(result).map { |i| display_instance(i) }
         print_table(table)
-      end
-
-      def render_source_info(instances)
-        source = instances.filter_map do |instance|
-          next unless instance.driver.respond_to?(:source_info)
-
-          instance.driver.source_info
-        end.first
-
-        return unless source
-
-        print_table(
-          [
-            ["Agentless Source", ""],
-            ["  Hostname", source[:hostname] || "unknown"],
-            ["  Port", (source[:port] || 22).to_s],
-            ["  Driver", source[:driver] || "unknown"],
-            ["  State", source[:state] || "unknown"],
-          ]
-        )
       end
 
       # Constructs a hashtable representation of a single instance.

@@ -83,19 +83,12 @@ module Kitchen
         _(shell.tables.length).must_equal 1
       end
 
-      it "renders an Agentless Source section when a driver provides source_info" do
+      it "renders a single table when a driver provides source_info (source row handled by plugin)" do
         command.call
 
-        _(shell.tables.length).must_equal 2
-        _(shell.tables.last).must_equal(
-          [
-            ["Agentless Source", ""],
-            ["  Hostname", "source.example"],
-            ["  Port", "2200"],
-            ["  Driver", "docker"],
-            ["  State", "running"],
-          ]
-        )
+        # source_info rendering is delegated to kitchen-agentless via ListExtension.
+        # When the plugin is not loaded, list_table produces exactly 1 table.
+        _(shell.tables.length).must_equal 1
       end
     end
   end

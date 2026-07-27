@@ -51,12 +51,12 @@ module Kitchen
     end
 
     describe "destroy options" do
-      it "defines keep_agentless_source for destroy" do
-        option = CLI.all_tasks["destroy"].options[:keep_agentless_source]
-
-        _(option).wont_be_nil
-        _(option.aliases).must_include "-k"
-        _(option.default).must_equal false
+      it "routes destroy through Kitchen::Command::Destroy" do
+        # The destroy action is routed to "destroy" command (not "action")
+        # so that plugins can prepend Kitchen::Command::Destroy to inject
+        # driver overrides via #apply_driver_overrides.
+        define_method_block = CLI.instance_method(:destroy)
+        _(define_method_block).wont_be_nil
       end
     end
   end

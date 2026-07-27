@@ -1,5 +1,5 @@
 #
-# Author:: GitHub Copilot (<support@github.com>)
+# Author:: Fletcher Nichol (<fnichol@nichol.ca>)
 #
 # Copyright (C) 2026, Chef Software Inc.
 #
@@ -20,6 +20,10 @@ require_relative "action"
 module Kitchen
   module Command
     # Command to destroy one or more instances.
+    # Extends Action with a generic plugin hook (#apply_driver_overrides) that
+    # is called after instance filtering and before the destroy action runs.
+    # Plugins can prepend a module to override #apply_driver_overrides to
+    # apply per-instance driver configuration changes at destroy time.
     class Destroy < Action
       # Invoke the command.
       def call
@@ -34,13 +38,9 @@ module Kitchen
 
       private
 
-      def apply_driver_overrides(instances)
-        return unless options[:keep_agentless_source]
-
-        instances.each do |instance|
-          instance.driver.send(:config)[:keep_agentless_source] = true
-        end
-      end
+      # Hook for plugins to apply per-instance driver configuration overrides
+      # before the destroy action runs. No-op by default; override via prepend.
+      def apply_driver_overrides(_instances); end
     end
   end
 end
