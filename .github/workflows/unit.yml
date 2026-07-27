@@ -1,0 +1,59 @@
+---
+"on":
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-linux:
+    name: Unit Test (ubuntu, Ruby 3.4)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - 3.4
+    env:
+      BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"  # Needed for kitchen-chef-enterprise dependency
+      ACTIONS_STEP_DEBUG: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Rake Test
+        run: bundle exec rake unit --trace
+
+  unit-windows:
+    name: Unit Test (windows, Ruby 3.4)
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - 3.4
+    env:
+      BUNDLE_GITHUB__COM: "x-access-token:${{ secrets.PRIVATE_ACCESS_KITCHEN_CHEF_ENTERPRISE }}"  # Needed for kitchen-chef-enterprise dependency
+      ACTIONS_STEP_DEBUG: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Enable Windows long paths and configure Git
+        run: |
+          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force -ErrorAction SilentlyContinue
+          git config --global core.longpaths true
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Rake Test
+        run: bundle exec rake unit --trace
