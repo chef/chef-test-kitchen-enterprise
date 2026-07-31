@@ -25,6 +25,15 @@ pkg_version() {
   cat "$SRC_PATH/VERSION"
 }
 
+# Resolve the repository root regardless of which directory this plan is
+# invoked from (habitat/ for the default target, habitat/aarch64-linux/ for
+# the Linux ARM target), so source unpacking and file lookups below always
+# reference the correct location instead of assuming a fixed ".." depth.
+_repo_root() {
+  git config --global --add safe.directory '*' 2>/dev/null || true
+  git -C "$PLAN_CONTEXT" rev-parse --show-toplevel
+}
+
 do_before() {
   update_pkg_version
 }
@@ -39,7 +48,7 @@ do_setup_environment() {
 
 do_unpack() {
   mkdir -pv "$HAB_CACHE_SRC_PATH/$pkg_dirname"
-  cp -RT "$PLAN_CONTEXT"/.. "$HAB_CACHE_SRC_PATH/$pkg_dirname/"
+  cp -RT "$(_repo_root)" "$HAB_CACHE_SRC_PATH/$pkg_dirname/"
 }
 
 do_build() {
@@ -69,11 +78,11 @@ do_build() {
 do_install() {
 
   # Copy NOTICE.TXT to the package directory
-  if [[ -f "$PLAN_CONTEXT/../NOTICE" ]]; then
+  if [[ -f "$(_repo_root)/NOTICE" ]]; then
     build_line "Copying NOTICE to package directory"
-    cp "$PLAN_CONTEXT/../NOTICE" "$pkg_prefix/"
+    cp "$(_repo_root)/NOTICE" "$pkg_prefix/"
   else
-    build_line "Warning: NOTICE not found at $PLAN_CONTEXT/../NOTICE"
+    build_line "Warning: NOTICE not found at $(_repo_root)/NOTICE"
   fi
 
   export GEM_HOME="$pkg_prefix/vendor"
@@ -99,7 +108,7 @@ do_install() {
   build_line "Patching generated binstubs for Habitat runtime env"
   for binstub in "$pkg_prefix"/bin/*; do
     if [[ -f "$binstub" ]]; then
-      sed -i "/require \"rubygems\"/r $PLAN_CONTEXT/binstub_patch.rb" "$binstub"
+      sed -i "/require \"rubygems\"/r $(_repo_root)/habitat/binstub_patch.rb" "$binstub"
     fi
   done
 
