@@ -158,7 +158,7 @@ function Invoke-Install {
         }
 
         Write-BuildLine "** patching binstubs for direct execution and dynamic plugin loading"
-        $rbPatch = Get-Content -Path "$project_root\binstub_patch.rb"
+        $rbPatch = Get-Content -Path "$PLAN_CONTEXT\binstub_patch.rb"
         Get-ChildItem "$pkg_prefix\bin" | Where-Object { $_.Extension -notin @(".bat", ".ps1") } | ForEach-Object {
             $lines = Get-Content -Path $_.FullName
             $matchLine = $lines | Select-String -Pattern 'require "rubygems"' | Select-Object -First 1
