@@ -1,17 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.18 -->
-## [v2.0.18](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.18) (2026-07-27)
+<!-- latest_release 2.0.19 -->
+## [v2.0.19](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.19) (2026-08-07)
 
 #### Merged Pull Requests
-- Add workflow-change-guard and Moved unit specs from buildkite to GH workflow [#123](https://github.com/chef/chef-test-kitchen-enterprise/pull/123) ([ashiqueps](https://github.com/ashiqueps))
+- CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.19 -->
 - Add workflow-change-guard and Moved unit specs from buildkite to GH workflow [#123](https://github.com/chef/chef-test-kitchen-enterprise/pull/123) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.18 -->
 - [CHEF-34634][CHEF-34736] Added plan file for Mac arm habitat pkg [#118](https://github.com/chef/chef-test-kitchen-enterprise/pull/118) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.17 -->
 - Fix GEM_PATH leak into target-side subprocesses in exec transport [#120](https://github.com/chef/chef-test-kitchen-enterprise/pull/120) ([neha-p6](https://github.com/neha-p6)) <!-- 2.0.16 -->
