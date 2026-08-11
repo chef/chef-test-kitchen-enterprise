@@ -16,5 +16,5 @@
 # limitations under the License.
 
 module Kitchen
-  VERSION = "2.0.19".freeze
+  VERSION = "2.0.20".freeze
 end
