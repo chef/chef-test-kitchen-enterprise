@@ -1,13 +1,16 @@
+hab_vendor = File.expand_path(File.join(__dir__, "..", "vendor"))
+chef_gem_dir = File.join(Dir.home, ".chef", "ruby", RbConfig::CONFIG["ruby_version"], "gems")
+
 unless ENV["APPBUNDLER_ALLOW_RVM"]
   ENV["APPBUNDLER_ALLOW_RVM"] = "true"
-  # Set GEM_PATH/GEM_HOME to ONLY the hab vendor dir — do NOT append the existing
-  # GEM_PATH (which contains RVM gems). Those RVM gems have native extensions compiled
-  # for a different Ruby and cause "Ignoring X because its extensions are not built"
-  # warnings. This package has everything it needs vendored.
-  hab_vendor = File.expand_path(File.join(__dir__, "..", "vendor"))
+  # Only override GEM_HOME for direct invocation; hab pkg exec sets it via RUNTIME_ENVIRONMENT.
   ENV["GEM_HOME"] = hab_vendor
-  ENV["GEM_PATH"] = hab_vendor
 end
+
+# Always extend GEM_PATH so chef-cli-installed plugins (~/.chef/ruby/VERSION/gems) are visible.
+# hab_vendor stays first so bundled gems take precedence over user-installed ones.
+existing_paths = ENV["GEM_PATH"]&.split(File::PATH_SEPARATOR) || []
+ENV["GEM_PATH"] = ([hab_vendor, Gem.user_dir, chef_gem_dir] + existing_paths).uniq.join(File::PATH_SEPARATOR)
 
 # Set SSL_CERT_FILE from the hab cacerts package so TLS works when the binary
 # is invoked directly (e.g. via symlink) without going through `hab pkg exec`.

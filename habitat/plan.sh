@@ -96,6 +96,10 @@ do_install() {
   build_line "Generating appbundler binstubs with precise version pins"
   "$(pkg_path_for $_ruby_pkg)/bin/ruby" "$pkg_prefix/vendor/bin/appbundler" "$HAB_CACHE_SRC_PATH/$pkg_dirname" "$pkg_prefix/bin" "chef-test-kitchen-enterprise"
 
+  # Derive ruby API version from the Habitat Ruby package — no hardcoded version string.
+  ruby_gem_version=$("$(pkg_path_for ${_ruby_pkg})/bin/ruby" -e "puts RbConfig::CONFIG['ruby_version']")
+  build_line "Ruby API version for plugin path resolution: ${ruby_gem_version}"
+
   build_line "Patching generated binstubs for Habitat runtime env"
   for binstub in "$pkg_prefix"/bin/*; do
     if [[ -f "$binstub" ]]; then

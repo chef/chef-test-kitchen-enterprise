@@ -157,6 +157,18 @@ function Invoke-Install {
             Set-Content -Path $binstubPath -Value $binstubContent -Encoding ASCII -NoNewline
         }
 
+        Write-BuildLine "** patching binstubs for direct execution and dynamic plugin loading"
+        $rbPatch = Get-Content -Path "$PLAN_CONTEXT\binstub_patch.rb"
+        Get-ChildItem "$pkg_prefix\bin" | Where-Object { $_.Extension -notin @(".bat", ".ps1") } | ForEach-Object {
+            $lines = Get-Content -Path $_.FullName
+            $matchLine = $lines | Select-String -Pattern 'require "rubygems"' | Select-Object -First 1
+            if ($matchLine) {
+                $lineNum = $matchLine.LineNumber  # 1-based; insert patch after this line
+                $newLines = $lines[0..($lineNum - 1)] + $rbPatch + $lines[$lineNum..($lines.Count - 1)]
+                Set-Content -Path $_.FullName -Value $newLines -Encoding ASCII
+            }
+        }
+
 	Write-BuildLine " ** Build and install complete"
 
         If ($lastexitcode -ne 0) { Exit $lastexitcode }
