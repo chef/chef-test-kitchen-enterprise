@@ -1,15 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.19 -->
-## [v2.0.19](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.19) (2026-08-07)
+<!-- latest_release unreleased -->
+## Unreleased
 
-#### Merged Pull Requests
-- CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611))
+#### Bug Fixes
+- Pin net-ping to 2.0.8 to fix unit test CI failure [#128](https://github.com/chef/chef-test-kitchen-enterprise/pull/128) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
 
 <!-- release_rollup -->
 ### Changes not yet released to rubygems.org
+
+#### Bug Fixes
+- Pin net-ping to 2.0.8 to fix unit test CI failure [#128](https://github.com/chef/chef-test-kitchen-enterprise/pull/128) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.19 -->
 
 #### Merged Pull Requests
 - CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.19 -->
