@@ -27,6 +27,11 @@ group :integration do
   gem "kitchen-azurerm", ">= 1.13.6"
   gem "kitchen-hyperv", ">= 0.10.3"
   gem "kitchen-vcenter", ">= 2.12.3"
+  # net-ping 2.1.0+ introduced a transitive dependency on the "cap2" gem,
+  # which requires native compilation against libcap2 headers not present
+  # on our CI runners. Pin to 2.0.8 (last version without this dependency)
+  # until CI images are updated or upstream removes the cap2 dependency.
+  gem "net-ping", "= 2.0.8"
   gem "chef", ">= 19.1" # Chef-CLI depends on chef. This ensures we are getting a newer version
   # Check if Artifactory is accessible, otherwise use GitHub
   artifactory_url = "https://artifactory-internal.ps.chef.co/artifactory/api/gems/omnibus-gems-local"

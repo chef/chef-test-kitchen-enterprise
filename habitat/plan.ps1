@@ -190,6 +190,11 @@ function Invoke-After {
     # Remove the byproducts of compiling gems with extensions
     Get-ChildItem $pkg_prefix/vendor/gems -Include @("gem_make.out", "mkmf.log", "Makefile") -File -Recurse `
         | Remove-Item -Force
+    # Remove .github directories from vendored gems to address security findings
+    # These workflow files contain outdated GitHub Actions and are not needed in packaged gems
+    Write-BuildLine "Removing .github directories from vendored gems"
+    Get-ChildItem $pkg_prefix/vendor -Filter ".github" -Directory -Recurse `
+        | Remove-Item -Recurse -Force
 }
 
 function Install-ChefOfficialDistribution {
