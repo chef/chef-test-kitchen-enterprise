@@ -165,7 +165,7 @@ function Invoke-Install {
             if ($matchLine) {
                 $lineNum = $matchLine.LineNumber  # 1-based; insert patch after this line
                 $newLines = $lines[0..($lineNum - 1)] + $rbPatch + $lines[$lineNum..($lines.Count - 1)]
-                Set-Content -Path $_.FullName -Value $newLines
+                Set-Content -Path $_.FullName -Value $newLines -Encoding ASCII
             }
         }
 
