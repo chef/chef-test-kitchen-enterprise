@@ -927,6 +927,88 @@ gh pr create \
 
 ---
 
+## 🎓 Lessons Learned: Agentless Mode (CHEF-23408) Cross-Repo Development
+
+This epic spans two repos — `chef-test-kitchen-enterprise` (TKE core, this
+repo) and `chef/kitchen-agentless` (KCAI, the plugin). Extensive
+end-to-end debugging sessions against real Docker, EC2-ephemeral, and
+real-mode targets surfaced patterns worth capturing for future work in either
+repo. See also `AGENTS.md`, `.github/instructions/bug-fix-workflow.instructions.md`,
+and `.github/instructions/agentless-config-extension.instructions.md` for
+fuller detail.
+
+### TKE core stays generic — agentless logic lives in KCAI
+
+TKE core's role for this epic is to expose **generic, agentless-unaware
+extension points** (`driver.source_info` hook in `kitchen list`,
+`--driver-option` passthrough in `kitchen destroy`) that any driver could use
+— not to know anything about "agentless" as a concept. If a change request
+sounds agentless-specific, it almost certainly belongs in KCAI, not here.
+Both TKE-core stories for this epic (CHEF-27348, CHEF-36826) are complete;
+new work should default to the KCAI repo unless a genuinely new generic hook
+is required.
+
+### The three target-credential styles a plugin like KCAI must support
+
+When building or extending a driver/provisioner/verifier plugin that
+targets ephemeral or static remote hosts, credential/endpoint resolution
+must correctly support (without one clobbering another):
+
+1. **Real/static-mode hosts** — credentials from a credential-map-file or
+   per-node config, gated to only apply in real/static mode.
+2. **Ephemeral drivers that self-generate credentials** (e.g. `kitchen-docker`
+   generates its own SSH keypair into driver state) — must be read from
+   **driver state**, not a stale config file.
+3. **Ephemeral drivers using a pre-existing named resource** (e.g.
+   `kitchen-ec2` with a named AWS keypair) — these generate **no** dynamic
+   state credentials; the only source is Test Kitchen's own standard
+   `transport:` block, resolved via `instance.transport`. Forgetting this
+   fallback is a common bug (username silently defaults to `"root"`, no key
+   is found, and credential provisioning is silently skipped).
+
+**Correct fallback order**: credential-map-file (real-mode only) →
+plugin-specific per-node transport config → driver state → `instance.transport`
+→ hardcoded default. Driver state must be checked *before*
+`instance.transport`, because TK's own SSH transport defaults `username` to
+`"root"` (always truthy), which would otherwise always shadow a driver's real
+dynamically-assigned username.
+
+### Provisioner/verifier logic duplication is a recurring bug source
+
+When a plugin ships both a provisioner and a verifier (e.g. chef-client +
+InSpec, both operating in a "target mode" against the same remote host), the
+credential/endpoint resolution logic is easy to implement twice and let
+drift out of sync. A bug fix applied to one is easily forgotten in the
+other. When fixing this class of bug, always check and update both, and add
+regression tests to both spec files.
+
+### Environment gotchas that look like code bugs but aren't
+
+- **`KITCHEN_YAML` env var** overrides which kitchen config file is used —
+  if an error references a host/driver that doesn't match the visible
+  `kitchen.yml`, check this env var first.
+- **Stale `.kitchen/*.yml` state files** persist a previous run's
+  server-id/hostname when a user switches kitchen configs without running
+  `kitchen destroy` first — produces confusing "wrong host"/"credentials not
+  found" errors. Compare state-file mtimes/content against the active config
+  before assuming a regression.
+- **InSpec/Chef license and install-strategy failures** (interactive license
+  prompts, `dpkg` permission errors, missing `license_acceptance` gem) are
+  almost always source-node environment issues, not plugin code bugs — but
+  the fix (e.g. `CHEF_LICENSE=accept` env var, running installers as root)
+  needs to be applied consistently across every command invocation path
+  (chef-client *and* InSpec), not just one.
+
+### Commit-and-push-for-review vs. PR-and-merge
+
+Many sessions in this epic push directly to a shared integration branch
+(e.g. `agentless-dev-latest`) with DCO signoff so the user can review real
+end-to-end test output before a PR is even opened. **Do not run
+`gh pr create` unless the user has explicitly asked for a PR** — confirm
+first if it wasn't part of the request.
+
+---
+
 ## 📝 Summary
 
 This copilot-instructions.md provides comprehensive guidance for contributing to Chef Test Kitchen Enterprise. Key requirements:

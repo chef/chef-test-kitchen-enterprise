@@ -1,0 +1,9 @@
+steps:
+  - name: Install Ruby dependencies
+    run: bundle install
+
+  - name: Verify unit tests run
+    run: bundle exec rake unit || true
+
+  - name: Verify linter
+    run: bundle exec cookstyle --chefstyle || true

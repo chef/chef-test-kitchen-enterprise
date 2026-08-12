@@ -9,27 +9,31 @@
 
 `chef-test-kitchen-enterprise` is the **enterprise fork of Test Kitchen** — a Ruby tool for developing and testing infrastructure code (Chef cookbooks) on isolated target platforms. It is the core orchestration engine: CLI, instance lifecycle, driver/provisioner/verifier plugin loading, state management, and output formatting.
 
-This repo is a **plugin host**. Most feature work for CHEF-23408 lives in `chef/kitchen-chef-infra-agentless`, not here.
+This repo is a **plugin host**. Most feature work for CHEF-23408 lives in `chef/kitchen-agentless`, not here.
 
 ---
 
 ## Epic Context: CHEF-23408 — Agentless Mode
 
-TKE core changes for this epic are **strictly minimal**. The agentless plugin (`kitchen-chef-infra-agentless`) provides a driver, provisioner, and verifier. TKE core only needs generic extension points that any driver can use — it must not contain agentless-specific logic.
+TKE core changes for this epic are **strictly minimal**. The agentless plugin (`kitchen-agentless`, "KCAI") provides a driver, provisioner, and verifier. TKE core only needs generic extension points that any driver can use — it must not contain agentless-specific logic.
+
+**Status: both TKE-core stories below are complete.** Almost all active/ongoing agentless work now happens in `chef/kitchen-agentless`, not here. Only touch this repo again for this epic if a *new* generic extension point is needed (i.e. something no existing driver/provisioner/verifier hook can express).
 
 ### Permitted TKE Core Changes (entire epic)
 
-| File | What Changes | Story |
-|------|-------------|-------|
-| `lib/kitchen/command/list.rb` | Add generic `driver.source_info` hook — if driver responds to `#source_info`, render an extra section above the instances table | CHEF-36826 |
-| `lib/kitchen/command/destroy.rb` | Add generic `--driver-option` passthrough so plugins can receive destroy-time flags | CHEF-36826 |
-| `lib/kitchen/agentless/` (delete entire dir) | Remove all Waves 1–14 agentless code | CHEF-27348 |
-| `lib/kitchen/provisioner/base.rb` | Remove `#agentless_mode?` method + `default_config :agentless` | CHEF-27348 |
+| File | What Changes | Story | Status |
+|------|-------------|-------|--------|
+| `lib/kitchen/command/list.rb` | Add generic `driver.source_info` hook — if driver responds to `#source_info`, render an extra section above the instances table | CHEF-36826 | ✅ Done |
+| `lib/kitchen/command/destroy.rb` | Add generic `--driver-option` passthrough so plugins can receive destroy-time flags | CHEF-36826 | ✅ Done |
+| `lib/kitchen/agentless/` (delete entire dir) | Remove all Waves 1–14 agentless code | CHEF-27348 | ✅ Done |
+| `lib/kitchen/provisioner/base.rb` | Remove `#agentless_mode?` method + `default_config :agentless` | CHEF-27348 | ✅ Done |
 
-> ⛔ **No other files in this repo should be modified for CHEF-23408.** If you find yourself editing anything else, stop and re-read the architecture doc.
+> ⛔ **No other files in this repo should be modified for CHEF-23408.** If you find yourself editing anything else, stop and re-read the architecture doc — it's almost certainly KCAI plugin work, not TKE core work.
 
 Full architecture: `CHEF-23408-NEW-ARCHITECTURE.md` in this repo.
 Full wave plan: `CHEF-23408-WAVE-PLAN.md` in this repo.
+Reusable extension guidance: `.github/instructions/agentless-config-extension.instructions.md`.
+Common bug patterns and fixes seen across many debugging sessions: `.github/instructions/bug-fix-workflow.instructions.md`.
 
 ---
 
@@ -208,6 +212,38 @@ bundle exec rake quality
 - **License header:** Apache 2.0 on all new `.rb` files
 
 ---
+
+## Lessons Learned From KCAI End-to-End Debugging
+
+Extensive real-target debugging sessions (Docker ephemeral, EC2 ephemeral,
+and real-mode static hosts) surfaced a recurring class of issues, almost all
+in KCAI rather than TKE core. Captured here so future sessions in either repo
+don't have to rediscover them:
+
+- **Three distinct target-credential styles must all be supported without one
+  clobbering another**: real-mode static host (credential-map-file), ephemeral
+  Docker (dynamically-generated driver state), ephemeral EC2/named-keypair
+  (standard TK `transport:` block, resolved via `instance.transport`). See
+  `.github/instructions/bug-fix-workflow.instructions.md` for the exact
+  resolution priority order and why the ordering matters (TK's SSH transport
+  defaults `username` to `"root"`, which is always truthy).
+- **The provisioner and verifier duplicate this resolution logic** rather than
+  sharing it via inheritance (`ChefInfraAgentless` vs. `InspecAgentless`) — a
+  fix in one is easily forgotten in the other. Always check both when fixing
+  credential/endpoint bugs.
+- **`KITCHEN_YAML` env var** changes which config file `kitchen` reads. If a
+  failure references a host/sub-driver that doesn't match the visible
+  `kitchen.yml`, check this env var before assuming a regression.
+- **Stale `.kitchen/*.yml` state files** persist the previous sub-driver's
+  server-id/hostname when a user switches configs without `kitchen destroy`
+  first — causes confusing "wrong host"/"credentials not found" errors that
+  look like code bugs. Compare file mtimes against the active config.
+- **InSpec/Chef license and install-strategy issues** (interactive license
+  prompt, `dpkg` permission errors, `license_acceptance/acceptor` load
+  failures) are almost always source-node environment/install-strategy
+  issues, not KCAI code bugs — but the fix (e.g. `CHEF_LICENSE=accept`,
+  running the installer as root) must be applied consistently to **both**
+  the chef-client and InSpec invocation paths.
 
 ## What NOT to Do
 
