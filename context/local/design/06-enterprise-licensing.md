@@ -68,7 +68,7 @@ derive Chef install URLs from the license type:
   | type | Omnitruck host |
   | ---- | -------------- |
   | free / trial | `https://chefdownload-trial.chef.io` |
-  | commercial   | `https://chefdownload-commerical.chef.io` |
+  | commercial   | `https://chefdownload-commercial.chef.io` |
 
 ## Enforcement point in the lifecycle
 

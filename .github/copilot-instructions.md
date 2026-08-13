@@ -57,7 +57,7 @@ bash .github/scripts/bundle-install.sh
 
 ## Architecture
 
-**Instances = Suites × Platforms.** `Kitchen::Config` reads `.kitchen.yml`, cross-products suites and platforms, and constructs immutable `Kitchen::Instance` objects. Each instance is independent and safe for parallel execution.
+**Instances = Suites × Platforms.** `Kitchen::Config` reads `kitchen.yml` (preferred) or legacy `.kitchen.yml`, cross-products suites and platforms, and constructs immutable `Kitchen::Instance` objects. Each instance is independent and safe for parallel execution.
 
 **Plugin loading convention.** `Kitchen::Plugin.load(type, name, config)` resolves `kitchen/<type>/<name>.rb` (e.g., `kitchen/driver/docker.rb`) and constantizes `Kitchen::Driver::Docker`. External gems follow the same path convention.
 

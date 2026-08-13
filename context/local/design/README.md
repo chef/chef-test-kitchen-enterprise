@@ -1,7 +1,7 @@
 # Chef Test Kitchen Enterprise — Design Documentation
 
 Reverse-engineered design docs for the `chef-test-kitchen-enterprise` codebase
-(analyzed at version **2.0.15**). Read in order, or jump to a topic.
+(analyzed at version **2.0.19**). Read in order, or jump to a topic.
 
 | # | Document | Topic |
 | - | -------- | ----- |

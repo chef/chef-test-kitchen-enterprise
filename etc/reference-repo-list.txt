@@ -13,7 +13,7 @@ test-kitchen/test-kitchen
 # A variety of kitchen plugin (driver) implementations
 chef/kitchen-dokken
 chef/kitchen-vcenter
-test-kitchen/kitchen-ec2 
+test-kitchen/kitchen-ec2
 test-kitchen/kitchen-google
 test-kitchen/kitchen-azurerm
 test-kitchen/kitchen-vagrant
