@@ -38,3 +38,8 @@ _cache
 docs/public
 .idea/
 docs/.hugo_build.lock
+
+etc/env.sh
+context/reference-repos/**
+context/shared
+tmp/
