@@ -1,14 +1,11 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.20 -->
-## [v2.0.20](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.20) (2026-08-11)
+<!-- latest_release 2.0.21 -->
+## [v2.0.21](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.21) (2026-08-25)
 
 #### Merged Pull Requests
-- CHEF-37476: Add ~/.chef/ruby/VERSION/gems to GEM_PATH for dynamic plugin loading [#125](https://github.com/chef/chef-test-kitchen-enterprise/pull/125) ([sanghinitin](https://github.com/sanghinitin))
-
-#### Bug Fixes
-- Pin net-ping to 2.0.8 to fix unit test CI failure [#128](https://github.com/chef/chef-test-kitchen-enterprise/pull/128) ([ashiqueps](https://github.com/ashiqueps))
+- CHEF-37333: add Linux ARM Habitat validation in Expeditor pipeline [#124](https://github.com/chef/chef-test-kitchen-enterprise/pull/124) ([sanjain-progress](https://github.com/sanjain-progress))
 <!-- latest_release -->
 
 <!-- release_rollup -->
@@ -18,6 +15,7 @@
 - Pin net-ping to 2.0.8 to fix unit test CI failure [#128](https://github.com/chef/chef-test-kitchen-enterprise/pull/128) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.19 -->
 
 #### Merged Pull Requests
+- CHEF-37333: add Linux ARM Habitat validation in Expeditor pipeline [#124](https://github.com/chef/chef-test-kitchen-enterprise/pull/124) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 2.0.21 -->
 - CHEF-37476: Add ~/.chef/ruby/VERSION/gems to GEM_PATH for dynamic plugin loading [#125](https://github.com/chef/chef-test-kitchen-enterprise/pull/125) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.20 -->
 - CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.19 -->
 - Add workflow-change-guard and Moved unit specs from buildkite to GH workflow [#123](https://github.com/chef/chef-test-kitchen-enterprise/pull/123) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.18 -->
