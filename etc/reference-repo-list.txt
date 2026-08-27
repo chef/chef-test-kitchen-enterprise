@@ -1,0 +1,27 @@
+# This file lists GitHub repos to clone as reference material for AI-assisted development.
+# Edit this list to add repos relevant to your specific resource pack domain.
+# Format: org/repo (one per line, optionally @branch)
+#
+
+# Docs of client applications
+chef/chef-web-docs
+chef/chef-workstation-docs
+
+# Upstream repo
+test-kitchen/test-kitchen
+
+# A variety of kitchen plugin (driver) implementations
+chef/kitchen-dokken
+chef/kitchen-vcenter
+test-kitchen/kitchen-ec2
+test-kitchen/kitchen-google
+test-kitchen/kitchen-azurerm
+test-kitchen/kitchen-vagrant
+test-kitchen/kitchen-hyperv
+
+# A variety of kitchen plugin (provisioner) implementations
+chef/kitchen-chef-enterprise
+test-kitchen/kitchen-omnibus-chef
+
+# kitchen plugn (verifier) implementation
+inspec/kitchen-inspec
