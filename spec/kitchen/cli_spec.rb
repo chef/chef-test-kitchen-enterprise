@@ -58,6 +58,21 @@ module Kitchen
         define_method_block = CLI.instance_method(:destroy)
         _(define_method_block).wont_be_nil
       end
+
+      it "defines keep_agentless_source for destroy" do
+        option = CLI.commands["destroy"].options[:keep_agentless_source]
+
+        _(option).wont_be_nil
+        _(option.aliases).must_include "-k"
+        _(option.type).must_equal :boolean
+        _(option.default).must_equal false
+      end
+
+      it "does not define keep_agentless_source for other lifecycle actions" do
+        %w{create converge setup verify}.each do |action|
+          _(CLI.commands[action].options[:keep_agentless_source]).must_be_nil
+        end
+      end
     end
   end
 end

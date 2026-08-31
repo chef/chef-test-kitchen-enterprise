@@ -64,13 +64,17 @@ module Kitchen
 
       it "calls apply_driver_overrides before run_action" do
         overrides_applied = false
-        Destroy.prepend(Module.new do
+        # Prepend onto an isolated subclass (not the shared Destroy class
+        # itself) so this override doesn't leak into other examples --
+        # Ruby prepends are permanent for the lifetime of the process.
+        subclass = Class.new(Destroy)
+        subclass.prepend(Module.new do
           define_method(:apply_driver_overrides) do |_instances|
             overrides_applied = true
           end
         end)
 
-        command = Destroy.new(
+        command = subclass.new(
           ["all"],
           {},
           config:,
@@ -82,6 +86,43 @@ module Kitchen
         command.call
 
         _(overrides_applied).must_equal true
+      end
+
+      describe "--keep-agentless-source" do
+        let(:driver_config) { {} }
+        let(:driver) { stub(config: driver_config) }
+        let(:instance_with_driver) { stub(name: "default-ubuntu-2204", driver:, destroy: nil, cleanup!: nil) }
+        let(:config) { stub(instances: [instance_with_driver]) }
+
+        it "passes keep_agentless_source through to the driver config" do
+          command = Destroy.new(
+            ["all"],
+            { keep_agentless_source: true },
+            config:,
+            shell: Object.new,
+            help: -> { nil },
+            action: "destroy"
+          )
+
+          command.call
+
+          _(driver_config[:keep_agentless_source]).must_equal true
+        end
+
+        it "does not set keep_agentless_source when the flag is omitted" do
+          command = Destroy.new(
+            ["all"],
+            {},
+            config:,
+            shell: Object.new,
+            help: -> { nil },
+            action: "destroy"
+          )
+
+          command.call
+
+          _(driver_config.key?(:keep_agentless_source)).must_equal false
+        end
       end
     end
   end

@@ -39,8 +39,17 @@ module Kitchen
       private
 
       # Hook for plugins to apply per-instance driver configuration overrides
-      # before the destroy action runs. No-op by default; override via prepend.
-      def apply_driver_overrides(_instances); end
+      # before the destroy action runs. Handles the built-in
+      # --keep-agentless-source / -k flag (a no-op for any driver that
+      # doesn't understand the :keep_agentless_source config key) and is
+      # otherwise safe for plugins to further extend via prepend.
+      def apply_driver_overrides(instances)
+        return unless options[:keep_agentless_source]
+
+        instances.each do |instance|
+          instance.driver.send(:config)[:keep_agentless_source] = true
+        end
+      end
     end
   end
 end

@@ -21,10 +21,20 @@ TKE core changes for this epic are **strictly minimal**. The agentless plugin (`
 
 | File | What Changes | Story |
 |------|-------------|-------|
-| `lib/kitchen/command/list.rb` | Add generic `driver.source_info` hook — if driver responds to `#source_info`, render an extra section above the instances table | CHEF-36826 |
-| `lib/kitchen/command/destroy.rb` | Add generic `--driver-option` passthrough so plugins can receive destroy-time flags | CHEF-36826 |
+| `lib/kitchen/cli.rb`, `lib/kitchen/command/destroy.rb` | Add a `-k/--keep-agentless-source` flag to `kitchen destroy` that applies `keep_agentless_source` as a driver config override before destroy runs | CHEF-36826 |
 | `lib/kitchen/agentless/` (delete entire dir) | Remove all Waves 1–14 agentless code | CHEF-27348 |
 | `lib/kitchen/provisioner/base.rb` | Remove `#agentless_mode?` method + `default_config :agentless` | CHEF-27348 |
+
+> **Note (CHEF-36826):** `lib/kitchen/command/list.rb` does **not** need a
+> TKE core hook. The `kitchen-agentless` plugin already renders the
+> agentless-source node inline in `kitchen list` output via its own
+> `list_extension.rb` monkeypatch on `Kitchen::Command::List#list_table` —
+> a lazily-loaded plugin gem can safely add that at runtime. A CLI flag is
+> different: Thor parses ARGV against each command's statically-declared
+> options *before* kitchen.yml is read and before any driver plugin is
+> `require`d, so a new switch like `--keep-agentless-source` can only be
+> registered by TKE core itself — that's the only piece of CHEF-36826 that
+> actually needs a TKE core change.
 
 > ⛔ **No other files in this repo should be modified for CHEF-23408.** If you find yourself editing anything else, stop and re-read the architecture doc.
 
@@ -77,8 +87,8 @@ chef-test-kitchen-enterprise/
 ├── lib/
 │   └── kitchen/
 │       ├── command/             # CLI command implementations
-│       │   ├── list.rb          # ← CHEF-36826: add source_info hook
-│       │   └── destroy.rb       # ← CHEF-36826: add driver-option passthrough
+│       │   └── destroy.rb       # ← CHEF-36826: --keep-agentless-source flag
+│       ├── cli.rb               # ← CHEF-36826: register -k/--keep-agentless-source
 │       ├── driver/              # Driver base classes
 │       ├── provisioner/
 │       │   └── base.rb          # ← CHEF-27348: remove agentless_mode? + default_config
@@ -133,42 +143,53 @@ bundle exec rake test   # all existing tests must still pass
 
 ---
 
-### CHEF-36826 · Generic Driver Hooks for `kitchen list` and `kitchen destroy` (Wave 5)
+### CHEF-36826 · `--keep-agentless-source` flag for `kitchen destroy` (Wave 5)
 
-#### `kitchen list` — `#source_info` hook
+#### `kitchen list` — no TKE core change needed
 
-Add a generic hook to `lib/kitchen/command/list.rb`. If the driver for any instance responds to `#source_info`, render an extra section:
+Originally planned as a generic `driver#source_info` hook in
+`lib/kitchen/command/list.rb`, but this turned out to be unnecessary: the
+`kitchen-agentless` plugin already renders the agentless-source node inline
+via its own `list_extension.rb`, which monkeypatches
+`Kitchen::Command::List#list_table` at plugin-load time (lazily-loaded
+plugins can freely monkeypatch TK core classes at runtime — this doesn't
+require any static CLI/Thor registration, unlike a new command-line
+switch). TKE core stays completely agentless-unaware for `kitchen list`.
+
+#### `kitchen destroy` — `-k/--keep-agentless-source` flag
+
+A real CLI flag genuinely requires a TKE core change: Thor parses ARGV
+against each command's statically-declared `method_option`s at dispatch
+time, **before** `kitchen.yml` is read and before any driver plugin gem is
+`require`d. A lazily-loaded plugin therefore cannot register a new switch
+— by the time it loads, an unrecognized flag would already have raised
+`Thor::UnknownArgumentError`.
 
 ```ruby
-# lib/kitchen/command/list.rb — generic, agentless-unaware
-def print_table(instances)
-  # Render source section if driver provides it (only once, first instance wins)
-  source = instances.first&.driver&.respond_to?(:source_info) &&
-           instances.first.driver.source_info
-  if source
-    print_source_section(source)
-  end
-  # ... existing instances table rendering ...
+# lib/kitchen/cli.rb — registers the flag only for the destroy command
+if action == :destroy
+  method_option :keep_agentless_source,
+    aliases: "-k",
+    type: :boolean,
+    default: false,
+    desc: "Do not destroy the agentless-source node ..."
 end
 
-def print_source_section(info)
-  # Renders: Instance | Driver | State | Endpoint | CIC Ver | InSpec Ver
-  # info is a Hash with keys: :instance, :driver, :state, :endpoint, :cic_version, :inspec_version
+# lib/kitchen/command/destroy.rb — applies it as a generic driver config
+# override before the destroy action runs; harmless no-op for any driver
+# that doesn't read :keep_agentless_source (e.g. Kitchen::Driver::Agentless#keep_source?)
+def apply_driver_overrides(instances)
+  return unless options[:keep_agentless_source]
+
+  instances.each { |instance| instance.driver.send(:config)[:keep_agentless_source] = true }
 end
 ```
 
-TKE core does not know what "agentless-source" is — it just renders whatever `#source_info` returns.
-
-#### `kitchen destroy` — `--driver-option` passthrough
-
-Add a generic `--driver-option key=value` flag to the destroy command so plugins can receive destroy-time options:
-
-```ruby
-# The AgentlessDriver reads: options[:keep_source]
-# User runs: kitchen destroy --driver-option keep_source=true
-```
-
-Exact implementation approach to be confirmed against TKE core's Thor CLI setup in Wave 5 (CHEF-36826).
+Usage: `kitchen destroy -k` / `kitchen destroy --keep-agentless-source`.
+This is purely additive to the existing `KITCHEN_KEEP_AGENTLESS_SOURCE`
+env var and kitchen.yml `driver: { keep_agentless_source: true }` routes
+already supported entirely from the plugin side — all three routes end up
+setting the same `config[:keep_agentless_source]` key that the driver reads.
 
 ---
 
