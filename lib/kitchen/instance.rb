@@ -702,7 +702,7 @@ module Kitchen
       #   Instance
       # @return [Array<Symbol>] an Array of transition actions to perform
       # @api private
-      def self.actions(last = nil, desired)
+      def self.actions(last, desired)
         last_index = index(last)
         desired_index = index(desired)
 
