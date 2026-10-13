@@ -35,6 +35,7 @@ TKE core changes for this epic are **strictly minimal**. The agentless plugin (`
 > `require`d, so a new switch like `--keep-agentless-source` can only be
 > registered by TKE core itself — that's the only piece of CHEF-36826 that
 > actually needs a TKE core change.
+<!-- -->
 
 > ⛔ **No other files in this repo should be modified for CHEF-23408.** If you find yourself editing anything else, stop and re-read the architecture doc.
 
