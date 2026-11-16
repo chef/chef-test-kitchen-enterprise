@@ -1,31 +1,29 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release 2.0.23 -->
-## [v2.0.23](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.23) (2026-11-11)
-
-#### Merged Pull Requests
-- Updated the Notice file [#134](https://github.com/chef/chef-test-kitchen-enterprise/pull/134) ([ashiqueps](https://github.com/ashiqueps))
+<!-- latest_release -->
 <!-- latest_release -->
 
 <!-- release_rollup -->
-### Changes not yet released to rubygems.org
-
-#### Bug Fixes
-- Pin net-ping to 2.0.8 to fix unit test CI failure [#128](https://github.com/chef/chef-test-kitchen-enterprise/pull/128) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.19 -->
-
-#### Merged Pull Requests
-- Updated the Notice file [#134](https://github.com/chef/chef-test-kitchen-enterprise/pull/134) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.23 -->
-- Fix Windows habitat test pipeline: install hab from stable channel [#133](https://github.com/chef/chef-test-kitchen-enterprise/pull/133) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.22 -->
-- CHEF-37333: add Linux ARM Habitat validation in Expeditor pipeline [#124](https://github.com/chef/chef-test-kitchen-enterprise/pull/124) ([sanjain-progress](https://github.com/sanjain-progress)) <!-- 2.0.21 -->
-- CHEF-37476: Add ~/.chef/ruby/VERSION/gems to GEM_PATH for dynamic plugin loading [#125](https://github.com/chef/chef-test-kitchen-enterprise/pull/125) ([sanghinitin](https://github.com/sanghinitin)) <!-- 2.0.20 -->
-- CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611)) <!-- 2.0.19 -->
-- Add workflow-change-guard and Moved unit specs from buildkite to GH workflow [#123](https://github.com/chef/chef-test-kitchen-enterprise/pull/123) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.18 -->
-- [CHEF-34634][CHEF-34736] Added plan file for Mac arm habitat pkg [#118](https://github.com/chef/chef-test-kitchen-enterprise/pull/118) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.17 -->
-- Fix GEM_PATH leak into target-side subprocesses in exec transport [#120](https://github.com/chef/chef-test-kitchen-enterprise/pull/120) ([neha-p6](https://github.com/neha-p6)) <!-- 2.0.16 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v2.0.23](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.23) (2026-11-16)
+
+#### Bug Fixes
+- Pin net-ping to 2.0.8 to fix unit test CI failure [#128](https://github.com/chef/chef-test-kitchen-enterprise/pull/128) ([ashiqueps](https://github.com/ashiqueps))
+
+#### Merged Pull Requests
+- Fix GEM_PATH leak into target-side subprocesses in exec transport [#120](https://github.com/chef/chef-test-kitchen-enterprise/pull/120) ([neha-p6](https://github.com/neha-p6))
+- [CHEF-34634][CHEF-34736] Added plan file for Mac arm habitat pkg [#118](https://github.com/chef/chef-test-kitchen-enterprise/pull/118) ([ashiqueps](https://github.com/ashiqueps))
+- Add workflow-change-guard and Moved unit specs from buildkite to GH workflow [#123](https://github.com/chef/chef-test-kitchen-enterprise/pull/123) ([ashiqueps](https://github.com/ashiqueps))
+- CHEF-37554: Fix security findings in Windows build by removing .github directories from vendored gems [#126](https://github.com/chef/chef-test-kitchen-enterprise/pull/126) ([nikhil2611](https://github.com/nikhil2611))
+- CHEF-37476: Add ~/.chef/ruby/VERSION/gems to GEM_PATH for dynamic plugin loading [#125](https://github.com/chef/chef-test-kitchen-enterprise/pull/125) ([sanghinitin](https://github.com/sanghinitin))
+- CHEF-37333: add Linux ARM Habitat validation in Expeditor pipeline [#124](https://github.com/chef/chef-test-kitchen-enterprise/pull/124) ([sanjain-progress](https://github.com/sanjain-progress))
+- Fix Windows habitat test pipeline: install hab from stable channel [#133](https://github.com/chef/chef-test-kitchen-enterprise/pull/133) ([nikhil2611](https://github.com/nikhil2611))
+- Updated the Notice file [#134](https://github.com/chef/chef-test-kitchen-enterprise/pull/134) ([ashiqueps](https://github.com/ashiqueps))
+<!-- latest_stable_release -->
+
 ## [v2.0.15](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.15) (2026-06-18)
 
 #### Merged Pull Requests
@@ -34,7 +32,6 @@
 - CHEF-34831: Fix security scan findings in gem dependencies [#108](https://github.com/chef/chef-test-kitchen-enterprise/pull/108) ([nikhil2611](https://github.com/nikhil2611))
 - CHEF-35087 - Use appbundler in hab packaging and install latest Habitat in Windows test [#106](https://github.com/chef/chef-test-kitchen-enterprise/pull/106) ([nikhil2611](https://github.com/nikhil2611))
 - CHEF-34832 - Updated NOTICE for upcoming chef-tke release [#115](https://github.com/chef/chef-test-kitchen-enterprise/pull/115) ([nikhil2611](https://github.com/nikhil2611))
-<!-- latest_stable_release -->
 
 ## [v2.0.11](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.11) (2026-03-26)
 
