@@ -14,10 +14,16 @@ pkg_build_deps=(
   core/bash
   core/gcc
   core/git
+  # Provides sys/capability.h so the cap2 gem's native extension (a transitive
+  # dependency of net-ping, pulled in by kitchen-vcenter) can compile.
+  core/libcap
 )
 pkg_deps=(
   ${_ruby_pkg}
   core/coreutils
+  # Runtime shared library for the cap2 gem's native extension (see
+  # pkg_build_deps above).
+  core/libcap
 )
 pkg_svc_user=root
 

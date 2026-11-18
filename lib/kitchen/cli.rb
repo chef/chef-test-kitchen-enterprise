@@ -186,6 +186,16 @@ module Kitchen
           default: false,
           desc: "Run the #{action} with debugging enabled."
       end
+      if action == :destroy
+        method_option :keep_agentless_source,
+          aliases: "-k",
+          type: :boolean,
+          default: false,
+          desc: <<-DESC.gsub(/^\s+/, "").tr("\n", " ")
+            Do not destroy the agentless-source node (if a driver supports one)
+            when destroying the target instance(s).
+          DESC
+      end
       method_option :fail_fast,
         aliases: "-f",
         type: :boolean,
@@ -195,7 +205,8 @@ module Kitchen
       log_options
       define_method(action) do |*args|
         update_config!
-        perform(action, "action", args)
+        command = action == :destroy ? "destroy" : "action"
+        perform(action, command, args)
       end
     end
 

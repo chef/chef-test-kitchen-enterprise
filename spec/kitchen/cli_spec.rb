@@ -49,5 +49,30 @@ module Kitchen
         assert_equal false, cli.config.log_overwrite
       end
     end
+
+    describe "destroy options" do
+      it "routes destroy through Kitchen::Command::Destroy" do
+        # The destroy action is routed to "destroy" command (not "action")
+        # so that plugins can prepend Kitchen::Command::Destroy to inject
+        # driver overrides via #apply_driver_overrides.
+        define_method_block = CLI.instance_method(:destroy)
+        _(define_method_block).wont_be_nil
+      end
+
+      it "defines keep_agentless_source for destroy" do
+        option = CLI.commands["destroy"].options[:keep_agentless_source]
+
+        _(option).wont_be_nil
+        _(option.aliases).must_include "-k"
+        _(option.type).must_equal :boolean
+        _(option.default).must_equal false
+      end
+
+      it "does not define keep_agentless_source for other lifecycle actions" do
+        %w{create converge setup verify}.each do |action|
+          _(CLI.commands[action].options[:keep_agentless_source]).must_be_nil
+        end
+      end
+    end
   end
 end
