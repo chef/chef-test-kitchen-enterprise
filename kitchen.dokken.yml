@@ -1,7 +1,6 @@
 ---
 driver:
   name: dokken
-  chef_image: cincproject/cinc
   privileged: true
   chef_image: chef/chef-hab
   chef_version: unstable
