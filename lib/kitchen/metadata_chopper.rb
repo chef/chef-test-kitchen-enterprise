@@ -33,7 +33,7 @@ module Kitchen
       [mc[:name], mc[:version]]
     end
 
-    # Creates a new instances and loads in the contents of the metdata.rb
+    # Creates a new instance and loads in the contents of the metadata.rb
     # file. If you value your life, you may want to avoid reading the
     # implementation.
     #
@@ -42,6 +42,13 @@ module Kitchen
       instance_eval(File.read(metadata_file), metadata_file)
     end
 
+    # Captures any attribute call made while evaluating the metadata file,
+    # storing its first argument under the attribute name.
+    #
+    # @param meth [Symbol] the attribute name being set
+    # @param args [Array] the attribute's arguments; the first becomes the value
+    # @return [Object] the stored value
+    # @api private
     def method_missing(meth, *args, &_block)
       self[meth] = args.first
     end

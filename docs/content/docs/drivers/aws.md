@@ -10,7 +10,7 @@ kitchen-ec2 is a Test Kitchen *driver* for EC2 in Amazon AWS.
 
 ### Setting Driver Configuration
 
-The Amazon AWS driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you use to use globally.
+The Amazon AWS driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you want to use globally.
 
 #### Example Global Driver Option
 
@@ -40,9 +40,9 @@ platforms:
 
 In order to connect to AWS, you must specify AWS credentials. We rely on the SDK to find credentials in the standard way, documented here: <https://github.com/aws/aws-sdk-ruby/#configuration>
 
-The SDK Chain will search environment variables, then config files, then IAM role data from the instance profile, in that order. In the case config files being present, the 'default' profile will be used unless `shared_credentials_profile` is defined to point to another profile.
+The SDK Chain will search environment variables, then config files, then IAM role data from the instance profile, in that order. In the case of config files being present, the 'default' profile will be used unless `shared_credentials_profile` is defined to point to another profile.
 
-Because the Test Kitchen test should be checked into source control and ran through CI we no longer support storing the AWS credentials in the `.kitchen.yml` file.
+Because the Test Kitchen test should be checked into source control and run through CI we no longer support storing the AWS credentials in the `.kitchen.yml` file.
 
 ### Instance Login Configuration
 
@@ -276,7 +276,7 @@ subnet_filter:
 
 #### tags
 
-The Hash of EC tag name/value pairs which will be applied to the instance.
+The Hash of EC2 tag name/value pairs which will be applied to the instance.
 
 The default is `{ "created-by" => "test-kitchen" }`.
 
@@ -357,7 +357,7 @@ Specify a proxy to send AWS requests through.  Should be of the format `http://<
 
 The default is `ENV["HTTPS_PROXY"] || ENV["HTTP_PROXY"]`.  If you have these environment variables set and do not want to use a proxy when contacting aws set `http_proxy: nil`.
 
-**Note** - The AWS command line utility allow you to specify [two proxies](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-proxy.html), one for HTTP and one for HTTPS.  The AWS Ruby SDK only allows you to specify 1 proxy and because all requests are `https://` this proxy needs to support HTTPS.
+**Note** - The AWS command line utility allows you to specify [two proxies](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-proxy.html), one for HTTP and one for HTTPS.  The AWS Ruby SDK only allows you to specify 1 proxy and because all requests are `https://` this proxy needs to support HTTPS.
 
 #### ssl_verify_peer
 
@@ -452,7 +452,7 @@ If you don't set this it will default to whatever DHCP address EC2 hands out.
 
 #### interface
 
-The place from which to derive the hostname for communicating with the instance. May be `dns`, `public`, `private`, `private_dns` or `id`.  If this is unset, the driver will derive the hostname by failing back in the following order:
+The place from which to derive the hostname for communicating with the instance. May be `dns`, `public`, `private`, `private_dns` or `id`.  If this is unset, the driver will derive the hostname by falling back in the following order:
 
 1. DNS Name
 2. Public IP Address
@@ -481,7 +481,7 @@ If you want to run your instances on hardware that is not shared with other cust
 
 The most specific run type is a dedicated `host`. In this mode your instance will not run on a random host dedicated to your account, but you can reserve a specific host instead. This approach offers options like selecting AZ-level separation or savings plans. It is used mainly for licensing or security considerations; for example, it is needed to work with `mac` instance types.
 
-The default is `default'.
+The default is `default`.
 
 #### allocate_dedicated_host
 
@@ -496,6 +496,33 @@ Dedicated hosts can be shared across accounts and might be associated with multi
 To avoid having Test Kitchen try to deallocate shared or minimum runtime hosts, the functionality of deallocating a host is guarded by this setting.
 
 The default is `false`.
+
+### Additional Driver Options
+
+| Option | Default | Description |
+| ---- | ---- | ---- |
+| `retry_limit` | `3` | Number of times the AWS SDK retries a failed API call. |
+| `associate_ipv6` | `nil` | Assign an IPv6 address to the instance. |
+| `spot_wait` | `60` | Seconds to wait for a spot request to be fulfilled. |
+| `licenses` | *(unset)* | Array of `{license_configuration_arn: ...}` hashes for AWS License Manager. |
+| `placement` | *(unset)* | Hash of placement options: `affinity`, `availability_zone`, `group_id`, `group_name`, `host_id`, `host_resource_group_arn`, `partition_number`, `tenancy`. |
+
+#### Connecting through Session Manager
+
+AWS Systems Manager Session Manager lets Test Kitchen reach an instance without opening SSH or RDP to the internet at all. The instance needs the SSM agent and an instance profile granting it access.
+
+| Option | Default | Description |
+| ---- | ---- | ---- |
+| `use_ssm_session_manager` | `false` | Connect through Session Manager instead of opening inbound ports. |
+| `ssm_session_manager_document_name` | `nil` | SSM document to use for the session. |
+
+```yaml
+driver:
+  name: ec2
+  use_ssm_session_manager: true
+```
+
+This is the most secure way to run this driver: the instance needs no inbound security group rules whatsoever.
 
 ### Example **kitchen.yml**
 

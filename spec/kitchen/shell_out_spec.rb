@@ -92,12 +92,18 @@ describe Kitchen::ShellOut do
       _(err.message).must_equal "boom bad"
     end
 
-    it "raises a Kitchen::Errror tagged exception for unknown exceptions" do
+    it "raises a Kitchen::Error tagged exception for unknown exceptions" do
       command.stubs(:error!).raises(IOError, "boom bad")
 
       err = _ { subject.run_command("boom") }.must_raise IOError
       _(err).must_be_kind_of Kitchen::Error
       _(err.message).must_equal "boom bad"
+    end
+
+    it "does not catch fatal exceptions" do
+      command.stubs(:error!).raises(SystemExit.new(42))
+
+      _ { subject.run_command("boom") }.must_raise SystemExit
     end
 
     it "prepends with sudo if :use_sudo is truthy" do
@@ -126,9 +132,6 @@ describe Kitchen::ShellOut do
 
       _(subject.logs.first)
         .must_equal "[thed command] BEGIN (tenac)"
-    end
-
-    it "truncates the debug BEGIN command if it spans multiple lines" do
     end
 
     it "logs a debug END message" do

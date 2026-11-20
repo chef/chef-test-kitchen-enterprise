@@ -78,13 +78,23 @@ describe Kitchen::Driver::Base do
     _(logged_output.string).must_match(/yo\n/)
   end
 
-  %i{create setup verify destroy}.each do |action|
-    it "has a #{action} method that takes state" do
-      # TODO: revert back
-      # state = Hash.new
-      # driver.public_send(action, state).must_be_nil
-      driver.respond_to?(action)
+  # Base has no #setup or #verify: since 2.0 those actions belong to the
+  # transport and the verifier, which Instance::ActionRunner dispatches to.
+  %i{create destroy package}.each do |action|
+    it "has a #{action} method that takes state and returns nil" do
+      _(driver.public_send(action, {})).must_be_nil
     end
+  end
+
+  it "returns unknown status by default for compatibility with existing drivers" do
+    status = driver.status(state)
+
+    _(status[:live]).must_be_nil
+    _(status[:state]).must_equal "unknown"
+    _(status[:source]).must_equal "driver"
+    _(status[:message]).must_match(/does not support status/)
+    _(status[:checked_at]).wont_be_nil
+    _(Time.iso8601(status[:checked_at])).must_be_kind_of Time
   end
 
   describe ".pre_create_command" do

@@ -21,19 +21,24 @@ To run 64-bit virtual machines, your computer must have a 64-bit operating syste
 Unfortunately Hyper-V doesn't like other hypervisors running at the same time and it must be disabled as a Windows Feature for VirtualBox to function properly.
 </div>
 
-##### Chef Workstation
+##### Test Kitchen and Workstation tooling
 
-First, install the [Chef Workstation](https://www.chef.io/downloads). This package includes Chef Infra Client, Chef InSpec, Test Kitchen, Cookstyle, and a variety of useful tools for the Chef ecosystem.
+Install Test Kitchen from RubyGems, your system packages, or [Cinc Workstation](https://cinc.sh/start/workstation/). This guide uses Cinc Workstation, the community distribution, which bundles Test Kitchen along with the drivers, provisioners, and verifiers you need to follow along.
 
-```ruby
-$ chef --version
-Chef Workstation version: 25.5.1084
-Chef CLI version: 5.6.21
-Chef Habitat version: 1.6.1243
-Test Kitchen version: 3.7.0
-Cookstyle version: 7.32.8
-Chef Infra Client version: 18.7.10
-Chef InSpec version: 5.22.80
+Test Kitchen itself does not bundle Cinc or Chef tooling. When you use a Workstation package, the available drivers, provisioners, verifiers, and commands are the ones bundled by that package. [Chef Workstation](https://www.chef.io/downloads) works the same way — substitute `chef` for `cinc` in the commands below, and `chef_infra` for `cinc_infra` in the examples.
+
+For a RubyGems install:
+
+```bash
+$ gem install test-kitchen
+$ kitchen version
+Test Kitchen version 4.0.0
+```
+
+For a Workstation install, use the Workstation command to see what it bundles:
+
+```bash
+$ cinc --version
 ```
 
 ##### VirtualBox
@@ -42,7 +47,7 @@ VirtualBox is a popular open-source hypervisor that enables you to run multiple 
 
 ```bash
 $ VBoxManage --version
-7.1.8r168469
+7.2.16r174877
 ```
 
 ##### Vagrant
@@ -51,12 +56,12 @@ Vagrant acts as a wrapper for hypervisors like VirtualBox, simplifying the proce
 
 ```bash
 $ vagrant --version
-Vagrant 2.4.7
+Vagrant 2.4.9
 ```
 
-With Chef Workstation, VirtualBox, and Vagrant installed, you're ready to use Test Kitchen's default setup. By default, Test Kitchen uses the `kitchen-vagrant` driver, which leverages Vagrant to create, manage, and destroy local virtual machines. Vagrant supports a variety of hypervisors and cloud providers, but for this guide, we'll use VirtualBox for local virtualization.
+With Test Kitchen, VirtualBox, and Vagrant installed, you're ready to create a local virtual machine. By default, `kitchen init` generates a `kitchen-vagrant` driver configuration and a shell provisioner. This guide uses Vagrant with VirtualBox for virtualization, and Cinc Workstation for the cookbook examples.
 
-Test Kitchen is highly modular, allowing you to mix and match different drivers (such as Vagrant, VMware, Azure, EC2, or Docker), provisioners (like Chef Infra, Ansible, Puppet, Salt, or DSC), and verifiers (including InSpec, Serverspec, or BATS). In this quick start, we'll focus on the most common workflow: Vagrant with VirtualBox for virtualization, Chef Infra for provisioning, and InSpec for testing.
+Test Kitchen is highly modular, allowing you to mix and match drivers (such as Vagrant, VMware, Azure, EC2, or Docker), provisioners (such as shell, Cinc/Chef, Ansible, Puppet, Salt, or DSC), and verifiers (including InSpec, Serverspec, or BATS). Install those plugins into the same Ruby environment that runs `kitchen`.
 
 <div class="sidebar--footer">
 <a class="button primary-cta" href="02-getting-help.md">Next - Getting Help</a>

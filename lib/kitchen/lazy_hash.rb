@@ -18,7 +18,7 @@
 require "delegate"
 
 module Kitchen
-  # A modifed Hash object that may contain callables as a value which must be
+  # A modified Hash object that may contain callables as a value which must be
   # executed in the context of another object. This allows for delayed
   # evaluation of a hash value while still looking and largely feeling like a
   # normal Ruby Hash.
@@ -77,7 +77,7 @@ module Kitchen
 
     # Returns a rendered value from the hash for the given key. If the key
     # can't be found, there are several options: With no other arguments, it
-    # will raise an KeyError exception; if default is given, then that will be
+    # will raise a KeyError exception; if default is given, then that will be
     # returned; if the optional code block is specified, then that will be run
     # and its result returned.
     #
@@ -93,6 +93,41 @@ module Kitchen
       else
         proc_or_val(__getobj__.fetch(key, default, &block))
       end
+    end
+
+    # Sets the raw value for the given key. Values are stored unrendered, so a
+    # callable assigned here is still evaluated lazily on read.
+    #
+    # SimpleDelegator would forward this through #method_missing; defining it
+    # here keeps the hot path off that dispatch, which every plugin walks once
+    # per default attribute while applying its defaults.
+    #
+    # @param key [Object] hash key
+    # @param value [Object] the value to store
+    # @return [Object] the stored value
+    def []=(key, value)
+      __getobj__[key] = value
+    end
+
+    # Returns whether the given key is present, without rendering its value.
+    #
+    # Defined for the same reason as {#[]=}: to bypass SimpleDelegator's
+    # #method_missing on a hot path.
+    #
+    # @param key [Object] hash key
+    # @return [Boolean] whether the key is present
+    def key?(key)
+      __getobj__.key?(key)
+    end
+
+    # Returns the keys of the underlying hash.
+    #
+    # Defined for the same reason as {#[]=}: to bypass SimpleDelegator's
+    # #method_missing on a hot path.
+    #
+    # @return [Array] the hash keys
+    def keys
+      __getobj__.keys
     end
 
     # Returns a new Hash with all keys and rendered values of the LazyHash.
@@ -115,7 +150,7 @@ module Kitchen
 
     # If no block provided, returns an enumerator over the keys and
     # rendered values in the underlying object.  If a block is
-    # provided, calls the block once for each [key, rendered_value]
+    # provided, calls the block once for each `[key, rendered_value]`
     # pair in the underlying object.
     #
     # @return [Enumerator, Array]

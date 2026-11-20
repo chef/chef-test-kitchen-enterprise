@@ -18,6 +18,7 @@
 require_relative "../spec_helper"
 
 require "logger"
+require "open3"
 
 require "kitchen/util"
 
@@ -85,6 +86,65 @@ describe Kitchen::Util do
     end
   end
 
+  describe ".mask_values" do
+    it "masks a symbol-keyed value in a modern Hash#inspect string" do
+      hash = { password: "s3cr3t", user: "root" }
+
+      _(Kitchen::Util.mask_values("[SSH] <#{hash.inspect}>", %w{password}))
+        .wont_include "s3cr3t"
+    end
+
+    it "masks a string-keyed value in a modern Hash#inspect string" do
+      hash = { "password" => "s3cr3t" }
+
+      _(Kitchen::Util.mask_values("[SSH] <#{hash.inspect}>", %w{password}))
+        .wont_include "s3cr3t"
+    end
+
+    it "masks a value in a legacy hash rocket string" do
+      _(Kitchen::Util.mask_values(%{<{:password=>"s3cr3t"}>}, %w{password}))
+        .wont_include "s3cr3t"
+    end
+
+    it "masks every requested key" do
+      hash = { password: "s3cr3t", ssh_http_proxy_password: "pr0xy" }
+      masked = Kitchen::Util.mask_values(
+        "[SSH] <#{hash.inspect}>", %w{password ssh_http_proxy_password}
+      )
+
+      _(masked).wont_include "s3cr3t"
+      _(masked).wont_include "pr0xy"
+    end
+
+    it "leaves keys that were not requested alone" do
+      hash = { password: "s3cr3t", user: "root" }
+
+      _(Kitchen::Util.mask_values("[SSH] <#{hash.inspect}>", %w{password}))
+        .must_include "root"
+    end
+
+    it "does not mask a key that merely ends with a requested key" do
+      hash = { not_a_password: "keepme" }
+
+      _(Kitchen::Util.mask_values("<#{hash.inspect}>", %w{password}))
+        .must_include "keepme"
+    end
+
+    it "does not modify the string it was given" do
+      hash = { password: "s3cr3t" }
+      original = "[SSH] <#{hash.inspect}>"
+
+      Kitchen::Util.mask_values(original, %w{password})
+
+      _(original).must_include "s3cr3t"
+    end
+
+    it "masks a frozen string" do
+      _(Kitchen::Util.mask_values(%{<{password: "s3cr3t"}>}.freeze, %w{password}))
+        .wont_include "s3cr3t"
+    end
+  end
+
   describe ".duration" do
     it "turns nil into a zero" do
       _(Kitchen::Util.duration(nil))
@@ -102,8 +162,10 @@ describe Kitchen::Util do
     end
   end
 
-  describe ".wrap_unix_command" do
+  describe ".wrap_command" do
     it "returns the wrapped command" do
+      _(Kitchen::Util.wrap_command("yoyo"))
+        .must_equal("sh -c '\nyoyo\n'")
     end
 
     it "returns a false if command is nil" do
@@ -112,8 +174,8 @@ describe Kitchen::Util do
     end
 
     it "returns a true if command string is empty" do
-      _(Kitchen::Util.wrap_command("yoyo"))
-        .must_equal("sh -c '\nyoyo\n'")
+      _(Kitchen::Util.wrap_command(""))
+        .must_equal("sh -c '\ntrue\n'")
     end
 
     it "handles a command string with a trailing newline" do
@@ -124,21 +186,21 @@ describe Kitchen::Util do
 
   describe ".outdent!" do
     it "modifies the argument string in place, destructively" do
-      string = "yep"
+      string = +"yep"
 
       _(Kitchen::Util.outdent!(string).object_id)
         .must_equal string.object_id
     end
 
     it "returns the same string if no leading whitespace exists" do
-      string = "one\ntwo\nthree"
+      string = +"one\ntwo\nthree"
 
       _(Kitchen::Util.outdent!(string))
         .must_equal "one\ntwo\nthree"
     end
 
     it "strips same amount of leading whitespace as found on first line" do
-      string = "  one\n    two\n      three\nfour"
+      string = +"  one\n    two\n      three\nfour"
 
       _(Kitchen::Util.outdent!(string))
         .must_equal "one\n  two\n    three\nfour"
@@ -264,6 +326,34 @@ describe Kitchen::Util do
       dne_dir = File.join(@root, "notexist")
       _(Kitchen::Util.safe_glob(dne_dir, "**/*"))
         .must_equal Dir.glob(File.join(dne_dir, "**/*"))
+    end
+  end
+
+  # Kitchen::Util is required directly by driver, provisioner and verifier
+  # plugins, so it has to stand on its own without lib/kitchen.rb being
+  # loaded first. These run in a subprocess because the rest of the suite has
+  # already loaded the whole library into this process.
+  describe "when required on its own" do
+    def run_in_clean_process(code)
+      Open3.capture2e(
+        Gem.ruby, "-I", File.expand_path("../../lib", __dir__), "-e", code
+      ).first
+    end
+
+    it "can call .list_directory without kitchen.rb being loaded" do
+      out = run_in_clean_process(
+        'require "kitchen/util"; Kitchen::Util.list_directory("."); print "OK"'
+      )
+
+      _(out).must_equal "OK"
+    end
+
+    it "can call .safe_glob without kitchen.rb being loaded" do
+      out = run_in_clean_process(
+        'require "kitchen/util"; Kitchen::Util.safe_glob(".", "*"); print "OK"'
+      )
+
+      _(out).must_equal "OK"
     end
   end
 end

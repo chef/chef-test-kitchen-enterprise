@@ -10,7 +10,7 @@ kitchen-digitalocean is a Test Kitchen *driver* for DigitalOcean that runs again
 
 ### Setting Driver Configuration
 
-The DigitalOcean driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you use to use globally.
+The DigitalOcean driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you want to use globally.
 
 #### Example Global Driver Option
 
@@ -18,7 +18,7 @@ This configuration sets the driver to `digitalocean` and then sets the `some_con
 
 ```yaml
 driver:
-  name: digitaloean
+  name: digitalocean
   some_config: true
 ```
 
@@ -28,7 +28,7 @@ This configuration sets the driver to `digitalocean` globally and then sets the 
 
 ```yaml
 driver:
-  name: digitaloean
+  name: digitalocean
 
 platforms:
   - name: ubuntu-20
@@ -101,7 +101,7 @@ The `size` configuration option allows you to specify the Droplet size. By defau
 
 #### region
 
-The `size` configuration option allows you to control the region where the Droplet is configured. By default your droplets will be built in the `nyc1` region. This configuration option can be set with the configuration option or by setting the `DIGITALOCEAN_REGION` env var. The env var is useful to allow teams with developers across different regions to test within their own geographic region without hard coding configs.
+The `region` configuration option allows you to control the region where the Droplet is configured. By default your droplets will be built in the `nyc1` region. This configuration option can be set with the configuration option or by setting the `DIGITALOCEAN_REGION` env var. The env var is useful to allow teams with developers across different regions to test within their own geographic region without hard coding configs.
 
 ```bash
 export DIGITALOCEAN_REGION="tor1"
@@ -147,7 +147,7 @@ The above configuration when fully tested would create the following images in t
 - `nyc3`: New York 3
 - `sfo1`: San Francisco 1
 - `sfo2`: San Francisco 2
-- `sfo3`: San Francisco 2
+- `sfo3`: San Francisco 3
 - `sgp1`: Singapore 1
 - `tor1`: Toronto 1
 
@@ -229,6 +229,24 @@ Note that your `vpc_uuid` must be the numeric ids of your vpc. To get the numeri
 
 ```bash
 curl -X GET https://api.digitalocean.com/v2/vpcs -H "Authorization: Bearer $DIGITALOCEAN_ACCESS_TOKEN"
+```
+
+### Additional Driver Options
+
+| Option | Default | Description |
+| ---- | ---- | ---- |
+| `user_data` | *(none)* | Cloud-init user data, run on first boot. |
+| `api_url` | `$DIGITALOCEAN_API_URL`, else `https://api.digitalocean.com` | API endpoint. Useful for testing against a proxy. |
+| `server_wait_interval` | `8` | Seconds between API polls while waiting on a Droplet. |
+| `server_wait_timeout` | `600` | Seconds to wait before giving up on a Droplet. |
+
+```yaml
+driver:
+  name: digitalocean
+  user_data: |
+    #cloud-config
+    package_update: true
+  server_wait_timeout: 900
 ```
 
 ### Example **kitchen.yml**

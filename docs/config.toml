@@ -1,5 +1,5 @@
 baseURL = "/"
-languageCode = "en-us"
+locale = "en-US"
 theme = "kitchen"
 googleAnalytics = 'G-GL7W81V957'
 
@@ -59,6 +59,11 @@ enable_search = true  # set to true to show search bar
 identifier = "getting_started"
 name = "Getting Started"
 weight = 5
+
+[[menu.docs]]
+identifier = "commands"
+name = "Commands"
+weight = 7
 
 [[menu.docs]]
 identifier = "drivers"
