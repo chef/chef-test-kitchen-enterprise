@@ -10,7 +10,7 @@ kitchen-azurerm is a Test Kitchen *driver* for Microsoft Azure.
 
 ### Setting Driver Configuration
 
-The Microsoft Azure driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you use to use globally.
+The Microsoft Azure driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you want to use globally.
 
 #### Example Global Driver Option
 
@@ -310,6 +310,23 @@ identities.
 
 * *boolean* : When enabled it will store the provisioner credentials in the state (default). Otherwise you will need to specify credentials under the transport. Disabling this is only useful in extremely unusual circumstances, e.g. you want to use credentials setup by cloud init or some other means other than the azure provisioning process.
   * Default Value: `true`
+
+### Additional Driver Options
+
+| Option | Default | Description |
+| ---- | ---- | ---- |
+| `vm_prefix` | `tk-` | Prefix for the generated VM name. |
+| `nsg_id` | `""` | Resource ID of an existing network security group to attach to the network interface. When unset, one is created for you. |
+| `open_ports` | `[]` | Extra inbound TCP ports to open, on top of the transport's own port. |
+
+```yaml
+driver:
+  name: azurerm
+  vm_prefix: ci-
+  open_ports:
+    - 8080
+    - 443
+```
 
 ### Example **kitchen.yml**
 

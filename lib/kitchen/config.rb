@@ -136,12 +136,18 @@ module Kitchen
 
     # Builds the filtered list of Instance objects.
     #
-    # @return [Array<Instance] an array of Instances
+    # @return [Array<Instance>] an array of Instances
     # @api private
     def build_instances
-      filter_instances.map.with_index do |(suite, platform), index|
-        new_instance(suite, platform, index)
+      instances = []
+      suites.each do |suite|
+        platforms.each do |platform|
+          next unless platform_selected?(suite, platform)
+
+          instances << new_instance(suite, platform, instances.length)
+        end
       end
+      instances
     end
 
     # Returns an object which can generate configuration hashes for all the
@@ -163,7 +169,7 @@ module Kitchen
     end
 
     # Determines the default absolute path to the testing files directory,
-    # based on the the value of `#kitchen_root`.
+    # based on the value of `#kitchen_root`.
     #
     # @return [String] an absolute path to the testing files directory
     # @api private
@@ -171,23 +177,19 @@ module Kitchen
       File.join(kitchen_root, Kitchen::DEFAULT_TEST_DIR)
     end
 
-    # Generates a filtered Array of tuples (Suite/Platform pairs) which is the
-    # cartesian product of suites and platforms. A Suite has two optional
-    # arrays (`#includes` and `#excludes`) which can be used to drop or
-    # select certain Platforms with which to join.
+    # Returns whether a platform passes a suite's include or exclude filters.
     #
-    # @return [Array<Array<Suite, Platform>>] an Array of Suite/Platform
-    #   tuples
+    # @param suite [Suite] a suite with optional platform filters
+    # @param platform [Platform] the platform to check
+    # @return [Boolean] whether an instance should be built for the pair
     # @api private
-    def filter_instances
-      suites.product(platforms).select do |suite, platform|
-        if !suite.includes.empty?
-          suite.includes.include?(platform.name)
-        elsif !suite.excludes.empty?
-          !suite.excludes.include?(platform.name)
-        else
-          true
-        end
+    def platform_selected?(suite, platform)
+      if !suite.includes.empty?
+        suite.includes.include?(platform.name)
+      elsif !suite.excludes.empty?
+        !suite.excludes.include?(platform.name)
+      else
+        true
       end
     end
 
@@ -270,23 +272,31 @@ module Kitchen
     def new_instance_logger(suite, platform, index)
       name = instance_name(suite, platform)
       log_location = File.join(log_root, "#{name}.log").to_s
+      structured_log_location = File.join(log_root, "#{name}.ndjson").to_s
       Logger.new(
         stdout: STDOUT,
         color: Color::COLORS[index % Color::COLORS.size].to_sym,
         logdev: log_location,
+        structured_logdev: structured_log_location,
         level: Util.to_logger_level(log_level),
         log_overwrite:,
         progname: name,
+        metadata: {
+          kitchen_run_id: Kitchen.run_id,
+          instance: name,
+          suite: suite.name,
+          platform: platform.name,
+        },
         colorize: @colorize
       )
     end
 
-    # Builds a newly configured LifecycleHooks object, for a given a Suite and
+    # Builds a newly configured LifecycleHooks object, for a given Suite and
     # Platform.
     #
     # @param suite [Suite,#name] a Suite
     # @param platform [Platform,#name] a Platform
-    # @param state_file [Kitchen::StateFile] a SateFile
+    # @param state_file [Kitchen::StateFile] a StateFile
     # @return [LifecycleHooks] a new LifecycleHooks object
     # @api private
     def new_lifecycle_hooks(suite, platform, state_file)
@@ -329,7 +339,7 @@ module Kitchen
       Transport.for_plugin(tdata[:name], tdata)
     end
 
-    # Builds a newly configured Verifier object, for a given a Suite and
+    # Builds a newly configured Verifier object, for a given Suite and
     # Platform.
     #
     # @param suite [Suite,#name] a Suite

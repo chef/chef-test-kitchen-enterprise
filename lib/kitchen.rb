@@ -16,6 +16,7 @@
 # limitations under the License.
 
 require "pathname" unless defined?(Pathname)
+require "securerandom" unless defined?(SecureRandom)
 require_relative "kitchen/errors"
 require_relative "kitchen/logger"
 require_relative "kitchen/logging"
@@ -31,7 +32,6 @@ require_relative "kitchen/config"
 require_relative "kitchen/data_munger"
 require_relative "kitchen/driver"
 require_relative "kitchen/driver/base"
-require_relative "kitchen/driver/ssh_base"
 require_relative "kitchen/driver/proxy"
 require_relative "kitchen/instance"
 require_relative "kitchen/lifecycle_hooks"
@@ -41,7 +41,6 @@ require_relative "kitchen/loader/yaml"
 require_relative "kitchen/metadata_chopper"
 require_relative "kitchen/platform"
 require_relative "kitchen/state_file"
-require_relative "kitchen/ssh"
 require_relative "kitchen/suite"
 require_relative "kitchen/verifier"
 require_relative "kitchen/verifier/base"
@@ -58,8 +57,26 @@ module Kitchen
     # @return [Mutex] a common mutex for global coordination
     attr_accessor :mutex
 
+    # Returns the mutex used for Dir.chdir coordination.
+    #
     # @return [Mutex] a mutex used for Dir.chdir coordination
-    attr_accessor :mutex_chdir
+    # @deprecated Use {Kitchen::Util.mutex_chdir}, which owns the mutex and is
+    #   available without loading all of Test Kitchen.
+    def mutex_chdir
+      Kitchen::Util.mutex_chdir
+    end
+
+    # Sets the mutex used for Dir.chdir coordination.
+    #
+    # @param mutex [Mutex] the mutex to use for Dir.chdir coordination
+    # @return [Mutex] the newly set mutex
+    # @deprecated Use {Kitchen::Util.mutex_chdir=}.
+    def mutex_chdir=(mutex)
+      Kitchen::Util.mutex_chdir = mutex
+    end
+
+    # @return [String] identifier for the current Kitchen process invocation
+    attr_writer :run_id
 
     # Returns the root path of the Kitchen gem source code.
     #
@@ -72,27 +89,42 @@ module Kitchen
     #
     # @return [Logger] a logger
     def default_logger
-      Logger.new(stdout: $stdout, level: Util.to_logger_level(env_log))
+      Logger.new(
+        stdout: $stdout,
+        level: Util.to_logger_level(env_log),
+        metadata: { kitchen_run_id: run_id }
+      )
     end
 
     # Returns a default file logger which emits on standard output and to a
     # log file.
     #
     # @param [Symbol] level logging level
-    # @param [Boolean] log_overwrite logging level
+    # @param [Boolean] log_overwrite whether to overwrite the log file
     # @return [Logger] a logger
     def default_file_logger(level = nil, log_overwrite = nil)
       level ||= env_log
       log_overwrite = log_overwrite.nil? ? env_log_overwrite : log_overwrite
       log_location = File.expand_path(File.join(DEFAULT_LOG_DIR, "kitchen.log"))
       log_location = log_location.to_s
+      structured_log_location = File.expand_path(File.join(DEFAULT_LOG_DIR, "kitchen.ndjson"))
+      structured_log_location = structured_log_location.to_s
 
       Logger.new(
         stdout: $stdout,
         logdev: log_location,
+        structured_logdev: structured_log_location,
         level: Util.to_logger_level(level),
-        log_overwrite:
+        log_overwrite:,
+        metadata: { kitchen_run_id: run_id }
       )
+    end
+
+    # Returns the current Kitchen run identifier.
+    #
+    # @return [String] identifier for the current Kitchen process invocation
+    def run_id
+      @run_id ||= SecureRandom.uuid
     end
 
     # Returns whether or not standard output is associated with a terminal
@@ -145,8 +177,5 @@ end
 # Initialize the base logger
 Kitchen.logger = Kitchen.default_logger
 
-# Setup a collection of instance crash exceptions for error reporting
+# Set up a collection of instance crash exceptions for error reporting
 Kitchen.mutex = Mutex.new
-
-# Initialize the mutex for Dir.chdir coordination
-Kitchen.mutex_chdir = Mutex.new

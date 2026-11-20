@@ -88,7 +88,7 @@ Set the SSH port for the remote access.
 
 ### openstack_tenant
 
-Your OpenStack tenant id.
+Tenant name. This is the Keystone **v2** name for a project — on v3 clouds use `openstack_project_name` instead.
 
 ### openstack_region
 
@@ -123,10 +123,10 @@ Expose read/write timeout parameters passed down to HTTP connection created via 
 
 ### server_wait
 
-`server_wait` is a workaround to deal with how some VMs with `cloud-init`.
-Some clouds need this some, most OpenStack instances don't. This is a stop gap
-wait makes sure that the machine is in a good state to work with. Ideally the
-transport layer in Test-Kitchen will have a more intelligent way to deal with this.
+`server_wait` is a workaround to deal with how some VMs behave with `cloud-init`.
+Some clouds need this, most OpenStack instances don't. This is a stop-gap
+wait that makes sure the machine is in a good state to work with. Ideally the
+transport layer in Test Kitchen will have a more intelligent way to deal with this.
 There will be a dot that appears every 10 seconds as the timer counts down.
 You may want to add this for **WinRM** instances due to the multiple restarts that
 happen on creation and boot. A good default is `300` seconds to make sure it's
@@ -230,6 +230,143 @@ to be set to `true`.
 
 **Deprecated** You should be using transport now. The guest image should use `cloud-init` or some other method to fetch key from meta-data service.
 
+## Authentication Configuration
+
+These options cover Keystone v3 identity, application credentials, and `clouds.yaml`. Most deployments need at least the domain options below, because a v3 username is only unique within its domain.
+
+### openstack_project_id
+
+Project ID. The v3 equivalent of a tenant ID.
+
+### openstack_tenant_id
+
+Tenant ID. The Keystone v2 name for a project ID.
+
+### openstack_user_domain
+
+User domain name. Required on most Keystone v3 clouds, where a username alone is ambiguous.
+
+### openstack_user_domain_id
+
+User domain ID. Use instead of `openstack_user_domain` when you have the ID rather than the name.
+
+### openstack_project_domain
+
+Project domain name.
+
+### openstack_project_domain_id
+
+Project domain ID.
+
+### openstack_identity_api_version
+
+Keystone API version.
+
+### openstack_endpoint_type
+
+Endpoint interface to use from the service catalog: `public`, `internal`, or `admin`.
+
+### openstack_service_type
+
+Compute service type to look up in the catalog.
+
+### openstack_application_credential_id
+
+Application credential ID. Application credentials let you authenticate without a username and password, which is the better option for CI.
+
+### openstack_application_credential_secret
+
+Application credential secret, paired with `openstack_application_credential_id`.
+
+### openstack_cloud
+
+Cloud entry to read from `clouds.yaml`. Falls back to the `OS_CLOUD` environment variable.
+
+### clouds_yaml_path
+
+Explicit path to a `clouds.yaml`, inserted into the search path.
+
+### ssl_ca_file
+
+Path to a CA bundle, passed to the HTTP connection. Also set by `OS_CACERT`, or a `cacert` entry in `clouds.yaml`.
+
+### metadata
+
+Hash of Nova instance metadata to attach to the server.
+
+### Rackspace Cloud
+
+Current Rackspace Cloud — previously branded Rackspace OpenStack Flex — is vanilla OpenStack with Keystone v3, so this driver is the right one for it:
+
+```yaml
+driver:
+  name: openstack
+  openstack_auth_url: https://keystone.api.<region>.rackspacecloud.com/v3
+```
+
+Regions include `sjc3`, `iad3`, and `dfw3`.
+
+The older `kitchen-rackspace` driver targets the legacy Rackspace Public Cloud and its Identity v2.0 API. It is unmaintained, and it does not work against the current platform.
+
+### Environment variables
+
+The driver reads the standard OpenStack environment variables, so an environment that already works with the `openstack` CLI usually works here without further configuration:
+
+| Environment variable | Driver option |
+| ---- | ---- |
+| `OS_CLOUD` | `openstack_cloud` |
+| `OS_AUTH_URL` | `openstack_auth_url` |
+| `OS_USERNAME` | `openstack_username` |
+| `OS_PASSWORD` | `openstack_api_key` |
+| `OS_PROJECT_NAME` | `openstack_project_name` |
+| `OS_PROJECT_ID` | `openstack_project_id` |
+| `OS_USER_DOMAIN_NAME` | `openstack_user_domain` |
+| `OS_USER_DOMAIN_ID` | `openstack_user_domain_id` |
+| `OS_PROJECT_DOMAIN_NAME` | `openstack_project_domain` |
+| `OS_PROJECT_DOMAIN_ID` | `openstack_project_domain_id` |
+| `OS_DOMAIN_ID` | `openstack_domain_id` |
+| `OS_DOMAIN_NAME` | `openstack_domain_name` |
+| `OS_REGION_NAME` | `openstack_region` |
+| `OS_INTERFACE` | `openstack_endpoint_type` |
+| `OS_IDENTITY_API_VERSION` | `openstack_identity_api_version` |
+| `OS_APPLICATION_CREDENTIAL_ID` | `openstack_application_credential_id` |
+| `OS_APPLICATION_CREDENTIAL_SECRET` | `openstack_application_credential_secret` |
+| `OS_CACERT` | `ssl_ca_file` |
+
+### Authenticating with clouds.yaml
+
+If you already have a working `clouds.yaml` for the `openstack` CLI, point the driver at an entry in it instead of repeating the credentials:
+
+```yaml
+driver:
+  name: openstack
+  openstack_cloud: my-cloud
+```
+
+### Authenticating with application credentials
+
+```yaml
+driver:
+  name: openstack
+  openstack_auth_url: https://keystone.example.com/v3
+  openstack_application_credential_id: <%= ENV['OS_APPLICATION_CREDENTIAL_ID'] %>
+  openstack_application_credential_secret: <%= ENV['OS_APPLICATION_CREDENTIAL_SECRET'] %>
+```
+
+### A typical Keystone v3 configuration
+
+```yaml
+driver:
+  name: openstack
+  openstack_auth_url: https://keystone.example.com/v3
+  openstack_username: <%= ENV['OS_USERNAME'] %>
+  openstack_api_key: <%= ENV['OS_PASSWORD'] %>
+  openstack_project_name: my-project
+  openstack_user_domain: Default
+  openstack_project_domain: Default
+  openstack_region: RegionOne
+```
+
 ## Disk Configuration
 
 ### block_device_mapping
@@ -273,7 +410,7 @@ Timeout to wait for volume to become available.  If a large volume is provisione
 
 #### attach_timeout
 
-If using a customized version of Openstack such a VMWare Integrated OPenstack (VIO), it may mark a volume active even though it is still performing some actions which may cause test kitchen to attach the volume to early which results in errors. Specify in seconds the amount of time to delay attaching the volume after its been marked active. Default timeout is 0.
+If using a customized version of OpenStack such as VMware Integrated OpenStack (VIO), it may mark a volume active even though it is still performing some actions which may cause test kitchen to attach the volume too early which results in errors. Specify in seconds the amount of time to delay attaching the volume after it's been marked active. Default timeout is 0.
 
 #### Example
 
@@ -314,7 +451,7 @@ In some complex network scenarios you can have several IP addresses designated
 as public or private. Use `public_ip_order` or `private_ip_order` to control
 which one to use for further SSH connection. Default is 0 (first one)
 
-For example if you have openstack istance that has network with several IPs assigned like
+For example if you have openstack instance that has network with several IPs assigned like
 
 ```text
 +--------------------------------------+------------+--------+------------+-------------+----------------------------------+

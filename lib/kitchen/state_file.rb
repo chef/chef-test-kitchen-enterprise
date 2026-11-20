@@ -26,7 +26,7 @@ module Kitchen
   #
   # @author Fletcher Nichol <fnichol@nichol.ca>
   class StateFile
-    # Constructs an new instance taking the kitchen root and instance name.
+    # Constructs a new instance taking the kitchen root and instance name.
     #
     # @param kitchen_root [String] path to the Kitchen project's root directory
     # @param name [String] name of the instance representing this state
@@ -76,6 +76,13 @@ module Kitchen
       result
     end
 
+    # Returns the absolute path to the state file.
+    #
+    # @return [String] absolute path to the state file on disk
+    def path
+      file_name
+    end
+
     private
 
     # @return [String] absolute path to the yaml state file on disk
@@ -95,8 +102,11 @@ module Kitchen
     # @raise [StateFileLoadError] if the string document cannot be parsed
     # @api private
     def deserialize_string(string)
-      YAML.safe_load(string)
-    rescue SyntaxError, Psych::SyntaxError, Psych::DisallowedClass => ex
+      result = YAML.safe_load(string)
+      return result if result.is_a?(Hash)
+
+      raise StateFileLoadError, "Error parsing #{file_name} (expected a Hash)"
+    rescue SyntaxError, Psych::Exception => ex
       raise StateFileLoadError, "Error parsing #{file_name} (#{ex.message})"
     end
 

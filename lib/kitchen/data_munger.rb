@@ -38,13 +38,7 @@ module Kitchen
     def initialize(data, kitchen_config = {})
       @data = data
       @kitchen_config = kitchen_config
-      convert_legacy_driver_format!
-      convert_legacy_chef_paths_format!
-      convert_legacy_require_chef_omnibus_format!
-      convert_legacy_busser_format!
-      convert_legacy_driver_http_proxy_format!
-      move_chef_data_to_provisioner!
-      convert_legacy_pre_create_command!
+      LegacyConfigNormalizer.new(self).normalize!
     end
 
     # Generate a new Hash of configuration data that can be used to construct
@@ -154,9 +148,16 @@ module Kitchen
 
     def combine_arrays!(root, key, *namespaces)
       if root.key?(key)
-        root[key] = namespaces
-          .map { |namespace| root.fetch(key).fetch(namespace, []) }.flatten
-          .compact
+        values = namespaces.map { |namespace| root.fetch(key).fetch(namespace, []) }
+        root[key] = if values.all?(Array)
+                      combined = values.each_with_object([]) do |value, result|
+                        result.concat(value.any?(Array) ? value.flatten : value)
+                      end
+                      combined.compact!
+                      combined
+                    else
+                      values.flatten.compact
+                    end
       end
     end
 
@@ -231,7 +232,7 @@ module Kitchen
     # platforms, or the like, just a vanilla hash.
     #
     # @param root [Hash] a hash to use as the root of the conversion
-    # @deprecated The following configuration hashses should no longer be
+    # @deprecated The following configuration hashes should no longer be
     #   created in a Test Kitchen hash: `:busser`. Use a `:verifier` hash
     #   block in their place.
     # @api private
@@ -378,7 +379,7 @@ module Kitchen
     #
     # @param root [Hash] a hash to use as the root of the conversion
     # @deprecated The following configuration hashes should no longer be
-    #   created in a Test Kitche hash: [`:driver_plugin`, `:driver_config`].
+    #   created in a Test Kitchen hash: [`:driver_plugin`, `:driver_config`].
     #   Use a `:driver` hash block in their place.
     # @api private
     def convert_legacy_driver_format_at!(root)
@@ -396,9 +397,7 @@ module Kitchen
     end
 
     # Copies `:http_proxy` and `:https_proxy` values in a driver hash into the
-    # provisioner and verifier hashes. For backwards compatibility with legacy
-    # Drivers (those inheriting directly from `SSHBase`), the original
-    # values are maintained in the driver hash.
+    # provisioner and verifier hashes.
     #
     # This method converts the following:
     #
@@ -589,9 +588,9 @@ module Kitchen
     end
 
     # Destructively moves a `:require_chef_omnibus` key/value pair from a
-    # `:driver` hash block to a `:provisioner` hash block in the first leve
+    # `:driver` hash block to a `:provisioner` hash block in the first level
     # depth of a hash. This method has no knowledge of suites, platforms, or
-    # the like, just a vanilla haash.
+    # the like, just a vanilla hash.
     #
     # @param root [Hash] a hash to use as the root of the conversion
     # @deprecated The `:require_chef_omnibus` key/value pair should no longer
@@ -653,12 +652,72 @@ module Kitchen
     # @return [Hash] a new merged Hash
     # @api private
     def merged_data_for(key, suite, platform, default_key = :name)
-      ddata = normalized_default_data(key, default_key, suite, platform)
-      cdata = normalized_common_data(key, default_key)
-      pdata = normalized_platform_data(key, default_key, platform)
-      sdata = normalized_suite_data(key, default_key, suite)
+      MergeResolver.new(self).merged_data_for(key, suite, platform, default_key)
+    end
 
-      ddata.rmerge(cdata.rmerge(pdata.rmerge(sdata)))
+    # Runs all legacy configuration conversions while keeping DataMunger as the
+    # public facade for destructive normalization.
+    class LegacyConfigNormalizer
+      # The legacy conversion methods to invoke, in order, when normalizing
+      # raw configuration data.
+      #
+      # @return [Array<Symbol>] ordered DataMunger method names
+      # @api private
+      STEPS = %i{
+        convert_legacy_driver_format!
+        convert_legacy_chef_paths_format!
+        convert_legacy_require_chef_omnibus_format!
+        convert_legacy_busser_format!
+        convert_legacy_driver_http_proxy_format!
+        move_chef_data_to_provisioner!
+        convert_legacy_pre_create_command!
+      }.freeze
+
+      def initialize(data_munger)
+        @data_munger = data_munger
+      end
+
+      # Destructively runs every conversion in {STEPS} against the data.
+      #
+      # @return [void]
+      # @api private
+      def normalize!
+        STEPS.each { |step| data_munger.send(step) }
+      end
+
+      private
+
+      attr_reader :data_munger
+    end
+
+    # Resolves the default/common/platform/suite layers for one plugin key.
+    class MergeResolver
+      def initialize(data_munger)
+        @data_munger = data_munger
+      end
+
+      # Merges the default, common, platform, and suite layers for one plugin
+      # key, with later layers winning over earlier ones.
+      #
+      # @param key [Symbol] the plugin key to merge, such as `:driver`
+      # @param suite [String] a suite name
+      # @param platform [String] a platform name
+      # @param default_key [Symbol] the key used when normalizing data
+      #   sub-hashes
+      # @return [Hash] a new merged Hash
+      # @api private
+      def merged_data_for(key, suite, platform, default_key)
+        ddata = data_munger.send(:normalized_default_data, key, default_key, suite, platform)
+        cdata = data_munger.send(:normalized_common_data, key, default_key)
+        pdata = data_munger.send(:normalized_platform_data, key, default_key, platform)
+        sdata = data_munger.send(:normalized_suite_data, key, default_key, suite)
+
+        ddata.rmerge(cdata.rmerge(pdata.rmerge(sdata)))
+      end
+
+      private
+
+      attr_reader :data_munger
     end
 
     # Destructively moves key Chef configuration key/value pairs from being
@@ -753,9 +812,9 @@ module Kitchen
     # takes an array value and transforms it into a hash with a bucket name
     # containing the original Array. This way semantic Hash merging will do
     # its thing and another process can collapse the hash into a flat array
-    # afterwards, given a strategy (like use the array segmenet from one
+    # afterwards, given a strategy (like use the array segment from one
     # bucket first, then another one second). To anyone who made it this far,
-    # Fletcher appologizes.
+    # Fletcher apologizes.
     #
     # @param root [Hash] a hash to use as the root of the conversion
     # @param key [Symbol] a key in the root hash that, if exists, has its
@@ -985,9 +1044,7 @@ module Kitchen
     #   Hash if not found
     # @api private
     def platform_data_for(name)
-      data.fetch(:platforms, {}).find(-> { {} }) do |platform|
-        platform.fetch(:name, nil) == name
-      end
+      platform_index[name] || {}
     end
 
     # Destructively sets a base kitchen config key/value pair at the root of
@@ -1016,8 +1073,41 @@ module Kitchen
     #   Hash if not found
     # @api private
     def suite_data_for(name)
-      data.fetch(:suites, {}).find(-> { {} }) do |suite|
-        suite.fetch(:name, nil) == name
+      suite_index[name] || {}
+    end
+
+    # Name-keyed index of the platform data, built once on first use.
+    #
+    # Every plugin lookup for every instance resolves a platform and a suite by
+    # name, so the linear scans this replaces made building a project's
+    # instances quadratic in its size.
+    #
+    # @return [Hash{String => Hash}] platform name to platform data
+    # @api private
+    def platform_index
+      @platform_index ||= index_by_name(data.fetch(:platforms, []))
+    end
+
+    # Name-keyed index of the suite data, built once on first use.
+    #
+    # @return [Hash{String => Hash}] suite name to suite data
+    # @api private
+    def suite_index
+      @suite_index ||= index_by_name(data.fetch(:suites, []))
+    end
+
+    # Indexes a collection of named data hashes by their :name value.
+    #
+    # An earlier entry wins over a later duplicate, matching the first match
+    # that a linear search would have returned.
+    #
+    # @param collection [Enumerable<Hash>] platform or suite data
+    # @return [Hash{String => Hash}] name to entry
+    # @api private
+    def index_by_name(collection)
+      collection.each_with_object({}) do |entry, index|
+        key = entry.fetch(:name, nil)
+        index[key] = entry unless index.key?(key)
       end
     end
   end

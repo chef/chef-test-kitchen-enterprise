@@ -48,8 +48,8 @@ module HashRecursiveMerge
   # When both +hsh+ and +other_hash+ contains an entry with the same key,
   # it merges and returns the values from both arrays.
   #
-  # Compared with Hash#merge, this method provides a different approch
-  # for merging nasted hashes.
+  # Compared with Hash#merge, this method provides a different approach
+  # for merging nested hashes.
   # If the value of a given key is an Hash and both +other_hash+ abd +hsh
   # includes the same key, the value is merged instead replaced with
   # +other_hash+ value.
@@ -67,13 +67,17 @@ module HashRecursiveMerge
   #    h1.merge(h2)     #=> {"a" => 100, "b" = >254, "c" => {"c1" => 16, "c3" => 94}}
   #
   def rmerge(other_hash)
-    r = {}
-    merge(other_hash) do |key, oldval, newval|
-      r[key] = oldval.class == self.class ? oldval.rmerge(newval) : newval
+    merge(other_hash) do |_key, oldval, newval|
+      oldval.class == self.class ? oldval.rmerge(newval) : newval
     end
   end
 end
 
+# Reopened to mix in {HashRecursiveMerge}, which adds the `#rmerge` and
+# `#rmerge!` deep-merge methods used throughout Test Kitchen's
+# configuration merging.
+#
+# This file is vendored third-party code; see the header for attribution.
 class Hash
   include HashRecursiveMerge
 end

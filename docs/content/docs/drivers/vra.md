@@ -10,7 +10,7 @@ kitchen-vra is a Test Kitchen driver for vRealize Automation that runs against t
 
 ### Setting Driver Configuration
 
-The VMware vra driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you use to use globally.
+The VMware vra driver for Test Kitchen includes many configuration options that can be set globally in the driver section of your kitchen.yml config file or within each platform configuration. Global settings apply to all platforms in the `kitchen.yml`, while platform level driver configuration is applied to only those platforms and override globally set configuration options. Even if you use platform level configuration options, it's a good idea to specify the driver you want to use globally.
 
 #### Example Global Driver Option
 
@@ -52,7 +52,7 @@ driver:
   verify_ssl: true
 ```
 
-If you want username and password to be prompted, remove usename and password in your .kitchen.yml as shown below:
+If you want username and password to be prompted, remove username and password in your .kitchen.yml as shown below:
 
 ```yaml
 driver:
@@ -130,7 +130,7 @@ Defaults to `nil`.  Set to your domain suffix, for example 'mydomain.com'.  This
 
 #### extra_parameters
 
-a hash of other data to set on a catalog request, most notably custom properties. Allows updates to existing properties on the blueprint as well as the addition of new properties. Each key in the hash is the property name, and the value is a another hash containing the value data type and the value itself. It is possible to use a `~` to add nested parameters.
+a hash of other data to set on a catalog request, most notably custom properties. Allows updates to existing properties on the blueprint as well as the addition of new properties. Each key in the hash is the property name, and the value is another hash containing the value data type and the value itself. It is possible to use a `~` to add nested parameters.
 
 
 Example **kitchen.yml**:
@@ -168,3 +168,17 @@ suites:
     run_list:
       - recipe[my_cookbook::default]
 ```
+
+### Additional Driver Options
+
+| Option | Default | Description |
+| ---- | ---- | ---- |
+| `deployment_name` | the platform name | Name given to the vRA deployment. Ignored when `unique_name` is enabled. |
+| `unique_name` | `false` | Name the deployment `deployment_<request id>` instead of using `deployment_name`, so concurrent runs do not collide. |
+| `request_refresh_rate` | `2` | Seconds between polls while waiting for the request. |
+| `cache_credentials` | `false` | Cache credentials to disk after a successful run so later runs do not prompt. |
+| `tenant` | `nil` | **Deprecated.** Not used for authentication in vRA 8.x — use `domain` instead. |
+
+{{% tip %}}
+Set `unique_name: true` when running several instances concurrently. Without it, deployments sharing a `deployment_name` collide in vRA.
+{{% /tip %}}

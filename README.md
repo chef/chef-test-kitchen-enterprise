@@ -6,7 +6,7 @@
 |             |                                                                                 |
 | ----------- | --------------------------------------------------------------------------------|
 | Website     | [https://kitchen.ci/][website]                                                  |
-| Source Code | [https://kitchen.ci/docs/getting-started/introduction/][guide]                  |
+| Source Code | [https://github.com/test-kitchen/test-kitchen][repo]                            |
 | Slack       | [#test-kitchen][slack] channel on Chef Community Slack                          |
 
 **Test Kitchen is an integration tool for developing and testing infrastructure code and software on isolated target platforms.**
@@ -25,7 +25,7 @@ If you have gems with transitive dependencies on `test-kitchen`, installing the 
 
 ## Getting Started Guide
 
-To learn how to install and setup Test Kitchen for developing infrastructure
+To learn how to install and set up Test Kitchen for developing infrastructure
 code, check out the [Getting Started Guide][guide].
 
 If you want to get going super fast, then try the Quick Start next...
@@ -51,8 +51,10 @@ kitchen init
 A `kitchen.yml` file will be created in your project base directory. This file
 describes your testing configuration; what you want to test and on which target
 platforms. Each of these suite and platform combinations are called instances.
-By default your instances will be converged with Chef Solo and run in Vagrant
-virtual machines.
+By default `kitchen init` generates a Vagrant-backed instance with the shell
+provisioner. Chef, Cinc, and other configuration management tooling is supplied
+by the Ruby environment you run Kitchen from, such as system gems, Cinc
+Workstation, or Chef Workstation.
 
 Get a listing of your instances with:
 
@@ -60,7 +62,7 @@ Get a listing of your instances with:
 kitchen list
 ```
 
-Run Chef Infra Client on an instance, in this case `default-ubuntu-2004`, with:
+Converge an instance, in this case `default-ubuntu-2004`, with:
 
 ```shell
 kitchen converge default-ubuntu-2004

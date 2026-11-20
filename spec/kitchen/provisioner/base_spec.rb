@@ -129,7 +129,7 @@ describe Kitchen::Provisioner::Base do
       _(provisioner[:http_proxy]).must_be_nil
     end
 
-    it ":http_proxys defaults to nil" do
+    it ":https_proxy defaults to nil" do
       _(provisioner[:https_proxy]).must_be_nil
     end
 
@@ -278,6 +278,50 @@ describe Kitchen::Provisioner::Base do
       cmd
     end
 
+    it "downloads files when run fails" do
+      connection.expects(:download).with(
+        ["/tmp/kitchen/nodes", "/tmp/kitchen/data_bags"],
+        "./test/fixtures"
+      )
+
+      connection.expects(:download).with("/remote", "/local")
+
+      connection.expects(:execute_with_retry)
+        .raises(Kitchen::Transport::TransportFailed.new("converge boom"))
+
+      err = _ { cmd }.must_raise Kitchen::ActionFailed
+      _(err.message).must_match(/converge boom/)
+    end
+
+    it "reports the run failure when downloading also fails" do
+      connection.stubs(:execute_with_retry)
+        .raises(Kitchen::Transport::TransportFailed.new("converge boom"))
+      connection.stubs(:download)
+        .raises(Kitchen::Transport::TransportFailed.new("download boom"))
+
+      err = _ { cmd }.must_raise Kitchen::ActionFailed
+      _(err.message).must_match(/converge boom/)
+      _(logged_output.string).must_match(/WARN -- : Failed to download files/)
+    end
+
+    it "warns but does not fail when only the download fails" do
+      connection.stubs(:download)
+        .raises(Kitchen::Transport::TransportFailed.new("download boom"))
+
+      cmd
+
+      _(logged_output.string).must_match(/WARN -- : Failed to download files/)
+      _(logged_output.string).must_match(/download boom/)
+    end
+
+    it "raises when the transport cannot download at all" do
+      connection.stubs(:download)
+        .raises(Kitchen::ClientError.new("#download must be implemented"))
+
+      err = _ { cmd }.must_raise Kitchen::ClientError
+      _(err.message).must_match(/must be implemented/)
+    end
+
     it "raises an ActionFailed on transfer when TransportFailed is raised" do
       connection.stubs(:upload)
         .raises(Kitchen::Transport::TransportFailed.new("dang"))
@@ -300,13 +344,20 @@ describe Kitchen::Provisioner::Base do
   end
 
   describe "sandbox" do
-    after do
-      provisioner.cleanup_sandbox
-    rescue # rubocop:disable Lint/HandleExceptions
-    end
+    after { provisioner.cleanup_sandbox }
 
     it "raises ClientError if #sandbox_path is called before #create_sandbox" do
       _ { provisioner.sandbox_path }.must_raise Kitchen::ClientError
+    end
+
+    it "#cleanup_sandbox does nothing when the sandbox was never created" do
+      provisioner.cleanup_sandbox
+    end
+
+    it "#call surfaces the error from a failed #create_sandbox" do
+      provisioner.stubs(:create_sandbox).raises(Errno::ENOSPC, "/tmp")
+
+      _ { provisioner.call({}) }.must_raise Errno::ENOSPC
     end
 
     it "#create_sandbox creates a temporary directory" do

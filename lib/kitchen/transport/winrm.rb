@@ -58,6 +58,9 @@ module Kitchen
         transport[:winrm_transport] == :ssl ? 5986 : 5985
       end
 
+      # (see Base#finalize_config!)
+      #
+      # Coerces `:winrm_transport` to a Symbol.
       def finalize_config!(instance)
         super
 
@@ -84,7 +87,10 @@ module Kitchen
       #
       # @author Fletcher Nichol <fnichol@nichol.ca>
       class Connection < Kitchen::Transport::Base::Connection
-        # (see Base::Connection#initialize)
+        # Create a new Connection instance.
+        #
+        # @param config [Hash] connection options
+        # @yield [self] yields itself for block-style invocation
         def initialize(config = {})
           super(config)
           @unelevated_session = nil
@@ -225,7 +231,7 @@ module Kitchen
         # @api private
         attr_reader :max_wait_until_ready
 
-        # @return [Integer] the TCP port number to use when connection to the
+        # @return [Integer] the TCP port number to use when connecting to the
         #   remote WinRM host
         # @api private
         attr_reader :rdp_port
@@ -241,7 +247,7 @@ module Kitchen
         #   Mac system
         # @api private
         def create_rdp_doc(opts = {})
-          content = Util.outdent!(<<-RDP)
+          content = Util.outdent(<<-RDP)
             full address:s:#{URI.parse(options[:endpoint]).host}:#{rdp_port}
             prompt for credentials:i:1
             username:s:#{options[:user]}
@@ -293,7 +299,7 @@ module Kitchen
           @file_transporter ||= WinRM::FS::Core::FileTransporter.new(unelevated_session)
         end
 
-        # (see Base#init_options)
+        # (see Base::Connection#init_options)
         def init_options(options)
           super
           @instance_name = @options.delete(:instance_name)
@@ -494,15 +500,15 @@ module Kitchen
         end
       end
 
-      # Creates a new WinRM Connection instance and save it for potential
+      # Creates a new WinRM Connection instance and saves it for potential
       # future reuse.
       #
       # @param options [Hash] connection options
-      # @return [Ssh::Connection] a WinRM Connection instance
+      # @return [Winrm::Connection] a WinRM Connection instance
       # @api private
       def create_new_connection(options, &block)
         if @connection
-          string_to_mask = "[WinRM] shutting previous connection #{@connection}"
+          string_to_mask = "[WinRM] shutting down previous connection #{@connection}"
           masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
           logger.debug(masked_string)
           @connection.close

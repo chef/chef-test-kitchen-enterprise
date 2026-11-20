@@ -15,7 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require_relative "errors"
+require_relative "logging"
+
 module Kitchen
+  # Namespace for the classes implementing each `kitchen` subcommand.
+  #
+  # @author Fletcher Nichol <fnichol@nichol.ca>
   module Command
     # Base class for CLI commands.
     #
@@ -97,7 +103,7 @@ module Kitchen
         end
       end
 
-      # Return an array on instances whose name matches the regular expression.
+      # Return an array of instances whose name matches the regular expression.
       #
       # @param regexp [Regexp] a regular expression matching on instance names
       # @return [Array<Instance>] an array of instances
@@ -128,7 +134,7 @@ module Kitchen
         Kitchen.logger
       end
 
-      # Return an array on instances whose name matches the regular expression,
+      # Return an array of instances whose name matches the regular expression,
       # the full instance name, or  the `"all"` literal.
       #
       # @param arg [String] an instance name, a regular expression, the literal
@@ -160,16 +166,22 @@ module Kitchen
 
         threads = []
         @action_errors = []
-        concurrency.times do
-          threads << Thread.new do
-            while (instance = queue.pop)
-              run_action_in_thread(action, instance, *args)
+        @action_errors_mutex = Mutex.new
+        previous_abort_on_exception = Thread.abort_on_exception
+        begin
+          Thread.abort_on_exception = true if options[:fail_fast]
+          concurrency.times do
+            threads << Thread.new do
+              while (instance = queue.pop)
+                run_action_in_thread(action, instance, *args)
+              end
             end
           end
+          threads.map(&:join)
+          report_errors
+        ensure
+          Thread.abort_on_exception = previous_abort_on_exception
         end
-        Thread.abort_on_exception = true if options[:fail_fast]
-        threads.map(&:join)
-        report_errors
       end
 
       # private
@@ -182,25 +194,51 @@ module Kitchen
         end
       end
 
+      # Determines how many instances may be acted on at once, clamped to the
+      # number of instances available and to at least one worker. Without the
+      # lower bound a zero or negative --concurrency would start no worker
+      # threads at all, so every instance would be skipped and the run would
+      # still report success.
+      #
+      # @param instances [Array<Instance>] the instances to be acted on
+      # @return [Integer] the number of worker threads to start
+      # @api private
       def concurrency_setting(instances)
-        concurrency = 1
-        if options[:concurrency]
-          concurrency = options[:concurrency] || instances.size
-          concurrency = instances.size if concurrency > instances.size
-        end
-        concurrency
+        return 1 unless options[:concurrency]
+
+        concurrency = options[:concurrency]
+        concurrency = instances.size if concurrency > instances.size
+        [concurrency, 1].max
       end
 
+      # Performs an action on a single instance, recording any instance or
+      # action failure rather than letting it escape the worker thread.
+      #
+      # @param action [String] action to perform
+      # @param instance [Instance] the instance to act on
+      # @param args [Array] additional arguments forwarded to the action
+      # @return [void]
+      # @api private
       def run_action_in_thread(action, instance, *args)
         instance.public_send(action, *args)
       rescue Kitchen::InstanceFailure => e
-        @action_errors << e
+        record_action_error(e)
       rescue Kitchen::ActionFailed => e
         new_error = Kitchen::ActionFailed.new("#{e.message} on #{instance.name}")
         new_error.set_backtrace(e.backtrace)
-        @action_errors << new_error
+        record_action_error(new_error)
       ensure
         instance.cleanup!
+      end
+
+      # Records an error raised by an action, synchronized across worker
+      # threads.
+      #
+      # @param error [StandardError] the error to record
+      # @return [void]
+      # @api private
+      def record_action_error(error)
+        @action_errors_mutex.synchronize { @action_errors << error }
       end
     end
   end

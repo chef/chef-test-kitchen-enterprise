@@ -16,11 +16,13 @@
 # limitations under the License.
 
 require "fileutils" unless defined?(FileUtils)
-require "logger"
+require "json" unless defined?(JSON)
+require "logger" unless defined?(Logger)
+require "time" unless defined?(Time.zone_offset)
 
 module Kitchen
   # Logging implementation for Kitchen. By default the console/stdout output
-  # will be displayed differently than the file log output. Therefor, this
+  # will be displayed differently than the file log output. Therefore, this
   # class wraps multiple loggers that conform to the stdlib `Logger` class
   # behavior.
   #
@@ -31,6 +33,15 @@ module Kitchen
     # @return [IO] the log device
     attr_reader :logdev
 
+    # @return [IO] the structured log device
+    attr_reader :structured_logdev
+
+    # @return [String,nil] the expanded text log path, if configured
+    attr_reader :logdev_path
+
+    # @return [String,nil] the expanded structured log path, if configured
+    attr_reader :structured_logdev_path
+
     # @return [Boolean] whether logger is configured for
     #   overwriting
     attr_reader :log_overwrite
@@ -38,11 +49,11 @@ module Kitchen
     # Constructs a new logger.
     #
     # @param options [Hash] configuration for a new logger
-    # @option options [Symbol] :color color to use when when outputting
+    # @option options [Symbol] :color color to use when outputting
     #   messages
     # @option options [Integer] :level the logging severity threshold
     #   (default: `Kitchen::DEFAULT_LOG_LEVEL`)
-    # @option options [Boolean] whether to overwrite the log
+    # @option options [Boolean] :log_overwrite whether to overwrite the log
     #   when Test Kitchen runs. Only applies if the :logdev is a String.
     #   (default: `Kitchen::DEFAULT_LOG_OVERWRITE`)
     # @option options [String,IO] :logdev filepath String or IO object to be
@@ -55,13 +66,23 @@ module Kitchen
     #   when Test Kitchen runs.
     #   (default: `$stdout.tty?`)
     def initialize(options = {})
+      @base_metadata = options[:metadata] || {}
       @log_overwrite = if options[:log_overwrite].nil?
                          default_log_overwrite
                        else
                          options[:log_overwrite]
                        end
 
-      @logdev = logdev_logger(options[:logdev], log_overwrite) if options[:logdev]
+      @logdev = device_factory.logdev_logger(options[:logdev], log_overwrite) if options[:logdev]
+      if options[:structured_logdev]
+        @structured_logdev = device_factory.structured_logdev_logger(
+          options[:structured_logdev],
+          log_overwrite,
+          -> { metadata }
+        )
+      end
+      @logdev_path = expanded_log_path(options[:logdev])
+      @structured_logdev_path = expanded_log_path(options[:structured_logdev])
 
       populate_loggers(options)
 
@@ -77,10 +98,12 @@ module Kitchen
     def populate_loggers(options)
       @loggers = []
       @loggers << logdev unless logdev.nil?
-      @loggers << stdout_logger(options[:stdout], options[:color], options[:colorize]) if
+      @loggers << structured_logdev unless structured_logdev.nil?
+      @loggers << device_factory.stdout_logger(options[:stdout], options[:color], options[:colorize]) if
         options[:stdout]
-      @loggers << stdout_logger($stdout, options[:color], options[:colorize]) if
+      @loggers << device_factory.stdout_logger($stdout, options[:color], options[:colorize]) if
         @loggers.empty?
+      @sink_set = SinkSet.new(@loggers)
     end
     private :populate_loggers
 
@@ -88,65 +111,72 @@ module Kitchen
       private
 
       # @api private
-      # @!macro delegate_to_first_logger
-      #   @method $1()
       def delegate_to_first_logger(meth)
-        define_method(meth) { |*args| @loggers.first.public_send(meth, *args) }
+        define_method(meth) { |*args, &block| @sink_set.first(meth, *args, &block) }
       end
 
       # @api private
-      # @!macro delegate_to_all_loggers
-      #   @method $1()
       def delegate_to_all_loggers(meth)
-        define_method(meth) do |*args|
-          result = nil
-          @loggers.each { |l| result = l.public_send(meth, *args) }
-          result
-        end
+        define_method(meth) { |*args, &block| @sink_set.all(meth, *args, &block) }
       end
     end
 
+    # @!method level
     # @return [Integer] the logging severity threshold
     # @see http://is.gd/Okuy5p
     delegate_to_first_logger :level
 
+    # @!method level=(level)
     # Sets the logging severity threshold.
     #
     # @param level [Integer] the logging severity threshold
     # @see http://is.gd/H1VBFH
     delegate_to_all_loggers :level=
 
+    # @!method progname
     # @return [String] program name to include in log messages
     # @see http://is.gd/5uHGK0
     delegate_to_first_logger :progname
 
+    # @!method progname=(progname)
     # Sets the program name to include in log messages.
     #
     # @param progname [String] the program name to include in log messages
     # @see http://is.gd/f2U5Xj
     delegate_to_all_loggers :progname=
 
+    # @!method datetime_format
     # @return [String] the date format being used
     # @see http://is.gd/btmFWJ
     delegate_to_first_logger :datetime_format
 
+    # @!method datetime_format=(format)
     # Sets the date format being used.
     #
     # @param format [String] the date format
     # @see http://is.gd/M36ml8
     delegate_to_all_loggers :datetime_format=
 
+    # @!method add(severity, message = nil, progname = nil, &block)
     # Log a message if the given severity is high enough.
     #
+    # @param severity [Integer] a stdlib Logger severity constant
+    # @param message [#to_s, nil] the message to log; when nil the block's
+    #   value is used, falling back to +progname+
+    # @param progname [#to_s, nil] used as the message when both +message+ and
+    #   a block are absent
+    # @yield evaluates to the message to log
     # @see http://is.gd/5opBW0
     delegate_to_all_loggers :add
 
+    # @!method <<(message)
     # Dump one or more messages to info.
     #
     # @param message [#to_s] the message to log
     # @see http://is.gd/BCp5KV
     delegate_to_all_loggers :<<
 
+    # @!method banner(message_or_progname = nil, &block)
     # Log a message with severity of banner (high level).
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -160,6 +190,7 @@ module Kitchen
     # @see http://is.gd/pYUCYU
     delegate_to_all_loggers :banner
 
+    # @!method debug(message_or_progname = nil, &block)
     # Log a message with severity of debug.
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -173,11 +204,13 @@ module Kitchen
     # @see http://is.gd/Re97Zp
     delegate_to_all_loggers :debug
 
+    # @!method debug?
     # @return [true,false] whether or not the current severity level
     #   allows for the printing of debug messages
     # @see http://is.gd/Iq08xB
     delegate_to_first_logger :debug?
 
+    # @!method info(message_or_progname = nil, &block)
     # Log a message with severity of info.
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -191,11 +224,13 @@ module Kitchen
     # @see http://is.gd/pYUCYU
     delegate_to_all_loggers :info
 
+    # @!method info?
     # @return [true,false] whether or not the current severity level
     #   allows for the printing of info messages
     # @see http://is.gd/lBtJkT
     delegate_to_first_logger :info?
 
+    # @!method error(message_or_progname = nil, &block)
     # Log a message with severity of error.
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -209,11 +244,13 @@ module Kitchen
     # @see http://is.gd/mLwYMl
     delegate_to_all_loggers :error
 
+    # @!method error?
     # @return [true,false] whether or not the current severity level
     #   allows for the printing of error messages
     # @see http://is.gd/QY19JL
     delegate_to_first_logger :error?
 
+    # @!method warn(message_or_progname = nil, &block)
     # Log a message with severity of warn.
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -227,11 +264,13 @@ module Kitchen
     # @see http://is.gd/PX9AIS
     delegate_to_all_loggers :warn
 
+    # @!method warn?
     # @return [true,false] whether or not the current severity level
     #   allows for the printing of warn messages
     # @see http://is.gd/Gdr4lD
     delegate_to_first_logger :warn?
 
+    # @!method fatal(message_or_progname = nil, &block)
     # Log a message with severity of fatal.
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -245,11 +284,13 @@ module Kitchen
     # @see http://is.gd/5ElFPK
     delegate_to_all_loggers :fatal
 
+    # @!method fatal?
     # @return [true,false] whether or not the current severity level
     #   allows for the printing of fatal messages
     # @see http://is.gd/7PgwRl
     delegate_to_first_logger :fatal?
 
+    # @!method unknown(message_or_progname = nil, &block)
     # Log a message with severity of unknown.
     #
     # @param message_or_progname [#to_s] the message to log. In the block
@@ -263,10 +304,30 @@ module Kitchen
     # @see http://is.gd/Y4hqpf
     delegate_to_all_loggers :unknown
 
+    # @!method close
     # Close the logging devices.
     #
     # @see http://is.gd/b13cVn
     delegate_to_all_loggers :close
+
+    # @return [Hash] metadata added to structured log events
+    def metadata
+      # Merge in place into the fresh dup rather than allocating a new hash per
+      # stack entry; this runs once per structured log event.
+      metadata_stack.each_with_object(@base_metadata.dup) do |values, result|
+        result.merge!(values)
+      end
+    end
+
+    # Temporarily adds metadata to structured log events.
+    #
+    # @param values [Hash] metadata fields to add for the block duration
+    def with_metadata(values)
+      metadata_stack.push(values.compact)
+      yield
+    ensure
+      metadata_stack.pop
+    end
 
     private
 
@@ -282,54 +343,254 @@ module Kitchen
       Kitchen::DEFAULT_LOG_OVERWRITE
     end
 
-    # Construct a new standard out logger.
-    #
-    # @param stdout [IO] the IO object that represents stdout (or similar)
-    # @param color [Symbol] color to use when outputing messages
-    # @param colorize [Boolean] whether to enable color
-    # @return [StdoutLogger] a new logger
-    # @api private
-    def stdout_logger(stdout, color, colorize)
-      logger = StdoutLogger.new(stdout)
-      if colorize
-        logger.formatter = proc do |_severity, _datetime, _progname, msg|
-          Color.colorize(msg.dup.to_s, color).concat("\n")
-        end
-      else
-        logger.formatter = proc do |_severity, _datetime, _progname, msg|
-          msg.dup.concat("\n")
+    def device_factory
+      @device_factory ||= DeviceFactory.new
+    end
+
+    def expanded_log_path(logdev)
+      File.expand_path(logdev) if logdev.is_a?(String)
+    end
+
+    def metadata_stack
+      Thread.current[metadata_stack_key] ||= []
+    end
+
+    def metadata_stack_key
+      @metadata_stack_key ||= :"kitchen_logger_metadata_#{object_id}"
+    end
+
+    # Internal composite for forwarding stdlib Logger-compatible calls to all
+    # configured logging sinks.
+    class SinkSet
+      def initialize(loggers)
+        @loggers = loggers
+      end
+
+      # Invokes a method on the first configured sink only.
+      #
+      # @param meth [Symbol] the method to invoke
+      # @param args [Array] arguments to forward to the sink
+      # @yield an optional block forwarded to the sink
+      # @return [Object] the first sink's return value
+      # @api private
+      def first(meth, *args, &block)
+        @loggers.first.public_send(meth, *args, &block)
+      end
+
+      # Invokes a method on every configured sink. A given block is memoized so
+      # that an expensive message block is evaluated at most once, no matter how
+      # many sinks consume it.
+      #
+      # @param meth [Symbol] the method to invoke
+      # @param args [Array] arguments to forward to each sink
+      # @yield an optional block forwarded to each sink
+      # @return [Object] the last sink's return value
+      # @api private
+      def all(meth, *args, &block)
+        result = nil
+        block = memoized_block(block) if block
+        @loggers.each { |logger| result = logger.public_send(meth, *args, &block) }
+        result
+      end
+
+      private
+
+      def memoized_block(block)
+        evaluated = false
+        value = nil
+        proc do
+          unless evaluated
+            value = block.call
+            evaluated = true
+          end
+          value
         end
       end
-      logger
     end
 
-    # Construct a new logdev logger.
-    #
-    # @param filepath_or_logdev [String,IO] a filepath String or IO object
-    # @param log_overwrite [Boolean] apply log overwriting
-    #   if filepath_or_logdev is a file path
-    # @return [LogdevLogger] a new logger
-    # @api private
-    def logdev_logger(filepath_or_logdev, log_overwrite)
-      LogdevLogger.new(resolve_logdev(filepath_or_logdev, log_overwrite))
+    # Internal factory for building the concrete logger devices.
+    class DeviceFactory
+      # Construct a new standard out logger.
+      #
+      # @param stdout [IO] the IO object that represents stdout (or similar)
+      # @param color [Symbol] color to use when outputting messages
+      # @param colorize [Boolean] whether to enable color
+      # @return [StdoutLogger] a new logger
+      # @api private
+      def stdout_logger(stdout, color, colorize)
+        logger = StdoutLogger.new(stdout)
+        logger.formatter = stdout_formatter(color, colorize)
+        logger
+      end
+
+      # Construct a new logdev logger.
+      #
+      # @param filepath_or_logdev [String,IO] a filepath String or IO object
+      # @param log_overwrite [Boolean] apply log overwriting
+      #   if filepath_or_logdev is a file path
+      # @return [LogdevLogger] a new logger
+      # @api private
+      def logdev_logger(filepath_or_logdev, log_overwrite)
+        LogdevLogger.new(resolve_logdev(filepath_or_logdev, log_overwrite))
+      end
+
+      # Construct a new structured logdev logger.
+      #
+      # @param filepath_or_logdev [String,IO] a filepath String or IO object
+      # @param log_overwrite [Boolean] apply log overwriting
+      #   if filepath_or_logdev is a file path
+      # @param metadata_provider [Proc] callable returning structured metadata
+      # @return [StructuredLogdevLogger] a new logger
+      # @api private
+      def structured_logdev_logger(filepath_or_logdev, log_overwrite, metadata_provider)
+        StructuredLogdevLogger.new(
+          resolve_logdev(filepath_or_logdev, log_overwrite),
+          metadata_provider
+        )
+      end
+
+      private
+
+      # Builds the formatter used for console output.
+      #
+      # The colour is fixed for the life of the logger, so both escape
+      # sequences are resolved once here rather than on every line. An
+      # uncolourised logger, and one whose colour did not resolve, share the
+      # same uncoloured formatter.
+      def stdout_formatter(color, colorize)
+        escape = colorize ? Color.escape(color) : ""
+
+        if escape.empty?
+          proc { |_severity, _datetime, _progname, msg| "#{msg}\n" }
+        else
+          reset = Color.escape(:reset)
+          proc { |_severity, _datetime, _progname, msg| "#{escape}#{msg}#{reset}\n" }
+        end
+      end
+
+      # Return an IO object from a filepath String or the IO object itself.
+      #
+      # @param filepath_or_logdev [String,IO] a filepath String or IO object
+      # @param log_overwrite [Boolean] apply log overwriting
+      #   if filepath_or_logdev is a file path
+      # @return [IO] an IO object
+      # @api private
+      def resolve_logdev(filepath_or_logdev, log_overwrite)
+        if filepath_or_logdev.is_a? String
+          mode = log_overwrite ? "wb" : "ab"
+          FileUtils.mkdir_p(File.dirname(filepath_or_logdev))
+          file = File.open(File.expand_path(filepath_or_logdev), mode)
+          file.sync = true
+          file
+        else
+          filepath_or_logdev
+        end
+      end
     end
 
-    # Return an IO object from a filepath String or the IO object itself.
-    #
-    # @param filepath_or_logdev [String,IO] a filepath String or IO object
-    # @param log_overwrite [Boolean] apply log overwriting
-    #   if filepath_or_logdev is a file path
-    # @return [IO] an IO object
-    # @api private
-    def resolve_logdev(filepath_or_logdev, log_overwrite)
-      if filepath_or_logdev.is_a? String
-        mode = log_overwrite ? "wb" : "ab"
-        FileUtils.mkdir_p(File.dirname(filepath_or_logdev))
-        file = File.open(File.expand_path(filepath_or_logdev), mode)
-        file.sync = true
-        file
-      else
-        filepath_or_logdev
+    # Buffers streamed output until a complete line is available for logging.
+    class LineBuffer
+      def initialize(&line_handler)
+        @buffer = +""
+        @line_handler = line_handler
+      end
+
+      # Appends a chunk of stream output to the buffer, emitting each complete
+      # newline-terminated line to the line handler.
+      #
+      # @param msg [String] a chunk of stream output, which may contain zero or
+      #   more complete lines
+      # @return [void]
+      # @api private
+      def <<(msg)
+        @buffer << msg
+        flush_lines
+      end
+
+      private
+
+      # Emits every complete line in the buffer, then drops the emitted bytes
+      # in a single pass. Scanning from a moving offset instead of deleting
+      # each line as it is found keeps a chunk of n lines linear rather than
+      # quadratic, which matters because one SSH or WinRM read can carry
+      # thousands of lines.
+      def flush_lines
+        start = 0
+        while (i = @buffer.index("\n", start))
+          @line_handler.call(@buffer[start, i - start].chomp)
+          start = i + 1
+        end
+        @buffer.slice!(0, start) unless start == 0
+      end
+    end
+
+    # Rewrites already-prefixed stream lines into the matching logger call.
+    class StreamLineFormatter
+      # Width of every stream prefix in {PREFIXES}. All prefixes are the same
+      # width so that a line's severity is a fixed-offset lookup.
+      #
+      # @return [Integer] the prefix width in characters
+      # @api private
+      PREFIX_WIDTH = 7
+
+      # Maps each stream prefix to the severity it denotes and whether the line
+      # must be replayed verbatim on sinks that cannot accept stream events.
+      #
+      # @return [Hash{String => Array}] prefix to [severity, structured] pairs
+      # @api private
+      PREFIXES = {
+        "-----> " => [:banner, false],
+        "D      " => [:debug,  true],
+        "$$$$$$ " => [:warn,   true],
+        ">>>>>> " => [:error,  false],
+        "!!!!!! " => [:fatal,  true],
+        "       " => [:info,   false],
+      }.freeze
+
+      def initialize(logger)
+        @logger = logger
+      end
+
+      # Routes an already-prefixed stream line to the logger call matching its
+      # prefix, stripping the prefix before logging.
+      #
+      # A hash lookup on the fixed-width prefix replaces a chain of anchored
+      # regexp matches, so an unprefixed line costs one lookup rather than six
+      # failed matches.
+      #
+      # @param line [String] a single line of prefixed stream output
+      # @return [void]
+      # @api private
+      def format(line)
+        severity, structured = PREFIXES[line[0, PREFIX_WIDTH]]
+
+        if severity.nil?
+          log_line(:info, line)
+        elsif structured
+          structured_line(severity, line[PREFIX_WIDTH..], line)
+        else
+          log_line(severity, line[PREFIX_WIDTH..])
+        end
+      end
+
+      private
+
+      def log_line(severity, message)
+        if severity == :banner
+          @logger.banner(message)
+        elsif @logger.respond_to?(:stream)
+          @logger.stream(severity, message)
+        else
+          @logger.public_send(severity, message)
+        end
+      end
+
+      def structured_line(severity, message, original)
+        if @logger.respond_to?(:stream)
+          @logger.stream(severity, message)
+        else
+          @logger.info(original)
+        end
       end
     end
 
@@ -342,34 +603,261 @@ module Kitchen
       #
       # @param msg [String] a message
       def <<(msg)
-        @buffer ||= ""
-        @buffer += msg
-        while (i = @buffer.index("\n"))
-          format_line(@buffer[0, i].chomp)
-          @buffer[0, i + 1] = ""
-        end
+        line_buffer << msg
       end
 
       # Log a banner message.
       #
       # @param msg [String] a message
       def banner(msg = nil, &block)
-        super_info("-----> #{msg}", &block)
+        if block
+          super_info(nil) { "-----> #{block.call}" }
+        else
+          super_info("-----> #{msg}")
+        end
       end
 
       private
 
-      # Reformat a line if it already contains log formatting.
-      #
-      # @param line [String] a message line
-      # @api private
-      def format_line(line)
-        case line
-        when /^-----> / then banner(line.gsub(/^[ >-]{6} /, ""))
-        when /^>>>>>> / then error(line.gsub(/^[ >-]{6} /, ""))
-        when /^       / then info(line.gsub(/^[ >-]{6} /, ""))
-        else info(line)
+      def line_buffer
+        @line_buffer ||= begin
+          formatter = StreamLineFormatter.new(self)
+          LineBuffer.new do |line|
+            formatter.format(line)
+          end
         end
+      end
+    end
+
+    # Internal class that emits one JSON object per log event.
+    class StructuredLogdevLogger
+      include ::Logger::Severity
+
+      # Maps stdlib Logger severity constants to their lowercase string names
+      # as they appear in emitted JSON events.
+      #
+      # @return [Hash{Integer => String}] severity constant to name mapping
+      # @api private
+      SEVERITY_NAMES = {
+        DEBUG => "debug",
+        INFO => "info",
+        WARN => "warn",
+        ERROR => "error",
+        FATAL => "fatal",
+        UNKNOWN => "unknown",
+      }.freeze
+
+      attr_accessor :level
+      attr_accessor :progname
+      attr_accessor :datetime_format
+
+      def initialize(logdev, metadata_provider)
+        @logdev = logdev
+        @metadata_provider = metadata_provider
+        @level = INFO
+        @progname = "Kitchen"
+        @sequence = 0
+        @mutex = Mutex.new
+      end
+
+      # Writes a log event if the given severity meets the current level.
+      #
+      # @param severity [Integer] a stdlib Logger severity constant
+      # @param message [#to_s, nil] the message to log; when nil the block's
+      #   value is used, falling back to +progname+
+      # @param progname [#to_s, nil] used as the message when both +message+ and
+      #   a block are absent
+      # @yield evaluates to the message to log, only when the severity is high
+      #   enough to be recorded
+      # @return [true] always, once the event has been considered
+      # @api private
+      def add(severity, message = nil, progname = nil)
+        severity ||= UNKNOWN
+        return true if severity < level
+
+        message = if message.nil?
+                    block_given? ? yield : progname
+                  else
+                    message
+                  end
+        write_event(severity, message, "log")
+      end
+
+      # Appends raw stream output, emitting a structured event per complete
+      # line.
+      #
+      # @param msg [String] a chunk of stream output
+      # @return [void]
+      # @api private
+      def <<(msg)
+        line_buffer << msg
+      end
+
+      # Writes a banner event at info severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [void]
+      # @api private
+      def banner(msg = nil)
+        message = block_given? ? yield : msg
+        write_event(INFO, message, "banner") unless INFO < level
+      end
+
+      # Writes a stream event at the given severity.
+      #
+      # @param severity [Integer, Symbol] a stdlib Logger severity constant or its
+      #   symbol name
+      # @param msg [#to_s] the message to log
+      # @return [void]
+      # @api private
+      def stream(severity, msg)
+        severity = severity_const(severity)
+        write_event(severity, msg, "stream") unless severity < level
+      end
+
+      # Writes a log event at debug severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [true]
+      # @api private
+      def debug(msg = nil, &block)
+        add(DEBUG, msg, nil, &block)
+      end
+
+      # Writes a log event at info severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [true]
+      # @api private
+      def info(msg = nil, &block)
+        add(INFO, msg, nil, &block)
+      end
+
+      # Writes a log event at warn severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [true]
+      # @api private
+      def warn(msg = nil, &block)
+        add(WARN, msg, nil, &block)
+      end
+
+      # Writes a log event at error severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [true]
+      # @api private
+      def error(msg = nil, &block)
+        add(ERROR, msg, nil, &block)
+      end
+
+      # Writes a log event at fatal severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [true]
+      # @api private
+      def fatal(msg = nil, &block)
+        add(FATAL, msg, nil, &block)
+      end
+
+      # Writes a log event at unknown severity.
+      #
+      # @param msg [#to_s, nil] the message to log; when nil the block's value is
+      #   used
+      # @yield evaluates to the message to log
+      # @return [true]
+      # @api private
+      def unknown(msg = nil, &block)
+        add(UNKNOWN, msg, nil, &block)
+      end
+
+      def debug?
+        level <= DEBUG
+      end
+
+      def info?
+        level <= INFO
+      end
+
+      def warn?
+        level <= WARN
+      end
+
+      def error?
+        level <= ERROR
+      end
+
+      def fatal?
+        level <= FATAL
+      end
+
+      # Closes the underlying log device if it is open and supports closing.
+      #
+      # @return [void]
+      # @api private
+      def close
+        return unless @logdev.respond_to?(:close)
+
+        if @logdev.respond_to?(:closed?)
+          @logdev.close unless @logdev.closed?
+        else
+          @logdev.close
+        end
+      end
+
+      private
+
+      def line_buffer
+        @line_buffer ||= begin
+          formatter = StreamLineFormatter.new(self)
+          LineBuffer.new do |line|
+            formatter.format(line)
+          end
+        end
+      end
+
+      def next_sequence
+        @sequence += 1
+      end
+
+      def severity_const(severity)
+        return severity if severity.is_a?(Integer)
+
+        ::Logger.const_get(severity.to_s.upcase)
+      end
+
+      def severity_name(severity)
+        SEVERITY_NAMES.fetch(severity, "unknown")
+      end
+
+      def write_event(severity, message, event_type)
+        @mutex.synchronize do
+          event = @metadata_provider.call.merge(
+            timestamp: Time.now.utc.iso8601(6),
+            level: severity_name(severity),
+            event_type:,
+            message: message.to_s,
+            progname:,
+            sequence: next_sequence
+          )
+          event.compact!
+          # One writev rather than two writes: the log device is opened with
+          # sync = true, so each call is a syscall.
+          @logdev.write(JSON.generate(event), "\n")
+        end
+        true
       end
     end
 
@@ -380,42 +868,66 @@ module Kitchen
       #
       # @param msg [String] a message
       def debug(msg = nil, &block)
-        super("D      #{msg}", &block)
+        if block
+          super(nil) { "D      #{block.call}" }
+        else
+          super("D      #{msg}")
+        end
       end
 
       # Log an info message
       #
       # @param msg [String] a message
       def info(msg = nil, &block)
-        super("       #{msg}", &block)
+        if block
+          super(nil) { "       #{block.call}" }
+        else
+          super("       #{msg}")
+        end
       end
 
       # Log a warn message
       #
       # @param msg [String] a message
       def warn(msg = nil, &block)
-        super("$$$$$$ #{msg}", &block)
+        if block
+          super(nil) { "$$$$$$ #{block.call}" }
+        else
+          super("$$$$$$ #{msg}")
+        end
       end
 
       # Log an error message
       #
       # @param msg [String] a message
       def error(msg = nil, &block)
-        super(">>>>>> #{msg}", &block)
+        if block
+          super(nil) { ">>>>>> #{block.call}" }
+        else
+          super(">>>>>> #{msg}")
+        end
       end
 
       # Log a fatal message
       #
       # @param msg [String] a message
       def fatal(msg = nil, &block)
-        super("!!!!!! #{msg}", &block)
+        if block
+          super(nil) { "!!!!!! #{block.call}" }
+        else
+          super("!!!!!! #{msg}")
+        end
       end
 
       # Log an unknown message
       #
       # @param msg [String] a message
       def unknown(msg = nil, &block)
-        super("?????? #{msg}", &block)
+        if block
+          super(nil) { "?????? #{block.call}" }
+        else
+          super("?????? #{msg}")
+        end
       end
     end
   end

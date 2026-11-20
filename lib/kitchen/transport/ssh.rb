@@ -77,6 +77,10 @@ module Kitchen
         transport[:compression] == false ? 0 : 6
       end
 
+      # (see Base#finalize_config!)
+      #
+      # Casts legacy `:compression` values to what net-ssh 2.10 and later
+      # expect.
       def finalize_config!(instance)
         super
 
@@ -106,7 +110,7 @@ module Kitchen
       # (see Base#cleanup!)
       def cleanup!
         if @connection
-          string_to_mask = "[SSH] shutting previous connection #{@connection}"
+          string_to_mask = "[SSH] shutting down previous connection #{@connection}"
           masked_string = Util.mask_values(string_to_mask, %w{password ssh_http_proxy_password})
           logger.debug(masked_string)
           @connection.close
@@ -121,7 +125,10 @@ module Kitchen
       #
       # @author Fletcher Nichol <fnichol@nichol.ca>
       class Connection < Kitchen::Transport::Base::Connection
-        # (see Base::Connection#initialize)
+        # Create a new Connection instance.
+        #
+        # @param config [Hash] connection options
+        # @yield [self] yields itself for block-style invocation
         def initialize(config = {})
           super(config)
           @session = nil
@@ -211,14 +218,14 @@ module Kitchen
           Array(remotes).each do |file|
             logger.debug("Attempting to download '#{file}' as file")
             session.scp.download!(file, local)
-          rescue Net::SCP::Error
+          rescue Net::SCP::Error => file_error
             begin
               logger.debug("Attempting to download '#{file}' as directory")
               session.scp.download!(file, local, recursive: true)
-            rescue Net::SCP::Error
-              logger.warn(
-                "SCP download failed for file or directory '#{file}', perhaps it does not exist?"
-              )
+            rescue Net::SCP::Error => directory_error
+              raise SshFailed,
+                "SCP download failed for file or directory '#{file}' " \
+                "(file: #{file_error.message}; directory: #{directory_error.message})"
             end
           end
         rescue Net::SSH::Exception => ex
@@ -299,17 +306,17 @@ module Kitchen
         # @api private
         attr_reader :ssh_http_proxy
 
-        # @return [Integer] The port to use when using an kitchen ssh proxy
+        # @return [Integer] The port to use when using a kitchen ssh proxy
         #   remote SSH host via http proxy
         # @api private
         attr_reader :ssh_http_proxy_port
 
-        # @return [String] The username to use when using an kitchen ssh proxy
+        # @return [String] The username to use when using a kitchen ssh proxy
         #   remote SSH host via http proxy
         # @api private
         attr_reader :ssh_http_proxy_user
 
-        # @return [String] The password to use when using an kitchen ssh proxy
+        # @return [String] The password to use when using a kitchen ssh proxy
         #   remote SSH host via http proxy
         # @api private
         attr_reader :ssh_http_proxy_password
@@ -570,7 +577,7 @@ module Kitchen
         current_net_ssh >= new_option_version ? :never : false
       end
 
-      # Creates a new SSH Connection instance and save it for potential future
+      # Creates a new SSH Connection instance and saves it for potential future
       # reuse.
       #
       # @param options [Hash] connection options

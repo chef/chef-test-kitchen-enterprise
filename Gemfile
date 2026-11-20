@@ -68,14 +68,16 @@ group :packaging do
 end
 
 group :test do
+  gem "rake"
   gem "rb-readline"
   gem "aruba",     ">= 0.11", "< 3.0"
-  gem "countloc",  ">= 0.4", "< 1.0"
-  gem "cucumber",  ">= 9.2", "< 11"
-  gem "fakefs",    ">= 3.0", "< 4.0"
-  gem "maruku",    ">= 0.7", "< 1.0"
-  # Constrained to < 6.0 because activesupport 7.2.3.1+ requires minitest < 6
-  gem "minitest",  ">= 5.3", "< 6.0"
-  gem "mocha",     ">= 2.0", "< 4.0"
-  gem "irb"
+  gem "countloc",  "~> 0.4"
+  gem "cucumber",  ">= 9.2", "< 12"
+  gem "fakefs",    "~> 3.0"
+  gem "maruku",    "~> 0.7"
+  gem "minitest",  "~> 6.0", "< 6.1"
+  gem "mocha",     "~> 3.0"
+  gem "simplecov", "~> 1.0", require: false
+  gem "yard",      "~> 0.9"
+end
 end

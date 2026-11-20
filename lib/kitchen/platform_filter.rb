@@ -18,8 +18,8 @@
 module Kitchen
   # A wrapper on Regexp and strings to mix them in platform filters.
   #
-  # This should handle backward compatibility in most cases were
-  # platform are matched against a filters array using Array.include?
+  # This should handle backward compatibility in most cases where
+  # platforms are matched against a filter array using Array.include?
   #
   # This wrapper does not work if filters arrays are converted to Set.
   #
@@ -29,12 +29,13 @@ module Kitchen
     REGEXP_LIKE_PATTERN = %r{^/(?<pattern>.*)/(?<options>[ix]*)$}
 
     # Converts platform filters into an array of PlatformFilter handling both strings and Regexp.
-    # A string "looks-like" a regexp if it starts by / and end by / + Regexp options i or x
+    # A string "looks-like" a regexp if it starts with / and ends with / + Regexp options i or x
     #
     # @return [Array] filters with regexp-like string converted to PlatformRegexpFilter
+    # @raise [ArgumentError] if a filter is neither a String nor a Regexp
     def self.convert(filters)
       ::Kernel.Array(filters).map do |filter|
-        if (match = filter.match(REGEXP_LIKE_PATTERN))
+        if filter.is_a?(::String) && (match = filter.match(REGEXP_LIKE_PATTERN))
           options = match["options"].include?("i") ? ::Regexp::IGNORECASE : 0
           options |= ::Regexp::EXTENDED if match["options"].include?("x")
           filter = ::Regexp.new(match["pattern"], options)
@@ -51,13 +52,14 @@ module Kitchen
     # @param [Regexp,String] value of the filter
     def initialize(value)
       unless value.is_a?(::Regexp) || value.is_a?(::String)
-        raise ::ArgumentError, "PlatformFilter#new requires value to be a String or a Regexp"
+        raise ::ArgumentError, "PlatformFilter#new requires value to be a String or a Regexp, " \
+          "got #{value.inspect} (#{value.class})"
       end
 
       @value = value
     end
 
-    # Override of the equality operator to check whether the wrapped Regexp match the given object.
+    # Override of the equality operator to check whether the wrapped Regexp matches the given object.
     #
     # @param [Object] other object to compare to
     # @return [Boolean] whether the objects are equal or the wrapped Regexp matches the given string or symbol

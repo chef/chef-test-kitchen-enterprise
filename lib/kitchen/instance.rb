@@ -17,6 +17,10 @@
 
 require "benchmark" unless defined?(Benchmark)
 require "fileutils" unless defined?(FileUtils)
+require "securerandom" unless defined?(SecureRandom)
+require "time" unless defined?(Time.zone_offset)
+
+require_relative "logging"
 
 module Kitchen
   # An instance of a suite running on a platform. A created instance may be a
@@ -58,7 +62,7 @@ module Kitchen
     # @return [LifecycleHooks] lifecycle hooks manager object
     attr_accessor :lifecycle_hooks
 
-    # @return [Provisioner::Base] provisioner object which will the setup
+    # @return [Provisioner::Base] provisioner object which will provide the setup
     #   and invocation instructions for configuration management and other
     #   automation tools
     attr_accessor :provisioner
@@ -81,9 +85,10 @@ module Kitchen
     # @option options [Platform] :platform the platform (**Required**)
     # @option options [Driver::Base] :driver the driver (**Required**)
     # @option options [Provisioner::Base] :provisioner the provisioner
+    #   (**Required**)
     # @option options [Transport::Base] :transport the transport
     #   (**Required**)
-    # @option options [Verifier] :verifier the verifier logger (**Required**)
+    # @option options [Verifier] :verifier the verifier (**Required**)
     # @option options [Logger] :logger the instance logger
     #   (default: Kitchen.logger)
     # @option options [StateFile] :state_file the state file object to use
@@ -210,11 +215,7 @@ module Kitchen
         raise UserError, "Instance #{to_str} has not yet been created"
       end
 
-      lc = if legacy_ssh_base_driver?
-             legacy_ssh_base_login(state)
-           else
-             transport.connection(**state).login_command
-           end
+      lc = transport.connection(state).login_command
 
       debug(%{Login command: #{lc.command} #{lc.arguments.join(" ")} } \
         "(Options: #{lc.options})")
@@ -246,9 +247,12 @@ module Kitchen
     #
     def doctor_action
       banner "The doctor is in"
-      [driver, provisioner, transport, verifier].any? do |obj|
+      # Each plugin reports its own problems as it finds them, so run all of
+      # them and reduce afterwards. #any? would stop at the first plugin with
+      # something to say and hide the rest.
+      [driver, provisioner, transport, verifier].map do |obj|
         obj.doctor(state_file.read)
-      end
+      end.any?
     end
 
     # Returns a Hash of configuration and other useful diagnostic information.
@@ -296,6 +300,46 @@ module Kitchen
       state_file.read[:last_error]
     end
 
+    # Returns the current instance session identifier, if one has been
+    # established.
+    #
+    # @return [String,nil] the current instance session id
+    def current_session_id
+      state_file.read[:instance_session_id]
+    end
+
+    # Returns the path to the text log file for this instance.
+    #
+    # @return [String,nil] the instance text log path
+    def log_path
+      logger.logdev_path
+    end
+
+    # Returns the path to the structured log file for this instance.
+    #
+    # @return [String,nil] the instance structured log path
+    def structured_log_path
+      logger.structured_logdev_path
+    end
+
+    # Returns the path to the state file for this instance.
+    #
+    # @return [String] the instance state file path
+    def state_path
+      state_file.path
+    end
+
+    # Returns normalized liveness status for this instance.
+    #
+    # @param probe [Boolean] whether to probe the transport as well
+    # @return [Hash] normalized status data
+    def status(probe: false)
+      state = state_file.read
+      result = driver_status(state)
+      result[:transport_probe] = transport_probe(state) if probe
+      result
+    end
+
     # Clean up any per-instance resources before exiting.
     #
     # @return [void]
@@ -310,10 +354,10 @@ module Kitchen
     # @api private
     attr_reader :state_file
 
-    # Validate the initial internal state of this object and raising an
+    # Validate the initial internal state of this object, raising an
     # exception if any preconditions are not met.
     #
-    # @param options[Hash] options hash passed into the constructor
+    # @param options [Hash] options hash passed into the constructor
     # @raise [ClientError] if any validations fail
     # @api private
     def validate_options(options)
@@ -342,7 +386,7 @@ module Kitchen
     end
 
     # Perform any final configuration or preparation needed for the driver
-    # object carry out its duties.
+    # object to carry out its duties.
     #
     # @api private
     def setup_driver
@@ -351,7 +395,7 @@ module Kitchen
     end
 
     # Perform any final configuration or preparation needed for the lifecycle hooks
-    # object carry out its duties.
+    # object to carry out its duties.
     #
     # @api private
     def setup_lifecycle_hooks
@@ -359,7 +403,7 @@ module Kitchen
     end
 
     # Perform any final configuration or preparation needed for the provisioner
-    # object carry out its duties.
+    # object to carry out its duties.
     #
     # @api private
     def setup_provisioner
@@ -368,7 +412,7 @@ module Kitchen
     end
 
     # Perform any final configuration or preparation needed for the transport
-    # object carry out its duties.
+    # object to carry out its duties.
     #
     # @api private
     def setup_transport
@@ -377,7 +421,7 @@ module Kitchen
     end
 
     # Perform any final configuration or preparation needed for the verifier
-    # object carry out its duties.
+    # object to carry out its duties.
     #
     # @api private
     def setup_verifier
@@ -415,17 +459,14 @@ module Kitchen
     # @return [self] this instance, used to chain actions
     # @api private
     def converge_action
-      banner "Converging #{to_str}..."
       elapsed = action(:converge) do |state|
-        if legacy_ssh_base_driver?
-          provisioner.check_license
-          legacy_ssh_base_converge(state)
-        else
-          provisioner.check_license
-          provisioner.call(state)
-        end
+        banner "Converging #{to_str}..."
+        provisioner.check_license
+        provisioner.call(state)
       end
-      info("Finished converging #{to_str} #{Util.duration(elapsed.real)}.")
+      with_current_action_metadata(:converge) do
+        info("Finished converging #{to_str} #{Util.duration(elapsed.real)}.")
+      end
       self
     end
 
@@ -435,26 +476,13 @@ module Kitchen
     # @return [self] this instance, used to chain actions
     # @api private
     def setup_action
-      banner "Setting up #{to_str}..."
       elapsed = action(:setup) do |state|
-        legacy_ssh_base_setup(state) if legacy_ssh_base_driver?
+        banner "Setting up #{to_str}..."
       end
-      info("Finished setting up #{to_str} #{Util.duration(elapsed.real)}.")
+      with_current_action_metadata(:setup) do
+        info("Finished setting up #{to_str} #{Util.duration(elapsed.real)}.")
+      end
       self
-    end
-
-    # returns true, if the verifier is busser
-    def verifier_busser?(verifier)
-      !defined?(Kitchen::Verifier::Busser).nil? && verifier.is_a?(Kitchen::Verifier::Busser)
-    end
-
-    # returns true, if the verifier is dummy
-    def verifier_dummy?(verifier)
-      !defined?(Kitchen::Verifier::Dummy).nil? && verifier.is_a?(Kitchen::Verifier::Dummy)
-    end
-
-    def use_legacy_ssh_verifier?(verifier)
-      verifier_busser?(verifier) || verifier_dummy?(verifier)
     end
 
     # Perform the verify action.
@@ -463,19 +491,13 @@ module Kitchen
     # @return [self] this instance, used to chain actions
     # @api private
     def verify_action
-      banner "Verifying #{to_str}..."
       elapsed = action(:verify) do |state|
-        # use special handling for legacy driver
-        if legacy_ssh_base_driver? && use_legacy_ssh_verifier?(verifier)
-          legacy_ssh_base_verify(state)
-        elsif legacy_ssh_base_driver?
-          # read ssh options from legacy driver
-          verifier.call(driver.legacy_state(state))
-        else
-          verifier.call(state)
-        end
+        banner "Verifying #{to_str}..."
+        verifier.call(state)
       end
-      info("Finished verifying #{to_str} #{Util.duration(elapsed.real)}.")
+      with_current_action_metadata(:verify) do
+        info("Finished verifying #{to_str} #{Util.duration(elapsed.real)}.")
+      end
       self
     end
 
@@ -493,14 +515,18 @@ module Kitchen
     # @param verb [Symbol] the action to be performed
     # @param output_verb [String] a verb representing the action, suitable for
     #   use in output logging
-    # @yield perform optional work just after action has complted
+    # @yield perform optional work just after action has completed
     # @return [self] this instance, used to chain actions
     # @api private
     def perform_action(verb, output_verb)
-      banner "#{output_verb} #{to_str}..."
-      elapsed = action(verb) { |state| driver.public_send(verb, state) }
-      info("Finished #{output_verb.downcase} #{to_str}" \
-        " #{Util.duration(elapsed.real)}.")
+      elapsed = action(verb) do |state|
+        banner "#{output_verb} #{to_str}..."
+        driver.public_send(verb, state)
+      end
+      with_current_action_metadata(verb) do
+        info("Finished #{output_verb.downcase} #{to_str}" \
+          " #{Util.duration(elapsed.real)}.")
+      end
       yield if block_given?
       self
     end
@@ -525,64 +551,7 @@ module Kitchen
     #   occurred, etc.
     # @api private
     def action(what, &block)
-      state = state_file.read
-      elapsed = Benchmark.measure do
-        synchronize_or_call(what, state, &block)
-      end
-      state[:last_action] = what.to_s
-      state[:last_error] = nil
-      elapsed
-    rescue ActionFailed => e
-      log_failure(what, e)
-      state[:last_error] = e.class.name
-      raise(InstanceFailure, failure_message(what) +
-        "  Please see .kitchen/logs/#{name}.log for more details",
-        e.backtrace)
-    rescue Exception => e # rubocop:disable Lint/RescueException
-      log_failure(what, e)
-      state[:last_error] = e.class.name
-      raise ActionFailed,
-        "Failed to complete ##{what} action: [#{e.message}]", e.backtrace
-    ensure
-      state_file.write(state)
-    end
-
-    # Runs a given action block through a common driver mutex if required or
-    # runs it directly otherwise. If a driver class' `.serial_actions` array
-    # includes the desired action, then the action must be run with a muxtex
-    # lock. Otherwise, it is assumed that the action can happen concurrently,
-    # or fully in parallel.
-    #
-    # @param what [Symbol] the action to be performed
-    # @param state [Hash] a mutable state hash for this instance
-    # @param block [Proc] a block to be called
-    # @api private
-    def synchronize_or_call(what, state)
-      plugin_class = plugin_class_for_action(what)
-      if Array(plugin_class.serial_actions).include?(what)
-        debug("#{to_str} is synchronizing on #{plugin_class}##{what}")
-        self.class.mutexes[plugin_class].synchronize do
-          debug("#{to_str} is messaging #{plugin_class}##{what}")
-          yield(state)
-        end
-      else
-        yield(state)
-      end
-    end
-
-    # Maps the given action to the plugin class associated with the action
-    #
-    # @param what[Symbol] action
-    # @return [Class] Kitchen::Plugin::Base
-    # @api private
-    def plugin_class_for_action(what)
-      {
-        create: driver,
-        setup: transport,
-        converge: provisioner,
-        verify: verifier,
-        destroy: driver,
-      }[what].class
+      action_runner.call(what, &block)
     end
 
     # Writes a high level message for logging and/or output.
@@ -594,97 +563,210 @@ module Kitchen
     # @api private
     def banner(*args)
       Kitchen.logger.logdev && Kitchen.logger.logdev.banner(*args)
+      if Kitchen.logger.structured_logdev
+        Kitchen.logger.with_metadata(logger.metadata) do
+          Kitchen.logger.structured_logdev.banner(*args)
+        end
+      end
       super
     end
 
-    # Logs a failure (message and backtrace) to the instance's file logger
-    # to help with debugging and diagnosing issues without overwhelming the
-    # console output in the default case (i.e. running kitchen with :info
-    # level debugging).
-    #
-    # @param what [String] an action
-    # @param e [Exception] an exception
-    # @api private
-    def log_failure(what, e)
-      return if logger.logdev.nil?
-
-      logger.logdev.error(failure_message(what))
-      Error.formatted_trace(e).each { |line| logger.logdev.error(line) }
+    def action_runner
+      @action_runner ||= ActionRunner.new(self, state_file)
     end
 
-    # Returns a string explaining what action failed, at a high level. Used
-    # for displaying to end user.
-    #
-    # @param what [String] an action
-    # @return [String] a failure message
-    # @api private
-    def failure_message(what)
-      "#{what.capitalize} failed on instance #{to_str}."
+    def with_current_action_metadata(what)
+      state = state_file.read
+      logger.with_metadata(
+        action: what.to_s,
+        action_id: state[:last_action_id],
+        instance_session_id: state[:instance_session_id],
+        kitchen_run_id: state[:last_kitchen_run_id] || Kitchen.run_id
+      ) do
+        yield
+      end
     end
 
-    # Invokes `Driver#converge` on a legacy Driver, which inherits from
-    # `Kitchen::Driver::SSHBase`.
-    #
-    # @param state [Hash] mutable instance state
-    # @deprecated When legacy Driver::SSHBase support is removed, the
-    #   `#converge` method will no longer be called on the Driver.
-    # @api private
-    def legacy_ssh_base_converge(state)
-      warn("Running legacy converge for '#{driver.name}' Driver")
-      # TODO: Document upgrade path and provide link
-      # warn("Driver authors: please read http://example.com for more details.")
-      driver.converge(state)
+    def driver_status(state)
+      if driver.method(:status).arity == 0
+        return unknown_driver_status(
+          "Driver status method does not accept Kitchen state"
+        )
+      end
+
+      normalize_driver_status(driver.status(state))
+    rescue Exception => e # rubocop:disable Lint/RescueException
+      unknown_driver_status(e.message, e.class.name)
     end
 
-    # @return [TrueClass,FalseClass] whether or not the Driver inherits from
-    #   `Kitchen::Driver::SSHBase`
-    # @deprecated When legacy Driver::SSHBase support is removed, the
-    #   `#converge` method will no longer be called on the Driver.
-    # @api private
-    def legacy_ssh_base_driver?
-      driver.class < Kitchen::Driver::SSHBase
+    def normalize_driver_status(status)
+      status = Util.symbolized_hash(status || {})
+      {
+        live: status[:live],
+        state: status[:state] || "unknown",
+        source: status[:source] || "driver",
+        resource_id: status[:resource_id],
+        message: status[:message],
+        checked_at: status[:checked_at] || Time.now.utc.iso8601,
+      }.compact
     end
 
-    # Invokes `Driver#login_command` on a legacy Driver, which inherits from
-    # `Kitchen::Driver::SSHBase`.
-    #
-    # @param state [Hash] mutable instance state
-    # @deprecated When legacy Driver::SSHBase support is removed, the
-    #   `#login_command` method will no longer be called on the Driver.
-    # @api private
-    def legacy_ssh_base_login(state)
-      warn("Running legacy login for '#{driver.name}' Driver")
-      # TODO: Document upgrade path and provide link
-      # warn("Driver authors: please read http://example.com for more details.")
-      driver.login_command(state)
+    def unknown_driver_status(message, error = nil)
+      {
+        live: nil,
+        state: "unknown",
+        source: "driver",
+        error:,
+        message:,
+        checked_at: Time.now.utc.iso8601,
+      }.compact
     end
 
-    # Invokes `Driver#setup` on a legacy Driver, which inherits from
-    # `Kitchen::Driver::SSHBase`.
-    #
-    # @param state [Hash] mutable instance state
-    # @deprecated When legacy Driver::SSHBase support is removed, the
-    #   `#setup` method will no longer be called on the Driver.
-    # @api private
-    def legacy_ssh_base_setup(state)
-      warn("Running legacy setup for '#{driver.name}' Driver")
-      # TODO: Document upgrade path and provide link
-      # warn("Driver authors: please read http://example.com for more details.")
-      driver.setup(state)
+    def transport_probe(state)
+      return not_created_transport_probe if state[:last_action].nil?
+
+      transport.connection(state, &:wait_until_ready)
+      {
+        reachable: true,
+        state: "reachable",
+        source: "transport",
+        message: "Transport connection succeeded",
+        checked_at: Time.now.utc.iso8601,
+      }
+    rescue Exception => e # rubocop:disable Lint/RescueException
+      {
+        reachable: false,
+        state: "unreachable",
+        source: "transport",
+        error: e.class.name,
+        message: e.message,
+        checked_at: Time.now.utc.iso8601,
+      }
+    ensure
+      transport.cleanup! if transport
     end
 
-    # Invokes `Driver#verify` on a legacy Driver, which inherits from
-    # `Kitchen::Driver::SSHBase`.
-    #
-    # @param state [Hash] mutable instance state
-    # @deprecated When legacy Driver::SSHBase support is removed, the
-    #   `#verify` method will no longer be called on the Driver.
-    # @api private
-    def legacy_ssh_base_verify(state)
-      warn("Running legacy verify for '#{driver.name}' Driver")
-      # TODO: Document upgrade path and provide link
-      # warn("Driver authors: please read http://example.com for more details.")
-      driver.verify(state)
+    def not_created_transport_probe
+      {
+        reachable: false,
+        state: "not_created",
+        source: "transport",
+        message: "Instance has not yet been created",
+        checked_at: Time.now.utc.iso8601,
+      }
+    end
+
+    # Coordinates one instance action, including state persistence, plugin
+    # serialization, and failure wrapping.
+    class ActionRunner
+      def initialize(instance, state_file)
+        @instance = instance
+        @state_file = state_file
+      end
+
+      # Runs one instance action, wrapping it in structured logging metadata
+      # and benchmarking, and serializing it when the action is registered as
+      # non-concurrent.
+      #
+      # @param what [Symbol] the action to run
+      # @yield the action body, given the current state hash
+      # @return [void]
+      # @raise [ActionFailed] if the state file could not be read or the action
+      #   did not complete
+      # @api private
+      def call(what, &block)
+        state = nil
+        begin
+          state = state_file.read
+        rescue ::StandardError => e
+          log_failure(what, e)
+          raise ActionFailed,
+            "Failed to complete ##{what} action: [#{e.message}]", e.backtrace
+        end
+
+        action_id = new_id
+        session_id = state[:instance_session_id] || new_id
+        instance.logger.with_metadata(
+          action: what.to_s,
+          action_id:,
+          instance_session_id: session_id,
+          kitchen_run_id: Kitchen.run_id
+        ) do
+          elapsed = Benchmark.measure do
+            synchronize_or_call(what, state, &block)
+          end
+          record_attempt(state, what, action_id, session_id)
+          state[:last_action] = what.to_s
+          state[:last_error] = nil
+          elapsed
+        rescue ActionFailed => e
+          log_failure(what, e)
+          record_attempt(state, what, action_id, session_id)
+          state[:last_error] = e.class.name
+          raise(InstanceFailure, failure_message(what) +
+            "  Please see .kitchen/logs/#{instance.name}.log for more details",
+            e.backtrace)
+        rescue ::StandardError => e
+          log_failure(what, e)
+          record_attempt(state, what, action_id, session_id)
+          state[:last_error] = e.class.name
+          raise ActionFailed,
+            "Failed to complete ##{what} action: [#{e.message}]", e.backtrace
+        ensure
+          state_file.write(state)
+        end
+      end
+
+      private
+
+      attr_reader :instance, :state_file
+
+      def synchronize_or_call(what, state)
+        plugin_class = plugin_class_for_action(what)
+        if Array(plugin_class.serial_actions).include?(what)
+          instance.debug("#{instance.to_str} is synchronizing on #{plugin_class}##{what}")
+          instance.class.mutexes[plugin_class].synchronize do
+            instance.debug("#{instance.to_str} is messaging #{plugin_class}##{what}")
+            yield(state)
+          end
+        else
+          yield(state)
+        end
+      end
+
+      def plugin_class_for_action(what)
+        {
+          create: instance.driver,
+          setup: instance.transport,
+          converge: instance.provisioner,
+          verify: instance.verifier,
+          destroy: instance.driver,
+        }[what].class
+      end
+
+      def log_failure(what, e)
+        return if instance.logger.logdev.nil? && instance.logger.structured_logdev.nil?
+
+        [instance.logger.logdev, instance.logger.structured_logdev].compact.each do |logdev|
+          logdev.error(failure_message(what))
+          Error.formatted_trace(e).each { |line| logdev.error(line) }
+        end
+      end
+
+      def failure_message(what)
+        "#{what.capitalize} failed on instance #{instance.to_str}."
+      end
+
+      def record_attempt(state, what, action_id, session_id)
+        state[:instance_session_id] = session_id
+        state[:last_attempted_action] = what.to_s
+        state[:last_action_id] = action_id
+        state[:last_kitchen_run_id] = Kitchen.run_id
+      end
+
+      def new_id
+        SecureRandom.uuid
+      end
     end
 
     # The simplest finite state machine pseudo-implementation needed to manage
@@ -694,10 +776,10 @@ module Kitchen
     # @author Fletcher Nichol <fnichol@nichol.ca>
     class FSM
       # Returns an Array of all transitions to bring an Instance from its last
-      # reported transistioned state into the desired transitioned state.
+      # reported transitioned state into the desired transitioned state.
       #
       # @param last [String,Symbol,nil] the last known transitioned state of
-      #   the Instance, or `nil` (for unknown or no history)
+      #   the Instance, or `nil` for unknown or no history
       # @param desired [String,Symbol] the desired transitioned state for the
       #   Instance
       # @return [Array<Symbol>] an Array of transition actions to perform
@@ -713,12 +795,16 @@ module Kitchen
         end
       end
 
+      # The instance state lifecycle, ordered from least to most converged.
+      #
+      # @return [Array<Symbol>] ordered state names
+      # @api private
       TRANSITIONS = %i{destroy create converge setup verify}.freeze
 
-      # Determines the index of a state in the state lifecycle vector. Woah.
+      # Determines the index of a state in the state lifecycle vector. Whoa.
       #
       # @param transition [Symbol,#to_sym] a state
-      # @param [Integer] the index position
+      # @return [Integer] the index position
       # @api private
       def self.index(transition)
         if transition.nil?
