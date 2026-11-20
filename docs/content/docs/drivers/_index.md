@@ -45,6 +45,6 @@ These drivers exist but are not documented on this site. Check each project for 
 - [kitchen-linode](https://github.com/ssplatt/kitchen-linode) — Linode
 - [kitchen-oci](https://github.com/stephenpearson/kitchen-oci) — Oracle Cloud Infrastructure
 - [kitchen-qemu](https://github.com/esmil/kitchen-qemu) — QEMU
-- [kitchen-lxd](https://github.com/mabegh/kitchen-lxd) — LXD containers
+- [kitchen-lxd](https://github.com/DracoAter/kitchen-lxd) — LXD containers
 
 There are other drivers that have existed over the life of Test Kitchen that we do not list here, either because they are unmaintained or have been supplanted by other drivers.
