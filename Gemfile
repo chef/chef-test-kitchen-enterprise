@@ -60,7 +60,7 @@ group :integration do
 end
 
 group :cookstyle do
-  gem "cookstyle", ">= 8.2", "< 9.0"
+  gem "cookstyle", "~> 9.0"
 end
 
 group :packaging do

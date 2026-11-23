@@ -1,10 +1,18 @@
 # Test Kitchen Change Log
 
 <!-- usage documentation: https://expeditor.chef.io/docs/reference/changelog/#common-changelog -->
-<!-- latest_release -->
+<!-- latest_release 2.0.24 -->
+## [v2.0.24](https://github.com/chef/chef-test-kitchen-enterprise/tree/v2.0.24) (2026-11-23)
+
+#### Merged Pull Requests
+- Updated the macos runner to use Mac 15 and cookstyle to 9 [#136](https://github.com/chef/chef-test-kitchen-enterprise/pull/136) ([ashiqueps](https://github.com/ashiqueps))
 <!-- latest_release -->
 
 <!-- release_rollup -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Updated the macos runner to use Mac 15 and cookstyle to 9 [#136](https://github.com/chef/chef-test-kitchen-enterprise/pull/136) ([ashiqueps](https://github.com/ashiqueps)) <!-- 2.0.24 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
