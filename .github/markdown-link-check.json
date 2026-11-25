@@ -1,0 +1,26 @@
+{
+  "replacementPatterns": [
+    {
+      "pattern": "^/docs/(commands|drivers|provisioners|reference|transports|verifiers)/?(#.*)?$",
+      "replacement": "{{BASEURL}}/docs/content/docs/$1/_index.md$2"
+    },
+    {
+      "pattern": "^/docs/([^?#]+?)/?(#.*)?$",
+      "replacement": "{{BASEURL}}/docs/content/docs/$1.md$2"
+    }
+  ],
+  "ignorePatterns": [
+    {
+      "pattern": "^https://omnitruck\\.cinc\\.sh/?$"
+    },
+    {
+      "pattern": "^https://chefcommunity\\.slack\\.com/messages/testkitchen/details/$"
+    },
+    {
+      "pattern": "^https://stackoverflow\\.com/a/33059342$"
+    },
+    {
+      "pattern": "^https://github\\.com/chef/kitchen-chef-enterprise/?$"
+    }
+  ]
+}

@@ -105,18 +105,33 @@ module Kitchen
           debug("Executing prepare command: #{prepare_command}")
           conn.execute(prepare_command)
           debug("Executing run command: #{run_command}")
-          conn.execute_with_retry(
-            encode_for_powershell(run_command),
-            config[:retry_on_exit_code],
-            config[:max_retries],
-            config[:wait_for_retry]
-          )
-          info("Downloading files from #{instance.to_str}")
-          config[:downloads].to_h.each do |remotes, local|
-            debug("Downloading #{Array(remotes).join(", ")} to #{local}")
-            conn.download(remotes, local)
+          begin
+            conn.execute_with_retry(
+              encode_for_powershell(run_command),
+              config[:retry_on_exit_code],
+              config[:max_retries],
+              config[:wait_for_retry]
+            )
+          ensure
+            # Retrieval is best-effort: a file we could not fetch must not
+            # fail an otherwise successful converge, and must never replace
+            # an error already in flight from the run command. A transport
+            # that cannot download at all is a bug, not a missing file, so
+            # it still raises when there is no converge error to protect.
+            run_error = $!
+            begin
+              info("Downloading files from #{instance.to_str}")
+              config[:downloads].to_h.each do |remotes, local|
+                debug("Downloading #{Array(remotes).join(", ")} to #{local}")
+                conn.download(remotes, local)
+              end
+              debug("Download complete")
+            rescue => ex
+              raise unless run_error || ex.is_a?(Kitchen::Transport::TransportFailed)
+
+              warn("Failed to download files from #{instance.to_str}: #{ex.message}")
+            end
           end
-          debug("Download complete")
         end
       rescue Kitchen::Transport::TransportFailed => ex
         raise ActionFailed, ex.message
@@ -127,7 +142,7 @@ module Kitchen
       # Check system and configuration for common errors.
       #
       # @param state [Hash] mutable instance state
-      # @returns [Boolean] Return true if a problem is found.
+      # @return [Boolean] Return true if a problem is found.
       def doctor(state)
         false
       end
@@ -196,11 +211,11 @@ module Kitchen
       # exception if `#create_sandbox` has not yet been called.
       #
       # @return [String] the absolute path to the sandbox directory
-      # @raise [ClientError] if the sandbox directory has no yet been created
+      # @raise [ClientError] if the sandbox directory has not yet been created
       #   by calling `#create_sandbox`
       def sandbox_path
         @sandbox_path ||= raise ClientError, "Sandbox directory has not yet " \
-          "been created. Please run #{self.class}#create_sandox before " \
+          "been created. Please run #{self.class}#create_sandbox before " \
           "trying to access the path."
       end
 
@@ -215,6 +230,10 @@ module Kitchen
       # will persist after the process terminates. In other words, cleanup is
       # explicit. This method is safe to call multiple times.
       def cleanup_sandbox
+        # Check the ivar, not #sandbox_path, which raises rather than
+        # returning nil when the sandbox was never created. This runs from
+        # an ensure block, so raising here would mask the error that kept
+        # #create_sandbox from finishing.
         return if @sandbox_path.nil?
 
         debug("Cleaning up local sandbox in #{sandbox_path}")
@@ -249,7 +268,7 @@ module Kitchen
 
       # Conditionally prefixes a command with a sudo command.
       #
-      # @param command [String] command to be prefixed
+      # @param script [String] command to be prefixed
       # @return [String] the command, conditionally prefixed with sudo
       # @api private
       def sudo(script)
@@ -270,7 +289,7 @@ module Kitchen
       # Cisco Nexus, require all commands to be run with a prefix to
       # obtain outbound network access.
       #
-      # @param command [String] command to be prefixed
+      # @param script [String] command to be prefixed
       # @return [String] the command, conditionally prefixed with the configured prefix
       # @api private
       def prefix_command(script)
@@ -339,13 +358,8 @@ module Kitchen
 
         # Replace $env:TEMP with the actual Windows temp directory based on the transport username
         if resolved_path.include?("$env:TEMP")
-          # Try to get username from transport configuration
           # For Windows systems, fallback to "Administrator" if not found
-          username = begin
-            instance.transport[:username]
-                     rescue
-                       nil
-          end
+          username = instance.transport[:username] if instance.transport.respond_to?(:[])
           username ||= "Administrator"
 
           temp_path = "C:/Users/#{username}/AppData/Local/Temp"

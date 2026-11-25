@@ -17,6 +17,7 @@
 
 require_relative "../spec_helper"
 
+require "json"
 require "kitchen"
 
 describe Kitchen::Logger do
@@ -36,6 +37,10 @@ describe Kitchen::Logger do
   def log_tmpname
     t = Time.now.strftime("%Y%m%d")
     "kitchen-#{t}-#{$$}-#{rand(0x100000000).to_s(36)}.log"
+  end
+
+  def structured_events(io)
+    io.string.lines.map { |line| JSON.parse(line) }
   end
 
   let(:opts) do
@@ -131,6 +136,38 @@ describe Kitchen::Logger do
       _(stdout.string).must_equal "       hello\n"
     end
 
+    it "emits no escape sequences when the color does not resolve" do
+      opts[:color] = :not_a_real_color
+      logger.info("hello")
+
+      _(stdout.string).must_equal "       hello\n"
+    end
+
+    it "emits no escape sequences when the color is nil" do
+      opts[:color] = nil
+      logger.info("hello")
+
+      _(stdout.string).must_equal "       hello\n"
+    end
+
+    it "wraps each line in the color and a reset" do
+      opts[:color] = :cyan
+      logger.info("hello")
+
+      _(stdout.string).must_equal "\e[36m       hello\e[0m\n"
+    end
+
+    it "passes binary stream bytes through unaltered" do
+      opts[:color] = :cyan
+      logger << "caf\xC3\xA9 \xFF\n".dup.force_encoding(Encoding::ASCII_8BIT)
+
+      # \e[36m + seven-space info prefix + the original bytes + \e[0m + newline
+      _(stdout.string.bytes).must_equal(
+        [27, 91, 51, 54, 109] + ([32] * 7) +
+        [99, 97, 102, 195, 169, 32, 255] + [27, 91, 48, 109, 10]
+      )
+    end
+
     describe "for severity" do
       before { opts[:level] = Kitchen::Util.to_logger_level(:debug) }
 
@@ -171,6 +208,22 @@ describe Kitchen::Logger do
         logger.info("yo")
 
         _(stdout.string).must_equal "       yo\n"
+      end
+
+      it "logs to info from a block" do
+        logger.info { "yo" }
+
+        _(stdout.string).must_equal colorize("       yo", opts[:color]) + "\n"
+      end
+
+      it "does not evaluate skipped severity blocks" do
+        opts[:level] = Kitchen::Util.to_logger_level(:warn)
+        called = false
+
+        logger.info { called = true }
+
+        _(called).must_equal false
+        _(stdout.string).must_equal ""
       end
 
       it "logs to error" do
@@ -302,6 +355,82 @@ describe Kitchen::Logger do
           colorize("       vanilla", opts[:color]) + "\n"
         )
       end
+
+      it "preserves debug, warning, and fatal looking stream lines as info text" do
+        logger << [
+          "D      debug",
+          "$$$$$$ warning",
+          "!!!!!! fatal",
+        ].join("\n").concat("\n")
+
+        _(stdout.string).must_equal(
+          colorize("       D      debug", opts[:color]) + "\n" +
+          colorize("       $$$$$$ warning", opts[:color]) + "\n" +
+          colorize("       !!!!!! fatal", opts[:color]) + "\n"
+        )
+      end
+
+      it "recognizes a prefix that is split across chunk boundaries" do
+        logger << "---"
+        logger << "--> banner\n"
+
+        _(stdout.string).must_equal(
+          colorize("-----> banner", opts[:color]) + "\n"
+        )
+      end
+
+      it "handles a bare prefix carrying no message" do
+        logger << [
+          "-----> ",
+          "       ",
+          ">>>>>> ",
+        ].join("\n").concat("\n")
+
+        _(stdout.string).must_equal(
+          colorize("-----> ", opts[:color]) + "\n" +
+          colorize("       ", opts[:color]) + "\n" +
+          colorize(">>>>>> ", opts[:color]) + "\n"
+        )
+      end
+
+      it "treats a too-short near-miss prefix as unprefixed output" do
+        logger << [
+          ">>>>> five",
+          "----->six",
+          "   ",
+        ].join("\n").concat("\n")
+
+        _(stdout.string).must_equal(
+          colorize("       >>>>> five", opts[:color]) + "\n" +
+          colorize("       ----->six", opts[:color]) + "\n" +
+          colorize("          ", opts[:color]) + "\n"
+        )
+      end
+
+      it "ignores an empty chunk" do
+        logger << ""
+
+        _(stdout.string).must_equal ""
+      end
+
+      it "emits every line of a chunk carrying many lines" do
+        logger << Array.new(500) { |i| "       line #{i}" }.join("\n").concat("\n")
+
+        _(stdout.string.lines.size).must_equal 500
+        _(stdout.string.lines.first).must_equal(
+          colorize("       line 0", opts[:color]) + "\n"
+        )
+        _(stdout.string.lines.last).must_equal(
+          colorize("       line 499", opts[:color]) + "\n"
+        )
+      end
+
+      it "keeps an unterminated tail buffered across many chunks" do
+        250.times { |i| logger << "       line #{i}\n" }
+        logger << "       trailing with no newline"
+
+        _(stdout.string.lines.size).must_equal 250
+      end
     end
   end
 
@@ -333,6 +462,12 @@ describe Kitchen::Logger do
         _(logdev.string).must_match(/^I, #{ts}  INFO -- Kitchen: yo$/)
       end
 
+      it "logs to info from a block" do
+        logger.info { "yo" }
+
+        _(logdev.string).must_match(/^I, #{ts}  INFO -- Kitchen: yo$/)
+      end
+
       it "logs to error" do
         logger.error("yo")
 
@@ -356,6 +491,145 @@ describe Kitchen::Logger do
 
         _(logdev.string).must_match(/^A, #{ts}   ANY -- Kitchen: yo$/)
       end
+    end
+  end
+
+  describe "opened IO structured logdev-based logger" do
+    let(:structured_logdev) { StringIO.new }
+
+    before do
+      opts[:structured_logdev] = structured_logdev
+      opts[:metadata] = {
+        kitchen_run_id: "run-123",
+        instance: "default-ubuntu-2404",
+        suite: "default",
+        platform: "ubuntu-24.04",
+      }
+      opts[:level] = Kitchen::Util.to_logger_level(:debug)
+    end
+
+    it "writes one JSON object per log event with severity and metadata" do
+      logger.warn("careful")
+
+      event = structured_events(structured_logdev).fetch(0)
+      _(event["level"]).must_equal "warn"
+      _(event["event_type"]).must_equal "log"
+      _(event["message"]).must_equal "careful"
+      _(event["progname"]).must_equal "Kitchen"
+      _(event["kitchen_run_id"]).must_equal "run-123"
+      _(event["instance"]).must_equal "default-ubuntu-2404"
+      _(event["sequence"]).must_equal 1
+      _(event["timestamp"]).wont_be_nil
+      _(Time.iso8601(event["timestamp"])).must_be_kind_of Time
+    end
+
+    it "writes banner events without relying on text log prefixes" do
+      logger.banner("Creating <default-ubuntu-2404>...")
+
+      event = structured_events(structured_logdev).fetch(0)
+      _(event["level"]).must_equal "info"
+      _(event["event_type"]).must_equal "banner"
+      _(event["message"]).must_equal "Creating <default-ubuntu-2404>..."
+    end
+
+    it "maps streamed Kitchen-prefixed lines to structured levels" do
+      logger << [
+        "-----> banner",
+        "$$$$$$ warning",
+        ">>>>>> error",
+        "       info",
+        "plain",
+      ].join("\n").concat("\n")
+
+      events = structured_events(structured_logdev)
+      _(events.map { |event| event["level"] })
+        .must_equal %w{info warn error info info}
+      _(events.map { |event| event["message"] })
+        .must_equal %w{banner warning error info plain}
+      _(events.map { |event| event["event_type"] })
+        .must_equal %w{banner stream stream stream stream}
+    end
+
+    it "layers nested metadata scopes with the innermost winning" do
+      logger.with_metadata(action: "create", depth: "outer") do
+        logger.with_metadata(depth: "inner") do
+          logger.info("nested")
+        end
+        logger.info("outer only")
+      end
+
+      nested, outer = structured_events(structured_logdev)
+      _(nested["action"]).must_equal "create"
+      _(nested["depth"]).must_equal "inner"
+      _(outer["depth"]).must_equal "outer"
+    end
+
+    it "does not let a metadata scope mutate the base metadata" do
+      logger.with_metadata(instance: "overridden") do
+        logger.info("inside")
+      end
+      logger.info("after")
+
+      inside, after = structured_events(structured_logdev)
+      _(inside["instance"]).must_equal "overridden"
+      _(after["instance"]).must_equal "default-ubuntu-2404"
+    end
+
+    it "applies temporary metadata to structured events" do
+      logger.with_metadata(instance_session_id: "session-123", action: "create") do
+        logger.info("inside action")
+      end
+      logger.info("outside action")
+
+      inside, outside = structured_events(structured_logdev)
+      _(inside["instance_session_id"]).must_equal "session-123"
+      _(inside["action"]).must_equal "create"
+      _(outside.key?("instance_session_id")).must_equal false
+      _(outside.key?("action")).must_equal false
+    end
+  end
+
+  describe "the time stdlib" do
+    # Timestamp formatting relies on Time#iso8601, which the "time" stdlib adds
+    # to core Time. On Ruby 3.4+ the instance method is part of core, and other
+    # specs in this suite load "time" transitively, so a missing require is only
+    # visible in a clean process on the oldest supported Ruby. See #2082.
+    it "is required by every file that formats a timestamp" do
+      script = <<-RUBY
+        require "kitchen"
+        require "kitchen/driver/dummy"
+        Time.now.utc.iso8601(6)
+        Time.iso8601("2026-01-01T00:00:00Z")
+      RUBY
+      lib = File.expand_path("../../lib", __dir__)
+      output = IO.popen([Gem.ruby, "-I#{lib}", "-e", script], err: %i{child out}, &:read)
+
+      _($?.success?).must_equal true,
+        "requiring kitchen in a clean Ruby process failed:\n#{output}"
+    end
+  end
+
+  describe "combined stdout and logdev logger" do
+    let(:stdout) { StringIO.new }
+    let(:logdev) { StringIO.new }
+
+    before do
+      opts[:stdout] = stdout
+      opts[:logdev] = logdev
+      opts[:level] = Kitchen::Util.to_logger_level(:debug)
+    end
+
+    it "fans out block logging while evaluating the block once" do
+      calls = 0
+
+      logger.info do
+        calls += 1
+        "yo"
+      end
+
+      _(calls).must_equal 1
+      _(stdout.string).must_equal colorize("       yo", opts[:color]) + "\n"
+      _(logdev.string).must_match(/INFO -- Kitchen: yo$/)
     end
   end
 

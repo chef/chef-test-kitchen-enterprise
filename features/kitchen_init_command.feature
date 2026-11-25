@@ -22,7 +22,7 @@ Feature: Add Test Kitchen support to an existing project
     And the file ".gitignore" should contain ".kitchen/"
     And the file ".gitignore" should contain "kitchen.local.yml"
     And the file ".gitignore" should contain ".kitchen.local.yml"
-    And the file "kitchen.yml" should exist:
+    And the file "kitchen.yml" should exist
     And the file "kitchen.yml" should contain:
     """
     driver:
@@ -31,7 +31,6 @@ Feature: Add Test Kitchen support to an existing project
     And a file named "Gemfile" should not exist
     And a file named "Rakefile" should not exist
     And a file named "Thorfile" should not exist
-    And a gem named "kitchen-vagrant" is installed
     And a file named "chefignore" should exist
     And the file "chefignore" should contain ".kitchen"
 
@@ -122,13 +121,13 @@ Feature: Add Test Kitchen support to an existing project
     """
 
   Scenario: Running init without a provisioner sets the default provisioner
-    to dokken in kitchen.yml
+    to shell in kitchen.yml
     Given an empty file named "Gemfile"
     When I successfully run `kitchen init --no-driver`
     Then the file "kitchen.yml" should contain:
     """
     provisioner:
-      name: dokken
+      name: shell
     """
 
   Scenario: Running init with a provisioner sets the provisioner in kitchen.yml
@@ -193,7 +192,7 @@ Feature: Add Test Kitchen support to an existing project
       name: dokken
 
     provisioner:
-      name: dokken
+      name: shell
 
     transport:
       name: dokken
@@ -220,7 +219,7 @@ Feature: Add Test Kitchen support to an existing project
       name: dokken
 
     provisioner:
-      name: dokken
+      name: shell
 
     transport:
       name: dokken
@@ -246,7 +245,7 @@ Feature: Add Test Kitchen support to an existing project
       name: dokken
 
     provisioner:
-      name: dokken
+      name: shell
 
     transport:
       name: dokken

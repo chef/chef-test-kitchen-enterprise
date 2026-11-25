@@ -233,6 +233,7 @@ describe Kitchen::Config do
   describe "#suites" do
     before do
       Kitchen::DataMunger.stubs(:new).returns(munger)
+      Kitchen::Suite.stubs(:new).returns("suite")
     end
 
     let(:munger) do
@@ -248,8 +249,7 @@ describe Kitchen::Config do
       config.suites
     end
 
-    it "constucts a munger with loader data and defaults" do
-      Kitchen::Suite.stubs(:new)
+    it "constructs a munger with loader data and defaults" do
       loader.stubs(:read).returns("datum")
 
       Kitchen::DataMunger.expects(:new).with do |data, kitchen_config|
@@ -276,9 +276,9 @@ describe Kitchen::Config do
 
     it "returns a Collection of suites" do
       Kitchen::Suite.stubs(:new)
-        .with(**{ one: "a" }).returns(stub(name: "one"))
+        .with({ one: "a" }).returns(stub(name: "one"))
       Kitchen::Suite.stubs(:new)
-        .with(**{ two: "b" }).returns(stub(name: "two"))
+        .with({ two: "b" }).returns(stub(name: "two"))
       _(config.suites.as_names).must_equal %w{one two}
     end
   end
@@ -363,9 +363,16 @@ describe Kitchen::Config do
         stdout: STDOUT,
         color: :cyan,
         logdev: "/tmp/logs/tiny-unax.log",
+        structured_logdev: "/tmp/logs/tiny-unax.ndjson",
         log_overwrite: false,
         level: 0,
         progname: "tiny-unax",
+        metadata: {
+          kitchen_run_id: Kitchen.run_id,
+          instance: "tiny-unax",
+          suite: "tiny",
+          platform: "unax",
+        },
         colorize: false
       )
 

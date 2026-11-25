@@ -17,6 +17,8 @@
 
 require "mixlib/shellout" unless defined?(Mixlib::ShellOut)
 
+require_relative "errors" # for TransientFailure
+
 module Kitchen
   # Mixin that wraps a command shell out invocation, providing a #run_command
   # method.
@@ -68,7 +70,7 @@ module Kitchen
       sh.stdout
     rescue Mixlib::ShellOut::ShellCommandFailed => ex
       raise ShellCommandFailed, ex.message
-    rescue Exception => error # rubocop:disable Lint/RescueException
+    rescue ::StandardError => error
       error.extend(Kitchen::Error)
       raise
     end

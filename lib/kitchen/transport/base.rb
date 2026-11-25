@@ -69,7 +69,7 @@ module Kitchen
       # Check system and configuration for common errors.
       #
       # @param state [Hash] mutable instance state
-      # @returns [Boolean] Return true if a problem is found.
+      # @return [Boolean] Return true if a problem is found.
       def doctor(state)
         false
       end
@@ -128,7 +128,7 @@ module Kitchen
             tries += 1
             debug("Attempting to execute command - try #{tries} of #{max_retries}.")
             execute(command)
-          rescue Exception => e
+          rescue ::StandardError => e
             if retry?(tries, max_retries, retryable_exit_codes, e)
               close
               sleep wait_time

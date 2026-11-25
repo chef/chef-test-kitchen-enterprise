@@ -52,13 +52,19 @@ module Kitchen
                else
                  [
                    formatted_exception(exception.original, "Nested Exception"),
-                   formatted_backtrace(exception),
+                   formatted_backtrace(exception.original),
                  ].flatten
                end
       end
       arr.flatten
     end
 
+    # Creates an array of strings representing an exception's backtrace,
+    # wrapped in header and footer lines.
+    #
+    # @param exception [::Exception] an exception
+    # @return [Array<String>] a formatted backtrace, or an empty array when the
+    #   exception has none
     def self.formatted_backtrace(exception)
       if exception.backtrace.nil?
         []
@@ -100,7 +106,7 @@ module Kitchen
     # output when parsing the output from the commands like
     # kitchen diagnose.
     #
-    # @params lines [Array<String>] Array of lines that needs to be printed
+    # @param lines [Array<String>] Array of lines that needs to be printed
     def self.warn_on_stderr(lines)
       Array(lines).each do |line|
         line = Color.colorize(line, :blue) if Kitchen.tty?
@@ -206,6 +212,7 @@ module Kitchen
         Kitchen.logger.debug(line)
       else
         Kitchen.logger.logdev && Kitchen.logger.logdev.public_send(level, line)
+        Kitchen.logger.structured_logdev && Kitchen.logger.structured_logdev.public_send(level, line)
       end
     end
   end

@@ -24,6 +24,24 @@ module Kitchen
   #
   # @author Fletcher Nichol <fnichol@nichol.ca>
   module Util
+    class << self
+      # @return [Mutex] a mutex used to serialize the process-global Dir.chdir
+      attr_accessor :mutex_chdir
+    end
+
+    # Dir.chdir mutates process-global state, so every call has to be
+    # serialized. The mutex is owned here rather than in lib/kitchen.rb
+    # because Util is its only consumer and has to keep working when
+    # "kitchen/util" is required on its own.
+    @mutex_chdir = Mutex.new
+
+    # Directory entries omitted from listings even when dot files are enabled.
+    #
+    # @return [Array<String>] current and parent directory entries
+    # @api private
+    DOT_DIRECTORY_ENTRIES = [".".freeze, "..".freeze].freeze
+    private_constant :DOT_DIRECTORY_ENTRIES
+
     # Returns the standard library Logger level constants for a given symbol
     # representation.
     #
@@ -37,7 +55,7 @@ module Kitchen
       Logger.const_get(symbol.to_s.upcase)
     end
 
-    # Returns the symbol representation of a logging levels for a given
+    # Returns the symbol representation of a logging level for a given
     # standard library Logger::Severity constant.
     #
     # @param const [Integer] Logger::Severity constant value for a logging
@@ -88,17 +106,35 @@ module Kitchen
       end
     end
 
+    # The text substituted for a masked value.
+    MASK = "******".freeze
+
+    # A double-quoted string value, allowing for backslash escapes so that a
+    # quote inside the value does not end the match early.
+    QUOTED_VALUE = /"(?:\\.|[^"\\])*"/.source
+
     # Returns a string with masked values for specified parameters.
     #
+    # Hashes are commonly interpolated into these strings via Hash#inspect,
+    # whose rendering has changed over time, so every spelling a key/value
+    # pair has had is matched:
+    #
+    #   :key=>"value"     symbol key, Ruby <= 3.3
+    #   "key"=>"value"    string key, Ruby <= 3.3
+    #   key: "value"      symbol key, Ruby >= 3.4
+    #   "key" => "value"  string key, Ruby >= 3.4
+    #
     # @param string_to_mask [String] the object whose string representation is parsed
-    # @param [Array] the list of keys whose values should be masked
-    # @return [String] the string representation of passed object with masked values
+    # @param keys [Array] the list of keys whose values should be masked
+    # @return [String] a new string with the values of the given keys masked
     def self.mask_values(string_to_mask, keys)
-      masked_string = string_to_mask
-      keys.each do |key|
-        masked_string.gsub!(/:#{key}=>"([^"]*)"/, %{:#{key}=>"******"})
+      keys.reduce(string_to_mask.to_s) do |masked, key|
+        key = ::Regexp.escape(key.to_s)
+        masked.gsub(
+          /(?<assignment>(?::#{key}|"#{key}")\s*=>\s*|(?<!\w)#{key}:\s*)#{QUOTED_VALUE}/,
+          %{\\k<assignment>"#{MASK}"}
+        )
       end
-      masked_string
     end
 
     # Returns a formatted string representing a duration in seconds.
@@ -118,7 +154,7 @@ module Kitchen
     # This method uses the Bourne shell (/bin/sh) to maximize the chance of
     # cross platform portability on Unixlike systems.
     #
-    # @param [String] the command
+    # @param cmd [String] the command
     # @return [String] a wrapped command string
     def self.wrap_command(cmd)
       cmd = "false" if cmd.nil?
@@ -128,7 +164,7 @@ module Kitchen
       "sh -c '\n#{cmd}\n'"
     end
 
-    # Modifes the given string to strip leading whitespace on each line, the
+    # Modifies the given string to strip leading whitespace on each line, the
     # amount which is calculated by using the first line of text.
     #
     # @example
@@ -144,6 +180,22 @@ module Kitchen
     # @return [String] the modified string
     def self.outdent!(string)
       string.gsub!(/^ {#{string.index(/[^ ]/)}}/, "")
+    end
+
+    # Returns a copy of a string with each line outdented by the indentation
+    # level of its first line.
+    #
+    # Prefer this over {.outdent!} when the input may be a string literal:
+    # Ruby 4 freezes literals, and mutating one raises a FrozenError.
+    #
+    # @param string [String] the string to outdent
+    # @return [String] a new, outdented string
+    # @example
+    #
+    #   string = "    a\n      b\n    c\n"
+    #   Util.outdent(string) # => "a\n  b\nc\n"
+    def self.outdent(string)
+      string.gsub(/^ {#{string.index(/[^ ]/)}}/, "")
     end
 
     # Returns a set of Bourne Shell (AKA /bin/sh) compatible helper
@@ -166,7 +218,7 @@ module Kitchen
     # @return A listing of the specified path
     #
     # @note You should prefer this method to using Dir.glob directly. The reason is
-    # because Dir.glob behaves strangely on Windows. It wont accept '\'
+    # because Dir.glob behaves strangely on Windows. It won't accept '\'
     # and doesn't like fake directories (C:\Documents and Settings)
     # It also does not do any sort of error checking, so things one would
     # expect to fail just return an empty list
@@ -178,7 +230,7 @@ module Kitchen
       # the directory does not exist
       return [] unless Dir.exist?(path)
 
-      Kitchen.mutex_chdir.synchronize do
+      mutex_chdir.synchronize do
         Dir.chdir(path) do
           glob_pattern = if recurse
                            "**/*"
@@ -190,9 +242,9 @@ module Kitchen
                   else
                     []
                   end
-          Dir.glob(glob_pattern, *flags)
-            .reject { |f| [".", ".."].include?(f) }
-            .map { |f| File.join(path, f) }
+          Dir.glob(glob_pattern, *flags).filter_map do |entry|
+            File.join(path, entry) unless DOT_DIRECTORY_ENTRIES.include?(entry)
+          end
         end
       end
     end
@@ -214,17 +266,25 @@ module Kitchen
     def self.safe_glob(path, pattern, *flags)
       return [] unless Dir.exist?(path)
 
-      Kitchen.mutex_chdir.synchronize do
+      mutex_chdir.synchronize do
         Dir.chdir(path) do
           Dir.glob(pattern, *flags).map { |f| File.join(path, f) }
         end
       end
     end
 
+    # Returns a CamelCase version of a snake_case string.
+    #
+    # @param a_string [String] a snake_case string
+    # @return [String] a CamelCase string
     def self.camel_case(a_string)
       Thor::Util.camel_case(a_string)
     end
 
+    # Returns a snake_case version of a CamelCase string.
+    #
+    # @param a_string [String] a CamelCase string
+    # @return [String] a snake_case string
     def self.snake_case(a_string)
       Thor::Util.snake_case(a_string)
     end

@@ -66,7 +66,7 @@ module Kitchen
           end
         end
 
-        # (see Base#init_options)
+        # (see Base::Connection#init_options)
         def init_options(options)
           super
           @instance_name = @options.delete(:instance_name)
@@ -151,11 +151,11 @@ module Kitchen
       # @return [Hash] hash of connection options
       # @api private
       def connection_options(data)
-        opts = {
+        {
           instance_name: instance.name,
-          kitchen_root: Dir.pwd,
+          kitchen_root: data[:kitchen_root] || Dir.pwd,
+          logger:,
         }
-        opts
       end
     end
   end

@@ -15,10 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require "rubygems/gem_runner"
 require "thor/group"
 
 module Kitchen
+  # Namespace for Thor generators that scaffold Test Kitchen configuration
+  # into a project.
+  #
+  # @author Fletcher Nichol <fnichol@nichol.ca>
   module Generator
     # A project initialization generator, to help prepare a cookbook project
     # for testing with Kitchen.
@@ -39,7 +42,7 @@ module Kitchen
       class_option :provisioner,
         type: :string,
         aliases: "-P",
-        default: "dokken",
+        default: "shell",
         desc: <<-D.gsub(/^\s+/, "").tr("\n", " ")
           The default Kitchen Provisioner to use
         D

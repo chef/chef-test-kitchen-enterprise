@@ -26,6 +26,31 @@ module Kitchen
   #
   # @author Fletcher Nichol <fnichol@nichol.ca>
   module Configurable
+    # @return [String] the canonical Bourne shell type
+    # @api private
+    BOURNE_SHELL_TYPE = "bourne".freeze
+
+    # @return [String] the canonical PowerShell shell type
+    # @api private
+    POWERSHELL_SHELL_TYPE = "powershell".freeze
+
+    # @return [String] the canonical Unix OS type
+    # @api private
+    UNIX_OS_TYPE = "unix".freeze
+
+    # @return [String] the canonical Windows OS type
+    # @api private
+    WINDOWS_OS_TYPE = "windows".freeze
+
+    private_constant :BOURNE_SHELL_TYPE, :POWERSHELL_SHELL_TYPE, :UNIX_OS_TYPE, :WINDOWS_OS_TYPE
+
+    # Extends the including class with {ClassMethods} so that the
+    # `default_config`, `required_config`, and related DSL is available at the
+    # class level.
+    #
+    # @param base [Class] the class including this module
+    # @return [void]
+    # @api private
     def self.included(base)
       base.extend(ClassMethods)
     end
@@ -35,7 +60,7 @@ module Kitchen
 
     # A lifecycle method that should be invoked when the object is about ready
     # to be used. A reference to an Instance is required as configuration
-    # dependant data may be access through an Instance. This also acts as a
+    # dependent data may be accessed through an Instance. This also acts as a
     # hook point where the object may wish to perform other last minute
     # checks, validations, or configuration expansions.
     #
@@ -66,14 +91,14 @@ module Kitchen
     #   unset, for backwards compatibility)
     def bourne_shell?
       shell_type = instance.platform.respond_to?(:shell_type) ? instance.platform.shell_type : nil
-      ["bourne", nil].include?(shell_type)
+      BOURNE_SHELL_TYPE == shell_type || shell_type.nil?
     end
 
     # Find an appropriate path to a file or directory, based on graceful
     # fallback rules or returns nil if path cannot be determined.
     #
     # Given an instance with suite named `"server"`, a `test_base_path` of
-    # `"/a/b"`, and a path segment of `"roles"` then following will be tried
+    # `"/a/b"`, and a path segment of `"roles"` then the following will be tried
     # in order (first match that exists wins):
     #
     # 1. /a/b/server/roles
@@ -96,13 +121,14 @@ module Kitchen
         end
       end
 
-      [
-        File.join(base, instance.suite.name, path),
-        File.join(base, path),
-        File.join(Dir.pwd, path),
-      ].find do |candidate|
-        type == :directory ? File.directory?(candidate) : File.file?(candidate)
-      end
+      candidate = File.join(base, instance.suite.name, path)
+      return candidate if path_exists?(candidate, type)
+
+      candidate = File.join(base, path)
+      return candidate if path_exists?(candidate, type)
+
+      candidate = File.join(Dir.pwd, path)
+      candidate if path_exists?(candidate, type)
     end
 
     # Returns an array of configuration keys.
@@ -143,7 +169,7 @@ module Kitchen
     # @return [TrueClass,FalseClass] true if `:shell_type` is `"powershell"`
     def powershell_shell?
       shell_type = instance.platform.respond_to?(:shell_type) ? instance.platform.shell_type : nil
-      ["powershell"].include?(shell_type)
+      POWERSHELL_SHELL_TYPE == shell_type
     end
 
     # Builds a file path based on the `:os_type` (`"windows"` or `"unix"`).
@@ -158,7 +184,7 @@ module Kitchen
     #   unset, for backwards compatibility)
     def unix_os?
       os_type = instance.platform.respond_to?(:os_type) ? instance.platform.os_type : nil
-      ["unix", nil].include?(os_type)
+      UNIX_OS_TYPE == os_type || os_type.nil?
     end
 
     # Performs whatever tests that may be required to ensure that this plugin
@@ -175,12 +201,22 @@ module Kitchen
     # @return [TrueClass,FalseClass] true if `:os_type` is `"windows"`
     def windows_os?
       os_type = instance.platform.respond_to?(:os_type) ? instance.platform.os_type : nil
-      ["windows"].include?(os_type)
+      WINDOWS_OS_TYPE == os_type
     end
 
     private
 
-    # @return [LzayHash] a configuration hash
+    # Returns whether a path exists as the requested filesystem type.
+    #
+    # @param path [String] filesystem path to inspect
+    # @param type [Symbol] either `:file` or `:directory`
+    # @return [Boolean] whether the path exists as the requested type
+    # @api private
+    def path_exists?(path, type)
+      type == :directory ? File.directory?(path) : File.file?(path)
+    end
+
+    # @return [LazyHash] a configuration hash
     # @api private
     attr_reader :config
 
@@ -207,7 +243,7 @@ module Kitchen
     end
 
     # Expands file paths for certain configuration values. A configuration
-    # value is marked for file expansion with a expand_path_for declaration
+    # value is marked for file expansion with an expand_path_for declaration
     # in the included class.
     #
     # @api private
@@ -240,7 +276,7 @@ module Kitchen
       @deprecated_config = deprecated_attributes.delete_if { |attr, obj| !provided_config.key?(attr) || obj.nil? }
 
       unless deprecated_config.empty?
-        warning = Util.outdent!(<<-MSG)
+        warning = Util.outdent(<<-MSG)
           Deprecated configuration detected:
           #{deprecated_config.keys.join("\n")}
           Run 'kitchen doctor' for details.
@@ -396,7 +432,7 @@ module Kitchen
     # Helper method to export
     #
     # @param env [Array] the environment to modify
-    # @param code [String] the type of proxy to export, one of 'http', 'https' or 'ftp'
+    # @param type [String] the type of proxy to export, one of 'http', 'https' or 'ftp'
     # @api private
     def export_proxy(env, type)
       env << shell_env_var(type.to_s, ENV[type.to_s]) if ENV[type.to_s]
@@ -472,7 +508,7 @@ module Kitchen
       # easier to debug and diagnose.
       #
       # Note that the file path expansion is only intended for paths on the
-      # local workstation invking the Test Kitchen code.
+      # local workstation invoking the Test Kitchen code.
       #
       # @example the default usage
       #
@@ -586,10 +622,16 @@ module Kitchen
         end
       end
 
+      # @return [Hash] a hash of attribute keys and deprecation messages which
+      #   has been merged with any superclass deprecations
+      # @api private
       def deprecated_attributes
         @deprecated_attributes ||= {}.merge(super_deprecated_attributes)
       end
 
+      # @return [Hash] a hash of deprecated attributes from the superclass, or
+      #   an empty hash when the superclass has none
+      # @api private
       def super_deprecated_attributes
         if superclass.respond_to?(:deprecated_attributes)
           superclass.deprecated_attributes
@@ -598,8 +640,8 @@ module Kitchen
         end
       end
 
-      # @return [Hash] a hash of attribute keys and valudation callable blocks
-      #   which has been merged with any superclass valudations
+      # @return [Hash] a hash of attribute keys and validation callable blocks
+      #   which has been merged with any superclass validations
       # @api private
       def validations
         @validations ||= {}.merge(super_validations)

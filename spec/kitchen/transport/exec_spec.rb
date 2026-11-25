@@ -14,6 +14,8 @@
 
 require_relative "../../spec_helper"
 
+require "logger"
+
 require "kitchen/transport/exec"
 
 describe Kitchen::Transport::Exec do
@@ -69,24 +71,24 @@ describe Kitchen::Transport::Exec do
 
         make_connection
       end
+    end
 
-      describe "called without a block" do
-        def make_connection(s = state) # rubocop:disable Lint/NestedMethodDefinition
-          transport.connection(s)
-        end
-
-        common_connection_specs
+    describe "called without a block" do
+      def make_connection(s = state)
+        transport.connection(s)
       end
 
-      describe "called with a block" do
-        def make_connection(s = state) # rubocop:disable Lint/NestedMethodDefinition
-          transport.connection(s) do |conn|
-            conn
-          end
-        end
+      common_connection_specs
+    end
 
-        common_connection_specs
+    describe "called with a block" do
+      def make_connection(s = state)
+        transport.connection(s) do |conn|
+          conn
+        end
       end
+
+      common_connection_specs
     end
   end
 end
@@ -164,10 +166,11 @@ describe Kitchen::Transport::Exec::Connection do
       connection.upload(%w{/tmp/sandbox/cookbooks}, "/tmp/kitchen")
     end
     it "copies files when $env:temp is set" do
-      ENV["temp"] = "/tmp"
-      FileUtils.expects(:mkdir_p).with("/tmp/kitchen")
-      FileUtils.expects(:cp_r).with("/tmp/sandbox/cookbooks", "/tmp/kitchen")
-      connection.upload(%w{/tmp/sandbox/cookbooks}, "$env:TEMP\\kitchen")
+      with_env("temp" => "/tmp") do
+        FileUtils.expects(:mkdir_p).with("/tmp/kitchen")
+        FileUtils.expects(:cp_r).with("/tmp/sandbox/cookbooks", "/tmp/kitchen")
+        connection.upload(%w{/tmp/sandbox/cookbooks}, "$env:TEMP\\kitchen")
+      end
     end
   end
 

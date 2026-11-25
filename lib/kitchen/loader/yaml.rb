@@ -21,6 +21,10 @@ require "psych" unless defined?(Psych)
 require "yaml" unless defined?(YAML)
 
 module Kitchen
+  # Namespace for configuration loaders, which turn on-disk configuration
+  # into the raw data hash Test Kitchen operates on.
+  #
+  # @author Fletcher Nichol <fnichol@nichol.ca>
   module Loader
     # YAML file loader for Test Kitchen configuration. This class is
     # responsible for parsing the main YAML file and the local YAML if it
@@ -57,7 +61,7 @@ module Kitchen
       end
 
       # Reads, parses, and merges YAML configuration files and returns a Hash
-      # of tne merged data.
+      # of the merged data.
       #
       # @return [Hash] merged configuration data
       def read
@@ -99,7 +103,7 @@ module Kitchen
       # @api private
       attr_reader :global_config_file
 
-      # Performed a prioritized recursive merge of several source Hashes and
+      # Performs a prioritized recursive merge of several source Hashes and
       # returns a new merged Hash. There are 3 sources of configuration data:
       #
       # 1. local config
@@ -178,7 +182,7 @@ module Kitchen
       # Reads a file and returns its contents as a string.
       #
       # @param file [String] a path to a file
-      # @return [String] the files contents, or an empty string if the file
+      # @return [String] the file's contents, or an empty string if the file
       #   does not exist
       # @api private
       def read_file(file)
@@ -208,7 +212,7 @@ module Kitchen
         File.join(Dir.pwd, "kitchen.yml")
       end
 
-      # The absolute path to an hidden Kitchen config YAML file.
+      # The absolute path to a hidden Kitchen config YAML file.
       def dot_kitchen_yml
         File.join(Dir.pwd, ".kitchen.yml")
       end

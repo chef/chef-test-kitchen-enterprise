@@ -32,7 +32,7 @@ module Kitchen
       #
       # @param task [String] action to take, usually corresponding to the
       #   subcommand name
-      # @param command [String] command class to create and invoke]
+      # @param command [String] command class to create and invoke
       # @param args [Array] remainder arguments from processed ARGV
       #   (default: `nil`)
       # @param additional_options [Hash] additional configuration needed to
@@ -110,13 +110,25 @@ module Kitchen
       aliases: "-j",
       type: :boolean,
       desc: "Print data as JSON"
+    method_option :live,
+      type: :boolean,
+      desc: "Include driver-reported live instance status"
+    method_option :probe,
+      type: :boolean,
+      desc: "Probe transport connectivity in addition to driver status"
     method_option :debug,
       aliases: "-d",
       type: :boolean,
       desc: "[Deprecated] Please use `kitchen diagnose'"
     log_options
+    # Lists one or more instances and their last known action state.
+    #
+    # @param args [Array<String>] instance names or regexps to match; matches
+    #   all instances when empty
+    # @return [void]
     def list(*args)
-      update_config!
+      log_overwrite = options[:log_overwrite].nil? ? false : options[:log_overwrite]
+      update_config!(log_overwrite:)
       perform("list", "list", args)
     end
     map status: :list
@@ -137,6 +149,12 @@ module Kitchen
       desc: "Include all diagnostics"
     log_options
     test_base_path
+    # Prints the fully computed diagnostic configuration for one or more
+    # instances, after all loader and plugin data has been merged.
+    #
+    # @param args [Array<String>] instance names or regexps to match; matches
+    #   all instances when empty
+    # @return [void]
     def diagnose(*args)
       update_config!
       perform("diagnose", "diagnose", args, loader: @loader)
@@ -148,8 +166,7 @@ module Kitchen
       converge: "Change instance state to converge. " \
                    "Use a provisioner to configure one or more instances",
       setup: "Change instance state to setup. " \
-                   "Prepare to run automated tests. " \
-                   "Install busser and related gems on one or more instances",
+                   "Prepare one or more instances for verification",
       verify: "Change instance state to verify. " \
                    "Run automated tests on one or more instances",
       destroy: "Change instance state to destroy. " \
@@ -244,6 +261,12 @@ module Kitchen
       desc: "Run the converge and verify with debugging enabled."
     test_base_path
     log_options
+    # Runs a full test cycle (destroy, create, converge, setup, verify,
+    # destroy) against one or more instances.
+    #
+    # @param args [Array<String>] instance names or regexps to match; matches
+    #   all instances when empty
+    # @return [void]
     def test(*args)
       update_config!
       ensure_initialized
@@ -252,13 +275,50 @@ module Kitchen
 
     desc "login INSTANCE|REGEXP", "Log in to one instance"
     log_options
+    # Opens an interactive login session on a single instance.
+    #
+    # @param args [Array<String>] an instance name or regexp matching exactly
+    #   one instance
+    # @return [void]
     def login(*args)
       update_config!
       perform("login", "login", args)
     end
 
+    desc "logs [INSTANCE|REGEXP|all]", "Show structured logs"
+    method_option :level,
+      desc: "Minimum log level to print (debug, info, warn, error, fatal)"
+    method_option :session_id,
+      desc: "Only print logs for the given instance session id"
+    method_option :all_sessions,
+      type: :boolean,
+      desc: "Print logs from all instance sessions; defaults to all instances"
+    method_option :format,
+      default: "text",
+      desc: "Output format (ndjson, text)"
+    method_option :follow,
+      aliases: "-f",
+      type: :boolean,
+      desc: "Follow the structured log file"
+    log_options
+    # Prints the structured log events recorded for one or more instances.
+    #
+    # @param args [Array<String>] instance names or regexps to match; matches
+    #   all instances when empty
+    # @return [void]
+    def logs(*args)
+      update_config!(log_overwrite: false)
+      perform("logs", "logs", args)
+    end
+
     desc "package INSTANCE|REGEXP", "package an instance"
     log_options
+    # Packages a single instance into a distributable artifact, as
+    # implemented by the instance's driver.
+    #
+    # @param args [Array<String>] an instance name or regexp matching exactly
+    #   one instance
+    # @return [void]
     def package(*args)
       update_config!
       perform("package", "package", args)
@@ -269,34 +329,56 @@ module Kitchen
     method_option :all,
       aliases: "-a",
       desc: "Check all instances"
+    # Checks one or more instances for common system and configuration
+    # problems.
+    #
+    # @param args [Array<String>] instance names or regexps to match; matches
+    #   all instances when empty
+    # @return [void]
     def doctor(*args)
       update_config!
       perform("doctor", "doctor", args)
     end
 
     desc "exec INSTANCE|REGEXP -c REMOTE_COMMAND",
-      "Execute command on one or more instance"
+      "Execute command on one or more instances"
     method_option :command,
       aliases: "-c",
       desc: "execute via ssh"
     log_options
+    # Executes a remote command on one or more instances over their
+    # configured transport.
+    #
+    # @param args [Array<String>] instance names or regexps to match; matches
+    #   all instances when empty
+    # @return [void]
     def exec(*args)
       update_config!
       perform("exec", "exec", args)
     end
 
     desc "version", "Print Test Kitchen's version information"
+    # Prints Test Kitchen's version information to stdout.
+    #
+    # @return [void]
     def version
       puts "Chef Test Kitchen Enterprise Version #{Kitchen::VERSION}"
     end
     map %w{-v --version} => :version
 
     desc "sink", "Show the Kitchen sink!", hide: true
+    # Shows the Kitchen sink. A hidden easter egg command.
+    #
+    # @return [void]
     def sink
       perform("sink", "sink")
     end
 
     desc "console", "Test Kitchen Console!"
+    # Starts an interactive console session with the Test Kitchen
+    # configuration loaded.
+    #
+    # @return [void]
     def console
       perform("console", "console")
     end
@@ -319,7 +401,7 @@ module Kitchen
     class << self
       private
 
-      # Ensure the any failing commands exit non-zero.
+      # Ensure that any failing commands exit non-zero.
       #
       # @return [true] you die always on failure
       # @api private
@@ -339,12 +421,10 @@ module Kitchen
     # Update and finalize options for logging, concurrency, and other concerns.
     #
     # @api private
-    def update_config!
+    def update_config!(log_overwrite: options[:log_overwrite])
       @config.log_level = log_level if log_level
 
-      unless options[:log_overwrite].nil?
-        @config.log_overwrite = options[:log_overwrite]
-      end
+      @config.log_overwrite = log_overwrite unless log_overwrite.nil?
       @config.colorize = options[:color] unless options[:color].nil?
 
       if options[:test_base_path]
@@ -354,10 +434,10 @@ module Kitchen
 
       @config.debug = options[:debug]
 
-      # Now that we have required configs, lets create our file logger
+      # Now that we have required configs, let's create our file logger
       Kitchen.logger = Kitchen.default_file_logger(
         log_level,
-        options[:log_overwrite]
+        log_overwrite
       )
 
       update_parallel!
@@ -381,7 +461,7 @@ module Kitchen
       @log_level = level
     end
 
-    # Check to whether a provided log level is valid
+    # Check whether a provided log level is valid
     #
     # @api private
     def valid_log_level?(level)
