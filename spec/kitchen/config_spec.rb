@@ -233,6 +233,7 @@ describe Kitchen::Config do
   describe "#suites" do
     before do
       Kitchen::DataMunger.stubs(:new).returns(munger)
+      Kitchen::Suite.stubs(:new).returns("suite")
     end
 
     let(:munger) do

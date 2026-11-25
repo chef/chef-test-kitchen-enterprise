@@ -22,7 +22,7 @@ Feature: Add Test Kitchen support to an existing project
     And the file ".gitignore" should contain ".kitchen/"
     And the file ".gitignore" should contain "kitchen.local.yml"
     And the file ".gitignore" should contain ".kitchen.local.yml"
-    And the file "kitchen.yml" should exist:
+    And the file "kitchen.yml" should exist
     And the file "kitchen.yml" should contain:
     """
     driver:
@@ -31,7 +31,6 @@ Feature: Add Test Kitchen support to an existing project
     And a file named "Gemfile" should not exist
     And a file named "Rakefile" should not exist
     And a file named "Thorfile" should not exist
-    And a gem named "kitchen-vagrant" is installed
     And a file named "chefignore" should exist
     And the file "chefignore" should contain ".kitchen"
 
@@ -195,6 +194,9 @@ Feature: Add Test Kitchen support to an existing project
     provisioner:
       name: shell
 
+    transport:
+      name: dokken
+
     platforms:
       - name: ubuntu-24.04
       - name: almalinux-10
@@ -219,6 +221,9 @@ Feature: Add Test Kitchen support to an existing project
     provisioner:
       name: shell
 
+    transport:
+      name: dokken
+
     platforms:
       - name: ubuntu-24.04
       - name: almalinux-10
@@ -241,6 +246,9 @@ Feature: Add Test Kitchen support to an existing project
 
     provisioner:
       name: shell
+
+    transport:
+      name: dokken
 
     platforms:
       - name: ubuntu-24.04

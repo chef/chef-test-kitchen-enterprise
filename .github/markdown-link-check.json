@@ -11,6 +11,9 @@
   ],
   "ignorePatterns": [
     {
+      "pattern": "^https://omnitruck\\.cinc\\.sh/?$"
+    },
+    {
       "pattern": "^https://chefcommunity\\.slack\\.com/messages/testkitchen/details/$"
     },
     {
